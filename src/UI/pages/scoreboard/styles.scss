@@ -1,0 +1,117 @@
+// masters-pool/src/UI/pages/scoreboard/styles.scss
+
+@use '../../styles/colors' as *;
+@use '../../styles/index' as *;
+@use '../../styles/fonts' as *;
+
+.scoreboard-wrapper {
+    background-color: transparent;
+    border-bottom: solid 30px var(--darkGreen);
+
+    .scoreboard-arch {
+        background-color: var(--darkGreen);
+        height: 60px;
+        width: 100%;
+        // This creates a shallow, wide curve
+        border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+        position: relative;
+        z-index: 2;
+    }
+
+    .scoreboard-container {
+        background-color: var(--scoreboard-BG-row);
+        z-index: 3;
+        position: relative;
+        border-bottom: 4px solid var(--yellow);
+
+        .scoreboard-title-container {
+            background-color: var(--darkGreen);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            padding: 0px 0px 28px 0px;
+            gap: 16px;
+
+            .logo-container {
+                $logo-size: 45px;
+                max-height: $logo-size;
+                height: $logo-size;
+
+                img {
+                    height: inherit;
+                }
+            }
+
+            .scoreboard-header-title {
+                font-size: 34px;
+                color: var(--scoreboard-FC-column);
+                font-family: "Masters", serif;
+                text-align: center;
+                transform: translateY(12px)
+            }
+        }
+
+
+        // The Header Row Styles
+        .scoreboard-table-header {
+            display: grid;
+            grid-template-columns: $grid-layout;
+            background-color: var(--darkGreen);
+            border-bottom: 4px solid var(--yellow);
+            padding: $grid-padding-height $grid-padding-width;
+            color: var(--scoreboard-FC-column);
+            gap: 8px;
+
+            .cell {
+                font-family: "Work Sans", Arial, Helvetica, sans-serif;
+                font-size: 1rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.75px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                &.name {
+                    margin: 0px $grid-name-margin;
+                }
+
+                &.total {
+                    margin-left: $grid-name-margin;
+
+                    .info-icon {
+                        margin-left: 8px;
+                        width: 14px;
+                        height: 14px;
+                        border-radius: 50%;
+                        border: 1.25px solid var(--yellow);
+                        background: transparent;
+                        color: var(--yellow);
+                        font-size: 12px;
+                        font-family: serif;
+                        font-style: italic;
+                        font-weight: bold;
+                        cursor: pointer;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 0;
+                        transition: all 0.2s ease;
+
+                        &:hover {
+                            background-color: var(--yellow);
+                            color: var(--darkGreen);
+                        }
+                    }
+                }
+
+                .scoreboard-teams {
+                    background-color: var(--scoreboard-BG-row);
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
+        }
+    }
+}

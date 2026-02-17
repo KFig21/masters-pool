@@ -1,0 +1,81 @@
+@use '../../styles/colors' as *;
+@use '../../styles/index' as *;
+
+$tab-min-width: 100px;
+
+.bottomNav-wrapper {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--darkGreen);
+    border-top: 4px solid var(--yellow);
+    z-index: 1000;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+
+    .bottomNav-scroll-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow-x: auto;
+        white-space: nowrap;
+        height: $footer-height;
+
+        // Hide scrollbar for cleaner look
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+
+        /* Firefox */
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-tab {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--nav-FC);
+            background-color: var(--darkGreen);
+            font-family: "Masters", serif;
+            font-size: 1rem;
+            height: 100%;
+            padding: 0px 12px;
+            min-width: $tab-min-width;
+            transition: all 0.2s ease;
+            cursor: pointer;
+
+            &.scoreboard {
+                border-right: solid 3px var(--green);
+            }
+
+            .team-name {
+                position: relative;
+                transform: translateY(3px);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .favorite-icon {
+                    transform: translateY(-3px);
+                    padding-right: 3px;
+                    font-size: 1rem;
+                    color: var(--yellow);
+                }
+            }
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.15);
+                color: white;
+            }
+
+            &.active {
+                color: white;
+                background-color: rgba(255, 255, 255, 0.15);
+                font-weight: bold;
+                border-bottom: 3px solid var(--yellow);
+            }
+        }
+    }
+}

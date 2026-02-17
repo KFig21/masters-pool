@@ -1,0 +1,107 @@
+@use '../../../../styles/colors' as *;
+@use '../../../../styles/index' as *;
+
+.teamRow-wrapper {
+    transition: background-color 0.2s ease;
+
+    &:last-child {
+        .teamRow-container {
+            border-bottom: none;
+        }
+    }
+
+    &.favorite-row {
+        .teamRow-container {
+            background-color: var(--scoreboard-BG-row-favorite);
+
+            &:hover {
+                background-color: var(--scoreboard-BG-row-favorite--hover);
+            }
+
+            .cell {
+                background-color: var(--scoreboard-BG-cell-favorite);
+            }
+        }
+    }
+
+    .teamRow-container {
+        text-decoration: none;
+        display: grid;
+        grid-template-columns: $grid-layout;
+        padding: $grid-padding-height $grid-padding-width;
+        gap: 8px;
+        align-items: center;
+        border-bottom: solid 1px var(--scoreboard-borderColor);
+        background-color: var(--scoreboard-BG-row);
+
+        &:hover {
+            background-color: var(--scoreboard-BG-row--hover);
+        }
+
+        .cell {
+            color: var(--scoreboard-FC-row);
+            background-color: var(--scoreboard-BG-row);
+            font-size: 32px;
+            font-weight: 500;
+            padding: 0px 10px;
+            box-shadow: var(--scoreboard-boxShadow-cell);
+            height: 40px;
+            display: flex;
+            align-items: center;
+
+            &.rank {
+                text-align: center;
+                color: var(--green);
+                display: flex;
+                justify-content: center;
+            }
+
+            &.name {
+                font-weight: 600;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                margin: 0px $grid-name-margin;
+                font-family: Oswald, Arial;
+
+                .favorite-star {
+                    font-size: 1rem;
+                    margin-left: 4px;
+                }
+            }
+
+            &.score {
+                display: flex;
+                justify-content: center;
+                color: var(--green);
+                font-family: 'Helvetica Neue', sans-serif;
+                // font-size: 28px;
+
+                &.under-par {
+                    color: var(--red)
+                }
+
+                &.even-par {
+                    color: var(--scoreboard-FC-row);
+                }
+            }
+
+            &.total {
+                font-weight: 700;
+                margin-left: $grid-name-margin;
+
+                &.under-par {
+                    color: var(--red);
+                }
+
+                &.even-par {
+                    color: var(--scoreboard-FC-row);
+                }
+
+                &.over-par {
+                    color: var(--green);
+                }
+            }
+        }
+    }
+}

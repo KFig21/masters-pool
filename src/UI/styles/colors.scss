@@ -1,0 +1,56 @@
+:root,
+[data-theme='light'] {
+    /* Backgrounds */
+
+    /* Text */
+
+
+    /* Accents */
+    --green: rgb(0, 103, 71);
+    --darkGreen: rgb(0, 71, 52);
+    --yellow: rgb(252, 227, 0);
+    --red: rgb(224, 15, 57);
+
+    /* Scoreboard */
+    --scoreboard-BG-row: white;
+    --scoreboard-BG-row--hover: #d7dadeb7;
+    --scoreboard-FC-row: rgb(10, 10, 10);
+    --scoreboard-FC-column: white;
+    --scoreboard-borderColor: black;
+    --scoreboard-boxShadow-cell: inset 0 1px 3px rgba(0, 0, 0, 0.4);
+
+    /* Favorited */
+    --scoreboard-BG-cell-favorite: rgb(254, 252, 234);
+    --scoreboard-BG-row-favorite: rgb(255, 251, 211);
+    --scoreboard-BG-row-favorite--hover: rgb(255, 249, 181);
+
+    /* Nav */
+    --nav-FC: rgb(215, 215, 215);
+
+    /* Other */
+    --color-scheme: light;
+}
+
+
+/* Dark Theme */
+[data-theme='dark'] {
+    /* Backgrounds */
+    --BG-main: rgb(22, 27, 34);
+    --BG-activeTab: #1f2428;
+    --BG-primaryButton: #30363d;
+
+    /* Text */
+    --fontColor-primary: #e6edf3;
+    --fontColor-secondary: #8b949e;
+
+    /* Accents */
+    --borderColor: #30363d;
+    --green: rgb(0, 103, 71);
+    --darkGreen: rgb(0, 71, 43);
+    --yellow: rgb(252, 227, 0);
+    --white: #e6edf3;
+    --color-scheme: light dark;
+
+    /* Scoreboard */
+    --scoreboard-BG-row: rgb(22, 27, 34);
+}
