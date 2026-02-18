@@ -6,7 +6,7 @@
 
 .scoreboard-wrapper {
     background-color: transparent;
-    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.8));
+    filter: drop-shadow(0px 0px 50px rgba(255, 228, 165, 0.1));
 
     .scoreboard-arch {
         background-color: var(--darkGreen);
@@ -36,6 +36,7 @@
                 $logo-size: 45px;
                 max-height: $logo-size;
                 height: $logo-size;
+                transform: translateY(-8px);
 
                 img {
                     height: inherit;
@@ -47,7 +48,7 @@
                 color: var(--scoreboard-FC-column);
                 font-family: "Masters", serif;
                 text-align: center;
-                transform: translateY(12px)
+                transform: translateY(4px);
             }
         }
 
@@ -117,5 +118,6 @@
     .scoreboard-footer {
         background-color: var(--darkGreen);
         height: 30px;
+        border-radius: 0px 0px 5px 5px;
     }
 }
