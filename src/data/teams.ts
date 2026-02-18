@@ -1,7 +1,7 @@
 export interface Round {
   total: number | null;
   scoreRound: number | null; // e.g., -1
-  scoreThru: number | null; // cumulative score after this round
+  thruScore: number | null; // cumulative score after this round
 }
 
 export interface Scorecard {

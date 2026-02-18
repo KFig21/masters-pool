@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import type { ScoreboardTeamData } from '../../Scoreboard';
+import type { ScoreboardTeamData } from '../../Leaderboard';
 import './styles.scss';
 
 interface Props {

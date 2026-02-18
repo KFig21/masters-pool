@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { Scoreboard } from './pages/scoreboard/Scoreboard';
+import { Leaderboard } from './pages/leaderboard/Leaderboard';
 import { Team } from './pages/team/Team';
 import { BottomNav } from './components/bottomNav/BottomNav';
 import { BackgroundSlider } from './components/backgroundSlider/BackgroundSlider';
@@ -11,7 +11,7 @@ function App() {
       <BackgroundSlider />
       <div className="content-wrap">
         <Routes>
-          <Route path="/" element={<Scoreboard />} />
+          <Route path="/" element={<Leaderboard />} />
           <Route path="/team/:owner" element={<Team />} />
         </Routes>
       </div>

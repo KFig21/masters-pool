@@ -1,28 +1,29 @@
 import { useParams } from 'react-router-dom';
 import { useFavoriteTeam } from '../../../hooks/useFavoriteTeam';
+import { useScores } from '../../../context/ScoreContext';
+import { Scorecard } from './components/scorecard/Scorecard';
 import './styles.scss';
-
-// interface Props {
-//   fakeProp: string;
-// }
 
 export const Team = () => {
   const { owner } = useParams();
-  // const navigate = useNavigate();
   const { favoriteTeam, toggleFavorite } = useFavoriteTeam();
-  if (!owner) return null;
+  const { getTeamByOwner } = useScores();
+
+  const teamInfo = owner ? getTeamByOwner(owner) : undefined;
+
+  if (!owner || !teamInfo) {
+    return <div className="team-wrapper">Team not found</div>;
+  }
 
   const isFavorite = favoriteTeam === owner;
+  const { rank } = teamInfo;
+  const { activeTotal } = teamInfo.stats;
+  const displayScore = activeTotal === 999 ? 'E' : activeTotal;
 
   return (
     <div className="team-wrapper">
-      {/* SAVE THIS FOR MOBILE */}
-      {/* <button onClick={() => navigate('/')} className="back-btn">
-            &larr; Back to Scoreboard
-          </button> */}
       <div className="team-container">
         <div className="team-header">
-          {/* FAVORITE TOGGLE BUTTON */}
           <button
             className={`favorite-icon ${isFavorite ? 'active' : ''}`}
             onClick={() => toggleFavorite(owner)}
@@ -30,12 +31,18 @@ export const Team = () => {
           >
             {isFavorite ? '★' : '☆'}
           </button>
-          <div className="team-header-data place">2</div>
+
+          {/* NOW DYNAMIC: */}
+          <div className="team-header-data place">{rank}</div>
           <div className="team-header-data name">{owner}</div>
-          <div className="team-header-data score">-4</div>
+          <div className="team-header-data score">{displayScore}</div>
         </div>
+
+        {/* Scorecard */}
+        <Scorecard />
+
+        {/* map thru players - NEED HOLE BY HOLE SCORES */}
         <div className="team-players">
-          {/* map thru players - NEED HOLE BY HOLE SCORES */}
           {/* <Player_FullScorecard player="Tiger Woods" />
           <Player_FullScorecard player="Rory McIlroy" />
           <Player_FullScorecard player="Dustin Johnson" />
