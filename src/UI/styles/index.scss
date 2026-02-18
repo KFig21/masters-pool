@@ -43,31 +43,13 @@ body {
     position: relative;
 }
 
-.app-container::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    background-image: url('../../assets/images/bg.jpg');
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0.12;
-
-    z-index: 0;
-    pointer-events: none;
-}
-
 .content-wrap {
     width: 100%;
     min-height: calc(100vh - #{$footer-height});
-    overflow: overlay;
+    // overflow: overlay; // Deprecated in some browsers, use auto or standard overflow
+    overflow-y: auto;
     position: relative;
-    z-index: 1; // Places content ABOVE the background image
+    z-index: 2; // Ensure this is higher than the slider (which is 0 or 1)
     display: flex;
     justify-content: center;
     align-items: center;

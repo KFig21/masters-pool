@@ -1,0 +1,63 @@
+@use '../../styles/colors' as *;
+
+.background-slider {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; // Behind everything
+    pointer-events: none;
+    overflow: hidden;
+
+    .bg-slide {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        z-index: 1;
+
+        &.preload {
+            // Technically in the DOM so the browser fetches the image URL, 
+            // but completely hidden and no animation running.
+            opacity: 0;
+            animation: none;
+        }
+
+        &.active {
+            opacity: 0.15;
+            z-index: 2;
+            animation: kenBurns linear forwards;
+        }
+
+        &.exiting {
+            opacity: 0;
+            z-index: 1;
+            animation: kenBurns linear forwards;
+        }
+    }
+
+    // The green tint layer
+    .bg-overlay {
+        position: absolute;
+        inset: 0;
+        background-color: var(--green);
+        z-index: 0; // Behind the images, or remove this if you want images ON TOP of green
+        // actually, usually you want images to blend ON TOP of the base green background
+        // defined in .app-container. 
+    }
+}
+
+// The "Ken Burns" Effect
+// Scales from 100% to 120% and pans slightly
+@keyframes kenBurns {
+    0% {
+        transform: scale(1) translate(0, 0);
+    }
+
+    100% {
+        // We zoom a bit more so it doesn't reach the end during the 30s
+        transform: scale(1.2) translate(-2%, -1%);
+    }
+}
