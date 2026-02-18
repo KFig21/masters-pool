@@ -13,17 +13,21 @@
 
     /* Scoreboard */
     --scoreboard-BG-row: white;
-    --scoreboard-BG-row--hover: #d7dadeb7;
+    --scoreboard-BG-row--hover: #cff1dfb7;
+    --scoreboard-BG-cell--hover: #f5fffab7;
+
     --scoreboard-FC-row: rgb(10, 10, 10);
     --scoreboard-FC-row-CUT: rgb(101, 107, 109);
     --scoreboard-FC-column: white;
+
     --scoreboard-borderColor: black;
     --scoreboard-boxShadow-cell: inset 0 1px 3px rgba(0, 0, 0, 0.4);
 
     /* Favorited */
-    --scoreboard-BG-cell-favorite: rgb(254, 252, 234);
+    --scoreboard-BG-cell-favorite: rgb(251, 249, 226);
     --scoreboard-BG-row-favorite: rgb(255, 251, 211);
     --scoreboard-BG-row-favorite--hover: rgb(255, 249, 181);
+    --scoreboard-BG-cell-favorite--hover: rgb(255, 252, 215);
 
     /* Nav */
     --nav-FC: rgb(215, 215, 215);
