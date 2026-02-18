@@ -15,6 +15,7 @@ export interface ScoreboardTeamData {
   r4: number | string;
   totalScore: number | string;
   isFavorite: boolean;
+  isCut: boolean;
 }
 
 export const Scoreboard = () => {
@@ -42,22 +43,54 @@ export const Scoreboard = () => {
   };
 
   const processedTeams = compiledTeams.map((team) => {
+    // 1. Calculate sums based on existing rounds
     const sumR1 = getBest4Sum(team.golfers, 'round1');
     const sumR2 = getBest4Sum(team.golfers, 'round2');
     const sumR3 = getBest4Sum(team.golfers, 'round3');
     const sumR4 = getBest4Sum(team.golfers, 'round4');
 
-    let activeTotal = 0;
-    if (sumR4 !== Infinity) activeTotal = sumR4;
-    else if (sumR3 !== Infinity) activeTotal = sumR3;
-    else if (sumR2 !== Infinity) activeTotal = sumR2;
-    else if (sumR1 !== Infinity) activeTotal = sumR1;
-    else activeTotal = 999;
+    // 2. Count active golfers (not cut)
+    // We assume the data has "isCut": true/false
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const activeGolfersCount = team.golfers.filter((g: any) => !g.isCut).length;
+    console.log('activeGolfersCount', team.owner, team.golfers, activeGolfersCount);
+    const isTeamCut = activeGolfersCount < 4;
 
-    return { ...team, stats: { sumR1, sumR2, sumR3, sumR4, activeTotal } };
+    let activeTotal: number | string = 0;
+
+    // 3. Determine Total Score logic
+    if (isTeamCut) {
+      // You can choose to display "CUT" even if they have a WD, or specific status
+      activeTotal = 'CUT';
+    } else {
+      // Standard best-4 logic
+      if (sumR4 !== Infinity) activeTotal = sumR4;
+      else if (sumR3 !== Infinity) activeTotal = sumR3;
+      else if (sumR2 !== Infinity) activeTotal = sumR2;
+      else if (sumR1 !== Infinity) activeTotal = sumR1;
+      else activeTotal = 999; // Default for pre-tournament
+    }
+
+    return {
+      ...team,
+      stats: { sumR1, sumR2, sumR3, sumR4, activeTotal, isTeamCut },
+    };
   });
 
-  const sortedTeams = [...processedTeams].sort((a, b) => a.stats.activeTotal - b.stats.activeTotal);
+  // 4. Sort: Lower scores first, 'CUT' teams last
+  const sortedTeams = [...processedTeams].sort((a, b) => {
+    const scoreA = a.stats.activeTotal;
+    const scoreB = b.stats.activeTotal;
+
+    // Helper to check if a score is a "bad" status (CUT/WD/DQ)
+    const isBadStatus = (val: number | string) => val === 'CUT' || val === 'WD' || val === 'DQ';
+
+    if (isBadStatus(scoreA) && isBadStatus(scoreB)) return 0;
+    if (isBadStatus(scoreA)) return 1;
+    if (isBadStatus(scoreB)) return -1;
+
+    return (scoreA as number) - (scoreB as number);
+  });
 
   return (
     <>
@@ -88,7 +121,7 @@ export const Scoreboard = () => {
 
           <div className="scoreboard-teams">
             {sortedTeams.map((team, index) => {
-              const { sumR1, sumR2, sumR3, sumR4, activeTotal } = team.stats;
+              const { sumR1, sumR2, sumR3, sumR4, activeTotal, isTeamCut } = team.stats;
               const r1Display = sumR1;
               const r2Display = sumR2 !== Infinity && sumR1 !== Infinity ? sumR2 - sumR1 : Infinity;
               const r3Display = sumR3 !== Infinity && sumR2 !== Infinity ? sumR3 - sumR2 : Infinity;
@@ -103,12 +136,14 @@ export const Scoreboard = () => {
                 r4: formatDiff(r4Display),
                 totalScore: activeTotal === 999 ? 'E' : activeTotal,
                 isFavorite: favoriteTeam === team.owner,
+                isCut: isTeamCut,
               };
 
               return <TeamRow key={team.owner} data={propData} />;
             })}
           </div>
         </div>
+        <div className="scoreboard-footer"></div>
       </div>
 
       {/* Scoring Info Modal */}

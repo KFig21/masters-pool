@@ -101,6 +101,13 @@
                 &.over-par {
                     color: var(--green);
                 }
+
+                &.cut-text {
+                    color: var(--scoreboard-FC-row-CUT);
+                    font-weight: bold;
+                    font-style: italic;
+                    font-size: 24px;
+                }
             }
         }
     }

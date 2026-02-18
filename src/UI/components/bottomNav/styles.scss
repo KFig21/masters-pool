@@ -47,7 +47,11 @@ $tab-min-width: 100px;
             cursor: pointer;
 
             &.scoreboard {
-                border-right: solid 3px var(--green);
+                color: var(--yellow);
+
+                &.active {
+                    color: var(--yellow);
+                }
             }
 
             .team-name {

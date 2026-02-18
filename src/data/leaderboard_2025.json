@@ -4,10 +4,11 @@
       "player": {
         "name": "Bryson DeChambeau",
         "id": "10046",
-        "score": -7,
-        "displayScore": "-7",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 69,
@@ -39,7 +40,8 @@
         "score": 0,
         "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 71,
@@ -68,10 +70,11 @@
       "player": {
         "name": "Davis Riley",
         "id": "10058",
-        "score": -2,
-        "displayScore": "-2",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 73,
@@ -100,10 +103,11 @@
       "player": {
         "name": "Xander Schauffele",
         "id": "10140",
-        "score": -5,
-        "displayScore": "-5",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 73,
@@ -132,10 +136,11 @@
       "player": {
         "name": "J.J. Spaun",
         "id": "10166",
-        "score": 7,
-        "displayScore": "+7",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 74,
@@ -164,9 +169,10 @@
       "player": {
         "name": "Jhonattan Vegas",
         "id": "1030",
-        "score": 6,
-        "displayScore": "+6",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -196,9 +202,10 @@
       "player": {
         "name": "Adam Schenk",
         "id": "10372",
-        "score": 4,
-        "displayScore": "+4",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -228,10 +235,11 @@
       "player": {
         "name": "J.T. Poston",
         "id": "10505",
-        "score": 4,
-        "displayScore": "+4",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 74,
@@ -260,9 +268,10 @@
       "player": {
         "name": "Evan Beck",
         "id": "10559",
-        "score": 9,
-        "displayScore": "+9",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -292,10 +301,11 @@
       "player": {
         "name": "Collin Morikawa",
         "id": "10592",
-        "score": -3,
-        "displayScore": "-3",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 72,
@@ -324,9 +334,10 @@
       "player": {
         "name": "Matthieu Pavon",
         "id": "10596",
-        "score": 10,
-        "displayScore": "+10",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -356,9 +367,10 @@
       "player": {
         "name": "Cam Davis",
         "id": "10863",
-        "score": 9,
-        "displayScore": "+9",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -388,10 +400,11 @@
       "player": {
         "name": "Aaron Rai",
         "id": "10906",
-        "score": -1,
-        "displayScore": "-1",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 70,
@@ -420,10 +433,11 @@
       "player": {
         "name": "Charl Schwartzel",
         "id": "1097",
-        "score": 2,
-        "displayScore": "+2",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 74,
@@ -455,7 +469,8 @@
         "score": 0,
         "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 72,
@@ -487,7 +502,8 @@
         "score": 0,
         "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 72,
@@ -516,10 +532,11 @@
       "player": {
         "name": "Max Greyserman",
         "id": "11101",
-        "score": 1,
-        "displayScore": "+1",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 71,
@@ -548,10 +565,11 @@
       "player": {
         "name": "Wyndham Clark",
         "id": "11119",
-        "score": 5,
-        "displayScore": "+5",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 76,
@@ -580,9 +598,10 @@
       "player": {
         "name": "Nicolai Højgaard",
         "id": "11250",
-        "score": 6,
-        "displayScore": "+6",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -612,10 +631,11 @@
       "player": {
         "name": "Rasmus Højgaard",
         "id": "11253",
-        "score": 1,
-        "displayScore": "+1",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 73,
@@ -644,9 +664,10 @@
       "player": {
         "name": "Robert MacIntyre",
         "id": "11378",
-        "score": 6,
-        "displayScore": "+6",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -676,10 +697,11 @@
       "player": {
         "name": "Sungjae Im",
         "id": "11382",
-        "score": -7,
-        "displayScore": "-7",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 71,
@@ -708,10 +730,11 @@
       "player": {
         "name": "Brian Harman",
         "id": "1225",
-        "score": 2,
-        "displayScore": "+2",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 71,
@@ -740,9 +763,10 @@
       "player": {
         "name": "Sergio Garcia",
         "id": "158",
-        "score": 4,
-        "displayScore": "+4",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -772,9 +796,10 @@
       "player": {
         "name": "Billy Horschel",
         "id": "1651",
-        "score": 5,
-        "displayScore": "+5",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -804,10 +829,11 @@
       "player": {
         "name": "Jason Day",
         "id": "1680",
-        "score": -5,
-        "displayScore": "-5",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 70,
@@ -836,9 +862,10 @@
       "player": {
         "name": "Tony Finau",
         "id": "2230",
-        "score": 4,
-        "displayScore": "+4",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -868,9 +895,10 @@
       "player": {
         "name": "Bernhard Langer",
         "id": "261",
-        "score": 3,
-        "displayScore": "+3",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -900,9 +928,10 @@
       "player": {
         "name": "Phil Mickelson",
         "id": "308",
-        "score": 5,
-        "displayScore": "+5",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -932,9 +961,10 @@
       "player": {
         "name": "José María Olazábal",
         "id": "329",
-        "score": 7,
-        "displayScore": "+7",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -964,9 +994,10 @@
       "player": {
         "name": "Dustin Johnson",
         "id": "3448",
-        "score": 3,
-        "displayScore": "+3",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -996,9 +1027,10 @@
       "player": {
         "name": "Chris Kirk",
         "id": "3449",
-        "score": 3,
-        "displayScore": "+3",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -1028,10 +1060,11 @@
       "player": {
         "name": "Rory McIlroy",
         "id": "3470",
-        "score": -11,
-        "displayScore": "-11",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 72,
@@ -1060,9 +1093,10 @@
       "player": {
         "name": "Rafael Campos",
         "id": "3683",
-        "score": 4,
-        "displayScore": "+4",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -1092,10 +1126,11 @@
       "player": {
         "name": "Nick Taylor",
         "id": "3792",
-        "score": 3,
-        "displayScore": "+3",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 73,
@@ -1124,9 +1159,10 @@
       "player": {
         "name": "Adam Scott",
         "id": "388",
-        "score": 5,
-        "displayScore": "+5",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -1156,9 +1192,10 @@
       "player": {
         "name": "Patton Kizzire",
         "id": "3980",
-        "score": 8,
-        "displayScore": "+8",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -1188,10 +1225,11 @@
       "player": {
         "name": "Danny Willett",
         "id": "4304",
-        "score": 4,
-        "displayScore": "+4",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 75,
@@ -1220,9 +1258,10 @@
       "player": {
         "name": "Kevin Yu",
         "id": "4349547",
-        "score": 6,
-        "displayScore": "+6",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -1252,10 +1291,11 @@
       "player": {
         "name": "Viktor Hovland",
         "id": "4364873",
-        "score": -2,
-        "displayScore": "-2",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 71,
@@ -1284,10 +1324,11 @@
       "player": {
         "name": "Ludvig Åberg",
         "id": "4375972",
-        "score": -6,
-        "displayScore": "-6",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 68,
@@ -1316,10 +1357,11 @@
       "player": {
         "name": "Nico Echavarria",
         "id": "4408316",
-        "score": 8,
-        "displayScore": "+8",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 73,
@@ -1348,10 +1390,11 @@
       "player": {
         "name": "Min Woo Lee",
         "id": "4410932",
-        "score": 6,
-        "displayScore": "+6",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 71,
@@ -1380,10 +1423,11 @@
       "player": {
         "name": "Akshay Bhatia",
         "id": "4419142",
-        "score": 4,
-        "displayScore": "+4",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 70,
@@ -1412,9 +1456,10 @@
       "player": {
         "name": "Austin Eckroat",
         "id": "4425898",
-        "score": 6,
-        "displayScore": "+6",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -1444,9 +1489,10 @@
       "player": {
         "name": "Cameron Young",
         "id": "4425906",
-        "score": 7,
-        "displayScore": "+7",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -1476,9 +1522,10 @@
       "player": {
         "name": "Keegan Bradley",
         "id": "4513",
-        "score": 3,
-        "displayScore": "+3",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -1508,9 +1555,10 @@
       "player": {
         "name": "Mike Weir",
         "id": "453",
-        "score": 4,
-        "displayScore": "+4",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -1540,10 +1588,11 @@
       "player": {
         "name": "Shane Lowry",
         "id": "4587",
-        "score": 4,
-        "displayScore": "+4",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 71,
@@ -1572,10 +1621,11 @@
       "player": {
         "name": "Davis Thompson",
         "id": "4602218",
-        "score": 5,
-        "displayScore": "+5",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 71,
@@ -1604,10 +1654,11 @@
       "player": {
         "name": "Tom Kim",
         "id": "4602673",
-        "score": 9,
-        "displayScore": "+9",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 73,
@@ -1636,9 +1687,10 @@
       "player": {
         "name": "Nick Dunlap",
         "id": "4832046",
-        "score": 17,
-        "displayScore": "+17",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -1668,9 +1720,10 @@
       "player": {
         "name": "Thomas Detry",
         "id": "4837",
-        "score": 9,
-        "displayScore": "+9",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -1700,10 +1753,11 @@
       "player": {
         "name": "Justin Thomas",
         "id": "4848",
-        "score": 2,
-        "displayScore": "+2",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 73,
@@ -1732,9 +1786,10 @@
       "player": {
         "name": "Joe Highsmith",
         "id": "4868733",
-        "score": 4,
-        "displayScore": "+4",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -1764,10 +1819,11 @@
       "player": {
         "name": "Matt McCarty",
         "id": "4901368",
-        "score": -3,
-        "displayScore": "-3",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 71,
@@ -1796,9 +1852,10 @@
       "player": {
         "name": "Josele Ballester",
         "id": "5152205",
-        "score": 10,
-        "displayScore": "+10",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -1828,9 +1885,10 @@
       "player": {
         "name": "Justin Hastings",
         "id": "5203536",
-        "score": 4,
-        "displayScore": "+4",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -1860,9 +1918,10 @@
       "player": {
         "name": "Hiroshi Tai",
         "id": "5214992",
-        "score": 6,
-        "displayScore": "+6",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -1892,9 +1951,10 @@
       "player": {
         "name": "Noah Kent",
         "id": "5276688",
-        "score": 11,
-        "displayScore": "+11",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -1924,10 +1984,11 @@
       "player": {
         "name": "Byeong Hun An",
         "id": "5285",
-        "score": -2,
-        "displayScore": "-2",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 74,
@@ -1956,10 +2017,11 @@
       "player": {
         "name": "Harris English",
         "id": "5408",
-        "score": -4,
-        "displayScore": "-4",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 70,
@@ -1988,9 +2050,10 @@
       "player": {
         "name": "Russell Henley",
         "id": "5409",
-        "score": 3,
-        "displayScore": "+3",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -2020,10 +2083,11 @@
       "player": {
         "name": "Jordan Spieth",
         "id": "5467",
-        "score": -3,
-        "displayScore": "-3",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 73,
@@ -2052,10 +2116,11 @@
       "player": {
         "name": "Tommy Fleetwood",
         "id": "5539",
-        "score": -2,
-        "displayScore": "-2",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 73,
@@ -2084,9 +2149,10 @@
       "player": {
         "name": "Laurie Canter",
         "id": "5550",
-        "score": 10,
-        "displayScore": "+10",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -2116,10 +2182,11 @@
       "player": {
         "name": "Tyrrell Hatton",
         "id": "5553",
-        "score": -3,
-        "displayScore": "-3",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 69,
@@ -2148,10 +2215,11 @@
       "player": {
         "name": "Patrick Reed",
         "id": "5579",
-        "score": -9,
-        "displayScore": "-9",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 71,
@@ -2180,10 +2248,11 @@
       "player": {
         "name": "Justin Rose",
         "id": "569",
-        "score": -11,
-        "displayScore": "-11",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 65,
@@ -2212,10 +2281,11 @@
       "player": {
         "name": "Hideki Matsuyama",
         "id": "5860",
-        "score": -2,
-        "displayScore": "-2",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 73,
@@ -2244,10 +2314,11 @@
       "player": {
         "name": "Patrick Cantlay",
         "id": "6007",
-        "score": 2,
-        "displayScore": "+2",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 74,
@@ -2276,10 +2347,11 @@
       "player": {
         "name": "Tom Hoge",
         "id": "6086",
-        "score": -3,
-        "displayScore": "-3",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 72,
@@ -2308,9 +2380,10 @@
       "player": {
         "name": "Ángel Cabrera",
         "id": "65",
-        "score": 11,
-        "displayScore": "+11",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -2340,9 +2413,10 @@
       "player": {
         "name": "Lucas Glover",
         "id": "676",
-        "score": 8,
-        "displayScore": "+8",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -2372,9 +2446,10 @@
       "player": {
         "name": "Brooks Koepka",
         "id": "6798",
-        "score": 5,
-        "displayScore": "+5",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -2404,10 +2479,11 @@
       "player": {
         "name": "Zach Johnson",
         "id": "686",
-        "score": -5,
-        "displayScore": "-5",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 72,
@@ -2436,10 +2512,11 @@
       "player": {
         "name": "Stephan Jaeger",
         "id": "6937",
-        "score": 9,
-        "displayScore": "+9",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 72,
@@ -2468,10 +2545,11 @@
       "player": {
         "name": "Bubba Watson",
         "id": "780",
-        "score": -3,
-        "displayScore": "-3",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 71,
@@ -2500,9 +2578,10 @@
       "player": {
         "name": "Sepp Straka",
         "id": "8961",
-        "score": 5,
-        "displayScore": "+5",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -2532,10 +2611,11 @@
       "player": {
         "name": "Max Homa",
         "id": "8973",
-        "score": -4,
-        "displayScore": "-4",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 74,
@@ -2564,10 +2644,11 @@
       "player": {
         "name": "Michael Kim",
         "id": "8974",
-        "score": -1,
-        "displayScore": "-1",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 71,
@@ -2596,10 +2677,11 @@
       "player": {
         "name": "Daniel Berger",
         "id": "9025",
-        "score": -2,
-        "displayScore": "-2",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 71,
@@ -2628,10 +2710,11 @@
       "player": {
         "name": "Matt Fitzpatrick",
         "id": "9037",
-        "score": 3,
-        "displayScore": "+3",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 71,
@@ -2660,9 +2743,10 @@
       "player": {
         "name": "Fred Couples",
         "id": "91",
-        "score": 4,
-        "displayScore": "+4",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -2692,10 +2776,11 @@
       "player": {
         "name": "Corey Conners",
         "id": "9126",
-        "score": -5,
-        "displayScore": "-5",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 68,
@@ -2724,9 +2809,10 @@
       "player": {
         "name": "Cameron Smith",
         "id": "9131",
-        "score": 5,
-        "displayScore": "+5",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -2756,9 +2842,10 @@
       "player": {
         "name": "Thriston Lawrence",
         "id": "9240",
-        "score": 11,
-        "displayScore": "+11",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -2788,9 +2875,10 @@
       "player": {
         "name": "Christiaan Bezuidenhout",
         "id": "9243",
-        "score": 7,
-        "displayScore": "+7",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -2820,10 +2908,11 @@
       "player": {
         "name": "Scottie Scheffler",
         "id": "9478",
-        "score": -8,
-        "displayScore": "-8",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 68,
@@ -2852,10 +2941,11 @@
       "player": {
         "name": "Brian Campbell",
         "id": "9525",
-        "score": 1,
-        "displayScore": "+1",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 72,
@@ -2884,10 +2974,11 @@
       "player": {
         "name": "Maverick McNealy",
         "id": "9530",
-        "score": 1,
-        "displayScore": "+1",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 72,
@@ -2916,9 +3007,10 @@
       "player": {
         "name": "Taylor Pendrith",
         "id": "9658",
-        "score": 8,
-        "displayScore": "+8",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -2948,10 +3040,11 @@
       "player": {
         "name": "Jon Rahm",
         "id": "9780",
-        "score": -3,
-        "displayScore": "-3",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 75,
@@ -2980,9 +3073,10 @@
       "player": {
         "name": "Will Zalatoris",
         "id": "9877",
-        "score": 8,
-        "displayScore": "+8",
+        "score": 0,
+        "displayScore": "E",
         "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
@@ -3012,10 +3106,11 @@
       "player": {
         "name": "Sam Burns",
         "id": "9938",
-        "score": 5,
-        "displayScore": "+5",
+        "score": 0,
+        "displayScore": "E",
         "thru": "F",
-        "isCut": true,
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
             "total": 73,

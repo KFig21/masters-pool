@@ -6,13 +6,12 @@
 
 .scoreboard-wrapper {
     background-color: transparent;
-    border-bottom: solid 30px var(--darkGreen);
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.8));
 
     .scoreboard-arch {
         background-color: var(--darkGreen);
         height: 60px;
         width: 100%;
-        // This creates a shallow, wide curve
         border-radius: 50% 50% 0 0 / 100% 100% 0 0;
         position: relative;
         z-index: 2;
@@ -113,5 +112,10 @@
                 }
             }
         }
+    }
+
+    .scoreboard-footer {
+        background-color: var(--darkGreen);
+        height: 30px;
     }
 }
