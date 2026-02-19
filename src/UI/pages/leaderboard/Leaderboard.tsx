@@ -33,18 +33,18 @@ export const Leaderboard = () => {
 
   return (
     <>
-      <div className="scoreboard-wrapper fade-in-up">
+      <div className="leaderboard-wrapper fade-in-up">
         {/* ... Header and Logo code remains the same ... */}
-        <div className="scoreboard-arch"></div>
-        <div className="scoreboard-container">
-          <div className="scoreboard-title-container">
+        <div className="leaderboard-arch"></div>
+        <div className="leaderboard-container">
+          <div className="leaderboard-title-container">
             <div className="logo-container">
               <img src={Logo} alt="Masters Pool Logo" />
             </div>
-            <div className="scoreboard-header-title">2026 Masters Pool</div>
+            <div className="leaderboard-header-title">2026 Masters Pool</div>
           </div>
 
-          <div className="scoreboard-table-header">
+          <div className="leaderboard-table-header">
             <div className="cell pos">POS</div>
             <div className="cell name">TEAM</div>
             <div className="cell round">R1</div>
@@ -59,7 +59,7 @@ export const Leaderboard = () => {
             </div>
           </div>
 
-          <div className="scoreboard-teams">
+          <div className="leaderboard-teams">
             {teams.map((team) => {
               // Data is already calculated in Context!
               const { sumR1, sumR2, sumR3, sumR4, activeTotal, isTeamCut } = team.stats;
@@ -86,7 +86,7 @@ export const Leaderboard = () => {
             })}
           </div>
         </div>
-        <div className="scoreboard-footer"></div>
+        <div className="leaderboard-footer"></div>
       </div>
 
       {isModalOpen && <ScoringModal handleModal={handleModal} />}

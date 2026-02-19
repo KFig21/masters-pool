@@ -1,0 +1,152 @@
+@use '../../../../../../styles/colors' as *;
+@use '../../../../../../styles/index' as *;
+
+.scorecard-section-container {
+
+    .scorecard-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 5px;
+        margin-bottom: 5px;
+
+        .section-title {
+            font-family: 'Tiempo', serif;
+            font-size: 1.2rem;
+            color: var(--green);
+            // text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #999;
+
+            span.active {
+                color: var(--green);
+            }
+        }
+    }
+
+    .scorecard-table-container {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--scoreboard-BG-row);
+        border: 1px solid var(--scoreboard-borderColor);
+        overflow: hidden;
+
+        .scorecard-table-row {
+            display: grid;
+            // Name | R1 | R2 | R3 | R4 | End
+            grid-template-columns: 200px 60px 60px 60px 60px 80px;
+            border-bottom: 1px solid #e5e5e5;
+
+            /* The "Thick Border" for the 4th Golfer */
+            &.cutoff-border {
+                border-bottom: 2px solid var(--green);
+            }
+
+            /* Cut/Dimmed players */
+            &.is-cut {
+                background-color: #fcfcfc;
+                // color: #aaa;
+
+                .golfer-name {
+                    color: #aaa;
+                }
+            }
+
+            &.header {
+                background-color: var(--green);
+                color: white;
+                font-weight: 600;
+                font-size: 0.85rem;
+                border-bottom: none;
+
+                .scorecard-table-cell {
+                    border-right-color: rgba(255, 255, 255, 0.1);
+                    color: white; // Force white text
+                }
+            }
+
+            &.team-row {
+                background-color: var(--scoreboard-BG-cell-favorite); // Pale yellow/offset
+                font-weight: bold;
+                border-top: 2px solid #ccc;
+
+                .scorecard-table-cell.name-col {
+                    color: var(--green);
+                    font-family: 'Oswald', sans-serif;
+                }
+            }
+
+            .scorecard-table-cell {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 35px;
+                font-size: 1rem;
+                border-right: 1px solid #e5e5e5;
+                font-weight: bold;
+
+                &:last-child {
+                    border-right: none;
+                }
+
+                &.name-col {
+                    justify-content: flex-start;
+                    padding-left: 12px;
+                    font-family: Helvetica, sans-serif;
+                    gap: 8px;
+                }
+
+                &.name-cell {
+                    justify-content: flex-start;
+                    padding-left: 12px;
+                    font-weight: 500;
+                    font-family: 'Oswald', sans-serif;
+                    text-transform: uppercase;
+                    gap: 8px;
+                    background-color: rgba(0, 0, 0, 0.03);
+
+                    .cut-badge {
+                        font-family: sans-serif;
+                        font-size: 0.6rem;
+                        background-color: var(--red);
+                        color: white;
+                        padding: 1px 4px;
+                        border-radius: 3px;
+                    }
+                }
+
+                &.end-col {
+                    background-color: rgba(0, 0, 0, 0.03);
+                }
+
+                &.stroke {}
+
+                /* Color Coding */
+                &.under {
+                    color: var(--red);
+                }
+
+                &.over {
+                    color: var(--fontColor-secondary);
+                }
+
+                // Or black
+                &.even {
+                    color: var(--green);
+                }
+
+                &.neutral {
+                    color: var(--scoreboard-FC-row);
+                }
+            }
+        }
+    }
+}

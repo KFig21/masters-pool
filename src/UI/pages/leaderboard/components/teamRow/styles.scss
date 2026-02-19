@@ -31,13 +31,14 @@
         .cell {
             color: var(--scoreboard-FC-row);
             background-color: var(--scoreboard-BG-row);
-            font-size: 32px;
+            font-size: 30px;
             font-weight: 500;
             padding: 0px 10px;
             box-shadow: var(--scoreboard-boxShadow-cell);
             height: 40px;
             display: flex;
             align-items: center;
+            font-family: 'Oswald', sans-serif;
 
             &.rank {
                 text-align: center;
@@ -64,7 +65,6 @@
                 display: flex;
                 justify-content: center;
                 color: var(--green);
-                font-family: 'Helvetica Neue', sans-serif;
                 // font-size: 28px;
 
                 &.under-par {

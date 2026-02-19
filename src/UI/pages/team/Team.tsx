@@ -18,28 +18,37 @@ export const Team = () => {
   const isFavorite = favoriteTeam === owner;
   const { rank } = teamInfo;
   const { activeTotal } = teamInfo.stats;
-  const displayScore = activeTotal === 999 ? 'E' : activeTotal;
+  const displayScore =
+    activeTotal === 999
+      ? 'E'
+      : typeof activeTotal == 'number' && activeTotal > 0
+        ? `+${activeTotal}`
+        : activeTotal;
 
   return (
     <div className="team-wrapper">
       <div className="team-container">
         <div className="team-header">
-          <button
-            className={`favorite-icon ${isFavorite ? 'active' : ''}`}
-            onClick={() => toggleFavorite(owner)}
-            aria-label={isFavorite ? 'Unfavorite team' : 'Favorite team'}
-          >
-            {isFavorite ? '★' : '☆'}
-          </button>
+          <div className={`favorite-icon-container ${isFavorite ? 'active' : ''}`}>
+            <button
+              className={`favorite-icon`}
+              onClick={() => toggleFavorite(owner)}
+              aria-label={isFavorite ? 'Unfavorite team' : 'Favorite team'}
+            >
+              {isFavorite ? '★' : '☆'}
+            </button>
+          </div>
 
           {/* NOW DYNAMIC: */}
-          <div className="team-header-data place">{rank}</div>
+          {/* <div className="team-header-data place">{rank}</div> */}
           <div className="team-header-data name">{owner}</div>
           <div className="team-header-data score">{displayScore}</div>
         </div>
 
         {/* Scorecard */}
-        <Scorecard />
+        <div className="team-stats fade-in-up ">
+          <Scorecard team={teamInfo} />
+        </div>
 
         {/* map thru players - NEED HOLE BY HOLE SCORES */}
         <div className="team-players">

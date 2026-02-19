@@ -4,11 +4,11 @@
 @use '../../styles/index' as *;
 @use '../../styles/fonts' as *;
 
-.scoreboard-wrapper {
+.leaderboard-wrapper {
     background-color: transparent;
     filter: drop-shadow(0px 0px 50px rgba(255, 228, 165, 0.1));
 
-    .scoreboard-arch {
+    .leaderboard-arch {
         background-color: var(--darkGreen);
         height: 60px;
         width: 100%;
@@ -17,13 +17,13 @@
         z-index: 2;
     }
 
-    .scoreboard-container {
+    .leaderboard-container {
         background-color: var(--scoreboard-BG-row);
         z-index: 3;
         position: relative;
         border-bottom: 4px solid var(--yellow);
 
-        .scoreboard-title-container {
+        .leaderboard-title-container {
             background-color: var(--darkGreen);
             display: flex;
             flex-direction: row;
@@ -43,7 +43,7 @@
                 }
             }
 
-            .scoreboard-header-title {
+            .leaderboard-header-title {
                 font-size: 34px;
                 color: var(--scoreboard-FC-column);
                 font-family: "Masters", serif;
@@ -54,7 +54,7 @@
 
 
         // The Header Row Styles
-        .scoreboard-table-header {
+        .leaderboard-table-header {
             display: grid;
             grid-template-columns: $grid-layout;
             background-color: var(--darkGreen);
@@ -106,7 +106,7 @@
                     }
                 }
 
-                .scoreboard-teams {
+                .leaderboard-teams {
                     background-color: var(--scoreboard-BG-row);
                     display: flex;
                     flex-direction: column;
@@ -115,7 +115,7 @@
         }
     }
 
-    .scoreboard-footer {
+    .leaderboard-footer {
         background-color: var(--darkGreen);
         height: 30px;
         border-radius: 0px 0px 5px 5px;
