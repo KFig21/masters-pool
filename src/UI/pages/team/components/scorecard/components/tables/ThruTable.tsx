@@ -1,5 +1,12 @@
 import type { Golfer } from '../../../../../../../data/teams';
 import type { TeamStats } from '../../../../../../../context/ScoreContext';
+import { ROUNDS } from '../../../../../../../constants/golf';
+import {
+  getScoreClass,
+  formatRelativeScore,
+  formatTeamValue,
+  getTeamClass,
+} from '../../utils/formatters';
 import './styles.scss';
 
 interface Props {
@@ -8,20 +15,6 @@ interface Props {
 }
 
 export const ThruTable = ({ golfers, stats }: Props) => {
-  const rounds = [1, 2, 3, 4] as const;
-
-  const formatScore = (val: number | null | undefined) => {
-    if (val === null || val === undefined) return '-';
-    if (val === 0) return 'E';
-    return val > 0 ? `+${val}` : val;
-  };
-
-  const getClass = (val: number | null | undefined) => {
-    if (val === null || val === undefined) return '';
-    if (val === 0) return 'even';
-    return val < 0 ? 'under' : 'over';
-  };
-
   return (
     <div className="scorecard-section-container">
       <div className="scorecard-controls">
@@ -33,7 +26,7 @@ export const ThruTable = ({ golfers, stats }: Props) => {
           {/* Golfers Column */}
           <div className="scorecard-table-cell name-col"></div>
           {/* Round Columns */}
-          {rounds.map((round) => (
+          {ROUNDS.map((round) => (
             <div key={round} className="scorecard-table-cell">
               thru {round}
             </div>
@@ -54,17 +47,17 @@ export const ThruTable = ({ golfers, stats }: Props) => {
                 {g.isCut && <span className="cut-badge">CUT</span>}
               </div>
 
-              {rounds.map((r) => {
+              {ROUNDS.map((r) => {
                 const roundKey = `round${r}` as keyof typeof g.scorecard;
                 const val = g.scorecard[roundKey]?.thruScore;
                 return (
-                  <div key={r} className={`scorecard-table-cell stroke ${getClass(val)}`}>
-                    {formatScore(val)}
+                  <div key={r} className={`scorecard-table-cell stroke ${getScoreClass(val)}`}>
+                    {formatRelativeScore(val)}
                   </div>
                 );
               })}
 
-              <div className={`scorecard-table-cell end-col ${getClass(g.score)}`}>
+              <div className={`scorecard-table-cell end-col ${getScoreClass(g.score)}`}>
                 {g.displayScore}
               </div>
             </div>
@@ -74,23 +67,21 @@ export const ThruTable = ({ golfers, stats }: Props) => {
         {/* Team Aggregate Row */}
         <div className="scorecard-table-row team-row">
           <div className="scorecard-table-cell name-col">TEAM TOTAL</div>
-          {rounds.map((r) => {
-            // Access stats dynamically: sumR1, sumR2, etc.
+          {ROUNDS.map((r) => {
             const key = `sumR${r}` as keyof TeamStats;
             const val = stats[key] as number;
-            // If sum is Infinity, round isn't done/valid for team calc
             const isValid = val !== Infinity;
 
             return (
-              <div key={r} className={`scorecard-table-cell ${isValid ? getClass(val) : ''}`}>
-                {isValid ? formatScore(val) : '-'}
+              <div key={r} className={`scorecard-table-cell ${isValid ? getScoreClass(val) : ''}`}>
+                {isValid ? formatRelativeScore(val) : '-'}
               </div>
             );
           })}
           <div
-            className={`scorecard-table-cell end-col ${typeof stats.activeTotal === 'number' ? getClass(stats.activeTotal) : ''}`}
+            className={`scorecard-table-cell end-col ${getTeamClass(stats.activeTotal).toLowerCase()}`}
           >
-            {stats.activeTotal === 999 ? 'E' : stats.activeTotal}
+            {formatTeamValue(stats.activeTotal)}
           </div>
         </div>
       </div>

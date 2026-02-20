@@ -1,5 +1,3 @@
-// masters-pool/scrape-scores.js
-
 import fs from 'fs';
 import fetch from 'node-fetch';
 import { TEAMS } from './src/data/teams.ts';
@@ -60,34 +58,33 @@ function processLeaderboard(apiData) {
       }
     });
 
-    // --- CORRECTION HERE ---
-    const statusStr = player.status?.displayValue || ''; // e.g. "F", "-5", "CUT", "WD", "DQ"
+    const statusStr = player.status?.displayValue || '';
 
-    // Determine strict status
     let status = 'ACTIVE';
     let isCut = false;
 
-    if (statusStr === 'CUT') {
-      status = 'CUT';
+    if (statusStr === 'CUT' || statusStr === 'WD' || statusStr === 'DQ') {
+      status = statusStr;
       isCut = true;
-    } else if (statusStr === 'WD') {
-      status = 'WD';
-      isCut = true; // Treat WD as cut for scoring purposes
-    } else if (statusStr === 'DQ') {
-      status = 'DQ';
-      isCut = true; // Treat DQ as cut for scoring purposes
     } else if (player.status?.type?.id === '3') {
-      // ID 3 means "Final" (finished tournament), but NOT necessarily cut
       status = 'ACTIVE';
     }
 
-    // Parse the display score (ESPN returns strings like "+1", "E", "-4")
-    // If they are CUT/WD/DQ, ESPN often still has a score in statistics, or we use the calculated runningTotal
+    // --- FIX FOR .replace() ERROR ---
     let currentScore = 0;
-    const scoreStat = player.statistics?.find((s) => s.name === 'score');
-    if (scoreStat && scoreStat.displayValue) {
-      if (scoreStat.displayValue === 'E') currentScore = 0;
-      else currentScore = parseInt(scoreStat.displayValue.replace('+', '')) || 0;
+    // Check multiple potential locations for the score string
+    let displayScore = player.score?.displayValue || player.score || 'E';
+
+    // Convert to string safely to avoid .replace() errors
+    let displayScoreStr = String(displayScore);
+
+    if (displayScoreStr === 'E' || displayScoreStr === '0' || displayScoreStr === 'even') {
+      currentScore = 0;
+      displayScore = 'E';
+    } else {
+      // Remove any non-numeric characters except the minus sign
+      currentScore = parseInt(displayScoreStr.replace('+', '')) || 0;
+      displayScore = displayScoreStr;
     }
 
     return {
@@ -95,8 +92,8 @@ function processLeaderboard(apiData) {
         name: player.athlete.displayName,
         id: player.athlete.id,
         score: currentScore,
-        displayScore: scoreStat?.displayValue || 'E',
-        thru: statusStr, // Keeps "F", "CUT", "10" (hole), etc.
+        displayScore: displayScore,
+        thru: statusStr,
         status: status,
         isCut: isCut,
         scorecard: scorecard,

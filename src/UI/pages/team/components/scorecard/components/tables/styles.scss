@@ -141,6 +141,11 @@
                 &.even {
                     color: var(--green);
                 }
+
+                &.cut {
+                    color: var(--scoreboard-FC-row-CUT);
+                    font-style: italic;
+                }
             }
         }
     }

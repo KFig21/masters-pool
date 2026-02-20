@@ -1,7 +1,9 @@
 import type { Golfer } from '../../../../../../../data/teams';
 import type { TeamStats } from '../../../../../../../context/ScoreContext';
-import './styles.scss';
 import { useState } from 'react';
+import { ROUNDS } from '../../../../../../../constants/golf';
+import { getScoreClass, formatTeamValue, getTeamClass } from '../../utils/formatters';
+import './styles.scss';
 
 interface Props {
   golfers: Golfer[];
@@ -12,58 +14,37 @@ export type ViewMode = 'relative' | 'strokes';
 
 export const RoundTable = ({ golfers, stats }: Props) => {
   const [viewMode, setViewMode] = useState<ViewMode>('relative');
-  const rounds = [1, 2, 3, 4] as const;
 
-  console.log('stats', stats);
-
-  // Formatting Helper
-  const getCellData = (golfer: Golfer, roundNum: 1 | 2 | 3 | 4) => {
-    const roundKey = `round${roundNum}` as keyof typeof golfer.scorecard;
+  // Formatting Helper specific to RoundTable's view modes
+  const getCellData = (golfer: Golfer, round: number) => {
+    const roundKey = `round${round}` as keyof typeof golfer.scorecard;
     const data = golfer.scorecard[roundKey];
 
     if (!data) return { val: '-', class: '' };
 
     if (viewMode === 'strokes') {
-      // If we have a total (68), show it. If not, show '-'
       const val = data.total ? data.total : '-';
       return { val, class: 'neutral' };
     } else {
-      // Relative Mode (-3, E, +2)
-      // Use scoreRound if available
       const val = data.scoreRound;
-
       if (val === null || val === undefined) return { val: '-', class: '' };
       if (val === 0) return { val: 'E', class: 'even' };
 
       const isUnder = val < 0;
       return {
         val: isUnder ? val : `+${val}`,
-        class: isUnder ? 'under' : 'over',
+        class: isUnder ? 'under' : 'over', // Or use getScoreClass(val) here
       };
     }
   };
 
   // Helper for Team Daily Aggregate
   const getTeamDaily = (rNum: number) => {
-    // Team Stats are always calculated relative to par in your context
-    // We calculate the diff from previous round total
     const prevSum = rNum === 1 ? 0 : (stats[`sumR${rNum - 1}` as keyof TeamStats] as number);
     const currSum = stats[`sumR${rNum}` as keyof TeamStats] as number;
 
     if (currSum === Infinity || prevSum === Infinity) return null;
     return currSum - prevSum;
-  };
-
-  const formatTeamVal = (val: number | null) => {
-    if (val === null) return '-';
-    if (val === 0) return 'E';
-    return val > 0 ? `+${val}` : val;
-  };
-
-  const getTeamClass = (val: number | null) => {
-    if (val === null) return '';
-    if (val === 0) return 'even';
-    return val < 0 ? 'under' : 'over';
   };
 
   return (
@@ -91,7 +72,7 @@ export const RoundTable = ({ golfers, stats }: Props) => {
           {/* Golfers Column */}
           <div className="scorecard-table-cell name-col"></div>
           {/* Round Columns */}
-          {rounds.map((round) => (
+          {ROUNDS.map((round) => (
             <div key={round} className="scorecard-table-cell">
               R{round}
             </div>
@@ -117,7 +98,7 @@ export const RoundTable = ({ golfers, stats }: Props) => {
               </div>
 
               {/* Round Columns */}
-              {rounds.map((round) => {
+              {ROUNDS.map((round) => {
                 const { val, class: colorClass } = getCellData(golfer, round);
                 return (
                   <div key={round} className={`scorecard-table-cell stroke ${colorClass}`}>
@@ -127,9 +108,7 @@ export const RoundTable = ({ golfers, stats }: Props) => {
               })}
 
               {/* Total Column */}
-              <div
-                className={`scorecard-table-cell end-col ${golfer.score === 0 ? 'even' : (golfer.score || 0) < 0 ? 'under' : 'over'}`}
-              >
+              <div className={`scorecard-table-cell end-col ${getScoreClass(golfer.score)}`}>
                 {golfer.displayScore}
               </div>
             </div>
@@ -139,15 +118,19 @@ export const RoundTable = ({ golfers, stats }: Props) => {
         {/* Team Daily Row */}
         <div className="scorecard-table-row team-row">
           <div className="scorecard-table-cell name-col">TEAM DAILY</div>
-          {rounds.map((r) => {
+          {ROUNDS.map((r) => {
             const val = getTeamDaily(r);
             return (
               <div key={r} className={`scorecard-table-cell ${getTeamClass(val)}`}>
-                {formatTeamVal(val)}
+                {formatTeamValue(val)}
               </div>
             );
           })}
-          <div className="scorecard-table-cell end-col">-</div>
+          <div
+            className={`scorecard-table-cell end-col ${getTeamClass(stats.activeTotal).toLowerCase()}`}
+          >
+            {formatTeamValue(stats.activeTotal)}
+          </div>
         </div>
       </div>
     </div>
