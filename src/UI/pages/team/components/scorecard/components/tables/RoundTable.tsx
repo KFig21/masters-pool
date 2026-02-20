@@ -97,7 +97,7 @@ export const RoundTable = ({ golfers, stats }: Props) => {
             </div>
           ))}
           {/* Total Column */}
-          <div className="scorecard-table-cell end-col">Score</div>
+          <div className="scorecard-table-cell">Score</div>
         </div>
 
         {/* Golfers */}

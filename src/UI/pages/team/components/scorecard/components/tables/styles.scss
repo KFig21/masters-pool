@@ -15,7 +15,6 @@
             font-size: 1.2rem;
             color: var(--green);
             font-weight: 500;
-            // text-transform: uppercase;
         }
 
         .toggle-container {
@@ -32,43 +31,44 @@
         }
     }
 
+    $table-color: var(--green);
+
     .scorecard-table-container {
         display: flex;
         flex-direction: column;
         background-color: var(--scoreboard-BG-row);
-        border: 1px solid var(--scoreboard-borderColor);
+        border: 1px solid $table-color;
         overflow: hidden;
+        border-radius: 5px;
 
         .scorecard-table-row {
             display: grid;
+            $round-width: 65px;
             // Name | R1 | R2 | R3 | R4 | End
-            grid-template-columns: 200px 60px 60px 60px 60px 80px;
-            border-bottom: 1px solid #e5e5e5;
+            grid-template-columns: 225px repeat(4, $round-width) 80px;
+            border-top: 1px solid $table-color;
 
             /* The "Thick Border" for the 4th Golfer */
             &.cutoff-border {
-                border-bottom: 2px solid var(--green);
+                border-bottom: 2px solid $table-color;
             }
 
             /* Cut/Dimmed players */
             &.is-cut {
-                background-color: #fcfcfc;
-                // color: #aaa;
-
                 .golfer-name {
-                    color: #aaa;
+                    opacity: 0.5;
                 }
             }
 
             &.header {
-                background-color: var(--green);
+                background-color: $table-color;
                 color: var(--white);
                 font-weight: 600;
                 font-size: 0.85rem;
                 border-bottom: none;
 
                 .scorecard-table-cell {
-                    border-right-color: rgba(255, 255, 255, 0.1);
+                    // border-right-color: rgba(255, 255, 255, 0.12);
                     color: var(--white);
                 }
             }
@@ -76,7 +76,7 @@
             &.team-row {
                 background-color: var(--white);
                 font-weight: bold;
-                border-top: 2px solid #ccc;
+                border-top: 3px solid $table-color;
 
                 .scorecard-table-cell.name-col {
                     color: var(--green);
@@ -91,7 +91,7 @@
                 justify-content: center;
                 height: 35px;
                 font-size: 1rem;
-                border-right: 1px solid #e5e5e5;
+                border-right: 1px solid $table-color;
                 font-weight: bold;
 
                 &:last-child {
@@ -108,16 +108,16 @@
                 &.name-cell {
                     justify-content: flex-start;
                     padding-left: 12px;
-                    font-weight: 400;
+                    font-weight: 500;
                     font-family: 'Tiempo', serif;
-                    // text-transform: uppercase;
                     gap: 8px;
                     color: var(--green);
-                    background-color: rgba(0, 0, 0, 0.03);
+                    background-color: rgba(0, 103, 71, 0.12);
 
                     .cut-badge {
                         font-family: sans-serif;
-                        font-size: 0.6rem;
+                        font-size: 0.55rem;
+                        font-weight: 600;
                         background-color: var(--red);
                         color: white;
                         padding: 1px 4px;
@@ -126,10 +126,8 @@
                 }
 
                 &.end-col {
-                    background-color: rgba(0, 0, 0, 0.03);
+                    background-color: rgba(236, 192, 13, 0.13);
                 }
-
-                &.stroke {}
 
                 /* Color Coding */
                 &.under {
@@ -140,13 +138,8 @@
                     color: var(--green);
                 }
 
-                // Or black
                 &.even {
                     color: var(--green);
-                }
-
-                &.neutral {
-                    color: var(--scoreboard-FC-row);
                 }
             }
         }

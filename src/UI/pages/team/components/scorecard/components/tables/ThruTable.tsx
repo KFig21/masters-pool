@@ -39,7 +39,7 @@ export const ThruTable = ({ golfers, stats }: Props) => {
             </div>
           ))}
           {/* Current Score Column */}
-          <div className="scorecard-table-cell end-col">Score</div>
+          <div className="scorecard-table-cell">Score</div>
         </div>
 
         {golfers.map((g, index) => {
