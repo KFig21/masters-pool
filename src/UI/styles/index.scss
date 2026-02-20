@@ -46,8 +46,7 @@ body {
 .content-wrap {
     width: 100%;
     min-height: calc(100vh - #{$footer-height});
-    // overflow: overlay; // Deprecated in some browsers, use auto or standard overflow
-    overflow-y: auto;
+    overflow-y: hidden;
     position: relative;
     z-index: 2; // Ensure this is higher than the slider (which is 0 or 1)
     display: flex;

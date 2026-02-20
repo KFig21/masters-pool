@@ -11,20 +11,17 @@
 
     .team-container {
         position: relative;
-        height: 100%;
-        overflow: scroll;
         display: flex;
         flex-direction: column;
-        padding-bottom: 30px;
+        height: 100%;
 
         .team-header {
             display: flex;
             justify-content: flex-start;
+            flex-direction: column;
             align-items: center;
-            background-color: rgb(224, 224, 228);
-            padding: 10px 20px;
-            gap: 16px;
-            border-bottom: solid 4px var(--green);
+            background-color: var(--green);
+            border-bottom: solid 4px var(--yellow);
             box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
@@ -34,54 +31,97 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                border: solid 2px #ccc;
-                background-color: white;
-                border-radius: 100px;
-                height: 30px;
-                width: 30px;
+                position: absolute;
+                top: 0px;
+                right: 3px;
 
                 .favorite-icon {
                     background: none;
                     border: none;
                     font-size: 24px;
                     cursor: pointer;
-                    color: #ccc;
+                    color: #bbbbbb;
                     transition: transform 0.2s, color 0.2s;
                 }
 
                 &.active {
-                    background-color: var(--green);
-                    border-color: var(--green);
-
                     .favorite-icon {
                         color: var(--yellow);
                     }
                 }
             }
 
+            .team-header-data-container {
+                padding: 10px 25px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                gap: 16px;
 
-            .team-header-data {
-                font-size: 2.5rem;
-                font-weight: bold;
-                color: var(--green);
-                font-family: 'Tiempo', serif;
-
-                &.place {}
-
-                &.name {
+                .team-header-data {
+                    font-size: 2.5rem;
+                    font-weight: bold;
+                    color: var(--white);
                     font-family: 'Tiempo', serif;
-                }
+                    font-weight: 400;
 
-                &.score {
-                    letter-spacing: 2px;
+                    &.place {}
+
+                    &.name {
+                        font-family: 'Tiempo', serif;
+                    }
+
+                    &.score {
+                        letter-spacing: 2px;
+                    }
+                }
+            }
+        }
+
+        .team-stats {
+            overflow-y: overlay;
+
+            .team-footer {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                padding-bottom: 20px;
+
+                .logo-container {
+                    $logo-size: 35px;
+                    max-height: $logo-size;
+                    height: $logo-size;
+
+                    img {
+                        height: inherit;
+                    }
                 }
             }
 
+            // &::-webkit-scrollbar {
+            //     width: 13px;
+            // }
 
-            .team-stats {
-                flex: 2;
-                overflow-y: scroll;
-            }
+            // &::-webkit-scrollbar-track {
+            //     background: transparent; // Track stays invisible
+            // }
+
+            // &::-webkit-scrollbar-thumb {
+            //     // Use an RGBA version of your green with 0 opacity
+            //     background-color: rgba(0, 128, 0, 0);
+            //     border: solid 3px transparent;
+            //     border-radius: 20px;
+            //     background-clip: content-box;
+            //     transition: background-color 0.3s ease; // Smooth transition for thumb color
+
+            //     &:hover {
+            //         background-color: var(--green); // Pop to full color on hover
+            //     }
+            // }
+
         }
     }
 }

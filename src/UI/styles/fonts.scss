@@ -8,8 +8,32 @@
 
 @font-face {
     font-family: "Tiempo";
-    src: url("./../../assets/fonts/Tiempo.otf") format("opentype");
-    font-weight: normal;
-    font-style: normal;
+    src: url("./../../assets/fonts/tiempo/Tiempo-text-bold.otf") format("opentype");
+    font-weight: bold;
+    font-style: text;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Tiempo";
+    src: url("./../../assets/fonts/tiempo/Tiempo-headline-regular.otf") format("opentype");
+    font-weight: 400;
+    font-style: headline;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Tiempo";
+    src: url("./../../assets/fonts/tiempo/Tiempo-headline-light.otf") format("opentype");
+    font-weight: 300;
+    font-style: headline;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Tiempo";
+    src: url("./../../assets/fonts/tiempo/Tiempo-text-medium.otf") format("opentype");
+    font-weight: 500;
+    font-style: text;
     font-display: swap;
 }

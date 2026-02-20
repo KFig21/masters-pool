@@ -89,7 +89,7 @@ export const RoundTable = ({ golfers, stats }: Props) => {
         {/* Table Header */}
         <div className="scorecard-table-row header">
           {/* Golfers Column */}
-          <div className="scorecard-table-cell name-col">Golfer</div>
+          <div className="scorecard-table-cell name-col"></div>
           {/* Round Columns */}
           {rounds.map((round) => (
             <div key={round} className="scorecard-table-cell">
@@ -97,9 +97,7 @@ export const RoundTable = ({ golfers, stats }: Props) => {
             </div>
           ))}
           {/* Total Column */}
-          <div className="scorecard-table-cell end-col">
-            {viewMode === 'strokes' ? 'TOT' : 'Score'}
-          </div>
+          <div className="scorecard-table-cell end-col">Score</div>
         </div>
 
         {/* Golfers */}
@@ -132,9 +130,7 @@ export const RoundTable = ({ golfers, stats }: Props) => {
               <div
                 className={`scorecard-table-cell end-col ${golfer.score === 0 ? 'even' : (golfer.score || 0) < 0 ? 'under' : 'over'}`}
               >
-                {viewMode === 'strokes'
-                  ? '-' /* Strokes total is hard to calc if rounds missing */
-                  : golfer.displayScore}
+                {golfer.displayScore}
               </div>
             </div>
           );

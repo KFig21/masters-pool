@@ -14,8 +14,8 @@
             font-family: 'Tiempo', serif;
             font-size: 1.2rem;
             color: var(--green);
-            // text-transform: uppercase;
             font-weight: 500;
+            // text-transform: uppercase;
         }
 
         .toggle-container {
@@ -62,25 +62,26 @@
 
             &.header {
                 background-color: var(--green);
-                color: white;
+                color: var(--white);
                 font-weight: 600;
                 font-size: 0.85rem;
                 border-bottom: none;
 
                 .scorecard-table-cell {
                     border-right-color: rgba(255, 255, 255, 0.1);
-                    color: white; // Force white text
+                    color: var(--white);
                 }
             }
 
             &.team-row {
-                background-color: var(--scoreboard-BG-cell-favorite); // Pale yellow/offset
+                background-color: var(--white);
                 font-weight: bold;
                 border-top: 2px solid #ccc;
 
                 .scorecard-table-cell.name-col {
                     color: var(--green);
-                    font-family: 'Oswald', sans-serif;
+                    font-family: 'Tiempo', serif;
+                    font-weight: bold;
                 }
             }
 
@@ -107,10 +108,11 @@
                 &.name-cell {
                     justify-content: flex-start;
                     padding-left: 12px;
-                    font-weight: 500;
-                    font-family: 'Oswald', sans-serif;
-                    text-transform: uppercase;
+                    font-weight: 400;
+                    font-family: 'Tiempo', serif;
+                    // text-transform: uppercase;
                     gap: 8px;
+                    color: var(--green);
                     background-color: rgba(0, 0, 0, 0.03);
 
                     .cut-badge {
@@ -135,7 +137,7 @@
                 }
 
                 &.over {
-                    color: var(--fontColor-secondary);
+                    color: var(--green);
                 }
 
                 // Or black
