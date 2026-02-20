@@ -17,7 +17,7 @@
 
         .team-header {
             display: flex;
-            justify-content: flex-start;
+            justify-content: center; // Center content vertically
             flex-direction: column;
             align-items: center;
             background-color: var(--green);
@@ -26,6 +26,19 @@
             position: sticky;
             top: 0;
             z-index: 3;
+            min-height: 80px; // Maintain a consistent height
+
+            &.is-cut {
+                .team-header-data.name {
+                    font-style: italic;
+                    color: rgba(255, 255, 255, 0.6);
+
+                    &::after {
+                        transform: scaleX(1) skew(-30deg) !important;
+                        transition: transform 1.0s cubic-bezier(.22, .9, .24, 1);
+                    }
+                }
+            }
 
             .favorite-icon-container {
                 display: flex;
@@ -44,10 +57,8 @@
                     transition: transform 0.2s, color 0.2s;
                 }
 
-                &.active {
-                    .favorite-icon {
-                        color: var(--yellow);
-                    }
+                &.active .favorite-icon {
+                    color: var(--yellow);
                 }
             }
 
@@ -62,15 +73,28 @@
 
                 .team-header-data {
                     font-size: 2.5rem;
-                    font-weight: bold;
+                    font-weight: 400;
                     color: var(--white);
                     font-family: 'Tiempo', serif;
-                    font-weight: 400;
-
-                    &.place {}
 
                     &.name {
-                        font-family: 'Tiempo', serif;
+                        position: relative;
+                        display: inline-block;
+                        z-index: 2;
+
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            left: -20px;
+                            right: -20px;
+                            top: 48%;
+                            height: 6px;
+                            background-color: #ff4d4d;
+                            transform: scaleX(0);
+                            transform-origin: left;
+                            pointer-events: none;
+                            z-index: 3;
+                        }
                     }
 
                     &.score {
@@ -125,3 +149,7 @@
         }
     }
 }
+
+// .team-header.is-cut .team-header-data.name::after {
+//     transform: scaleX(1) skew(-30deg) !important;
+// }

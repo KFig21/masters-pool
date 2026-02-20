@@ -11,6 +11,7 @@ export const Team = () => {
   const { getTeamByOwner } = useScores();
 
   const teamInfo = owner ? getTeamByOwner(owner) : undefined;
+  console.log('teamInfo', teamInfo); // teamInfo.stats.isTeamCut is where you know if they are cut. possibly move this out of stats and into the team root
 
   if (!owner || !teamInfo) {
     return <div className="team-wrapper">Team not found</div>;
@@ -18,7 +19,12 @@ export const Team = () => {
 
   const isFavorite = favoriteTeam === owner;
   // const { rank } = teamInfo;
-  const { activeTotal } = teamInfo.stats;
+  const { activeTotal, isTeamCut } = teamInfo.stats;
+
+  // Testing CUT strikethrough
+  // let { activeTotal, isTeamCut } = teamInfo.stats;
+  // isTeamCut = Math.random() < 0.5;
+
   const displayScore =
     activeTotal === 999
       ? 'E'
@@ -29,7 +35,7 @@ export const Team = () => {
   return (
     <div className="team-wrapper">
       <div className="team-container">
-        <div className="team-header">
+        <div className={`team-header ${isTeamCut ? 'is-cut' : ''}`}>
           <div className={`favorite-icon-container ${isFavorite ? 'active' : ''}`}>
             <button
               className={`favorite-icon`}
@@ -40,11 +46,9 @@ export const Team = () => {
             </button>
           </div>
 
-          {/* NOW DYNAMIC: */}
-          {/* <div className="team-header-data place">{rank}</div> */}
           <div className="team-header-data-container">
             <div className="team-header-data name">{owner}</div>
-            <div className="team-header-data score">{displayScore}</div>
+            {!isTeamCut && <div className="team-header-data score">{displayScore}</div>}
           </div>
         </div>
 
