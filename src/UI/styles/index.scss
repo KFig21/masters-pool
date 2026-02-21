@@ -73,6 +73,7 @@ body {
     // Remove footer gap on mobile
     @include mobile {
         min-height: 100vh;
+        align-items: flex-start;
     }
 }
 

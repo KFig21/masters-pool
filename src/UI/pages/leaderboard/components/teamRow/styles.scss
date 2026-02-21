@@ -21,6 +21,8 @@
         background-color: var(--scoreboard-BG-row);
 
         @include mobile {
+            gap: 4px;
+
             &:hover {
                 background-color: var(--scoreboard-BG-row);
 
@@ -51,9 +53,9 @@
             font-family: 'Oswald', sans-serif;
 
             @include mobile {
-                font-size: 24px;
+                font-size: 22px;
                 padding: 0px 4px;
-                height: 35px;
+                height: 32px;
             }
 
             &.rank {
@@ -77,7 +79,7 @@
                 }
 
                 @include mobile {
-                    font-size: 24px;
+                    font-size: 22px;
                     margin: 0px 5px;
                 }
             }
