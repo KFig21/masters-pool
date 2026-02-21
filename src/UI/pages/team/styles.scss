@@ -13,6 +13,7 @@
         height: 100%;
         width: 100%;
         justify-content: center;
+        overflow-y: scroll;
     }
 
     .team-container {
@@ -24,6 +25,7 @@
         @include mobile {
             height: 100%;
             width: 100%;
+            align-items: center;
         }
 
         .team-header {
@@ -37,6 +39,7 @@
             position: sticky;
             top: 0;
             z-index: 3;
+            width: 100%;
 
             &.is-cut {
                 .team-header-data.name {
@@ -136,6 +139,15 @@
         .team-stats {
             overflow-y: overlay;
 
+            @include mobile {
+                padding-bottom: 50px;
+                padding-top: 10px;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
             .team-footer {
                 display: flex;
                 align-items: center;
@@ -144,7 +156,7 @@
                 padding-bottom: 20px;
 
                 @include mobile {
-                    padding-bottom: 60px;
+                    display: none;
                 }
 
                 .logo-container {

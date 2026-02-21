@@ -42,10 +42,7 @@
         flex-direction: column;
         background-color: var(--scoreboard-BG-row);
         border: 1px solid $table-color;
-        // overflow: hidden;
         border-radius: 5px;
-
-        overflow-x: auto;
         overflow-y: hidden;
         border-radius: 5px;
         -webkit-overflow-scrolling: touch;
