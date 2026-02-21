@@ -69,12 +69,11 @@ export const Team = () => {
             </div>
           </div>
         </div>
-
-        {/* Back Button - MOBILE ONLY */}
-        <Link to="/" className="mobile-back-button">
-          &#8592; Back to Leaderboard
-        </Link>
       </div>
+      {/* Back Button - MOBILE ONLY */}
+      <Link to="/" className="mobile-back-button">
+        &#8592; Back to Leaderboard
+      </Link>
     </div>
   );
 };

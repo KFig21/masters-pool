@@ -23,11 +23,13 @@
         @include mobile {
             gap: 4px;
 
-            &:hover {
-                background-color: var(--scoreboard-BG-row);
+            &:hover,
+            &:focus,
+            &:active {
+                background-color: var(--scoreboard-BG-row) !important;
 
                 .cell {
-                    background-color: var(--scoreboard-BG-cell);
+                    background-color: var(--scoreboard-BG-cell) !important;
                 }
             }
         }
