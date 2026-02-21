@@ -15,6 +15,10 @@
             font-size: 1.2rem;
             color: var(--green);
             font-weight: 500;
+
+            @include mobile {
+                font-size: 1rem;
+            }
         }
 
         .toggle-container {
@@ -38,8 +42,13 @@
         flex-direction: column;
         background-color: var(--scoreboard-BG-row);
         border: 1px solid $table-color;
-        overflow: hidden;
+        // overflow: hidden;
         border-radius: 5px;
+
+        overflow-x: auto;
+        overflow-y: hidden;
+        border-radius: 5px;
+        -webkit-overflow-scrolling: touch;
 
         .scorecard-table-row {
             display: grid;
@@ -47,6 +56,15 @@
             // Name | R1 | R2 | R3 | R4 | End
             grid-template-columns: 225px repeat(4, $round-width) 80px;
             border-top: 1px solid $table-color;
+
+            // 2. FORCE WIDTH SO IT DOESN'T CRUNCH
+            min-width: max-content;
+
+            // 3. MOBILE GRID SIZING
+            @include mobile {
+                $round-width-mobile: 48px;
+                grid-template-columns: 140px repeat(4, $round-width-mobile) 60px;
+            }
 
             /* The "Thick Border" for the 4th Golfer */
             &.cutoff-border {
@@ -67,6 +85,10 @@
                 font-size: 0.85rem;
                 border-bottom: none;
 
+                @include mobile {
+                    font-size: 0.75rem;
+                }
+
                 .scorecard-table-cell {
                     // border-right-color: rgba(255, 255, 255, 0.12);
                     color: var(--white);
@@ -77,6 +99,10 @@
                 background-color: var(--white);
                 font-weight: bold;
                 border-top: 3px solid $table-color;
+
+                @include mobile {
+                    font-size: 0.85rem;
+                }
 
                 .scorecard-table-cell.name-col {
                     color: var(--green);
@@ -94,23 +120,37 @@
                 border-right: 1px solid $table-color;
                 font-weight: bold;
 
+                @include mobile {
+                    height: 30px; // Slightly shorter rows
+                    font-size: 0.85rem; // Smaller text
+                }
+
                 &:last-child {
                     border-right: none;
                 }
 
-                &.name-col {
-                    justify-content: flex-start;
-                    padding-left: 12px;
-                    font-family: Helvetica, sans-serif;
-                    gap: 8px;
-                }
-
+                &.name-col,
                 &.name-cell {
                     justify-content: flex-start;
                     padding-left: 12px;
+                    gap: 8px;
+
+                    @include mobile {
+                        padding-left: 8px;
+                        // Prevent long names from breaking the mobile layout
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                }
+
+                &.name-col {
+                    font-family: Helvetica, sans-serif;
+                }
+
+                &.name-cell {
                     font-weight: 500;
                     font-family: 'Tiempo', serif;
-                    gap: 8px;
                     color: var(--green);
                     background-color: rgba(0, 103, 71, 0.12);
 
@@ -122,6 +162,11 @@
                         color: white;
                         padding: 1px 4px;
                         border-radius: 3px;
+
+                        @include mobile {
+                            font-size: 0.5rem;
+                            padding: 1px 3px;
+                        }
                     }
                 }
 

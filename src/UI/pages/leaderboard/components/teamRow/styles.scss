@@ -13,7 +13,7 @@
     .teamRow-container {
         text-decoration: none;
         display: grid;
-        grid-template-columns: $grid-layout;
+        grid-template-columns: var(--grid-layout);
         padding: $grid-padding-height $grid-padding-width;
         gap: 8px;
         align-items: center;
@@ -40,6 +40,12 @@
             align-items: center;
             font-family: 'Oswald', sans-serif;
 
+            @include mobile {
+                font-size: 24px;
+                padding: 0px 4px;
+                height: 35px;
+            }
+
             &.rank {
                 text-align: center;
                 color: var(--green);
@@ -58,6 +64,11 @@
                 .favorite-star {
                     font-size: 1rem;
                     margin-left: 4px;
+                }
+
+                @include mobile {
+                    font-size: 24px;
+                    margin: 0px 5px;
                 }
             }
 
@@ -79,6 +90,10 @@
             &.total {
                 margin-left: $grid-name-margin;
 
+                @include mobile {
+                    margin-left: 5px;
+                }
+
                 &.under-par {
                     color: var(--red);
                 }
@@ -96,6 +111,10 @@
                     font-weight: bold;
                     font-style: italic;
                     font-size: 24px;
+
+                    @include mobile {
+                        font-size: 20px;
+                    }
                 }
             }
         }

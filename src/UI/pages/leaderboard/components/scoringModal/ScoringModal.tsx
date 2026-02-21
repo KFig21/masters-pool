@@ -8,7 +8,7 @@ export const ScoringModal = ({ handleModal }: Props) => {
   return (
     <div className="modal-overlay" onClick={() => handleModal()}>
       <div className="modal-content fade-in-up" onClick={(e) => e.stopPropagation()}>
-        <h3>Scoring Rules</h3>
+        <div className="modal-title">Scoring Rules</div>
         <p>
           Calculates the team's total score based on the <strong>best 4 cumulative scores</strong>{' '}
           at the end of each round.

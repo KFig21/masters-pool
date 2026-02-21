@@ -9,6 +9,10 @@
     background-color: white;
     box-shadow: 0px 0px 30px 10px var(--darkGreen);
 
+    @include mobile {
+        height: 100vh;
+    }
+
     .team-container {
         position: relative;
         display: flex;
@@ -17,7 +21,7 @@
 
         .team-header {
             display: flex;
-            justify-content: center; // Center content vertically
+            justify-content: center;
             flex-direction: column;
             align-items: center;
             background-color: var(--green);
@@ -26,7 +30,7 @@
             position: sticky;
             top: 0;
             z-index: 3;
-            min-height: 80px; // Maintain a consistent height
+            min-height: 80px;
 
             &.is-cut {
                 .team-header-data.name {
@@ -71,11 +75,20 @@
                 width: 100%;
                 gap: 16px;
 
+                @include mobile {
+                    padding: 10px 15px;
+                    gap: 10px;
+                }
+
                 .team-header-data {
                     font-size: 2.5rem;
                     font-weight: 400;
                     color: var(--white);
                     font-family: 'Tiempo', serif;
+
+                    @include mobile {
+                        font-size: 1.8rem; // Scale down header text
+                    }
 
                     &.name {
                         position: relative;
@@ -99,6 +112,10 @@
 
                     &.score {
                         letter-spacing: 2px;
+
+                        @include mobile {
+                            letter-spacing: 1px;
+                        }
                     }
                 }
             }
@@ -147,9 +164,29 @@
             // }
 
         }
+
+
+        .mobile-back-button {
+            display: none;
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            width: 100%;
+            color: var(--white);
+            background-color: var(--green);
+            text-decoration: none;
+            font-family: 'masters';
+            padding: 10px 0px 5px 0px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            z-index: 5;
+            align-items: center;
+            justify-content: center;
+            border-top: 3px solid var(--yellow);
+
+            @include mobile {
+                display: flex; // Show only on mobile
+            }
+        }
     }
 }
-
-// .team-header.is-cut .team-header-data.name::after {
-//     transform: scaleX(1) skew(-30deg) !important;
-// }

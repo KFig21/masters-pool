@@ -13,6 +13,10 @@ $tab-min-width: 100px;
     z-index: 1000;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
 
+    @include mobile {
+        display: none; // Completely hide on mobile
+    }
+
     .bottomNav-scroll-container {
         display: flex;
         align-items: center;

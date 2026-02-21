@@ -17,7 +17,7 @@
 
 .modal-content {
     background-color: var(--scoreboard-BG-row);
-    padding: 30px;
+    padding: 20px 30px 30px 30px;
     border-radius: 8px;
     max-width: 450px;
     width: 90%;
@@ -25,11 +25,12 @@
     border-top: 6px solid var(--green);
     color: #333;
 
-    h3 {
+    .modal-title {
         margin-top: 0;
-        color: var(--darkGreen);
+        color: var(--green);
         font-family: "Tiempo", serif;
         font-size: 2rem;
+        font-weight: 500;
     }
 
     p {
@@ -48,7 +49,7 @@
     }
 
     .close-btn {
-        background-color: var(--darkGreen);
+        background-color: var(--green);
         color: var(--scoreboard-FC-column);
         border: none;
         padding: 10px 20px;
@@ -59,7 +60,7 @@
         transition: background 0.2s;
 
         &:hover {
-            background-color: var(--green);
+            background-color: var(--darkGreen);
         }
     }
 }

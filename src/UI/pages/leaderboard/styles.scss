@@ -15,6 +15,10 @@
         border-radius: 50% 50% 0 0 / 100% 100% 0 0;
         position: relative;
         z-index: 2;
+
+        @include mobile {
+            height: 40px;
+        }
     }
 
     .leaderboard-container {
@@ -32,6 +36,11 @@
             padding: 0px 0px 28px 0px;
             gap: 16px;
 
+            @include mobile {
+                gap: 12px;
+                padding-bottom: 20px;
+            }
+
             .logo-container {
                 $logo-size: 45px;
                 max-height: $logo-size;
@@ -41,6 +50,17 @@
                 img {
                     height: inherit;
                 }
+
+                @include mobile {
+                    $logo-size: 35px;
+                    max-height: $logo-size;
+                    height: $logo-size;
+                    transform: translateY(-4px);
+
+                    img {
+                        height: inherit;
+                    }
+                }
             }
 
             .leaderboard-header-title {
@@ -49,14 +69,17 @@
                 font-family: "Masters", serif;
                 text-align: center;
                 transform: translateY(4px);
+
+                @include mobile {
+                    font-size: 24px;
+                }
             }
         }
-
 
         // The Header Row Styles
         .leaderboard-table-header {
             display: grid;
-            grid-template-columns: $grid-layout;
+            grid-template-columns: var(--grid-layout);
             background-color: var(--darkGreen);
             border-bottom: 4px solid var(--yellow);
             padding: $grid-padding-height $grid-padding-width;
@@ -80,6 +103,10 @@
                 &.total {
                     margin-left: $grid-name-margin;
 
+                    @include mobile {
+                        margin-left: unset;
+                    }
+
                     .info-icon {
                         margin-left: 8px;
                         width: 14px;
@@ -99,6 +126,11 @@
                         padding: 0;
                         transition: all 0.2s ease;
 
+                        @include mobile {
+                            // display: none;
+                            margin-left: 4px;
+                        }
+
                         &:hover {
                             background-color: var(--yellow);
                             color: var(--darkGreen);
@@ -110,6 +142,15 @@
                     background-color: var(--scoreboard-BG-row);
                     display: flex;
                     flex-direction: column;
+                }
+            }
+
+            @include mobile {
+
+                .cell {
+                    // font-family: 'Oswald', sans-serif;
+                    // font-weight: 400;
+                    font-size: 0.75rem; // Smaller header text
                 }
             }
         }

@@ -1,11 +1,18 @@
+// masters-pool/src/UI/styles/index.scss
+
 @use './colors.scss' as *;
 
 // Oswald font
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
-// Define the columns here so we can share it with the children if needed
-// POS | NAME | R1 | R2 | R3 | R4 | TOTAL
-$grid-layout: 50px 200px 50px 50px 50px 50px 120px;
+// Mobile Mixin
+@mixin mobile {
+    @media (min-height: 421px) and (max-width: 800px) {
+        @content;
+    }
+}
+
+// SCSS Variables for layout defaults
 $grid-padding-height: 5px;
 $grid-padding-width: 15px;
 $grid-name-margin: 15px;
@@ -16,12 +23,22 @@ $footer-height: 50px;
 }
 
 :root {
-    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    // Standard Desktop Grid (approx 570px wide)
+    --grid-layout: 50px 200px 50px 50px 50px 50px 120px;
+
+    @include mobile {
+        // Compact Mobile Grid (approx 340px wide to fit phones)
+        --grid-layout: 35px 120px 32px 32px 32px 32px 48px;
+    }
+
+    font-family: system-ui,
+    Avenir,
+    Helvetica,
+    Arial,
+    sans-serif;
     line-height: 1.5;
     font-weight: 400;
-
     color-scheme: var(--color-scheme);
-
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -48,13 +65,18 @@ body {
     min-height: calc(100vh - #{$footer-height});
     overflow-y: hidden;
     position: relative;
-    z-index: 2; // Ensure this is higher than the slider (which is 0 or 1)
+    z-index: 2;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    // Remove footer gap on mobile
+    @include mobile {
+        min-height: 100vh;
+    }
 }
 
-// Global animation for fade in and slide up effect
+// Global animations...
 @keyframes fadeInUp {
     from {
         opacity: 0.5;

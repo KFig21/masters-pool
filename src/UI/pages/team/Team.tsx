@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useFavoriteTeam } from '../../../hooks/useFavoriteTeam';
 import { useScores } from '../../../context/ScoreContext';
 import { Scorecard } from './components/scorecard/Scorecard';
@@ -69,6 +69,11 @@ export const Team = () => {
             </div>
           </div>
         </div>
+
+        {/* Back Button - MOBILE ONLY */}
+        <Link to="/" className="mobile-back-button">
+          &#8592; Back to Leaderboard
+        </Link>
       </div>
     </div>
   );
