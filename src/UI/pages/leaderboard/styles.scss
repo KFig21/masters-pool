@@ -38,7 +38,7 @@
 
             @include mobile {
                 gap: 12px;
-                padding-bottom: 20px;
+                padding-bottom: 10px;
             }
 
             .logo-container {
@@ -52,10 +52,10 @@
                 }
 
                 @include mobile {
-                    $logo-size: 35px;
+                    $logo-size: 24px;
                     max-height: $logo-size;
                     height: $logo-size;
-                    transform: translateY(-4px);
+                    transform: translateY(-14px);
 
                     img {
                         height: inherit;
@@ -68,10 +68,10 @@
                 color: var(--scoreboard-FC-column);
                 font-family: "Masters", serif;
                 text-align: center;
-                transform: translateY(4px);
+                transform: translateY(-8px);
 
                 @include mobile {
-                    font-size: 24px;
+                    font-size: 16px;
                 }
             }
         }

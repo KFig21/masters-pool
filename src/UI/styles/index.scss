@@ -28,7 +28,7 @@ $footer-height: 50px;
 
     @include mobile {
         // Compact Mobile Grid (approx 340px wide to fit phones)
-        --grid-layout: 35px 120px 32px 32px 32px 32px 48px;
+        --grid-layout: 32px 100px 32px 32px 32px 32px 48px;
     }
 
     font-family: system-ui,

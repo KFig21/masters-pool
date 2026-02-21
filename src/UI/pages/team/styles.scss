@@ -136,6 +136,10 @@
                 width: 100%;
                 padding-bottom: 20px;
 
+                @include mobile {
+                    padding-bottom: 60px;
+                }
+
                 .logo-container {
                     $logo-size: 35px;
                     max-height: $logo-size;
@@ -177,17 +181,17 @@
             bottom: 0px;
             left: 0px;
             width: 100%;
-            color: var(--white);
-            background-color: var(--green);
+            color: var(--green);
+            background-color: var(--white);
             text-decoration: none;
             font-family: 'masters';
-            padding: 10px 0px 5px 0px;
+            padding: 12px 0px 7px 0px;
             font-weight: bold;
             font-size: 0.9rem;
             z-index: 5;
             align-items: center;
             justify-content: center;
-            border-top: 3px solid var(--yellow);
+            border-top: 3px solid var(--green);
 
             @include mobile {
                 display: flex; // Show only on mobile

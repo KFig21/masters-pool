@@ -20,6 +20,16 @@
         border-bottom: solid 1px var(--scoreboard-borderColor);
         background-color: var(--scoreboard-BG-row);
 
+        @include mobile {
+            &:hover {
+                background-color: var(--scoreboard-BG-row);
+
+                .cell {
+                    background-color: var(--scoreboard-BG-cell);
+                }
+            }
+        }
+
         &:hover {
             background-color: var(--scoreboard-BG-row--hover);
 
