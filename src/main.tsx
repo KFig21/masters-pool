@@ -6,7 +6,7 @@ import App from './UI/App.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter basename="/masters-pool">
+    <BrowserRouter>
       <ScoreProvider>
         <App />
       </ScoreProvider>

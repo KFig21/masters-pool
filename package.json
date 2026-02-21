@@ -10,14 +10,14 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "scrape": "tsx scrape-scores.js",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "start": "serve -s dist"
   },
   "dependencies": {
     "node-fetch": "^3.3.2",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-router-dom": "^7.13.0"
+    "react-router-dom": "^7.13.0",
+    "serve": "^14.2.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
