@@ -14,7 +14,6 @@
 
 // SCSS Variables for layout defaults
 $grid-padding-height: 5px;
-$grid-padding-width: 15px;
 $grid-name-margin: 15px;
 $footer-height: 50px;
 
@@ -25,10 +24,12 @@ $footer-height: 50px;
 :root {
     // Standard Desktop Grid (approx 570px wide)
     --grid-layout: 50px 200px 50px 50px 50px 50px 120px;
+    --grid-padding-width: 15px;
 
     @include mobile {
         // Compact Mobile Grid (approx 340px wide to fit phones)
-        --grid-layout: 32px 100px 32px 32px 32px 32px 48px;
+        --grid-layout: 32px 110px 32px 32px 32px 32px 48px;
+        --grid-padding-width: 8px;
     }
 
     font-family: system-ui,

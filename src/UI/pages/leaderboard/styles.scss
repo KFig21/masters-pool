@@ -86,7 +86,7 @@
             grid-template-columns: var(--grid-layout);
             background-color: var(--darkGreen);
             border-bottom: 4px solid var(--yellow);
-            padding: $grid-padding-height $grid-padding-width;
+            padding: $grid-padding-height var(--grid-padding-width);
             color: var(--scoreboard-FC-column);
             gap: 8px;
 
