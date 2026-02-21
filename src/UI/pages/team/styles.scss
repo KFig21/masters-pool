@@ -30,7 +30,6 @@
             position: sticky;
             top: 0;
             z-index: 3;
-            min-height: 80px;
 
             &.is-cut {
                 .team-header-data.name {
@@ -51,6 +50,12 @@
                 position: absolute;
                 top: 0px;
                 right: 3px;
+
+                @include mobile {
+                    right: 5px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
 
                 .favorite-icon {
                     background: none;
@@ -76,7 +81,7 @@
                 gap: 16px;
 
                 @include mobile {
-                    padding: 10px 15px;
+                    padding: 5px 15px;
                     gap: 10px;
                 }
 

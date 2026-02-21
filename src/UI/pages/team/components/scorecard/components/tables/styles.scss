@@ -60,10 +60,10 @@
             // 2. FORCE WIDTH SO IT DOESN'T CRUNCH
             min-width: max-content;
 
-            // 3. MOBILE GRID SIZING
+            // MOBILE GRID SIZING
             @include mobile {
-                $round-width-mobile: 48px;
-                grid-template-columns: 140px repeat(4, $round-width-mobile) 60px;
+                $round-width-mobile: 40px;
+                grid-template-columns: 140px repeat(4, $round-width-mobile) 50px;
             }
 
             /* The "Thick Border" for the 4th Golfer */
