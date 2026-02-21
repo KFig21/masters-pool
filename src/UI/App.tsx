@@ -5,6 +5,8 @@ import { BottomNav } from './components/bottomNav/BottomNav';
 import { BackgroundSlider } from './components/backgroundSlider/BackgroundSlider';
 import './styles/index.scss';
 
+//TEST
+
 function App() {
   return (
     <div className="app-container">
