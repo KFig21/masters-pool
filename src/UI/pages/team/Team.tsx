@@ -3,6 +3,7 @@ import { useFavoriteTeam } from '../../../hooks/useFavoriteTeam';
 import { useScores } from '../../../context/ScoreContext';
 import { Scorecard } from './components/scorecard/Scorecard';
 import Logo from '../../../assets/images/logo.png';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import './styles.scss';
 
 export const Team = () => {
@@ -36,9 +37,11 @@ export const Team = () => {
     <div className="team-wrapper">
       <div className="team-container">
         <div className={`team-header ${isTeamCut ? 'is-cut' : ''}`}>
+          {/* Mobile back button */}
           <Link to="/" className="mobile-back-button">
-            ↩
+            <ArrowBackIosNewIcon sx={{ fontSize: '1.2rem' }} />
           </Link>
+          {/* Favorite icon */}
           <div className={`favorite-icon-container ${isFavorite ? 'active' : ''}`}>
             <button
               className={`favorite-icon`}
@@ -48,7 +51,7 @@ export const Team = () => {
               {isFavorite ? '★' : '☆'}
             </button>
           </div>
-
+          {/* Team name and score */}
           <div className="team-header-data-container">
             <div className="team-header-data name">{owner}</div>
             {!isTeamCut && <div className="team-header-data score">{displayScore}</div>}
@@ -67,9 +70,9 @@ export const Team = () => {
           <Player_FullScorecard player="Jason Day" /> */}
           </div>
           <div className="team-footer">
-            <div className="logo-container">
+            <Link to="/" className="logo-container">
               <img src={Logo} alt="Masters Pool Logo" />
-            </div>
+            </Link>
           </div>
         </div>
       </div>
