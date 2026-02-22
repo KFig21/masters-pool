@@ -60,7 +60,7 @@
             // MOBILE GRID SIZING
             @include mobile {
                 $round-width-mobile: 40px;
-                grid-template-columns: 140px repeat(4, $round-width-mobile) 50px;
+                grid-template-columns: 155px repeat(4, $round-width-mobile) 50px;
             }
 
             /* The "Thick Border" for the 4th Golfer */
