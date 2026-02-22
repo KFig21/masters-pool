@@ -10,7 +10,7 @@
     box-shadow: 0px 0px 30px 10px var(--darkGreen);
 
     @include mobile {
-        height: 100%;
+        height: 100vh;
         width: 100%;
         justify-content: center;
         overflow-y: scroll;
@@ -28,18 +28,44 @@
             align-items: center;
         }
 
+
+        $header-height: 80px;
+        $header-height-mobile: 60px;
+        $header-border-height: 4px;
+
         .team-header {
             display: flex;
             justify-content: center;
             flex-direction: column;
             align-items: center;
             background-color: var(--green);
-            border-bottom: solid 4px var(--yellow);
             box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.1);
-            position: sticky;
+            position: absolute;
             top: 0;
             z-index: 3;
             width: 100%;
+            border-bottom: solid $header-border-height var(--yellow);
+            height: $header-height;
+
+            @include mobile {
+                height: $header-height-mobile;
+            }
+
+            .mobile-back-button {
+                display: none;
+                position: absolute;
+                left: 15px;
+                top: 50%;
+                transform: translateY(-43%);
+                color: var(--white);
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 1.75rem;
+
+                @include mobile {
+                    display: flex; // Show only on mobile
+                }
+            }
 
             &.is-cut {
                 .team-header-data.name {
@@ -138,9 +164,10 @@
 
         .team-stats {
             overflow-y: overlay;
+            margin-top: calc($header-height + $header-border-height);
 
             @include mobile {
-                padding-bottom: 50px;
+                margin-top: calc($header-height-mobile + $header-border-height);
                 padding-top: 10px;
                 width: 100%;
                 display: flex;
@@ -153,10 +180,10 @@
                 align-items: center;
                 justify-content: center;
                 width: 100%;
-                padding-bottom: 20px;
+                // padding-bottom: 20px;
 
                 @include mobile {
-                    display: none;
+                    padding: 30px 0px 50px 0px;
                 }
 
                 .logo-container {
@@ -194,28 +221,5 @@
         }
 
 
-    }
-
-    .mobile-back-button {
-        display: none;
-        position: absolute;
-        bottom: 0px;
-        left: 0px;
-        width: 100%;
-        color: var(--green);
-        background-color: var(--white);
-        text-decoration: none;
-        font-family: 'masters';
-        padding: 12px 0px 7px 0px;
-        font-weight: bold;
-        font-size: 0.9rem;
-        z-index: 5;
-        align-items: center;
-        justify-content: center;
-        border-top: 3px solid var(--green);
-
-        @include mobile {
-            display: flex; // Show only on mobile
-        }
     }
 }

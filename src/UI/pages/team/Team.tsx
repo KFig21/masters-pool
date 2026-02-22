@@ -36,6 +36,9 @@ export const Team = () => {
     <div className="team-wrapper">
       <div className="team-container">
         <div className={`team-header ${isTeamCut ? 'is-cut' : ''}`}>
+          <Link to="/" className="mobile-back-button">
+            ↩
+          </Link>
           <div className={`favorite-icon-container ${isFavorite ? 'active' : ''}`}>
             <button
               className={`favorite-icon`}
@@ -70,10 +73,6 @@ export const Team = () => {
           </div>
         </div>
       </div>
-      {/* Back Button - MOBILE ONLY */}
-      <Link to="/" className="mobile-back-button">
-        &#8592; Back to Leaderboard
-      </Link>
     </div>
   );
 };
