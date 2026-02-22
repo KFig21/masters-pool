@@ -73,8 +73,8 @@
                     color: rgba(255, 255, 255, 0.6);
 
                     &::after {
-                        transform: scaleX(1) skew(-30deg) !important;
-                        transition: transform 1.0s cubic-bezier(.22, .9, .24, 1);
+                        animation: strikeThrough 1.0s cubic-bezier(.22, .9, .24, 1) forwards;
+                        transform-origin: left;
                     }
                 }
             }
@@ -226,5 +226,16 @@
         }
 
 
+    }
+}
+
+// strikethrough animation
+@keyframes strikeThrough {
+    from {
+        transform: scaleX(0) skew(-30deg);
+    }
+
+    to {
+        transform: scaleX(1) skew(-30deg);
     }
 }
