@@ -49,7 +49,7 @@
                 $logo-size: 45px;
                 max-height: $logo-size;
                 height: $logo-size;
-                transform: translateY(-8px);
+                transform: translateY(-12px);
 
                 img {
                     height: inherit;
@@ -59,7 +59,7 @@
                     $logo-size: 24px;
                     max-height: $logo-size;
                     height: $logo-size;
-                    transform: translateY(-14px);
+                    transform: translateY(-12px);
 
                     img {
                         height: inherit;
@@ -72,10 +72,10 @@
                 color: var(--scoreboard-FC-column);
                 font-family: "Masters", serif;
                 text-align: center;
-                transform: translateY(-8px);
 
                 @include mobile {
                     font-size: 16px;
+                    transform: translateY(-6px);
                 }
             }
         }

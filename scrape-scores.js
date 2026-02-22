@@ -1,14 +1,28 @@
+// masters-pool/scrape-scores.js
+
 import fs from 'fs';
 import fetch from 'node-fetch';
 import { TEAMS } from './src/data/teams.ts';
 
 // 2025 Masters ID (Update this ID for the actual live event when needed)
-const TOURNAMENT_ID = '401703504';
-const PAR = 72;
+// const TOURNAMENT_ID = '401703504';
+// const PAR = 72;
+
+// 2026 Genesis Invitational ID for testing
+const TOURNAMENT_ID = '401811933';
 const LEADERBOARD_URL = `https://site.web.api.espn.com/apis/site/v2/sports/golf/leaderboard?league=pga&event=${TOURNAMENT_ID}`;
 
+// Helper function to safely parse ESPN's string scores ("E", "-3", "+2") into integers
+function parseRelScore(scoreStr) {
+  if (!scoreStr) return 0;
+  const cleanStr = String(scoreStr).trim().toUpperCase();
+  if (cleanStr === 'E' || cleanStr === 'EVEN' || cleanStr === '0') return 0;
+  // parseInt naturally handles minus signs, we just need to strip out the '+'
+  return parseInt(cleanStr.replace('+', ''), 10) || 0;
+}
+
 async function scrapeData() {
-  console.log('Fetching 2025 Masters data...');
+  console.log('Fetching live tournament data...');
   try {
     const response = await fetch(LEADERBOARD_URL);
     if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
@@ -17,7 +31,7 @@ async function scrapeData() {
     const cleanLeaderboard = processLeaderboard(data);
     const compiledTeams = compileTeamData(cleanLeaderboard.leaderboard);
 
-    fs.writeFileSync('./src/data/leaderboard_2025.json', JSON.stringify(cleanLeaderboard, null, 2));
+    fs.writeFileSync('./src/data/leaderboard_test.json', JSON.stringify(cleanLeaderboard, null, 2));
     fs.writeFileSync('./src/data/team_data.json', JSON.stringify(compiledTeams, null, 2));
 
     console.log(`✅ Success! Data compiled for ${cleanLeaderboard.leaderboard.length} players.`);
@@ -39,9 +53,11 @@ function processLeaderboard(apiData) {
       const roundNum = index + 1;
       const roundData = rounds[index];
 
-      if (roundData && roundData.value) {
-        const total = parseInt(roundData.value);
-        const roundScore = total - PAR;
+      // We check for displayValue instead of just 'value' to safely handle live rounds
+      if (roundData && roundData.displayValue) {
+        const total = parseInt(roundData.value) || 0; // Total strokes taken so far this round
+        const roundScore = parseRelScore(roundData.displayValue); // The relative-to-par score
+
         runningTotal += roundScore;
 
         scorecard[`round${roundNum}`] = {
@@ -70,29 +86,19 @@ function processLeaderboard(apiData) {
       status = 'ACTIVE';
     }
 
-    // --- FIX FOR .replace() ERROR ---
-    let currentScore = 0;
-    // Check multiple potential locations for the score string
+    // Safely parse overall score using our new helper
     let displayScore = player.score?.displayValue || player.score || 'E';
+    let currentScore = parseRelScore(displayScore);
 
-    // Convert to string safely to avoid .replace() errors
-    let displayScoreStr = String(displayScore);
-
-    if (displayScoreStr === 'E' || displayScoreStr === '0' || displayScoreStr === 'even') {
-      currentScore = 0;
-      displayScore = 'E';
-    } else {
-      // Remove any non-numeric characters except the minus sign
-      currentScore = parseInt(displayScoreStr.replace('+', '')) || 0;
-      displayScore = displayScoreStr;
-    }
+    // Ensure displayScore formats zero correctly back to 'E'
+    if (currentScore === 0) displayScore = 'E';
 
     return {
       player: {
         name: player.athlete.displayName,
         id: player.athlete.id,
         score: currentScore,
-        displayScore: displayScore,
+        displayScore: String(displayScore),
         thru: statusStr,
         status: status,
         isCut: isCut,
@@ -112,16 +118,19 @@ function compileTeamData(leaderboardPlayers) {
 
   return TEAMS.map((team) => {
     const processedGolfers = team.golfers.map((ref) => {
-      // ... (keep mapping logic exactly the same)
       const stats = statsLookup[ref.id];
       return {
         id: ref.id,
         name: ref.name,
-        score: stats ? stats.score : 0,
-        displayScore: stats ? stats.displayScore : '-',
+        // Give missing players a 99 so they sort below any active golfer shooting over par
+        score: stats ? stats.score : 99,
+        // Display as DNP so the UI is clear to the user
+        displayScore: stats ? stats.displayScore : 'DNP',
         thru: stats ? stats.thru : '-',
-        status: stats ? stats.status : 'ACTIVE',
-        isCut: stats ? stats.isCut : false,
+        // Mark them as DNP instead of ACTIVE
+        status: stats ? stats.status : 'DNP',
+        // Treat them as CUT so they are completely excluded from active team math
+        isCut: stats ? stats.isCut : true,
         scorecard: stats
           ? stats.scorecard
           : {
@@ -133,7 +142,7 @@ function compileTeamData(leaderboardPlayers) {
       };
     });
 
-    // --- UPDATED: Calculate the top 4 based on THRU score ---
+    // Calculate the top 4 based on THRU score
     [1, 2, 3, 4].forEach((roundNum) => {
       const roundKey = `round${roundNum}`;
 
@@ -142,7 +151,7 @@ function compileTeamData(leaderboardPlayers) {
         .filter((g) => g.scorecard[roundKey] && g.scorecard[roundKey].thruScore !== null)
         .map((g) => ({
           id: g.id,
-          score: g.scorecard[roundKey].thruScore, // Swapped from scoreRound
+          score: g.scorecard[roundKey].thruScore,
         }));
 
       // 2. Sort ascending (lowest cumulative score is best)
@@ -166,4 +175,4 @@ function compileTeamData(leaderboardPlayers) {
   });
 }
 
-scrapeData(); // npm run scrape
+scrapeData();
