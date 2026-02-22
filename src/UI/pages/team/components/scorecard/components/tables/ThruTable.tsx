@@ -44,7 +44,6 @@ export const ThruTable = ({ golfers, stats }: Props) => {
             >
               <div className="scorecard-table-cell name-cell">
                 <span className="golfer-name">{g.name}</span>
-                {g.isCut && <span className="cut-badge">CUT</span>}
               </div>
 
               {ROUNDS.map((r) => {

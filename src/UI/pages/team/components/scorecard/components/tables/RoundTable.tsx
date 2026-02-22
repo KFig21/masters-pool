@@ -94,7 +94,6 @@ export const RoundTable = ({ golfers, stats }: Props) => {
               {/* Golfer Name */}
               <div className="scorecard-table-cell name-cell">
                 <span className="golfer-name">{golfer.name}</span>
-                {golfer.isCut && <span className="cut-badge">CUT</span>}
               </div>
 
               {/* Round Columns */}

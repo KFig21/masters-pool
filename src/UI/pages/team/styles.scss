@@ -227,18 +227,5 @@
             // }
 
         }
-
-
-    }
-}
-
-// strikethrough animation
-@keyframes strikeThrough {
-    from {
-        transform: scaleX(0) skew(-30deg);
-    }
-
-    to {
-        transform: scaleX(1) skew(-30deg);
     }
 }
