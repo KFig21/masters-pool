@@ -46,11 +46,19 @@ export const ThruTable = ({ golfers, stats }: Props) => {
                 <span className="golfer-name">{g.name}</span>
               </div>
 
+              {/* UPDATED: Added isCounting logic and class to the cell */}
               {ROUNDS.map((r) => {
                 const roundKey = `round${r}` as keyof typeof g.scorecard;
-                const val = g.scorecard[roundKey]?.thruScore;
+                const roundData = g.scorecard[roundKey];
+
+                const val = roundData?.thruScore;
+                const isCounting = !!roundData?.isCountingScore;
+
                 return (
-                  <div key={r} className={`scorecard-table-cell stroke ${getScoreClass(val)}`}>
+                  <div
+                    key={r}
+                    className={`scorecard-table-cell stroke ${getScoreClass(val)} ${isCounting ? 'counting-score' : ''}`}
+                  >
                     {formatRelativeScore(val)}
                   </div>
                 );

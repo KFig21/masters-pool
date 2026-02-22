@@ -136,10 +136,33 @@
                 font-size: 1rem;
                 border-right: 1px solid $table-color;
                 font-weight: bold;
+                position: relative;
+
+                // --- Top 4 Earmark ---
+                &.counting-score {
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        width: 0;
+                        height: 0;
+                        // The border hack: transparent left, colored top
+                        border-left: 8px solid transparent;
+                        border-top: 8px solid var(--green);
+                        z-index: 5;
+
+                        @include mobile {
+                            // Slightly smaller earmark on mobile
+                            border-left: 7px solid transparent;
+                            border-top: 7px solid var(--green);
+                        }
+                    }
+                }
 
                 @include mobile {
-                    height: 30px; // Slightly shorter rows
-                    font-size: 0.85rem; // Smaller text
+                    height: 30px;
+                    font-size: 0.85rem;
                 }
 
                 &:last-child {

@@ -112,11 +112,11 @@ function compileTeamData(leaderboardPlayers) {
 
   return TEAMS.map((team) => {
     const processedGolfers = team.golfers.map((ref) => {
+      // ... (keep mapping logic exactly the same)
       const stats = statsLookup[ref.id];
       return {
         id: ref.id,
         name: ref.name,
-        // Fallback to defaults if player not found in feed yet
         score: stats ? stats.score : 0,
         displayScore: stats ? stats.displayScore : '-',
         thru: stats ? stats.thru : '-',
@@ -125,12 +125,38 @@ function compileTeamData(leaderboardPlayers) {
         scorecard: stats
           ? stats.scorecard
           : {
-              round1: { total: null, scoreRound: null, scoreThru: null },
-              round2: { total: null, scoreRound: null, scoreThru: null },
-              round3: { total: null, scoreRound: null, scoreThru: null },
-              round4: { total: null, scoreRound: null, scoreThru: null },
+              round1: { total: null, scoreRound: null, thruScore: null, isCountingScore: false },
+              round2: { total: null, scoreRound: null, thruScore: null, isCountingScore: false },
+              round3: { total: null, scoreRound: null, thruScore: null, isCountingScore: false },
+              round4: { total: null, scoreRound: null, thruScore: null, isCountingScore: false },
             },
       };
+    });
+
+    // --- UPDATED: Calculate the top 4 based on THRU score ---
+    [1, 2, 3, 4].forEach((roundNum) => {
+      const roundKey = `round${roundNum}`;
+
+      // 1. Get all valid scores for this round using thruScore
+      const scoredGolfers = processedGolfers
+        .filter((g) => g.scorecard[roundKey] && g.scorecard[roundKey].thruScore !== null)
+        .map((g) => ({
+          id: g.id,
+          score: g.scorecard[roundKey].thruScore, // Swapped from scoreRound
+        }));
+
+      // 2. Sort ascending (lowest cumulative score is best)
+      scoredGolfers.sort((a, b) => a.score - b.score);
+
+      // 3. Grab the IDs of the top 4
+      const top4Ids = new Set(scoredGolfers.slice(0, 4).map((g) => g.id));
+
+      // 4. Mark the scorecard for those top 4
+      processedGolfers.forEach((g) => {
+        if (g.scorecard[roundKey]) {
+          g.scorecard[roundKey].isCountingScore = top4Ids.has(g.id);
+        }
+      });
     });
 
     return {

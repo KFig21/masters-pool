@@ -13,22 +13,26 @@
           "round1": {
             "total": 69,
             "scoreRound": -3,
-            "thruScore": -3
+            "thruScore": -3,
+            "isCountingScore": true
           },
           "round2": {
             "total": 68,
             "scoreRound": -4,
-            "thruScore": -7
+            "thruScore": -7,
+            "isCountingScore": true
           },
           "round3": {
             "total": 69,
             "scoreRound": -3,
-            "thruScore": -10
+            "thruScore": -10,
+            "isCountingScore": true
           },
           "round4": {
             "total": 75,
             "scoreRound": 3,
-            "thruScore": -7
+            "thruScore": -7,
+            "isCountingScore": true
           }
         }
       }
@@ -46,22 +50,26 @@
           "round1": {
             "total": 71,
             "scoreRound": -1,
-            "thruScore": -1
+            "thruScore": -1,
+            "isCountingScore": true
           },
           "round2": {
             "total": 75,
             "scoreRound": 3,
-            "thruScore": 2
+            "thruScore": 2,
+            "isCountingScore": false
           },
           "round3": {
             "total": 71,
             "scoreRound": -1,
-            "thruScore": 1
+            "thruScore": 1,
+            "isCountingScore": true
           },
           "round4": {
             "total": 71,
             "scoreRound": -1,
-            "thruScore": 0
+            "thruScore": 0,
+            "isCountingScore": false
           }
         }
       }
@@ -112,22 +120,26 @@
           "round1": {
             "total": 73,
             "scoreRound": 1,
-            "thruScore": 1
+            "thruScore": 1,
+            "isCountingScore": true
           },
           "round2": {
             "total": 69,
             "scoreRound": -3,
-            "thruScore": -2
+            "thruScore": -2,
+            "isCountingScore": true
           },
           "round3": {
             "total": 70,
             "scoreRound": -2,
-            "thruScore": -4
+            "thruScore": -4,
+            "isCountingScore": true
           },
           "round4": {
             "total": 71,
             "scoreRound": -1,
-            "thruScore": -5
+            "thruScore": -5,
+            "isCountingScore": true
           }
         }
       }
@@ -145,22 +157,26 @@
           "round1": {
             "total": 74,
             "scoreRound": 2,
-            "thruScore": 2
+            "thruScore": 2,
+            "isCountingScore": true
           },
           "round2": {
             "total": 72,
             "scoreRound": 0,
-            "thruScore": 2
+            "thruScore": 2,
+            "isCountingScore": true
           },
           "round3": {
             "total": 74,
             "scoreRound": 2,
-            "thruScore": 4
+            "thruScore": 4,
+            "isCountingScore": true
           },
           "round4": {
             "total": 75,
             "scoreRound": 3,
-            "thruScore": 7
+            "thruScore": 7,
+            "isCountingScore": true
           }
         }
       }
@@ -310,22 +326,26 @@
           "round1": {
             "total": 72,
             "scoreRound": 0,
-            "thruScore": 0
+            "thruScore": 0,
+            "isCountingScore": true
           },
           "round2": {
             "total": 69,
             "scoreRound": -3,
-            "thruScore": -3
+            "thruScore": -3,
+            "isCountingScore": true
           },
           "round3": {
             "total": 72,
             "scoreRound": 0,
-            "thruScore": -3
+            "thruScore": -3,
+            "isCountingScore": true
           },
           "round4": {
             "total": 72,
             "scoreRound": 0,
-            "thruScore": -3
+            "thruScore": -3,
+            "isCountingScore": true
           }
         }
       }
@@ -475,22 +495,26 @@
           "round1": {
             "total": 72,
             "scoreRound": 0,
-            "thruScore": 0
+            "thruScore": 0,
+            "isCountingScore": true
           },
           "round2": {
             "total": 72,
             "scoreRound": 0,
-            "thruScore": 0
+            "thruScore": 0,
+            "isCountingScore": true
           },
           "round3": {
             "total": 73,
             "scoreRound": 1,
-            "thruScore": 1
+            "thruScore": 1,
+            "isCountingScore": true
           },
           "round4": {
             "total": 71,
             "scoreRound": -1,
-            "thruScore": 0
+            "thruScore": 0,
+            "isCountingScore": true
           }
         }
       }
@@ -508,22 +532,26 @@
           "round1": {
             "total": 72,
             "scoreRound": 0,
-            "thruScore": 0
+            "thruScore": 0,
+            "isCountingScore": true
           },
           "round2": {
             "total": 74,
             "scoreRound": 2,
-            "thruScore": 2
+            "thruScore": 2,
+            "isCountingScore": false
           },
           "round3": {
             "total": 70,
             "scoreRound": -2,
-            "thruScore": 0
+            "thruScore": 0,
+            "isCountingScore": false
           },
           "round4": {
             "total": 72,
             "scoreRound": 0,
-            "thruScore": 0
+            "thruScore": 0,
+            "isCountingScore": false
           }
         }
       }
@@ -574,22 +602,26 @@
           "round1": {
             "total": 76,
             "scoreRound": 4,
-            "thruScore": 4
+            "thruScore": 4,
+            "isCountingScore": false
           },
           "round2": {
             "total": 68,
             "scoreRound": -4,
-            "thruScore": 0
+            "thruScore": 0,
+            "isCountingScore": true
           },
           "round3": {
             "total": 75,
             "scoreRound": 3,
-            "thruScore": 3
+            "thruScore": 3,
+            "isCountingScore": true
           },
           "round4": {
             "total": 74,
             "scoreRound": 2,
-            "thruScore": 5
+            "thruScore": 5,
+            "isCountingScore": true
           }
         }
       }
@@ -673,22 +705,26 @@
           "round1": {
             "total": 75,
             "scoreRound": 3,
-            "thruScore": 3
+            "thruScore": 3,
+            "isCountingScore": false
           },
           "round2": {
             "total": 75,
             "scoreRound": 3,
-            "thruScore": 6
+            "thruScore": 6,
+            "isCountingScore": false
           },
           "round3": {
             "total": null,
             "scoreRound": null,
-            "thruScore": null
+            "thruScore": null,
+            "isCountingScore": false
           },
           "round4": {
             "total": null,
             "scoreRound": null,
-            "thruScore": null
+            "thruScore": null,
+            "isCountingScore": false
           }
         }
       }
@@ -706,22 +742,26 @@
           "round1": {
             "total": 71,
             "scoreRound": -1,
-            "thruScore": -1
+            "thruScore": -1,
+            "isCountingScore": true
           },
           "round2": {
             "total": 70,
             "scoreRound": -2,
-            "thruScore": -3
+            "thruScore": -3,
+            "isCountingScore": true
           },
           "round3": {
             "total": 71,
             "scoreRound": -1,
-            "thruScore": -4
+            "thruScore": -4,
+            "isCountingScore": true
           },
           "round4": {
             "total": 69,
             "scoreRound": -3,
-            "thruScore": -7
+            "thruScore": -7,
+            "isCountingScore": true
           }
         }
       }
@@ -739,22 +779,26 @@
           "round1": {
             "total": 71,
             "scoreRound": -1,
-            "thruScore": -1
+            "thruScore": -1,
+            "isCountingScore": true
           },
           "round2": {
             "total": 71,
             "scoreRound": -1,
-            "thruScore": -2
+            "thruScore": -2,
+            "isCountingScore": true
           },
           "round3": {
             "total": 77,
             "scoreRound": 5,
-            "thruScore": 3
+            "thruScore": 3,
+            "isCountingScore": true
           },
           "round4": {
             "total": 71,
             "scoreRound": -1,
-            "thruScore": 2
+            "thruScore": 2,
+            "isCountingScore": true
           }
         }
       }
@@ -772,22 +816,26 @@
           "round1": {
             "total": 72,
             "scoreRound": 0,
-            "thruScore": 0
+            "thruScore": 0,
+            "isCountingScore": true
           },
           "round2": {
             "total": 76,
             "scoreRound": 4,
-            "thruScore": 4
+            "thruScore": 4,
+            "isCountingScore": false
           },
           "round3": {
             "total": null,
             "scoreRound": null,
-            "thruScore": null
+            "thruScore": null,
+            "isCountingScore": false
           },
           "round4": {
             "total": null,
             "scoreRound": null,
-            "thruScore": null
+            "thruScore": null,
+            "isCountingScore": false
           }
         }
       }
@@ -805,22 +853,26 @@
           "round1": {
             "total": 77,
             "scoreRound": 5,
-            "thruScore": 5
+            "thruScore": 5,
+            "isCountingScore": false
           },
           "round2": {
             "total": 72,
             "scoreRound": 0,
-            "thruScore": 5
+            "thruScore": 5,
+            "isCountingScore": false
           },
           "round3": {
             "total": null,
             "scoreRound": null,
-            "thruScore": null
+            "thruScore": null,
+            "isCountingScore": false
           },
           "round4": {
             "total": null,
             "scoreRound": null,
-            "thruScore": null
+            "thruScore": null,
+            "isCountingScore": false
           }
         }
       }
@@ -838,22 +890,26 @@
           "round1": {
             "total": 70,
             "scoreRound": -2,
-            "thruScore": -2
+            "thruScore": -2,
+            "isCountingScore": true
           },
           "round2": {
             "total": 70,
             "scoreRound": -2,
-            "thruScore": -4
+            "thruScore": -4,
+            "isCountingScore": true
           },
           "round3": {
             "total": 71,
             "scoreRound": -1,
-            "thruScore": -5
+            "thruScore": -5,
+            "isCountingScore": true
           },
           "round4": {
             "total": 72,
             "scoreRound": 0,
-            "thruScore": -5
+            "thruScore": -5,
+            "isCountingScore": true
           }
         }
       }
@@ -871,22 +927,26 @@
           "round1": {
             "total": 75,
             "scoreRound": 3,
-            "thruScore": 3
+            "thruScore": 3,
+            "isCountingScore": false
           },
           "round2": {
             "total": 73,
             "scoreRound": 1,
-            "thruScore": 4
+            "thruScore": 4,
+            "isCountingScore": false
           },
           "round3": {
             "total": null,
             "scoreRound": null,
-            "thruScore": null
+            "thruScore": null,
+            "isCountingScore": false
           },
           "round4": {
             "total": null,
             "scoreRound": null,
-            "thruScore": null
+            "thruScore": null,
+            "isCountingScore": false
           }
         }
       }
@@ -937,22 +997,26 @@
           "round1": {
             "total": 75,
             "scoreRound": 3,
-            "thruScore": 3
+            "thruScore": 3,
+            "isCountingScore": true
           },
           "round2": {
             "total": 74,
             "scoreRound": 2,
-            "thruScore": 5
+            "thruScore": 5,
+            "isCountingScore": false
           },
           "round3": {
             "total": null,
             "scoreRound": null,
-            "thruScore": null
+            "thruScore": null,
+            "isCountingScore": false
           },
           "round4": {
             "total": null,
             "scoreRound": null,
-            "thruScore": null
+            "thruScore": null,
+            "isCountingScore": false
           }
         }
       }
@@ -1003,22 +1067,26 @@
           "round1": {
             "total": 74,
             "scoreRound": 2,
-            "thruScore": 2
+            "thruScore": 2,
+            "isCountingScore": false
           },
           "round2": {
             "total": 73,
             "scoreRound": 1,
-            "thruScore": 3
+            "thruScore": 3,
+            "isCountingScore": true
           },
           "round3": {
             "total": null,
             "scoreRound": null,
-            "thruScore": null
+            "thruScore": null,
+            "isCountingScore": false
           },
           "round4": {
             "total": null,
             "scoreRound": null,
-            "thruScore": null
+            "thruScore": null,
+            "isCountingScore": false
           }
         }
       }
@@ -1069,22 +1137,26 @@
           "round1": {
             "total": 72,
             "scoreRound": 0,
-            "thruScore": 0
+            "thruScore": 0,
+            "isCountingScore": true
           },
           "round2": {
             "total": 66,
             "scoreRound": -6,
-            "thruScore": -6
+            "thruScore": -6,
+            "isCountingScore": true
           },
           "round3": {
             "total": 66,
             "scoreRound": -6,
-            "thruScore": -12
+            "thruScore": -12,
+            "isCountingScore": true
           },
           "round4": {
             "total": 73,
             "scoreRound": 1,
-            "thruScore": -11
+            "thruScore": -11,
+            "isCountingScore": true
           }
         }
       }
@@ -1135,22 +1207,26 @@
           "round1": {
             "total": 73,
             "scoreRound": 1,
-            "thruScore": 1
+            "thruScore": 1,
+            "isCountingScore": false
           },
           "round2": {
             "total": 71,
             "scoreRound": -1,
-            "thruScore": 0
+            "thruScore": 0,
+            "isCountingScore": true
           },
           "round3": {
             "total": 74,
             "scoreRound": 2,
-            "thruScore": 2
+            "thruScore": 2,
+            "isCountingScore": false
           },
           "round4": {
             "total": 73,
             "scoreRound": 1,
-            "thruScore": 3
+            "thruScore": 3,
+            "isCountingScore": false
           }
         }
       }
@@ -1168,22 +1244,26 @@
           "round1": {
             "total": 77,
             "scoreRound": 5,
-            "thruScore": 5
+            "thruScore": 5,
+            "isCountingScore": false
           },
           "round2": {
             "total": 72,
             "scoreRound": 0,
-            "thruScore": 5
+            "thruScore": 5,
+            "isCountingScore": false
           },
           "round3": {
             "total": null,
             "scoreRound": null,
-            "thruScore": null
+            "thruScore": null,
+            "isCountingScore": false
           },
           "round4": {
             "total": null,
             "scoreRound": null,
-            "thruScore": null
+            "thruScore": null,
+            "isCountingScore": false
           }
         }
       }
@@ -1300,22 +1380,26 @@
           "round1": {
             "total": 71,
             "scoreRound": -1,
-            "thruScore": -1
+            "thruScore": -1,
+            "isCountingScore": true
           },
           "round2": {
             "total": 69,
             "scoreRound": -3,
-            "thruScore": -4
+            "thruScore": -4,
+            "isCountingScore": true
           },
           "round3": {
             "total": 73,
             "scoreRound": 1,
-            "thruScore": -3
+            "thruScore": -3,
+            "isCountingScore": true
           },
           "round4": {
             "total": 73,
             "scoreRound": 1,
-            "thruScore": -2
+            "thruScore": -2,
+            "isCountingScore": true
           }
         }
       }
@@ -1333,22 +1417,26 @@
           "round1": {
             "total": 68,
             "scoreRound": -4,
-            "thruScore": -4
+            "thruScore": -4,
+            "isCountingScore": true
           },
           "round2": {
             "total": 73,
             "scoreRound": 1,
-            "thruScore": -3
+            "thruScore": -3,
+            "isCountingScore": true
           },
           "round3": {
             "total": 69,
             "scoreRound": -3,
-            "thruScore": -6
+            "thruScore": -6,
+            "isCountingScore": true
           },
           "round4": {
             "total": 72,
             "scoreRound": 0,
-            "thruScore": -6
+            "thruScore": -6,
+            "isCountingScore": true
           }
         }
       }
@@ -1399,22 +1487,26 @@
           "round1": {
             "total": 71,
             "scoreRound": -1,
-            "thruScore": -1
+            "thruScore": -1,
+            "isCountingScore": true
           },
           "round2": {
             "total": 72,
             "scoreRound": 0,
-            "thruScore": -1
+            "thruScore": -1,
+            "isCountingScore": true
           },
           "round3": {
             "total": 77,
             "scoreRound": 5,
-            "thruScore": 4
+            "thruScore": 4,
+            "isCountingScore": true
           },
           "round4": {
             "total": 74,
             "scoreRound": 2,
-            "thruScore": 6
+            "thruScore": 6,
+            "isCountingScore": true
           }
         }
       }
@@ -1432,22 +1524,26 @@
           "round1": {
             "total": 70,
             "scoreRound": -2,
-            "thruScore": -2
+            "thruScore": -2,
+            "isCountingScore": true
           },
           "round2": {
             "total": 76,
             "scoreRound": 4,
-            "thruScore": 2
+            "thruScore": 2,
+            "isCountingScore": true
           },
           "round3": {
             "total": 75,
             "scoreRound": 3,
-            "thruScore": 5
+            "thruScore": 5,
+            "isCountingScore": true
           },
           "round4": {
             "total": 71,
             "scoreRound": -1,
-            "thruScore": 4
+            "thruScore": 4,
+            "isCountingScore": true
           }
         }
       }
@@ -1498,22 +1594,26 @@
           "round1": {
             "total": 72,
             "scoreRound": 0,
-            "thruScore": 0
+            "thruScore": 0,
+            "isCountingScore": true
           },
           "round2": {
             "total": 79,
             "scoreRound": 7,
-            "thruScore": 7
+            "thruScore": 7,
+            "isCountingScore": false
           },
           "round3": {
             "total": null,
             "scoreRound": null,
-            "thruScore": null
+            "thruScore": null,
+            "isCountingScore": false
           },
           "round4": {
             "total": null,
             "scoreRound": null,
-            "thruScore": null
+            "thruScore": null,
+            "isCountingScore": false
           }
         }
       }
@@ -1597,22 +1697,26 @@
           "round1": {
             "total": 71,
             "scoreRound": -1,
-            "thruScore": -1
+            "thruScore": -1,
+            "isCountingScore": true
           },
           "round2": {
             "total": 68,
             "scoreRound": -4,
-            "thruScore": -5
+            "thruScore": -5,
+            "isCountingScore": true
           },
           "round3": {
             "total": 72,
             "scoreRound": 0,
-            "thruScore": -5
+            "thruScore": -5,
+            "isCountingScore": true
           },
           "round4": {
             "total": 81,
             "scoreRound": 9,
-            "thruScore": 4
+            "thruScore": 4,
+            "isCountingScore": true
           }
         }
       }
@@ -1663,22 +1767,26 @@
           "round1": {
             "total": 73,
             "scoreRound": 1,
-            "thruScore": 1
+            "thruScore": 1,
+            "isCountingScore": false
           },
           "round2": {
             "total": 73,
             "scoreRound": 1,
-            "thruScore": 2
+            "thruScore": 2,
+            "isCountingScore": true
           },
           "round3": {
             "total": 72,
             "scoreRound": 0,
-            "thruScore": 2
+            "thruScore": 2,
+            "isCountingScore": true
           },
           "round4": {
             "total": 79,
             "scoreRound": 7,
-            "thruScore": 9
+            "thruScore": 9,
+            "isCountingScore": true
           }
         }
       }
@@ -1762,22 +1870,26 @@
           "round1": {
             "total": 73,
             "scoreRound": 1,
-            "thruScore": 1
+            "thruScore": 1,
+            "isCountingScore": true
           },
           "round2": {
             "total": 71,
             "scoreRound": -1,
-            "thruScore": 0
+            "thruScore": 0,
+            "isCountingScore": true
           },
           "round3": {
             "total": 76,
             "scoreRound": 4,
-            "thruScore": 4
+            "thruScore": 4,
+            "isCountingScore": true
           },
           "round4": {
             "total": 70,
             "scoreRound": -2,
-            "thruScore": 2
+            "thruScore": 2,
+            "isCountingScore": true
           }
         }
       }
@@ -1993,22 +2105,26 @@
           "round1": {
             "total": 74,
             "scoreRound": 2,
-            "thruScore": 2
+            "thruScore": 2,
+            "isCountingScore": false
           },
           "round2": {
             "total": 71,
             "scoreRound": -1,
-            "thruScore": 1
+            "thruScore": 1,
+            "isCountingScore": true
           },
           "round3": {
             "total": 70,
             "scoreRound": -2,
-            "thruScore": -1
+            "thruScore": -1,
+            "isCountingScore": true
           },
           "round4": {
             "total": 71,
             "scoreRound": -1,
-            "thruScore": -2
+            "thruScore": -2,
+            "isCountingScore": true
           }
         }
       }
@@ -2059,22 +2175,26 @@
           "round1": {
             "total": 79,
             "scoreRound": 7,
-            "thruScore": 7
+            "thruScore": 7,
+            "isCountingScore": false
           },
           "round2": {
             "total": 68,
             "scoreRound": -4,
-            "thruScore": 3
+            "thruScore": 3,
+            "isCountingScore": false
           },
           "round3": {
             "total": null,
             "scoreRound": null,
-            "thruScore": null
+            "thruScore": null,
+            "isCountingScore": false
           },
           "round4": {
             "total": null,
             "scoreRound": null,
-            "thruScore": null
+            "thruScore": null,
+            "isCountingScore": false
           }
         }
       }
@@ -2092,22 +2212,26 @@
           "round1": {
             "total": 73,
             "scoreRound": 1,
-            "thruScore": 1
+            "thruScore": 1,
+            "isCountingScore": false
           },
           "round2": {
             "total": 73,
             "scoreRound": 1,
-            "thruScore": 2
+            "thruScore": 2,
+            "isCountingScore": false
           },
           "round3": {
             "total": 69,
             "scoreRound": -3,
-            "thruScore": -1
+            "thruScore": -1,
+            "isCountingScore": true
           },
           "round4": {
             "total": 70,
             "scoreRound": -2,
-            "thruScore": -3
+            "thruScore": -3,
+            "isCountingScore": true
           }
         }
       }
@@ -2125,22 +2249,26 @@
           "round1": {
             "total": 73,
             "scoreRound": 1,
-            "thruScore": 1
+            "thruScore": 1,
+            "isCountingScore": true
           },
           "round2": {
             "total": 69,
             "scoreRound": -3,
-            "thruScore": -2
+            "thruScore": -2,
+            "isCountingScore": true
           },
           "round3": {
             "total": 75,
             "scoreRound": 3,
-            "thruScore": 1
+            "thruScore": 1,
+            "isCountingScore": true
           },
           "round4": {
             "total": 69,
             "scoreRound": -3,
-            "thruScore": -2
+            "thruScore": -2,
+            "isCountingScore": true
           }
         }
       }
@@ -2191,22 +2319,26 @@
           "round1": {
             "total": 69,
             "scoreRound": -3,
-            "thruScore": -3
+            "thruScore": -3,
+            "isCountingScore": true
           },
           "round2": {
             "total": 70,
             "scoreRound": -2,
-            "thruScore": -5
+            "thruScore": -5,
+            "isCountingScore": true
           },
           "round3": {
             "total": 75,
             "scoreRound": 3,
-            "thruScore": -2
+            "thruScore": -2,
+            "isCountingScore": true
           },
           "round4": {
             "total": 71,
             "scoreRound": -1,
-            "thruScore": -3
+            "thruScore": -3,
+            "isCountingScore": true
           }
         }
       }
@@ -2224,22 +2356,26 @@
           "round1": {
             "total": 71,
             "scoreRound": -1,
-            "thruScore": -1
+            "thruScore": -1,
+            "isCountingScore": true
           },
           "round2": {
             "total": 70,
             "scoreRound": -2,
-            "thruScore": -3
+            "thruScore": -3,
+            "isCountingScore": true
           },
           "round3": {
             "total": 69,
             "scoreRound": -3,
-            "thruScore": -6
+            "thruScore": -6,
+            "isCountingScore": true
           },
           "round4": {
             "total": 69,
             "scoreRound": -3,
-            "thruScore": -9
+            "thruScore": -9,
+            "isCountingScore": true
           }
         }
       }
@@ -2257,22 +2393,26 @@
           "round1": {
             "total": 65,
             "scoreRound": -7,
-            "thruScore": -7
+            "thruScore": -7,
+            "isCountingScore": true
           },
           "round2": {
             "total": 71,
             "scoreRound": -1,
-            "thruScore": -8
+            "thruScore": -8,
+            "isCountingScore": true
           },
           "round3": {
             "total": 75,
             "scoreRound": 3,
-            "thruScore": -5
+            "thruScore": -5,
+            "isCountingScore": true
           },
           "round4": {
             "total": 66,
             "scoreRound": -6,
-            "thruScore": -11
+            "thruScore": -11,
+            "isCountingScore": true
           }
         }
       }
@@ -2290,22 +2430,26 @@
           "round1": {
             "total": 73,
             "scoreRound": 1,
-            "thruScore": 1
+            "thruScore": 1,
+            "isCountingScore": false
           },
           "round2": {
             "total": 68,
             "scoreRound": -4,
-            "thruScore": -3
+            "thruScore": -3,
+            "isCountingScore": true
           },
           "round3": {
             "total": 79,
             "scoreRound": 7,
-            "thruScore": 4
+            "thruScore": 4,
+            "isCountingScore": false
           },
           "round4": {
             "total": 66,
             "scoreRound": -6,
-            "thruScore": -2
+            "thruScore": -2,
+            "isCountingScore": true
           }
         }
       }
@@ -2323,22 +2467,26 @@
           "round1": {
             "total": 74,
             "scoreRound": 2,
-            "thruScore": 2
+            "thruScore": 2,
+            "isCountingScore": true
           },
           "round2": {
             "total": 72,
             "scoreRound": 0,
-            "thruScore": 2
+            "thruScore": 2,
+            "isCountingScore": true
           },
           "round3": {
             "total": 73,
             "scoreRound": 1,
-            "thruScore": 3
+            "thruScore": 3,
+            "isCountingScore": true
           },
           "round4": {
             "total": 71,
             "scoreRound": -1,
-            "thruScore": 2
+            "thruScore": 2,
+            "isCountingScore": true
           }
         }
       }
@@ -2455,22 +2603,26 @@
           "round1": {
             "total": 74,
             "scoreRound": 2,
-            "thruScore": 2
+            "thruScore": 2,
+            "isCountingScore": true
           },
           "round2": {
             "total": 75,
             "scoreRound": 3,
-            "thruScore": 5
+            "thruScore": 5,
+            "isCountingScore": false
           },
           "round3": {
             "total": null,
             "scoreRound": null,
-            "thruScore": null
+            "thruScore": null,
+            "isCountingScore": false
           },
           "round4": {
             "total": null,
             "scoreRound": null,
-            "thruScore": null
+            "thruScore": null,
+            "isCountingScore": false
           }
         }
       }
@@ -2587,22 +2739,26 @@
           "round1": {
             "total": 78,
             "scoreRound": 6,
-            "thruScore": 6
+            "thruScore": 6,
+            "isCountingScore": false
           },
           "round2": {
             "total": 71,
             "scoreRound": -1,
-            "thruScore": 5
+            "thruScore": 5,
+            "isCountingScore": false
           },
           "round3": {
             "total": null,
             "scoreRound": null,
-            "thruScore": null
+            "thruScore": null,
+            "isCountingScore": false
           },
           "round4": {
             "total": null,
             "scoreRound": null,
-            "thruScore": null
+            "thruScore": null,
+            "isCountingScore": false
           }
         }
       }
@@ -2620,22 +2776,26 @@
           "round1": {
             "total": 74,
             "scoreRound": 2,
-            "thruScore": 2
+            "thruScore": 2,
+            "isCountingScore": false
           },
           "round2": {
             "total": 70,
             "scoreRound": -2,
-            "thruScore": 0
+            "thruScore": 0,
+            "isCountingScore": true
           },
           "round3": {
             "total": 69,
             "scoreRound": -3,
-            "thruScore": -3
+            "thruScore": -3,
+            "isCountingScore": true
           },
           "round4": {
             "total": 71,
             "scoreRound": -1,
-            "thruScore": -4
+            "thruScore": -4,
+            "isCountingScore": true
           }
         }
       }
@@ -2719,22 +2879,26 @@
           "round1": {
             "total": 71,
             "scoreRound": -1,
-            "thruScore": -1
+            "thruScore": -1,
+            "isCountingScore": true
           },
           "round2": {
             "total": 73,
             "scoreRound": 1,
-            "thruScore": 0
+            "thruScore": 0,
+            "isCountingScore": true
           },
           "round3": {
             "total": 74,
             "scoreRound": 2,
-            "thruScore": 2
+            "thruScore": 2,
+            "isCountingScore": true
           },
           "round4": {
             "total": 73,
             "scoreRound": 1,
-            "thruScore": 3
+            "thruScore": 3,
+            "isCountingScore": true
           }
         }
       }
@@ -2785,22 +2949,26 @@
           "round1": {
             "total": 68,
             "scoreRound": -4,
-            "thruScore": -4
+            "thruScore": -4,
+            "isCountingScore": true
           },
           "round2": {
             "total": 70,
             "scoreRound": -2,
-            "thruScore": -6
+            "thruScore": -6,
+            "isCountingScore": true
           },
           "round3": {
             "total": 70,
             "scoreRound": -2,
-            "thruScore": -8
+            "thruScore": -8,
+            "isCountingScore": true
           },
           "round4": {
             "total": 75,
             "scoreRound": 3,
-            "thruScore": -5
+            "thruScore": -5,
+            "isCountingScore": true
           }
         }
       }
@@ -2818,22 +2986,26 @@
           "round1": {
             "total": 71,
             "scoreRound": -1,
-            "thruScore": -1
+            "thruScore": -1,
+            "isCountingScore": true
           },
           "round2": {
             "total": 78,
             "scoreRound": 6,
-            "thruScore": 5
+            "thruScore": 5,
+            "isCountingScore": false
           },
           "round3": {
             "total": null,
             "scoreRound": null,
-            "thruScore": null
+            "thruScore": null,
+            "isCountingScore": false
           },
           "round4": {
             "total": null,
             "scoreRound": null,
-            "thruScore": null
+            "thruScore": null,
+            "isCountingScore": false
           }
         }
       }
@@ -2917,22 +3089,26 @@
           "round1": {
             "total": 68,
             "scoreRound": -4,
-            "thruScore": -4
+            "thruScore": -4,
+            "isCountingScore": true
           },
           "round2": {
             "total": 71,
             "scoreRound": -1,
-            "thruScore": -5
+            "thruScore": -5,
+            "isCountingScore": true
           },
           "round3": {
             "total": 72,
             "scoreRound": 0,
-            "thruScore": -5
+            "thruScore": -5,
+            "isCountingScore": true
           },
           "round4": {
             "total": 69,
             "scoreRound": -3,
-            "thruScore": -8
+            "thruScore": -8,
+            "isCountingScore": true
           }
         }
       }
@@ -2983,22 +3159,26 @@
           "round1": {
             "total": 72,
             "scoreRound": 0,
-            "thruScore": 0
+            "thruScore": 0,
+            "isCountingScore": true
           },
           "round2": {
             "total": 73,
             "scoreRound": 1,
-            "thruScore": 1
+            "thruScore": 1,
+            "isCountingScore": true
           },
           "round3": {
             "total": 71,
             "scoreRound": -1,
-            "thruScore": 0
+            "thruScore": 0,
+            "isCountingScore": true
           },
           "round4": {
             "total": 73,
             "scoreRound": 1,
-            "thruScore": 1
+            "thruScore": 1,
+            "isCountingScore": true
           }
         }
       }
@@ -3049,22 +3229,26 @@
           "round1": {
             "total": 75,
             "scoreRound": 3,
-            "thruScore": 3
+            "thruScore": 3,
+            "isCountingScore": true
           },
           "round2": {
             "total": 71,
             "scoreRound": -1,
-            "thruScore": 2
+            "thruScore": 2,
+            "isCountingScore": true
           },
           "round3": {
             "total": 70,
             "scoreRound": -2,
-            "thruScore": 0
+            "thruScore": 0,
+            "isCountingScore": true
           },
           "round4": {
             "total": 69,
             "scoreRound": -3,
-            "thruScore": -3
+            "thruScore": -3,
+            "isCountingScore": true
           }
         }
       }
@@ -3082,22 +3266,26 @@
           "round1": {
             "total": 74,
             "scoreRound": 2,
-            "thruScore": 2
+            "thruScore": 2,
+            "isCountingScore": false
           },
           "round2": {
             "total": 78,
             "scoreRound": 6,
-            "thruScore": 8
+            "thruScore": 8,
+            "isCountingScore": false
           },
           "round3": {
             "total": null,
             "scoreRound": null,
-            "thruScore": null
+            "thruScore": null,
+            "isCountingScore": false
           },
           "round4": {
             "total": null,
             "scoreRound": null,
-            "thruScore": null
+            "thruScore": null,
+            "isCountingScore": false
           }
         }
       }

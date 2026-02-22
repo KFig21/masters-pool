@@ -20,20 +20,23 @@ export const RoundTable = ({ golfers, stats }: Props) => {
     const roundKey = `round${round}` as keyof typeof golfer.scorecard;
     const data = golfer.scorecard[roundKey];
 
-    if (!data) return { val: '-', class: '' };
+    if (!data) return { val: '-', class: '', isCounting: false };
+
+    const isCounting = !!data.isCountingScore;
 
     if (viewMode === 'strokes') {
       const val = data.total ? data.total : '-';
-      return { val, class: 'neutral' };
+      return { val, class: 'neutral', isCounting };
     } else {
       const val = data.scoreRound;
-      if (val === null || val === undefined) return { val: '-', class: '' };
-      if (val === 0) return { val: 'E', class: 'even' };
+      if (val === null || val === undefined) return { val: '-', class: '', isCounting };
+      if (val === 0) return { val: 'E', class: 'even', isCounting };
 
       const isUnder = val < 0;
       return {
         val: isUnder ? val : `+${val}`,
-        class: isUnder ? 'under' : 'over', // Or use getScoreClass(val) here
+        class: isUnder ? 'under' : 'over',
+        isCounting,
       };
     }
   };
@@ -98,9 +101,12 @@ export const RoundTable = ({ golfers, stats }: Props) => {
 
               {/* Round Columns */}
               {ROUNDS.map((round) => {
-                const { val, class: colorClass } = getCellData(golfer, round);
+                const { val, class: colorClass, isCounting } = getCellData(golfer, round);
                 return (
-                  <div key={round} className={`scorecard-table-cell stroke ${colorClass}`}>
+                  <div
+                    key={round}
+                    className={`scorecard-table-cell stroke ${colorClass} ${isCounting ? 'counting-score' : ''}`}
+                  >
                     {val}
                   </div>
                 );
