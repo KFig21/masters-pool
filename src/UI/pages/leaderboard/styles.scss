@@ -1,12 +1,10 @@
-// masters-pool/src/UI/pages/scoreboard/styles.scss
-
 @use '../../styles/colors' as *;
 @use '../../styles/index' as *;
 @use '../../styles/fonts' as *;
 
 .leaderboard-wrapper {
     background-color: transparent;
-    filter: drop-shadow(0px 0px 50px rgba(255, 228, 165, 0.1));
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.21));
 
     @include mobile {
         margin-top: 100px;
@@ -68,14 +66,37 @@
             }
 
             .leaderboard-header-title {
-                font-size: 34px;
+                $titleFontSize: 34px;
+                font-size: $titleFontSize;
                 color: var(--scoreboard-FC-column);
                 font-family: "Masters", serif;
                 text-align: center;
+                display: flex;
+                align-items: first baseline;
+                flex-direction: row;
+                gap: 14px;
+
+                .header-title-year {
+                    font-size: calc($titleFontSize * 0.85);
+                }
+
+                .header-title-text {
+                    font-size: $titleFontSize;
+                }
 
                 @include mobile {
+                    $titleFontSize: 16px;
                     font-size: 16px;
                     transform: translateY(-6px);
+                    gap: 6px;
+
+                    .header-title-year {
+                        font-size: calc($titleFontSize * 0.85);
+                    }
+
+                    .header-title-text {
+                        font-size: $titleFontSize;
+                    }
                 }
             }
         }

@@ -41,7 +41,10 @@ export const Leaderboard = () => {
             <div className="logo-container">
               <img src={Logo} alt="Masters Pool Logo" />
             </div>
-            <div className="leaderboard-header-title">2026 Masters Pool</div>
+            <div className="leaderboard-header-title">
+              <div className="header-title-year">2026</div>
+              <div className="header-title-text">Masters Pool</div>
+            </div>
           </div>
 
           <div className="leaderboard-table-header">

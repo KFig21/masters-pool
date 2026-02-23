@@ -44,7 +44,8 @@ export const getTeamClass = (val: number | null | string): string => {
   if (typeof val === 'string') {
     const lowerVal = val.toLowerCase();
     if (lowerVal === 'even') return 'even'; // Map 'even' string to 'even' class
-    if (lowerVal === 'cut' || lowerVal === 'wd') return lowerVal.toUpperCase();
+    if (lowerVal === 'cut' || lowerVal === 'wd' || lowerVal === 'dq' || lowerVal === 'dnp')
+      return lowerVal.toUpperCase();
     return '';
   }
 
