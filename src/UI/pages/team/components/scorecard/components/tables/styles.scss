@@ -220,6 +220,25 @@
                     color: var(--scoreboard-FC-row-CUT);
                     font-style: italic;
                 }
+
+                // Labels for different screen sizes
+                .desktop-label {
+                    display: inline;
+                }
+
+                .mobile-label {
+                    display: none;
+                }
+
+                @include mobile {
+                    .desktop-label {
+                        display: none;
+                    }
+
+                    .mobile-label {
+                        display: inline;
+                    }
+                }
             }
 
             &.top-scorers {

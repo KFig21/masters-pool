@@ -54,7 +54,7 @@ export const Leaderboard = () => {
             <div className="cell round">R2</div>
             <div className="cell round">R3</div>
             <div className="cell round">R4</div>
-            <div className="cell total">
+            <div className="cell total" onClick={() => handleModal()}>
               SCORE
               <button className="info-icon" onClick={() => handleModal()}>
                 i

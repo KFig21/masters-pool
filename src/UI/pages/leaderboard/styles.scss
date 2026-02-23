@@ -124,6 +124,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                cursor: default;
 
                 &.name {
                     margin: 0px $grid-name-margin;
@@ -131,6 +132,7 @@
 
                 &.total {
                     margin-left: $grid-name-margin;
+                    cursor: pointer;
 
                     @include mobile {
                         margin-left: unset;
@@ -156,8 +158,7 @@
                         transition: all 0.2s ease;
 
                         @include mobile {
-                            // display: none;
-                            margin-left: 4px;
+                            display: none;
                         }
 
                         &:hover {

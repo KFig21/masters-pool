@@ -28,7 +28,8 @@ export const ThruTable = ({ golfers, stats }: Props) => {
           {/* Round Columns */}
           {ROUNDS.map((round) => (
             <div key={round} className="scorecard-table-cell">
-              thru {round}
+              <span className="desktop-label">thru {round}</span>
+              <span className="mobile-label">R{round}</span>
             </div>
           ))}
           {/* Current Score Column */}
