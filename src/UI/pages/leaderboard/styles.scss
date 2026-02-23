@@ -85,8 +85,8 @@
                 }
 
                 @include mobile {
-                    $titleFontSize: 16px;
-                    font-size: 16px;
+                    $titleFontSize: 18px;
+                    font-size: $titleFontSize;
                     transform: translateY(-6px);
                     gap: 6px;
 
