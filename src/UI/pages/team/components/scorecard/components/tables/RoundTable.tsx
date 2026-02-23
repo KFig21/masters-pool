@@ -25,8 +25,12 @@ export const RoundTable = ({ golfers, stats }: Props) => {
     const isCounting = !!data.isCountingScore;
 
     if (viewMode === 'strokes') {
-      const val = data.total ? data.total : '-';
-      return { val, class: 'neutral', isCounting };
+      const strokeVal = data.total ? data.total : '-';
+      const val = data.scoreRound;
+      if (val === null || val === undefined) return { val: '-', class: '', isCounting };
+
+      const isUnder = val < 0;
+      return { val: strokeVal, class: isUnder ? 'under' : 'over', isCounting };
     } else {
       const val = data.scoreRound;
       if (val === null || val === undefined) return { val: '-', class: '', isCounting };
@@ -88,11 +92,13 @@ export const RoundTable = ({ golfers, stats }: Props) => {
         {golfers.map((golfer, index) => {
           // Top 4 get a thick border
           const isCutoff = index === 3;
+          const isTopFour = index < 4;
+          const rowClass = isTopFour ? 'top-scorers' : 'not-top-scorers';
 
           return (
             <div
               key={golfer.id}
-              className={`scorecard-table-row ${isCutoff ? 'cutoff-border' : ''} ${golfer.isCut ? 'is-cut' : ''}`}
+              className={`scorecard-table-row ${rowClass} ${isCutoff ? 'cutoff-border' : ''} ${golfer.isCut ? 'is-cut' : ''}`}
             >
               {/* Golfer Name */}
               <div className="scorecard-table-cell name-cell">

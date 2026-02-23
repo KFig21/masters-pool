@@ -200,7 +200,7 @@
                 }
 
                 &.end-col {
-                    background-color: rgba(236, 192, 13, 0.13);
+                    background-color: rgba(236, 192, 13, 0.18);
                 }
 
                 /* Color Coding */
@@ -219,6 +219,27 @@
                 &.cut {
                     color: var(--scoreboard-FC-row-CUT);
                     font-style: italic;
+                }
+            }
+
+            &.top-scorers {
+                .name-cell {
+                    // background-color: rgba(0, 103, 71, 0.18); // Keep or slightly adjust the existing green tint
+                }
+
+                .end-col {
+                    // background-color: rgba(236, 192, 13, 0.2); // Slightly richer gold for top performers
+                }
+            }
+
+            &.not-top-scorers {
+                .name-cell {
+                    // background-color: rgba(102, 102, 102, 0.1); // Very subtle grey/muted background
+                    // color: #666; // Muted text for the non-counting golfers
+                }
+
+                .end-col {
+                    background-color: rgba(102, 102, 102, 0.1); // Muted gold/grey
                 }
             }
         }

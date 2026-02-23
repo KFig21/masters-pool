@@ -37,10 +37,13 @@ export const ThruTable = ({ golfers, stats }: Props) => {
 
         {golfers.map((g, index) => {
           const isCutoff = index === 3;
+          const isTopFour = index < 4;
+          const rowClass = isTopFour ? 'top-scorers' : 'not-top-scorers';
+
           return (
             <div
               key={g.id}
-              className={`scorecard-table-row ${isCutoff ? 'cutoff-border' : ''} ${g.isCut ? 'is-cut' : ''}`}
+              className={`scorecard-table-row ${rowClass} ${isCutoff ? 'cutoff-border' : ''} ${g.isCut ? 'is-cut' : ''}`}
             >
               <div className="scorecard-table-cell name-cell">
                 <span className="golfer-name">{g.name}</span>
