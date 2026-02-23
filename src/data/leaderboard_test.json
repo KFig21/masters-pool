@@ -41,9 +41,9 @@
       "player": {
         "name": "Xander Schauffele",
         "id": "10140",
-        "score": -10,
-        "displayScore": "-10",
-        "thru": "Thru 8",
+        "score": -12,
+        "displayScore": "-12",
+        "thru": "F",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -66,9 +66,9 @@
             "isCountingScore": true
           },
           "round4": {
-            "total": 31,
-            "scoreRound": 0,
-            "thruScore": -10,
+            "total": 69,
+            "scoreRound": -2,
+            "thruScore": -12,
             "isCountingScore": true
           }
         }
@@ -148,9 +148,9 @@
       "player": {
         "name": "Kurt Kitayama",
         "id": "10364",
-        "score": -10,
-        "displayScore": "-10",
-        "thru": "Thru 8",
+        "score": -17,
+        "displayScore": "-17",
+        "thru": "F",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -170,9 +170,9 @@
             "thruScore": -10
           },
           "round4": {
-            "total": 28,
-            "scoreRound": -3,
-            "thruScore": -13
+            "total": 64,
+            "scoreRound": -7,
+            "thruScore": -17
           }
         }
       }
@@ -214,9 +214,9 @@
       "player": {
         "name": "Collin Morikawa",
         "id": "10592",
-        "score": -6,
-        "displayScore": "-6",
-        "thru": "Thru 12",
+        "score": -12,
+        "displayScore": "-12",
+        "thru": "F",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -239,7 +239,7 @@
             "isCountingScore": true
           },
           "round4": {
-            "total": 42,
+            "total": 65,
             "scoreRound": -6,
             "thruScore": -12,
             "isCountingScore": true
@@ -251,9 +251,9 @@
       "player": {
         "name": "Aaron Rai",
         "id": "10906",
-        "score": -11,
-        "displayScore": "-11",
-        "thru": "Thru 7",
+        "score": -6,
+        "displayScore": "-6",
+        "thru": "F",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -273,9 +273,9 @@
             "thruScore": -11
           },
           "round4": {
-            "total": 31,
-            "scoreRound": 4,
-            "thruScore": -7
+            "total": 76,
+            "scoreRound": 5,
+            "thruScore": -6
           }
         }
       }
@@ -284,9 +284,9 @@
       "player": {
         "name": "Sahith Theegala",
         "id": "10980",
-        "score": -4,
-        "displayScore": "-4",
-        "thru": "Thru 16",
+        "score": -8,
+        "displayScore": "-8",
+        "thru": "F",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -309,7 +309,7 @@
             "isCountingScore": true
           },
           "round4": {
-            "total": 58,
+            "total": 67,
             "scoreRound": -4,
             "thruScore": -8,
             "isCountingScore": true
@@ -321,9 +321,9 @@
       "player": {
         "name": "Max Greyserman",
         "id": "11101",
-        "score": -9,
-        "displayScore": "-9",
-        "thru": "Thru 8",
+        "score": -7,
+        "displayScore": "-7",
+        "thru": "F",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -343,9 +343,9 @@
             "thruScore": -9
           },
           "round4": {
-            "total": 32,
-            "scoreRound": 1,
-            "thruScore": -8
+            "total": 73,
+            "scoreRound": 2,
+            "thruScore": -7
           }
         }
       }
@@ -354,9 +354,9 @@
       "player": {
         "name": "Wyndham Clark",
         "id": "11119",
-        "score": -6,
-        "displayScore": "-6",
-        "thru": "Thru 13",
+        "score": -3,
+        "displayScore": "-3",
+        "thru": "F",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -379,9 +379,9 @@
             "isCountingScore": true
           },
           "round4": {
-            "total": 56,
-            "scoreRound": 4,
-            "thruScore": -2,
+            "total": 74,
+            "scoreRound": 3,
+            "thruScore": -3,
             "isCountingScore": true
           }
         }
@@ -424,9 +424,9 @@
       "player": {
         "name": "Robert MacIntyre",
         "id": "11378",
-        "score": -5,
-        "displayScore": "-5",
-        "thru": "Thru 14",
+        "score": -9,
+        "displayScore": "-9",
+        "thru": "F",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -449,9 +449,9 @@
             "isCountingScore": true
           },
           "round4": {
-            "total": 52,
-            "scoreRound": -3,
-            "thruScore": -8,
+            "total": 67,
+            "scoreRound": -4,
+            "thruScore": -9,
             "isCountingScore": true
           }
         }
@@ -634,9 +634,9 @@
       "player": {
         "name": "Tony Finau",
         "id": "2230",
-        "score": -4,
-        "displayScore": "-4",
-        "thru": "Thru 17",
+        "score": -6,
+        "displayScore": "-6",
+        "thru": "F",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -659,7 +659,7 @@
             "isCountingScore": true
           },
           "round4": {
-            "total": 65,
+            "total": 69,
             "scoreRound": -2,
             "thruScore": -6,
             "isCountingScore": true
@@ -671,9 +671,9 @@
       "player": {
         "name": "Rory McIlroy",
         "id": "3470",
-        "score": -13,
-        "displayScore": "-13",
-        "thru": "Thru 6",
+        "score": -17,
+        "displayScore": "-17",
+        "thru": "F",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -696,9 +696,9 @@
             "isCountingScore": true
           },
           "round4": {
-            "total": 23,
-            "scoreRound": 0,
-            "thruScore": -13,
+            "total": 67,
+            "scoreRound": -4,
+            "thruScore": -17,
             "isCountingScore": true
           }
         }
@@ -778,9 +778,9 @@
       "player": {
         "name": "Alex Noren",
         "id": "3832",
-        "score": -6,
-        "displayScore": "-6",
-        "thru": "Thru 11",
+        "score": -11,
+        "displayScore": "-11",
+        "thru": "F",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -800,9 +800,9 @@
             "thruScore": -6
           },
           "round4": {
-            "total": 40,
-            "scoreRound": -4,
-            "thruScore": -10
+            "total": 66,
+            "scoreRound": -5,
+            "thruScore": -11
           }
         }
       }
@@ -811,9 +811,9 @@
       "player": {
         "name": "Adam Scott",
         "id": "388",
-        "score": -8,
-        "displayScore": "-8",
-        "thru": "Thru 10",
+        "score": -16,
+        "displayScore": "-16",
+        "thru": "F",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -836,9 +836,9 @@
             "isCountingScore": true
           },
           "round4": {
-            "total": 35,
-            "scoreRound": -4,
-            "thruScore": -12,
+            "total": 63,
+            "scoreRound": -8,
+            "thruScore": -16,
             "isCountingScore": true
           }
         }
@@ -848,9 +848,9 @@
       "player": {
         "name": "Ryan Fox",
         "id": "4251",
-        "score": -8,
-        "displayScore": "-8",
-        "thru": "Thru 10",
+        "score": -12,
+        "displayScore": "-12",
+        "thru": "F",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -870,9 +870,9 @@
             "thruScore": -8
           },
           "round4": {
-            "total": 38,
-            "scoreRound": -1,
-            "thruScore": -9
+            "total": 67,
+            "scoreRound": -4,
+            "thruScore": -12
           }
         }
       }
@@ -951,9 +951,9 @@
       "player": {
         "name": "Ludvig Åberg",
         "id": "4375972",
-        "score": -4,
-        "displayScore": "-4",
-        "thru": "Thru 17",
+        "score": -9,
+        "displayScore": "-9",
+        "thru": "F",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -976,7 +976,7 @@
             "isCountingScore": true
           },
           "round4": {
-            "total": 62,
+            "total": 66,
             "scoreRound": -5,
             "thruScore": -9,
             "isCountingScore": true
@@ -1054,9 +1054,9 @@
       "player": {
         "name": "Min Woo Lee",
         "id": "4410932",
-        "score": -5,
-        "displayScore": "-5",
-        "thru": "Thru 15",
+        "score": -11,
+        "displayScore": "-11",
+        "thru": "F",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -1079,9 +1079,9 @@
             "isCountingScore": true
           },
           "round4": {
-            "total": 54,
-            "scoreRound": -5,
-            "thruScore": -10,
+            "total": 65,
+            "scoreRound": -6,
+            "thruScore": -11,
             "isCountingScore": true
           }
         }
@@ -1091,9 +1091,9 @@
       "player": {
         "name": "Akshay Bhatia",
         "id": "4419142",
-        "score": -7,
-        "displayScore": "-7",
-        "thru": "Thru 11",
+        "score": -10,
+        "displayScore": "-10",
+        "thru": "F",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -1116,9 +1116,9 @@
             "isCountingScore": true
           },
           "round4": {
-            "total": 40,
-            "scoreRound": -4,
-            "thruScore": -11,
+            "total": 68,
+            "scoreRound": -3,
+            "thruScore": -10,
             "isCountingScore": true
           }
         }
@@ -1128,9 +1128,9 @@
       "player": {
         "name": "Cameron Young",
         "id": "4425906",
-        "score": -7,
-        "displayScore": "-7",
-        "thru": "Thru 11",
+        "score": -12,
+        "displayScore": "-12",
+        "thru": "F",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -1153,9 +1153,9 @@
             "isCountingScore": true
           },
           "round4": {
-            "total": 41,
-            "scoreRound": -3,
-            "thruScore": -10,
+            "total": 66,
+            "scoreRound": -5,
+            "thruScore": -12,
             "isCountingScore": true
           }
         }
@@ -1165,9 +1165,9 @@
       "player": {
         "name": "Sam Stevens",
         "id": "4426181",
-        "score": -4,
-        "displayScore": "-4",
-        "thru": "Thru 16",
+        "score": -10,
+        "displayScore": "-10",
+        "thru": "F",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -1187,7 +1187,7 @@
             "thruScore": -4
           },
           "round4": {
-            "total": 56,
+            "total": 65,
             "scoreRound": -6,
             "thruScore": -10
           }
@@ -1297,9 +1297,9 @@
       "player": {
         "name": "Marco Penge",
         "id": "4585549",
-        "score": -9,
-        "displayScore": "-9",
-        "thru": "Thru 9",
+        "score": -10,
+        "displayScore": "-10",
+        "thru": "F",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -1319,9 +1319,9 @@
             "thruScore": -9
           },
           "round4": {
-            "total": 33,
-            "scoreRound": -2,
-            "thruScore": -11
+            "total": 70,
+            "scoreRound": -1,
+            "thruScore": -10
           }
         }
       }
@@ -1402,7 +1402,7 @@
         "id": "4602673",
         "score": -5,
         "displayScore": "-5",
-        "thru": "Thru 14",
+        "thru": "F",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -1425,9 +1425,9 @@
             "isCountingScore": true
           },
           "round4": {
-            "total": 56,
-            "scoreRound": 1,
-            "thruScore": -4,
+            "total": 71,
+            "scoreRound": 0,
+            "thruScore": -5,
             "isCountingScore": true
           }
         }
@@ -1470,9 +1470,9 @@
       "player": {
         "name": "Pierceson Coody",
         "id": "4837368",
-        "score": -6,
-        "displayScore": "-6",
-        "thru": "Thru 12",
+        "score": -10,
+        "displayScore": "-10",
+        "thru": "F",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -1492,9 +1492,9 @@
             "thruScore": -6
           },
           "round4": {
-            "total": 46,
-            "scoreRound": -2,
-            "thruScore": -8
+            "total": 67,
+            "scoreRound": -4,
+            "thruScore": -10
           }
         }
       }
@@ -1536,9 +1536,9 @@
       "player": {
         "name": "Matt McCarty",
         "id": "4901368",
-        "score": -5,
-        "displayScore": "-5",
-        "thru": "Thru 16",
+        "score": -7,
+        "displayScore": "-7",
+        "thru": "F",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -1558,9 +1558,9 @@
             "thruScore": -5
           },
           "round4": {
-            "total": 61,
-            "scoreRound": -1,
-            "thruScore": -6
+            "total": 69,
+            "scoreRound": -2,
+            "thruScore": -7
           }
         }
       }
@@ -1569,9 +1569,9 @@
       "player": {
         "name": "Jacob Bridgeman",
         "id": "5054388",
-        "score": -19,
-        "displayScore": "-19",
-        "thru": "Thru 6",
+        "score": -18,
+        "displayScore": "-18",
+        "thru": "F",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -1591,9 +1591,9 @@
             "thruScore": -19
           },
           "round4": {
-            "total": 22,
-            "scoreRound": -1,
-            "thruScore": -20
+            "total": 72,
+            "scoreRound": 1,
+            "thruScore": -18
           }
         }
       }
@@ -1635,9 +1635,9 @@
       "player": {
         "name": "Aldrich Potgieter",
         "id": "5080439",
-        "score": -12,
-        "displayScore": "-12",
-        "thru": "Thru 7",
+        "score": -15,
+        "displayScore": "-15",
+        "thru": "F",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -1657,9 +1657,9 @@
             "thruScore": -12
           },
           "round4": {
-            "total": 26,
-            "scoreRound": -1,
-            "thruScore": -13
+            "total": 68,
+            "scoreRound": -3,
+            "thruScore": -15
           }
         }
       }
@@ -1771,9 +1771,9 @@
       "player": {
         "name": "Jordan Spieth",
         "id": "5467",
-        "score": -6,
-        "displayScore": "-6",
-        "thru": "Thru 13",
+        "score": -11,
+        "displayScore": "-11",
+        "thru": "F",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -1796,7 +1796,7 @@
             "isCountingScore": true
           },
           "round4": {
-            "total": 47,
+            "total": 66,
             "scoreRound": -5,
             "thruScore": -11,
             "isCountingScore": true
@@ -1808,9 +1808,9 @@
       "player": {
         "name": "Tommy Fleetwood",
         "id": "5539",
-        "score": -8,
-        "displayScore": "-8",
-        "thru": "Thru 10",
+        "score": -12,
+        "displayScore": "-12",
+        "thru": "F",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -1833,9 +1833,9 @@
             "isCountingScore": true
           },
           "round4": {
-            "total": 37,
-            "scoreRound": -2,
-            "thruScore": -10,
+            "total": 67,
+            "scoreRound": -4,
+            "thruScore": -12,
             "isCountingScore": true
           }
         }
@@ -1882,9 +1882,9 @@
       "player": {
         "name": "Hideki Matsuyama",
         "id": "5860",
-        "score": -3,
-        "displayScore": "-3",
-        "thru": "Thru 17",
+        "score": -6,
+        "displayScore": "-6",
+        "thru": "F",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -1907,7 +1907,7 @@
             "isCountingScore": true
           },
           "round4": {
-            "total": 64,
+            "total": 68,
             "scoreRound": -3,
             "thruScore": -6,
             "isCountingScore": true
@@ -1919,9 +1919,9 @@
       "player": {
         "name": "Patrick Cantlay",
         "id": "6007",
-        "score": -6,
-        "displayScore": "-6",
-        "thru": "Thru 11",
+        "score": -4,
+        "displayScore": "-4",
+        "thru": "F",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -1944,9 +1944,9 @@
             "isCountingScore": true
           },
           "round4": {
-            "total": 43,
-            "scoreRound": -1,
-            "thruScore": -7,
+            "total": 73,
+            "scoreRound": 2,
+            "thruScore": -4,
             "isCountingScore": true
           }
         }
@@ -2127,7 +2127,7 @@
         "id": "8973",
         "score": -4,
         "displayScore": "-4",
-        "thru": "Thru 17",
+        "thru": "F",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -2150,7 +2150,7 @@
             "isCountingScore": true
           },
           "round4": {
-            "total": 67,
+            "total": 71,
             "scoreRound": 0,
             "thruScore": -4,
             "isCountingScore": true
@@ -2228,9 +2228,9 @@
       "player": {
         "name": "Matt Fitzpatrick",
         "id": "9037",
-        "score": -6,
-        "displayScore": "-6",
-        "thru": "Thru 14",
+        "score": -7,
+        "displayScore": "-7",
+        "thru": "F",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -2253,9 +2253,9 @@
             "isCountingScore": true
           },
           "round4": {
-            "total": 55,
-            "scoreRound": 0,
-            "thruScore": -6,
+            "total": 70,
+            "scoreRound": -1,
+            "thruScore": -7,
             "isCountingScore": true
           }
         }
@@ -2302,9 +2302,9 @@
       "player": {
         "name": "Scottie Scheffler",
         "id": "9478",
-        "score": -5,
-        "displayScore": "-5",
-        "thru": "Thru 14",
+        "score": -11,
+        "displayScore": "-11",
+        "thru": "F",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -2327,9 +2327,9 @@
             "isCountingScore": true
           },
           "round4": {
-            "total": 51,
-            "scoreRound": -4,
-            "thruScore": -9,
+            "total": 65,
+            "scoreRound": -6,
+            "thruScore": -11,
             "isCountingScore": true
           }
         }
@@ -2442,9 +2442,9 @@
       "player": {
         "name": "Jake Knapp",
         "id": "9843",
-        "score": -8,
-        "displayScore": "-8",
-        "thru": "Thru 10",
+        "score": -13,
+        "displayScore": "-13",
+        "thru": "F",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -2464,9 +2464,9 @@
             "thruScore": -8
           },
           "round4": {
-            "total": 36,
-            "scoreRound": -3,
-            "thruScore": -11
+            "total": 66,
+            "scoreRound": -5,
+            "thruScore": -13
           }
         }
       }

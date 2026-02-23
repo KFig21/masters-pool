@@ -86,19 +86,19 @@ function processLeaderboard(apiData) {
       status = 'ACTIVE';
     }
 
-    // Safely parse overall score using our new helper
-    let displayScore = player.score?.displayValue || player.score || 'E';
-    let currentScore = parseRelScore(displayScore);
+    // UPDATED LOGIC: Use our perfectly calculated runningTotal as the source of truth!
+    let currentScore = runningTotal;
 
-    // Ensure displayScore formats zero correctly back to 'E'
-    if (currentScore === 0) displayScore = 'E';
+    // Format the display string dynamically based on the math
+    let displayScore =
+      currentScore === 0 ? 'E' : currentScore > 0 ? `+${currentScore}` : String(currentScore);
 
     return {
       player: {
         name: player.athlete.displayName,
         id: player.athlete.id,
         score: currentScore,
-        displayScore: String(displayScore),
+        displayScore: displayScore,
         thru: statusStr,
         status: status,
         isCut: isCut,
