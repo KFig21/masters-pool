@@ -8,6 +8,7 @@
 
     @include mobile {
         margin-top: 100px;
+        margin-bottom: 40px;
     }
 
     .leaderboard-arch {
@@ -188,7 +189,34 @@
 
     .leaderboard-footer {
         background-color: var(--darkGreen);
-        height: 30px;
         border-radius: 0px 0px 5px 5px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        .tournament-selector-icon-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px 10px;
+
+            .tournament-selector-icon {
+                width: 24px;
+                height: 24px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 4px;
+                color: var(--white);
+                opacity: 0.4;
+                cursor: pointer;
+                transition: all 0.12s ease;
+
+                &:hover {
+                    color: var(--yellow);
+                    opacity: 1;
+                }
+            }
+        }
     }
 }

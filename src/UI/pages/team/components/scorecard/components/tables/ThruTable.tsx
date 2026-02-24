@@ -1,4 +1,4 @@
-import type { Golfer } from '../../../../../../../data/teams';
+import type { Golfer } from '../../../../../../../types/team';
 import type { TeamStats } from '../../../../../../../context/ScoreContext';
 import { ROUNDS } from '../../../../../../../constants/golf';
 import {
@@ -36,24 +36,24 @@ export const ThruTable = ({ golfers, stats }: Props) => {
           <div className="scorecard-table-cell">Score</div>
         </div>
 
-        {golfers.map((g, index) => {
+        {golfers.map((golfer, index) => {
           const isCutoff = index === 3;
           const isTopFour = index < 4;
           const rowClass = isTopFour ? 'top-scorers' : 'not-top-scorers';
 
           return (
             <div
-              key={g.id}
-              className={`scorecard-table-row ${rowClass} ${isCutoff ? 'cutoff-border' : ''} ${g.isCut ? 'is-cut' : ''}`}
+              key={golfer.id}
+              className={`scorecard-table-row ${rowClass} ${isCutoff ? 'cutoff-border' : ''} ${golfer.isCut ? 'is-cut' : ''}`}
             >
               <div className="scorecard-table-cell name-cell">
-                <span className="golfer-name">{g.name}</span>
+                <span className="golfer-name">{golfer.name}</span>
               </div>
 
               {/* UPDATED: Added isCounting logic and class to the cell */}
               {ROUNDS.map((r) => {
-                const roundKey = `round${r}` as keyof typeof g.scorecard;
-                const roundData = g.scorecard[roundKey];
+                const roundKey = `round${r}` as keyof typeof golfer.scorecard;
+                const roundData = golfer.scorecard[roundKey];
 
                 const val = roundData?.thruScore;
                 const isCounting = !!roundData?.isCountingScore;
@@ -61,15 +61,17 @@ export const ThruTable = ({ golfers, stats }: Props) => {
                 return (
                   <div
                     key={r}
-                    className={`scorecard-table-cell stroke ${getScoreClass(val)} ${isCounting ? 'counting-score' : ''}`}
+                    className={`scorecard-table-cell stroke ${getScoreClass(val, undefined)} ${isCounting ? 'counting-score' : ''}`}
                   >
                     {formatRelativeScore(val)}
                   </div>
                 );
               })}
 
-              <div className={`scorecard-table-cell end-col ${getScoreClass(g.score)}`}>
-                {g.displayScore}
+              <div
+                className={`scorecard-table-cell end-col ${getScoreClass(golfer.score, golfer.isCut)}`}
+              >
+                {golfer.isCut ? 'CUT' : golfer.displayScore}
               </div>
             </div>
           );
@@ -84,7 +86,10 @@ export const ThruTable = ({ golfers, stats }: Props) => {
             const isValid = val !== Infinity;
 
             return (
-              <div key={r} className={`scorecard-table-cell ${isValid ? getScoreClass(val) : ''}`}>
+              <div
+                key={r}
+                className={`scorecard-table-cell ${isValid ? getScoreClass(val, undefined) : ''}`}
+              >
                 {isValid ? formatRelativeScore(val) : '-'}
               </div>
             );

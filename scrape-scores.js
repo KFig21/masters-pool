@@ -1,15 +1,12 @@
-// masters-pool/scrape-scores.js
-
 import fs from 'fs';
+import path from 'path';
 import fetch from 'node-fetch';
-import { TEAMS } from './src/data/teams.ts';
+import { CURRENT_EVENT, CURRENT_YEAR, EVENT_MATRIX } from './src/constants/index.ts';
 
-// 2025 Masters ID (Update this ID for the actual live event when needed)
-// const TOURNAMENT_ID = '401703504';
-// const PAR = 72;
+console.log(`Starting data scrape for ${EVENT_MATRIX[CURRENT_EVENT].title} ${CURRENT_YEAR}...`);
 
-// 2026 Genesis Invitational ID for testing
-const TOURNAMENT_ID = '401811933';
+// Grab tournament id for the current event in constants
+const TOURNAMENT_ID = EVENT_MATRIX[CURRENT_EVENT].years[CURRENT_YEAR].id;
 const LEADERBOARD_URL = `https://site.web.api.espn.com/apis/site/v2/sports/golf/leaderboard?league=pga&event=${TOURNAMENT_ID}`;
 
 // Helper function to safely parse ESPN's string scores ("E", "-3", "+2") into integers
@@ -21,6 +18,20 @@ function parseRelScore(scoreStr) {
   return parseInt(cleanStr.replace('+', ''), 10) || 0;
 }
 
+// Define your current context
+const EVENT_NAME = EVENT_MATRIX[CURRENT_EVENT].id;
+const TEAMS = EVENT_MATRIX[CURRENT_EVENT].years[CURRENT_YEAR].teams;
+
+// Path to the public directory where React can fetch the files
+const DATA_DIR = path.join(
+  process.cwd(),
+  'public',
+  'data',
+  'events',
+  EVENT_NAME,
+  CURRENT_YEAR.toString(),
+);
+
 async function scrapeData() {
   console.log('Fetching live tournament data...');
   try {
@@ -28,15 +39,85 @@ async function scrapeData() {
     if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
 
     const data = await response.json();
+
+    // Quick validation: If the API sends an empty array, throw an error to trigger the fallback
+    if (!data.events?.[0]?.competitions?.[0]?.competitors) {
+      throw new Error('API returned empty competitor data.');
+    }
+
     const cleanLeaderboard = processLeaderboard(data);
     const compiledTeams = compileTeamData(cleanLeaderboard.leaderboard);
 
-    fs.writeFileSync('./src/data/leaderboard_test.json', JSON.stringify(cleanLeaderboard, null, 2));
-    fs.writeFileSync('./src/data/team_data.json', JSON.stringify(compiledTeams, null, 2));
+    saveDataWithBackups(compiledTeams);
 
-    console.log(`✅ Success! Data compiled for ${cleanLeaderboard.leaderboard.length} players.`);
+    console.log(`✅ Success! Data compiled and saved.`);
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.error('❌ Error fetching data, looking for fallback...', error);
+    restoreFromFallback();
+  }
+}
+
+function saveDataWithBackups(compiledTeams) {
+  // 1. Ensure the directory exists
+  if (!fs.existsSync(DATA_DIR)) {
+    fs.mkdirSync(DATA_DIR, { recursive: true });
+  }
+
+  const timestamp = Date.now();
+  const backupPath = path.join(DATA_DIR, `${timestamp}.json`);
+  const latestPath = path.join(DATA_DIR, `latest.json`);
+
+  const jsonString = JSON.stringify(compiledTeams, null, 2);
+
+  // 2. Write the historical backup
+  fs.writeFileSync(backupPath, jsonString);
+
+  // 3. Overwrite the 'latest' file for the React app to read
+  fs.writeFileSync(latestPath, jsonString);
+
+  // Optional: Clean up old files so the folder doesn't get too massive
+  cleanupOldBackups(DATA_DIR, 20); // Keep last 20 pulls
+}
+
+function restoreFromFallback() {
+  if (!fs.existsSync(DATA_DIR)) return;
+
+  // Get all timestamped JSON files, sort descending (newest first)
+  const files = fs
+    .readdirSync(DATA_DIR)
+    .filter((f) => f !== 'latest.json' && f.endsWith('.json'))
+    .sort()
+    .reverse();
+
+  for (const file of files) {
+    try {
+      const filePath = path.join(DATA_DIR, file);
+      const fileData = fs.readFileSync(filePath, 'utf8');
+      const parsedData = JSON.parse(fileData);
+
+      if (parsedData && parsedData.length > 0) {
+        console.log(`🔄 Restored fallback data from ${file}`);
+        // Overwrite latest.json with this valid backup
+        fs.writeFileSync(path.join(DATA_DIR, 'latest.json'), fileData);
+        return;
+      }
+    } catch (e) {
+      console.warn(`⚠️ Backup ${file} is corrupted, trying next...`);
+    }
+  }
+  console.error('🚨 All fallbacks failed.');
+}
+
+function cleanupOldBackups(directory, keepCount) {
+  const files = fs
+    .readdirSync(directory)
+    .filter((f) => f !== 'latest.json' && f.endsWith('.json'))
+    .sort()
+    .reverse(); // Newest first
+
+  if (files.length > keepCount) {
+    const filesToDelete = files.slice(keepCount);
+    filesToDelete.forEach((file) => fs.unlinkSync(path.join(directory, file)));
   }
 }
 
@@ -82,6 +163,17 @@ function processLeaderboard(apiData) {
     if (statusStr === 'CUT' || statusStr === 'WD' || statusStr === 'DQ') {
       status = statusStr;
       isCut = true;
+      // If player is cut, nullify round 3 and 4
+      scorecard[`round3`] = {
+        total: null,
+        scoreRound: null,
+        thruScore: null,
+      };
+      scorecard[`round4`] = {
+        total: null,
+        scoreRound: null,
+        thruScore: null,
+      };
     } else if (player.status?.type?.id === '3') {
       status = 'ACTIVE';
     }

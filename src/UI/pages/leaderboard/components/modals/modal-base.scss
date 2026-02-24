@@ -1,0 +1,53 @@
+@use '../../../../styles/colors' as *;
+@use '../../../../styles/index' as *;
+
+@mixin modal-structure {
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        backdrop-filter: blur(4px);
+    }
+
+    .modal-content {
+        background-color: var(--scoreboard-BG-row);
+        padding: 20px 30px 30px 30px;
+        border-radius: 8px;
+        max-width: 450px;
+        width: 90%;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        border-top: 6px solid var(--green);
+        color: #333;
+
+        .modal-title {
+            margin-top: 0;
+            color: var(--green);
+            font-family: "Tiempo", serif;
+            font-size: 2rem;
+            font-weight: 500;
+        }
+
+        .close-btn {
+            background-color: var(--green);
+            color: var(--scoreboard-FC-column);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s;
+
+            &:hover {
+                background-color: var(--darkGreen);
+            }
+        }
+    }
+}

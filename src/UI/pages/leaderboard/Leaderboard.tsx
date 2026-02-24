@@ -2,9 +2,12 @@ import { useState } from 'react';
 import { TeamRow } from './components/teamRow/TeamRow';
 import { useFavoriteTeam } from '../../../hooks/useFavoriteTeam';
 import { useScores } from '../../../context/ScoreContext';
+import { EVENT_MATRIX } from '../../../constants';
 import Logo from '../../../assets/images/logo.png';
+import { ScoringModal } from './components/modals/scoringModal/ScoringModal';
+import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 import './styles.scss';
-import { ScoringModal } from './components/scoringModal/ScoringModal';
+import { TournamentSelectorModal } from './components/modals/tournamentSelectorModal/TournamentSelectorModal';
 
 export interface ScoreboardTeamData {
   rank: number;
@@ -20,30 +23,39 @@ export interface ScoreboardTeamData {
 
 export const Leaderboard = () => {
   const { favoriteTeam } = useFavoriteTeam();
-  const { teams } = useScores();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // Pulling the new context variables
+  const { teams, isLoading, currentYear, currentEvent } = useScores();
+  const [isScoringModalOpen, setIsScoringModalOpen] = useState(false);
+  const [isTournamentSelectorModalOpen, setIsTournamentSelectorModalOpen] = useState(false);
 
-  const handleModal = () => {
-    setIsModalOpen(!isModalOpen);
+  const handleScoringModal = () => {
+    setIsScoringModalOpen(!isScoringModalOpen);
+  };
+
+  const handleTournamentSelectorModal = () => {
+    setIsTournamentSelectorModalOpen(!isTournamentSelectorModalOpen);
   };
 
   const formatDiff = (val: number): number | string => {
     return val === Infinity || isNaN(val) ? '-' : val;
   };
 
+  // Safely grab the friendly name of the current event
+  const eventName = EVENT_MATRIX[currentEvent as keyof typeof EVENT_MATRIX]?.title || 'Golf';
+
   return (
     <>
       <div className="leaderboard-wrapper fade-in-up">
-        {/* ... Header and Logo code remains the same ... */}
         <div className="leaderboard-arch"></div>
         <div className="leaderboard-container">
           <div className="leaderboard-title-container">
             <div className="logo-container">
-              <img src={Logo} alt="Masters Pool Logo" />
+              <img src={Logo} alt={`${eventName} Pool Logo`} />
             </div>
             <div className="leaderboard-header-title">
-              <div className="header-title-year">2026</div>
-              <div className="header-title-text">Masters Pool</div>
+              {/* Dynamic Year and Event Name */}
+              <div className="header-title-year">{currentYear}</div>
+              <div className="header-title-text">{eventName} Pool</div>
             </div>
           </div>
 
@@ -54,45 +66,67 @@ export const Leaderboard = () => {
             <div className="cell round">R2</div>
             <div className="cell round">R3</div>
             <div className="cell round">R4</div>
-            <div className="cell total" onClick={() => handleModal()}>
+            <div className="cell total" onClick={() => handleScoringModal()}>
               SCORE
-              <button className="info-icon" onClick={() => handleModal()}>
+              <button className="info-icon" onClick={() => handleScoringModal()}>
                 i
               </button>
             </div>
           </div>
 
           <div className="leaderboard-teams">
-            {teams.map((team) => {
-              // Data is already calculated in Context!
-              const { sumR1, sumR2, sumR3, sumR4, activeTotal, isTeamCut } = team.stats;
+            {/* Added Loading and Empty State handling */}
+            {isLoading ? (
+              <div style={{ padding: '2rem', textAlign: 'center', fontFamily: 'Work Sans' }}>
+                Loading scores...
+              </div>
+            ) : teams.length === 0 ? (
+              <div style={{ padding: '2rem', textAlign: 'center', fontFamily: 'Work Sans' }}>
+                No teams found for {currentYear} {eventName}.
+              </div>
+            ) : (
+              teams.map((team) => {
+                const { sumR1, sumR2, sumR3, sumR4, activeTotal, isTeamCut } = team.stats;
 
-              // Simple display logic only
-              const r1Display = sumR1;
-              const r2Display = sumR2 !== Infinity && sumR1 !== Infinity ? sumR2 - sumR1 : Infinity;
-              const r3Display = sumR3 !== Infinity && sumR2 !== Infinity ? sumR3 - sumR2 : Infinity;
-              const r4Display = sumR4 !== Infinity && sumR3 !== Infinity ? sumR4 - sumR3 : Infinity;
+                const r1Display = sumR1;
+                const r2Display =
+                  sumR2 !== Infinity && sumR1 !== Infinity ? sumR2 - sumR1 : Infinity;
+                const r3Display =
+                  sumR3 !== Infinity && sumR2 !== Infinity ? sumR3 - sumR2 : Infinity;
+                const r4Display =
+                  sumR4 !== Infinity && sumR3 !== Infinity ? sumR4 - sumR3 : Infinity;
 
-              const propData: ScoreboardTeamData = {
-                rank: team.rank, // Now comes from context
-                owner: team.owner,
-                r1: formatDiff(r1Display),
-                r2: formatDiff(r2Display),
-                r3: formatDiff(r3Display),
-                r4: formatDiff(r4Display),
-                totalScore: activeTotal === 999 ? 'E' : activeTotal,
-                isFavorite: favoriteTeam === team.owner,
-                isCut: isTeamCut,
-              };
+                const propData: ScoreboardTeamData = {
+                  rank: team.rank,
+                  owner: team.owner,
+                  r1: formatDiff(r1Display),
+                  r2: formatDiff(r2Display),
+                  r3: formatDiff(r3Display),
+                  r4: formatDiff(r4Display),
+                  totalScore: activeTotal === 999 ? 'E' : activeTotal,
+                  isFavorite: favoriteTeam === team.owner,
+                  isCut: isTeamCut,
+                };
 
-              return <TeamRow key={team.owner} data={propData} />;
-            })}
+                return <TeamRow key={team.owner} data={propData} />;
+              })
+            )}
           </div>
         </div>
-        <div className="leaderboard-footer"></div>
+        <div className="leaderboard-footer">
+          <div
+            className="tournament-selector-icon-container"
+            onClick={() => handleTournamentSelectorModal()}
+          >
+            <ManageSearchIcon className="tournament-selector-icon" />
+          </div>
+        </div>
       </div>
 
-      {isModalOpen && <ScoringModal handleModal={handleModal} />}
+      {isScoringModalOpen && <ScoringModal handleModal={handleScoringModal} />}
+      {isTournamentSelectorModalOpen && (
+        <TournamentSelectorModal handleModal={handleTournamentSelectorModal} />
+      )}
     </>
   );
 };

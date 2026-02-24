@@ -1,7 +1,11 @@
 /**
  * Returns a CSS class name based on a score relative to par.
  */
-export const getScoreClass = (val: number | null | undefined): string => {
+export const getScoreClass = (
+  val: number | null | undefined,
+  isCut: boolean | undefined,
+): string => {
+  if (isCut) return 'cut';
   if (val === null || val === undefined) return '';
   if (val === 0) return 'even';
   return val < 0 ? 'under' : 'over';

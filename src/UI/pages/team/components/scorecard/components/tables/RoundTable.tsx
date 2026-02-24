@@ -1,4 +1,4 @@
-import type { Golfer } from '../../../../../../../data/teams';
+import type { Golfer } from '../../../../../../../types/team';
 import type { TeamStats } from '../../../../../../../context/ScoreContext';
 import { useState } from 'react';
 import { ROUNDS } from '../../../../../../../constants/golf';
@@ -119,8 +119,10 @@ export const RoundTable = ({ golfers, stats }: Props) => {
               })}
 
               {/* Total Column */}
-              <div className={`scorecard-table-cell end-col ${getScoreClass(golfer.score)}`}>
-                {golfer.displayScore}
+              <div
+                className={`scorecard-table-cell end-col ${getScoreClass(golfer.score, golfer.isCut)}`}
+              >
+                {golfer.isCut ? 'CUT' : golfer.displayScore}
               </div>
             </div>
           );

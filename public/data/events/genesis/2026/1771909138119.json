@@ -62,13 +62,13 @@
             "total": 70,
             "scoreRound": -1,
             "thruScore": -1,
-            "isCountingScore": true
+            "isCountingScore": false
           },
           "round4": {
             "total": 69,
             "scoreRound": -2,
             "thruScore": -3,
-            "isCountingScore": true
+            "isCountingScore": false
           }
         }
       },
@@ -108,37 +108,37 @@
         }
       },
       {
-        "id": "158",
-        "name": "Sergio Garcia",
-        "score": 99,
-        "displayScore": "DNP",
-        "thru": "-",
-        "status": "DNP",
-        "isCut": true,
+        "id": "5054388",
+        "name": "Jacob Bridgeman",
+        "score": -18,
+        "displayScore": "-18",
+        "thru": "F",
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
+            "total": 66,
+            "scoreRound": -5,
+            "thruScore": -5,
+            "isCountingScore": true
           },
           "round2": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
+            "total": 64,
+            "scoreRound": -7,
+            "thruScore": -12,
+            "isCountingScore": true
           },
           "round3": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
+            "total": 64,
+            "scoreRound": -7,
+            "thruScore": -19,
+            "isCountingScore": true
           },
           "round4": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
+            "total": 72,
+            "scoreRound": 1,
+            "thruScore": -18,
+            "isCountingScore": true
           }
         }
       },
@@ -155,13 +155,13 @@
             "total": 76,
             "scoreRound": 5,
             "thruScore": 5,
-            "isCountingScore": true
+            "isCountingScore": false
           },
           "round2": {
             "total": 68,
             "scoreRound": -3,
             "thruScore": 2,
-            "isCountingScore": true
+            "isCountingScore": false
           },
           "round3": {
             "total": null,
@@ -178,37 +178,37 @@
         }
       },
       {
-        "id": "5285",
-        "name": "Byeong Hun An",
-        "score": 99,
-        "displayScore": "DNP",
-        "thru": "-",
-        "status": "DNP",
-        "isCut": true,
+        "id": "5076021",
+        "name": "Ryan Gerard",
+        "score": -6,
+        "displayScore": "-6",
+        "thru": "F",
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
+            "total": 72,
+            "scoreRound": 1,
+            "thruScore": 1,
             "isCountingScore": false
           },
           "round2": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
+            "total": 70,
+            "scoreRound": -1,
+            "thruScore": 0,
             "isCountingScore": false
           },
           "round3": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
+            "total": 69,
+            "scoreRound": -2,
+            "thruScore": -2,
+            "isCountingScore": true
           },
           "round4": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
+            "total": 67,
+            "scoreRound": -4,
+            "thruScore": -6,
+            "isCountingScore": true
           }
         }
       }
@@ -253,24 +253,24 @@
         }
       },
       {
-        "id": "11099",
-        "name": "Joaquín Niemann",
-        "score": 99,
-        "displayScore": "DNP",
-        "thru": "-",
-        "status": "DNP",
+        "id": "6086",
+        "name": "Tom Hoge",
+        "score": 3,
+        "displayScore": "+3",
+        "thru": "CUT",
+        "status": "CUT",
         "isCut": true,
         "scorecard": {
           "round1": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
+            "total": 73,
+            "scoreRound": 2,
+            "thruScore": 2,
             "isCountingScore": false
           },
           "round2": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
+            "total": 72,
+            "scoreRound": 1,
+            "thruScore": 3,
             "isCountingScore": false
           },
           "round3": {
@@ -335,13 +335,13 @@
             "total": 74,
             "scoreRound": 3,
             "thruScore": 3,
-            "isCountingScore": true
+            "isCountingScore": false
           },
           "round2": {
             "total": 71,
             "scoreRound": 0,
             "thruScore": 3,
-            "isCountingScore": true
+            "isCountingScore": false
           },
           "round3": {
             "total": null,
@@ -358,37 +358,37 @@
         }
       },
       {
-        "id": "5579",
-        "name": "Patrick Reed",
-        "score": 99,
-        "displayScore": "DNP",
-        "thru": "-",
-        "status": "DNP",
-        "isCut": true,
+        "id": "6825",
+        "name": "Patrick Rodgers",
+        "score": -5,
+        "displayScore": "-5",
+        "thru": "F",
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
+            "total": 71,
+            "scoreRound": 0,
+            "thruScore": 0,
+            "isCountingScore": true
           },
           "round2": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
+            "total": 69,
+            "scoreRound": -2,
+            "thruScore": -2,
+            "isCountingScore": true
           },
           "round3": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
+            "total": 70,
+            "scoreRound": -1,
+            "thruScore": -3,
+            "isCountingScore": true
           },
           "round4": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
+            "total": 69,
+            "scoreRound": -2,
+            "thruScore": -5,
+            "isCountingScore": true
           }
         }
       },
@@ -430,255 +430,40 @@
     ]
   },
   {
-    "owner": "Brennan",
+    "owner": "Fig",
     "golfers": [
       {
-        "id": "9478",
-        "name": "Scottie Scheffler",
-        "score": -11,
-        "displayScore": "-11",
+        "id": "9843",
+        "name": "Jake Knapp",
+        "score": -13,
+        "displayScore": "-13",
         "thru": "F",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
           "round1": {
-            "total": 74,
-            "scoreRound": 3,
-            "thruScore": 3,
+            "total": 73,
+            "scoreRound": 2,
+            "thruScore": 2,
             "isCountingScore": true
           },
           "round2": {
-            "total": 68,
-            "scoreRound": -3,
-            "thruScore": 0,
-            "isCountingScore": true
-          },
-          "round3": {
-            "total": 66,
-            "scoreRound": -5,
-            "thruScore": -5,
-            "isCountingScore": true
-          },
-          "round4": {
             "total": 65,
             "scoreRound": -6,
-            "thruScore": -11,
-            "isCountingScore": true
-          }
-        }
-      },
-      {
-        "id": "5539",
-        "name": "Tommy Fleetwood",
-        "score": -12,
-        "displayScore": "-12",
-        "thru": "F",
-        "status": "ACTIVE",
-        "isCut": false,
-        "scorecard": {
-          "round1": {
-            "total": 69,
-            "scoreRound": -2,
-            "thruScore": -2,
-            "isCountingScore": true
-          },
-          "round2": {
-            "total": 66,
-            "scoreRound": -5,
-            "thruScore": -7,
+            "thruScore": -4,
             "isCountingScore": true
           },
           "round3": {
-            "total": 70,
-            "scoreRound": -1,
+            "total": 67,
+            "scoreRound": -4,
             "thruScore": -8,
             "isCountingScore": true
           },
           "round4": {
-            "total": 67,
-            "scoreRound": -4,
-            "thruScore": -12,
+            "total": 66,
+            "scoreRound": -5,
+            "thruScore": -13,
             "isCountingScore": true
-          }
-        }
-      },
-      {
-        "id": "11119",
-        "name": "Wyndham Clark",
-        "score": -3,
-        "displayScore": "-3",
-        "thru": "F",
-        "status": "ACTIVE",
-        "isCut": false,
-        "scorecard": {
-          "round1": {
-            "total": 67,
-            "scoreRound": -4,
-            "thruScore": -4,
-            "isCountingScore": true
-          },
-          "round2": {
-            "total": 68,
-            "scoreRound": -3,
-            "thruScore": -7,
-            "isCountingScore": true
-          },
-          "round3": {
-            "total": 72,
-            "scoreRound": 1,
-            "thruScore": -6,
-            "isCountingScore": true
-          },
-          "round4": {
-            "total": 74,
-            "scoreRound": 3,
-            "thruScore": -3,
-            "isCountingScore": true
-          }
-        }
-      },
-      {
-        "id": "308",
-        "name": "Phil Mickelson",
-        "score": 99,
-        "displayScore": "DNP",
-        "thru": "-",
-        "status": "DNP",
-        "isCut": true,
-        "scorecard": {
-          "round1": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
-          },
-          "round2": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
-          },
-          "round3": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
-          },
-          "round4": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
-          }
-        }
-      },
-      {
-        "id": "2230",
-        "name": "Tony Finau",
-        "score": -6,
-        "displayScore": "-6",
-        "thru": "F",
-        "status": "ACTIVE",
-        "isCut": false,
-        "scorecard": {
-          "round1": {
-            "total": 72,
-            "scoreRound": 1,
-            "thruScore": 1,
-            "isCountingScore": true
-          },
-          "round2": {
-            "total": 69,
-            "scoreRound": -2,
-            "thruScore": -1,
-            "isCountingScore": true
-          },
-          "round3": {
-            "total": 68,
-            "scoreRound": -3,
-            "thruScore": -4,
-            "isCountingScore": true
-          },
-          "round4": {
-            "total": 69,
-            "scoreRound": -2,
-            "thruScore": -6,
-            "isCountingScore": true
-          }
-        }
-      },
-      {
-        "id": "10166",
-        "name": "J.J. Spaun",
-        "score": 4,
-        "displayScore": "+4",
-        "thru": "CUT",
-        "status": "CUT",
-        "isCut": true,
-        "scorecard": {
-          "round1": {
-            "total": 74,
-            "scoreRound": 3,
-            "thruScore": 3,
-            "isCountingScore": false
-          },
-          "round2": {
-            "total": 72,
-            "scoreRound": 1,
-            "thruScore": 4,
-            "isCountingScore": false
-          },
-          "round3": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
-          },
-          "round4": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
-          }
-        }
-      }
-    ]
-  },
-  {
-    "owner": "Fig",
-    "golfers": [
-      {
-        "id": "10046",
-        "name": "Bryson DeChambeau",
-        "score": 99,
-        "displayScore": "DNP",
-        "thru": "-",
-        "status": "DNP",
-        "isCut": true,
-        "scorecard": {
-          "round1": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
-          },
-          "round2": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
-          },
-          "round3": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
-          },
-          "round4": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
           }
         }
       },
@@ -718,37 +503,37 @@
         }
       },
       {
-        "id": "9877",
-        "name": "Will Zalatoris",
-        "score": 99,
-        "displayScore": "DNP",
-        "thru": "-",
-        "status": "DNP",
-        "isCut": true,
+        "id": "9478",
+        "name": "Scottie Scheffler",
+        "score": -11,
+        "displayScore": "-11",
+        "thru": "F",
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
+            "total": 74,
+            "scoreRound": 3,
+            "thruScore": 3,
             "isCountingScore": false
           },
           "round2": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
+            "total": 68,
+            "scoreRound": -3,
+            "thruScore": 0,
+            "isCountingScore": true
           },
           "round3": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
+            "total": 66,
+            "scoreRound": -5,
+            "thruScore": -5,
+            "isCountingScore": true
           },
           "round4": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
+            "total": 65,
+            "scoreRound": -6,
+            "thruScore": -11,
+            "isCountingScore": true
           }
         }
       },
@@ -765,13 +550,13 @@
             "total": 73,
             "scoreRound": 2,
             "thruScore": 2,
-            "isCountingScore": true
+            "isCountingScore": false
           },
           "round2": {
             "total": 74,
             "scoreRound": 3,
             "thruScore": 5,
-            "isCountingScore": true
+            "isCountingScore": false
           },
           "round3": {
             "total": null,
@@ -841,19 +626,19 @@
             "total": 70,
             "scoreRound": -1,
             "thruScore": 0,
-            "isCountingScore": true
+            "isCountingScore": false
           },
           "round3": {
             "total": 76,
             "scoreRound": 5,
             "thruScore": 5,
-            "isCountingScore": true
+            "isCountingScore": false
           },
           "round4": {
             "total": 71,
             "scoreRound": 0,
             "thruScore": 5,
-            "isCountingScore": true
+            "isCountingScore": false
           }
         }
       }
@@ -863,37 +648,37 @@
     "owner": "T",
     "golfers": [
       {
-        "id": "9780",
-        "name": "Jon Rahm",
-        "score": 99,
-        "displayScore": "DNP",
-        "thru": "-",
-        "status": "DNP",
-        "isCut": true,
+        "id": "5539",
+        "name": "Tommy Fleetwood",
+        "score": -12,
+        "displayScore": "-12",
+        "thru": "F",
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
+            "total": 69,
+            "scoreRound": -2,
+            "thruScore": -2,
+            "isCountingScore": true
           },
           "round2": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
+            "total": 66,
+            "scoreRound": -5,
+            "thruScore": -7,
+            "isCountingScore": true
           },
           "round3": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
+            "total": 70,
+            "scoreRound": -1,
+            "thruScore": -8,
+            "isCountingScore": true
           },
           "round4": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
+            "total": 67,
+            "scoreRound": -4,
+            "thruScore": -12,
+            "isCountingScore": true
           }
         }
       },
@@ -933,8 +718,8 @@
         }
       },
       {
-        "id": "5553",
-        "name": "Tyrrell Hatton",
+        "id": "5391",
+        "name": "Ryan Fox",
         "score": 99,
         "displayScore": "DNP",
         "thru": "-",
@@ -1328,8 +1113,8 @@
         }
       },
       {
-        "id": "6798",
-        "name": "Brooks Koepka",
+        "id": "9905",
+        "name": "Jake Knapp",
         "score": 99,
         "displayScore": "DNP",
         "thru": "-",
@@ -1398,8 +1183,8 @@
         }
       },
       {
-        "id": "3448",
-        "name": "Dustin Johnson",
+        "id": "4397223",
+        "name": "Sam Stevens",
         "score": 99,
         "displayScore": "DNP",
         "thru": "-",
@@ -1508,37 +1293,37 @@
     "owner": "Burg",
     "golfers": [
       {
-        "id": "9131",
-        "name": "Cameron Smith",
-        "score": 99,
-        "displayScore": "DNP",
-        "thru": "-",
-        "status": "DNP",
-        "isCut": true,
+        "id": "11119",
+        "name": "Wyndham Clark",
+        "score": -3,
+        "displayScore": "-3",
+        "thru": "F",
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
+            "total": 67,
+            "scoreRound": -4,
+            "thruScore": -4,
+            "isCountingScore": true
           },
           "round2": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
+            "total": 68,
+            "scoreRound": -3,
+            "thruScore": -7,
+            "isCountingScore": true
           },
           "round3": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
+            "total": 72,
+            "scoreRound": 1,
+            "thruScore": -6,
+            "isCountingScore": true
           },
           "round4": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
+            "total": 74,
+            "scoreRound": 3,
+            "thruScore": -3,
+            "isCountingScore": true
           }
         }
       },
@@ -1648,37 +1433,37 @@
         }
       },
       {
-        "id": "6113",
+        "id": "7081",
         "name": "Si Woo Kim",
-        "score": 99,
-        "displayScore": "DNP",
-        "thru": "-",
-        "status": "DNP",
-        "isCut": true,
+        "score": -5,
+        "displayScore": "-5",
+        "thru": "F",
+        "status": "ACTIVE",
+        "isCut": false,
         "scorecard": {
           "round1": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
+            "total": 68,
+            "scoreRound": -3,
+            "thruScore": -3,
+            "isCountingScore": true
           },
           "round2": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
+            "total": 72,
+            "scoreRound": 1,
+            "thruScore": -2,
+            "isCountingScore": true
           },
           "round3": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
+            "total": 70,
+            "scoreRound": -1,
+            "thruScore": -3,
+            "isCountingScore": true
           },
           "round4": {
-            "total": null,
-            "scoreRound": null,
-            "thruScore": null,
-            "isCountingScore": false
+            "total": 69,
+            "scoreRound": -2,
+            "thruScore": -5,
+            "isCountingScore": true
           }
         }
       },

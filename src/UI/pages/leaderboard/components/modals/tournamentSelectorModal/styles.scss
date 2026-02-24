@@ -1,0 +1,48 @@
+@use '../modal-base' as *;
+
+@include modal-structure;
+
+.modal-content {
+    p {
+        line-height: 1.5;
+        font-size: 1rem;
+        margin-bottom: 25px;
+        color: var(--green);
+    }
+
+    .modal-selector-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: 30px;
+
+        .selector-group {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+
+            label {
+                font-family: "Tiempo", sans-serif;
+                font-size: 1rem;
+                color: var(--green);
+            }
+
+            select {
+                background-color: var(--scoreboard-BG-row--hover);
+                color: var(--green);
+                border: 1px solid var(--green);
+                border-radius: 4px;
+                padding: 10px;
+                font-family: "Work Sans", sans-serif;
+                font-weight: 600;
+                font-size: 1rem;
+                cursor: pointer;
+                outline: none;
+
+                &:focus {
+                    background-color: var(--scoreboard-BG-row-favorite--hover);
+                }
+            }
+        }
+    }
+}

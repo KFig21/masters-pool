@@ -9,14 +9,29 @@ import './styles.scss';
 export const Team = () => {
   const { owner } = useParams();
   const { favoriteTeam, toggleFavorite } = useFavoriteTeam();
-  const { getTeamByOwner } = useScores();
+  const { getTeamByOwner, isLoading } = useScores();
+
+  if (isLoading) {
+    return (
+      <div className="team-wrapper">
+        <div style={{ padding: '4rem', textAlign: 'center', color: 'white' }}>
+          Loading team data...
+        </div>
+      </div>
+    );
+  }
 
   const teamInfo = owner ? getTeamByOwner(owner) : undefined;
-  console.log('teamInfo', teamInfo); // teamInfo.stats.isTeamCut is where you know if they are cut. possibly move this out of stats and into the team root
 
   if (!owner || !teamInfo) {
-    return <div className="team-wrapper">Team not found</div>;
+    return (
+      <div className="team-wrapper">
+        <div style={{ padding: '4rem', textAlign: 'center', color: 'white' }}>Team not found</div>
+      </div>
+    );
   }
+
+  console.log('teamInfo', teamInfo); // teamInfo.stats.isTeamCut is where you know if they are cut. possibly move this out of stats and into the team root
 
   const isFavorite = favoriteTeam === owner;
   // const { rank } = teamInfo;

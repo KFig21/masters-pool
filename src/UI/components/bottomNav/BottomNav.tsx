@@ -1,10 +1,11 @@
 import { Link, useLocation } from 'react-router-dom';
-import { TEAMS } from '../../../data/teams';
 import { useFavoriteTeam } from '../../../hooks/useFavoriteTeam'; // Import hook
 import './styles.scss';
+import { useScores } from '../../../context/ScoreContext';
 
 export const BottomNav = () => {
   const location = useLocation();
+  const { teams } = useScores();
   const { favoriteTeam } = useFavoriteTeam(); // Get current favorite
 
   const isActive = (path: string) => {
@@ -20,7 +21,7 @@ export const BottomNav = () => {
           <div className="team-name">Leaderboard</div>
         </Link>
 
-        {TEAMS.map((team) => {
+        {teams.map((team) => {
           const isFav = favoriteTeam === team.owner;
 
           return (
