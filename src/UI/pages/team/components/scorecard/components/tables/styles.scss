@@ -78,6 +78,24 @@
                         position: relative; // Anchor the line to the text
                         display: inline-block;
 
+                        &.desktop-label {
+                            display: inline-block;
+                        }
+
+                        &.mobile-label {
+                            display: none;
+                        }
+
+                        @include mobile {
+                            &.desktop-label {
+                                display: none;
+                            }
+
+                            &.mobile-label {
+                                display: inline-block;
+                            }
+                        }
+
                         &::after {
                             content: '';
                             position: absolute;

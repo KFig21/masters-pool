@@ -48,7 +48,15 @@ export const ThruTable = ({ golfers, stats }: Props) => {
               className={`scorecard-table-row ${rowClass} ${isCutoff ? 'cutoff-border' : ''} ${golfer.isCut ? 'is-cut' : ''}`}
             >
               <div className="scorecard-table-cell name-cell">
-                <span className="golfer-name">{golfer.name}</span>
+                {/* Desktop Name */}
+                <span className="golfer-name desktop-label">{golfer.name}</span>
+
+                {/* Mobile Name (First Initial + Last Name) */}
+                <span className="golfer-name mobile-label">
+                  {golfer.name.split(' ').length > 1
+                    ? `${golfer.name.split(' ')[0][0]}. ${golfer.name.split(' ').slice(1).join(' ')}`
+                    : golfer.name}
+                </span>
                 {/* Drop the badge right next to the name */}
                 <ThruBadge
                   thru={golfer.thru}
