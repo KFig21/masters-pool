@@ -1,0 +1,56 @@
+@use '../../../../styles/colors' as *;
+@use '../../../../styles/index' as *;
+
+.no-data-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    .no-data-content {
+        padding: 2rem;
+        margin: 40px 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: "tiempo", serif;
+        font-weight: 500;
+
+        .no-data-image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+
+            .no-data-image {
+                height: inherit;
+                width: inherit;
+            }
+        }
+
+
+        .no-data-text {
+            font-family: "tiempo", serif;
+            padding-top: 10px;
+            color: var(--green);
+            font-size: 1.75rem;
+            margin: 0;
+
+            @include mobile {
+                font-size: 1.5rem;
+            }
+        }
+
+        .no-data-subtext {
+            font-family: serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--green);
+            padding-top: 8px;
+            font-style: italic;
+            // font-family: "tiempo", serif;
+        }
+    }
+
+}

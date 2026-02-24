@@ -28,7 +28,8 @@ export type ParByHole = Record<HoleNumber, number>;
 export type EventYearInfo = {
   id: number;
   teams: Team[] | null;
-  // TODO: Add Team type
+  rosterSize: number;
+  cutLine: number;
 };
 
 export type EventYears = Record<number, EventYearInfo>;

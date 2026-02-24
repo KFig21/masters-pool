@@ -35,5 +35,5 @@ export interface Team {
   totalScore?: number;
   displayScore?: string;
   golferData?: Golfer[];
-  isDisqualified?: boolean;
+  isDisqualified?: boolean; // TODO: Find a way to make use of this
 }

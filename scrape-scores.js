@@ -21,6 +21,7 @@ function parseRelScore(scoreStr) {
 // Define your current context
 const EVENT_NAME = EVENT_MATRIX[CURRENT_EVENT].id;
 const TEAMS = EVENT_MATRIX[CURRENT_EVENT].years[CURRENT_YEAR].teams;
+const CUT_LINE = EVENT_MATRIX[CURRENT_EVENT].years[CURRENT_YEAR].cutLine;
 
 // Path to the public directory where React can fetch the files
 const DATA_DIR = path.join(
@@ -234,7 +235,7 @@ function compileTeamData(leaderboardPlayers) {
       };
     });
 
-    // Calculate the top 4 based on THRU score
+    // Calculate the top 'X' (CUT_LINE) based on THRU score
     [1, 2, 3, 4].forEach((roundNum) => {
       const roundKey = `round${roundNum}`;
 
@@ -249,13 +250,13 @@ function compileTeamData(leaderboardPlayers) {
       // 2. Sort ascending (lowest cumulative score is best)
       scoredGolfers.sort((a, b) => a.score - b.score);
 
-      // 3. Grab the IDs of the top 4
-      const top4Ids = new Set(scoredGolfers.slice(0, 4).map((g) => g.id));
+      // 3. Grab the IDs of the top 'X'
+      const topXScoreIds = new Set(scoredGolfers.slice(0, CUT_LINE).map((g) => g.id));
 
-      // 4. Mark the scorecard for those top 4
+      // 4. Mark the scorecard for those top 'X'
       processedGolfers.forEach((g) => {
         if (g.scorecard[roundKey]) {
-          g.scorecard[roundKey].isCountingScore = top4Ids.has(g.id);
+          g.scorecard[roundKey].isCountingScore = topXScoreIds.has(g.id);
         }
       });
     });

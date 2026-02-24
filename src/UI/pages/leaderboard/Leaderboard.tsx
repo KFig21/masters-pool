@@ -8,6 +8,7 @@ import { ScoringModal } from './components/modals/scoringModal/ScoringModal';
 import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 import './styles.scss';
 import { TournamentSelectorModal } from './components/modals/tournamentSelectorModal/TournamentSelectorModal';
+import { NoData } from './components/noData/NoData';
 
 export interface ScoreboardTeamData {
   rank: number;
@@ -81,9 +82,7 @@ export const Leaderboard = () => {
                 Loading scores...
               </div>
             ) : teams.length === 0 ? (
-              <div style={{ padding: '2rem', textAlign: 'center', fontFamily: 'Work Sans' }}>
-                No teams found for {currentYear} {eventName}.
-              </div>
+              <NoData />
             ) : (
               teams.map((team) => {
                 const { sumR1, sumR2, sumR3, sumR4, activeTotal, isTeamCut } = team.stats;

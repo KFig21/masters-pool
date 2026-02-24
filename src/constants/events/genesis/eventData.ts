@@ -31,6 +31,8 @@ export const genesisEventData: EventConfig = {
     2026: {
       id: 401811933,
       teams: teams_genesis_2026,
+      rosterSize: 6,
+      cutLine: 4,
     },
   },
   Rounds: [1, 2, 3, 4],

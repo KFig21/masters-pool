@@ -1,6 +1,6 @@
 import type { Team } from '../../../../types/team';
 
-export const teams_masters_2025: Team[] = [
+export const teams_masters_2021: Team[] = [
   {
     owner: 'Andy',
     golfers: [
@@ -46,7 +46,7 @@ export const teams_masters_2025: Team[] = [
     ],
   },
   {
-    owner: 'Barrett',
+    owner: 'T',
     golfers: [
       { name: 'Jon Rahm', id: '9780' },
       { name: 'Patrick Cantlay', id: '6007' },

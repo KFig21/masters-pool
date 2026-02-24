@@ -9,6 +9,7 @@ import {
 } from '../../utils/formatters';
 import './styles.scss';
 import { ThruBadge } from '../../../../../../components/thruBadge/ThruBadge';
+import { CURRENT_EVENT, CURRENT_YEAR, EVENT_MATRIX } from '../../../../../../../constants';
 
 interface Props {
   golfers: Golfer[];
@@ -40,9 +41,10 @@ export const ThruTable = ({ golfers, stats }: Props) => {
         </div>
 
         {golfers.map((golfer, index) => {
-          const isCutoff = index === 3;
-          const isTopFour = index < 4;
-          const rowClass = isTopFour ? 'top-scorers' : 'not-top-scorers';
+          const CUT_LINE = EVENT_MATRIX[CURRENT_EVENT].years[CURRENT_YEAR].cutLine;
+          const isCutoff = index === CUT_LINE - 1;
+          const isTopX = index < CUT_LINE;
+          const rowClass = isTopX ? 'top-scorers' : 'not-top-scorers';
 
           return (
             <div
