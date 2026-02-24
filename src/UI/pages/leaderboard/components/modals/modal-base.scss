@@ -26,6 +26,10 @@
         border-top: 6px solid var(--green);
         color: #333;
 
+        @include mobile {
+            margin-bottom: 60px;
+        }
+
         .modal-title {
             margin-top: 0;
             color: var(--green);
