@@ -5,9 +5,9 @@
       {
         "id": "4375972",
         "name": "Ludvig Åberg",
-        "score": -9,
-        "displayScore": "-9",
-        "thru": "F",
+        "score": -4,
+        "displayScore": "-4",
+        "thru": "Thru 17",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -30,7 +30,7 @@
             "isCountingScore": true
           },
           "round4": {
-            "total": 66,
+            "total": 62,
             "scoreRound": -5,
             "thruScore": -9,
             "isCountingScore": true
@@ -42,7 +42,7 @@
         "name": "Viktor Hovland",
         "score": -3,
         "displayScore": "-3",
-        "thru": "F",
+        "thru": "2:30pm",
         "status": "ACTIVE",
         "isCut": false,
         "scorecard": {
@@ -62,12 +62,6 @@
             "total": 70,
             "scoreRound": -1,
             "thruScore": -1,
-            "isCountingScore": false
-          },
-          "round4": {
-            "total": 69,
-            "scoreRound": -2,
-            "thruScore": -3,
             "isCountingScore": false
           }
         }

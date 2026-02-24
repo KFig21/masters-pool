@@ -8,6 +8,7 @@ import {
   getTeamClass,
 } from '../../utils/formatters';
 import './styles.scss';
+import { ThruBadge } from '../../../../../../components/thruBadge/ThruBadge';
 
 interface Props {
   golfers: Golfer[];
@@ -48,6 +49,13 @@ export const ThruTable = ({ golfers, stats }: Props) => {
             >
               <div className="scorecard-table-cell name-cell">
                 <span className="golfer-name">{golfer.name}</span>
+                {/* Drop the badge right next to the name */}
+                <ThruBadge
+                  thru={golfer.thru}
+                  isCut={golfer.isCut}
+                  status={golfer.status}
+                  // isTournamentComplete={/* Add your logic here if you have it in ScoreContext */}
+                />
               </div>
 
               {/* UPDATED: Added isCounting logic and class to the cell */}

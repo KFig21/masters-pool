@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { ROUNDS } from '../../../../../../../constants/golf';
 import { getScoreClass, formatTeamValue, getTeamClass } from '../../utils/formatters';
 import './styles.scss';
+import { ThruBadge } from '../../../../../../components/thruBadge/ThruBadge';
 
 interface Props {
   golfers: Golfer[];
@@ -103,6 +104,13 @@ export const RoundTable = ({ golfers, stats }: Props) => {
               {/* Golfer Name */}
               <div className="scorecard-table-cell name-cell">
                 <span className="golfer-name">{golfer.name}</span>
+                {/* Drop the badge right next to the name */}
+                <ThruBadge
+                  thru={golfer.thru}
+                  isCut={golfer.isCut}
+                  status={golfer.status}
+                  // isTournamentComplete={/* Add your logic here if you have it in ScoreContext */}
+                />
               </div>
 
               {/* Round Columns */}

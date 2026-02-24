@@ -51,7 +51,7 @@
             display: grid;
             $round-width: 65px;
             // Name | R1 | R2 | R3 | R4 | End
-            grid-template-columns: 225px repeat(4, $round-width) 80px;
+            grid-template-columns: 240px repeat(4, $round-width) 80px;
             border-top: 1px solid $table-color;
 
             // 2. FORCE WIDTH SO IT DOESN'T CRUNCH
