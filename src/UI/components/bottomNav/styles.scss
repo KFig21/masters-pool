@@ -17,6 +17,8 @@ $tab-min-width: 100px;
         display: none; // Completely hide on mobile
     }
 
+    @include no-landscape-logic; // Hides the leaderboard/team pages in landscape
+
     .bottomNav-scroll-container {
         display: flex;
         align-items: center;

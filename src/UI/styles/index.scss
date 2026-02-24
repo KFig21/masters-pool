@@ -10,6 +10,12 @@
     }
 }
 
+@mixin no-landscape-logic {
+    @media (orientation: landscape) and (max-height: 500px) {
+        display: none !important;
+    }
+}
+
 // SCSS Variables for layout defaults
 $grid-padding-height: 5px;
 $grid-name-margin: 15px;
@@ -74,6 +80,8 @@ body {
         min-height: 100%;
         align-items: flex-start;
     }
+
+    @include no-landscape-logic; // Hides the leaderboard/team pages in landscape
 }
 
 // Global animations...
