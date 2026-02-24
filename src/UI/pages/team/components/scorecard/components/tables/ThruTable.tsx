@@ -71,7 +71,7 @@ export const ThruTable = ({ golfers, stats }: Props) => {
               <div
                 className={`scorecard-table-cell end-col ${getScoreClass(golfer.score, golfer.isCut)}`}
               >
-                {golfer.isCut ? 'CUT' : golfer.displayScore}
+                {golfer.status !== 'ACTIVE' ? golfer.status : golfer.displayScore}
               </div>
             </div>
           );
