@@ -10,4 +10,4 @@ export const EVENT_MATRIX: EventMatrix = {
 
 // VERY IMPORTANT: KEEP THESE UPDATED
 export const CURRENT_EVENT = eventsEnum.MASTERS;
-export const CURRENT_YEAR = 2023;
+export const CURRENT_YEAR = 2025;
