@@ -19,7 +19,7 @@ export interface ProcessedTeam extends Omit<Team, 'golfers'> {
   rank: number;
 }
 
-// 1. UPDATE THE TYPE DEFINITION
+// 1. TYPE DEFINITION
 interface ScoreContextType {
   teams: ProcessedTeam[];
   getTeamByOwner: (ownerName: string) => ProcessedTeam | undefined;
@@ -28,6 +28,7 @@ interface ScoreContextType {
   setCurrentEvent: (event: string) => void;
   setCurrentYear: (year: number) => void;
   isLoading: boolean;
+  isTournamentComplete: boolean;
 }
 
 const ScoreContext = createContext<ScoreContextType | undefined>(undefined);
@@ -48,16 +49,12 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
       try {
         // Dynamically build the URL based on context state
         const response = await fetch(`/data/events/${currentEvent}/${currentYear}/latest.json`);
-
-        if (!response.ok) {
-          throw new Error(`Data not found for ${currentEvent} ${currentYear}`);
-        }
-
+        if (!response.ok) throw new Error(`Data not found for ${currentEvent} ${currentYear}`);
         const data = await response.json();
         if (isMounted) setRawTeams(data);
       } catch (error) {
         console.error('Failed to fetch latest scores', error);
-        if (isMounted) setRawTeams([]); // Fallback to an empty array so the app doesn't crash
+        if (isMounted) setRawTeams([]);
       } finally {
         if (isMounted) setIsLoading(false);
       }
@@ -73,12 +70,15 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
       isMounted = false;
       clearInterval(intervalId);
     };
-  }, [currentEvent, currentYear]); // Re-run this effect whenever event or year changes!
+  }, [currentEvent, currentYear]);
 
-  const processedData = useMemo(() => {
-    // If we haven't fetched data yet, return an empty array
-    if (!rawTeams || rawTeams.length === 0) return [];
+  // Combined Memo for Processing Data and Completion State
+  const { teams, isTournamentComplete } = useMemo(() => {
+    if (!rawTeams || rawTeams.length === 0) {
+      return { teams: [], isTournamentComplete: false };
+    }
 
+    // --- Helper for Calculations ---
     const getBest4Sum = (
       golfers: Golfer[],
       roundKey: 'round1' | 'round2' | 'round3' | 'round4',
@@ -92,11 +92,17 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
       return scores.slice(0, 4).reduce((acc, curr) => acc + curr, 0);
     };
 
+    // --- Completion Logic ---
+    // A tournament is done if Round 4 has started and all active golfers are finished ('F')
+    const allGolfers = rawTeams.flatMap((t) => t.golfers as Golfer[]);
+    const activeGolfers = allGolfers.filter((g) => !g.isCut);
+    const hasR4Started = activeGolfers.some((g) => g.scorecard?.round4);
+    const allActiveFinished = activeGolfers.every((g) => g.thru === 'F');
+    const isComplete = hasR4Started && allActiveFinished;
+
     // --- STEP 1: Process Raw Data ---
-    // Make sure we iterate over rawTeams instead of the hardcoded compiledTeams
     const teamsWithStats = rawTeams.map((team) => {
       const golfers = team.golfers as Golfer[];
-
       const sumR1 = getBest4Sum(golfers, 'round1');
       const sumR2 = getBest4Sum(golfers, 'round2');
       const sumR3 = getBest4Sum(golfers, 'round3');
@@ -106,7 +112,6 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
       const isTeamCut = activeGolfersCount < 4;
 
       let activeTotal: number | string = 0;
-
       if (isTeamCut) {
         activeTotal = 'CUT';
       } else {
@@ -137,26 +142,29 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
     });
 
     // --- STEP 3: Assign Ranks ---
-    return sorted.map((team, index) => ({
+    const processedTeams = sorted.map((team, index) => ({
       ...team,
       rank: index + 1,
     })) as ProcessedTeam[];
-  }, [rawTeams]); // Recalculate whenever rawTeams updates
+
+    return { teams: processedTeams, isTournamentComplete: isComplete };
+  }, [rawTeams]);
 
   const getTeamByOwner = (ownerName: string) => {
-    return processedData.find((t) => t.owner.toLowerCase() === ownerName.toLowerCase());
+    return teams.find((t) => t.owner.toLowerCase() === ownerName.toLowerCase());
   };
 
   return (
     <ScoreContext.Provider
       value={{
-        teams: processedData,
+        teams,
         getTeamByOwner,
         currentEvent,
         currentYear,
         setCurrentEvent,
         setCurrentYear,
         isLoading,
+        isTournamentComplete,
       }}
     >
       {children}

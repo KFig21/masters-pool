@@ -23,9 +23,9 @@ export const Scorecard = ({ team }: Props) => {
 
   return (
     <div className="scorecard-wrapper">
-      <RoundTable golfers={sortedGolfers} stats={team.stats} />
-      <div className="spacer-row" />
       <ThruTable golfers={sortedGolfers} stats={team.stats} />
+      <div className="spacer-row" />
+      <RoundTable golfers={sortedGolfers} stats={team.stats} />
     </div>
   );
 };

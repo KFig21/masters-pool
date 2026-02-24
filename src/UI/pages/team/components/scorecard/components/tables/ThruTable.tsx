@@ -1,5 +1,5 @@
 import type { Golfer } from '../../../../../../../types/team';
-import type { TeamStats } from '../../../../../../../context/ScoreContext';
+import { useScores, type TeamStats } from '../../../../../../../context/ScoreContext';
 import { ROUNDS } from '../../../../../../../constants/golf';
 import {
   getScoreClass,
@@ -16,6 +16,8 @@ interface Props {
 }
 
 export const ThruTable = ({ golfers, stats }: Props) => {
+  const { isTournamentComplete } = useScores();
+
   return (
     <div className="scorecard-section-container">
       <div className="scorecard-controls">
@@ -62,7 +64,7 @@ export const ThruTable = ({ golfers, stats }: Props) => {
                   thru={golfer.thru}
                   isCut={golfer.isCut}
                   status={golfer.status}
-                  // isTournamentComplete={/* Add your logic here if you have it in ScoreContext */}
+                  isTournamentComplete={isTournamentComplete}
                 />
               </div>
 

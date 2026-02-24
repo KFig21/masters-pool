@@ -1,5 +1,5 @@
 import type { Golfer } from '../../../../../../../types/team';
-import type { TeamStats } from '../../../../../../../context/ScoreContext';
+import { useScores, type TeamStats } from '../../../../../../../context/ScoreContext';
 import { useState } from 'react';
 import { ROUNDS } from '../../../../../../../constants/golf';
 import { getScoreClass, formatTeamValue, getTeamClass } from '../../utils/formatters';
@@ -15,6 +15,7 @@ export type ViewMode = 'relative' | 'strokes';
 
 export const RoundTable = ({ golfers, stats }: Props) => {
   const [viewMode, setViewMode] = useState<ViewMode>('relative');
+  const { isTournamentComplete } = useScores();
 
   // Formatting Helper specific to RoundTable's view modes
   const getCellData = (golfer: Golfer, round: number) => {
@@ -117,7 +118,7 @@ export const RoundTable = ({ golfers, stats }: Props) => {
                   thru={golfer.thru}
                   isCut={golfer.isCut}
                   status={golfer.status}
-                  // isTournamentComplete={/* Add your logic here if you have it in ScoreContext */}
+                  isTournamentComplete={isTournamentComplete}
                 />
               </div>
 
