@@ -1,15 +1,21 @@
 import './styles.scss';
 import Hazard from '../../../../../assets/images/hazard.png';
 
-export const NoData = () => {
+interface Props {
+  handleModal: () => void;
+}
+
+export const NoData = ({ handleModal }: Props) => {
   return (
     <div className="no-data-wrapper">
-      <div className="no-data-content">
+      <div className="no-data-content" onClick={() => handleModal()}>
         <div className="no-data-image-container">
           <img src={Hazard} alt="No Data Available" className="no-data-image" />
         </div>
-        <span className="no-data-text">No Team Data Available</span>
-        <span className="no-data-subtext">come back soon!</span>
+        <span className="no-data-text">No team data available</span>
+        <div className="no-data-subtext-container">
+          <span className="no-data-subtext">click here to choose another pool!</span>
+        </div>
       </div>
     </div>
   );

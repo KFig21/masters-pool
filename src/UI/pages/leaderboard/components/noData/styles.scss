@@ -16,6 +16,7 @@
         justify-content: center;
         font-family: "tiempo", serif;
         font-weight: 500;
+        cursor: pointer;
 
         .no-data-image-container {
             display: flex;
@@ -42,14 +43,16 @@
             }
         }
 
-        .no-data-subtext {
-            font-family: serif;
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--green);
-            padding-top: 8px;
-            font-style: italic;
-            // font-family: "tiempo", serif;
+        .no-data-subtext-container {
+
+            .no-data-subtext {
+                padding-top: 8px;
+                font-family: 'Garamond', serif;
+                font-size: 1.1rem;
+                font-weight: 600;
+                color: var(--green);
+                font-style: italic;
+            }
         }
     }
 

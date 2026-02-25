@@ -9,6 +9,7 @@ import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 import './styles.scss';
 import { TournamentSelectorModal } from './components/modals/tournamentSelectorModal/TournamentSelectorModal';
 import { NoData } from './components/noData/NoData';
+import { Loading } from '../../components/loading/Loading';
 
 export interface ScoreboardTeamData {
   rank: number;
@@ -46,82 +47,85 @@ export const Leaderboard = () => {
 
   return (
     <>
-      <div className="leaderboard-wrapper fade-in-up">
-        <div className="leaderboard-arch"></div>
-        <div className="leaderboard-container">
-          <div className="leaderboard-title-container">
-            <div className="logo-container">
-              <img src={Logo} alt={`${eventName} Pool Logo`} />
-            </div>
-            <div className="leaderboard-header-title">
-              {/* Dynamic Year and Event Name */}
-              <div className="header-title-year">{currentYear}</div>
-              <div className="header-title-text">{eventName} Pool</div>
-            </div>
-          </div>
-
-          <div className="leaderboard-table-header">
-            <div className="cell pos">POS</div>
-            <div className="cell name">TEAM</div>
-            <div className="cell round">R1</div>
-            <div className="cell round">R2</div>
-            <div className="cell round">R3</div>
-            <div className="cell round">R4</div>
-            <div className="cell total" onClick={() => handleScoringModal()}>
-              SCORE
-              <button className="info-icon" onClick={() => handleScoringModal()}>
-                i
-              </button>
-            </div>
-          </div>
-
-          <div className="leaderboard-teams">
-            {/* Added Loading and Empty State handling */}
-            {isLoading ? (
-              <div style={{ padding: '2rem', textAlign: 'center', fontFamily: 'Work Sans' }}>
-                Loading scores...
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <div className="leaderboard-wrapper fade-in-up">
+          <div className="leaderboard-arch"></div>
+          <div className="leaderboard-container">
+            <div className="leaderboard-title-container">
+              <div className="logo-container">
+                <img src={Logo} alt={`${eventName} Pool Logo`} />
               </div>
-            ) : teams.length === 0 ? (
-              <NoData />
-            ) : (
-              teams.map((team) => {
-                const { sumR1, sumR2, sumR3, sumR4, activeTotal, isTeamCut } = team.stats;
+              <div className="leaderboard-header-title">
+                {/* Dynamic Year and Event Name */}
+                <div className="header-title-year">{currentYear}</div>
+                <div className="header-title-text">{eventName} Pool</div>
+              </div>
+            </div>
 
-                const r1Display = sumR1;
-                const r2Display =
-                  sumR2 !== Infinity && sumR1 !== Infinity ? sumR2 - sumR1 : Infinity;
-                const r3Display =
-                  sumR3 !== Infinity && sumR2 !== Infinity ? sumR3 - sumR2 : Infinity;
-                const r4Display =
-                  sumR4 !== Infinity && sumR3 !== Infinity ? sumR4 - sumR3 : Infinity;
+            <div className="leaderboard-table-header">
+              <div className="cell pos">POS</div>
+              <div className="cell name">TEAM</div>
+              <div className="cell round">R1</div>
+              <div className="cell round">R2</div>
+              <div className="cell round">R3</div>
+              <div className="cell round">R4</div>
+              <div className="cell total" onClick={() => handleScoringModal()}>
+                SCORE
+                <button className="info-icon" onClick={() => handleScoringModal()}>
+                  i
+                </button>
+              </div>
+            </div>
 
-                const propData: ScoreboardTeamData = {
-                  rank: team.rank,
-                  owner: team.owner,
-                  r1: formatDiff(r1Display),
-                  r2: formatDiff(r2Display),
-                  r3: formatDiff(r3Display),
-                  r4: formatDiff(r4Display),
-                  totalScore: activeTotal === 999 ? 'E' : activeTotal,
-                  isFavorite: favoriteTeam === team.owner,
-                  isCut: isTeamCut,
-                };
+            <div className="leaderboard-teams">
+              {/* Added Loading and Empty State handling */}
+              {isLoading ? (
+                <div style={{ padding: '2rem', textAlign: 'center', fontFamily: 'Work Sans' }}>
+                  Loading scores...
+                </div>
+              ) : teams.length === 0 ? (
+                <NoData handleModal={handleTournamentSelectorModal} />
+              ) : (
+                teams.map((team) => {
+                  const { sumR1, sumR2, sumR3, sumR4, activeTotal, isTeamCut } = team.stats;
 
-                return <TeamRow key={team.owner} data={propData} />;
-              })
-            )}
+                  const r1Display = sumR1;
+                  const r2Display =
+                    sumR2 !== Infinity && sumR1 !== Infinity ? sumR2 - sumR1 : Infinity;
+                  const r3Display =
+                    sumR3 !== Infinity && sumR2 !== Infinity ? sumR3 - sumR2 : Infinity;
+                  const r4Display =
+                    sumR4 !== Infinity && sumR3 !== Infinity ? sumR4 - sumR3 : Infinity;
+
+                  const propData: ScoreboardTeamData = {
+                    rank: team.rank,
+                    owner: team.owner,
+                    r1: formatDiff(r1Display),
+                    r2: formatDiff(r2Display),
+                    r3: formatDiff(r3Display),
+                    r4: formatDiff(r4Display),
+                    totalScore: activeTotal === 999 ? 'E' : activeTotal,
+                    isFavorite: favoriteTeam === team.owner,
+                    isCut: isTeamCut,
+                  };
+
+                  return <TeamRow key={team.owner} data={propData} />;
+                })
+              )}
+            </div>
+          </div>
+          <div className="leaderboard-footer">
+            <div
+              className="tournament-selector-icon-container"
+              onClick={() => handleTournamentSelectorModal()}
+            >
+              <ManageSearchIcon className="tournament-selector-icon" />
+            </div>
           </div>
         </div>
-        <div className="leaderboard-footer">
-          <div
-            className="tournament-selector-icon-container"
-            onClick={() => handleTournamentSelectorModal()}
-          >
-            <ManageSearchIcon className="tournament-selector-icon" />
-          </div>
-        </div>
-      </div>
-
+      )}
       {isScoringModalOpen && <ScoringModal handleModal={handleScoringModal} />}
       {isTournamentSelectorModalOpen && (
         <TournamentSelectorModal handleModal={handleTournamentSelectorModal} />

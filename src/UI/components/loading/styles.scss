@@ -1,0 +1,53 @@
+@use '../../styles/colors' as *;
+@use '../../styles/index' as *;
+
+.loading-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+
+    .loading-content {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+
+        .loading-text {
+            color: var(--yellow);
+            font-family: "Masters", serif;
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: 2px;
+            filter: drop-shadow(0 0 20px var(--darkGreen));
+            display: flex;
+
+            span {
+                display: inline-block;
+                /* Increased duration to 3.5s to accommodate the move + pause */
+                animation: wave-pause-animation 3.0s infinite ease-in-out;
+            }
+        }
+    }
+}
+
+@keyframes wave-pause-animation {
+
+    /* 0% to 30% handles the wave movement */
+    0% {
+        transform: translateY(0);
+    }
+
+    15% {
+        transform: translateY(-20px);
+    }
+
+    30% {
+        transform: translateY(0);
+    }
+
+    /* 30% to 100% is the 'Pause' at the end */
+    100% {
+        transform: translateY(0);
+    }
+}
