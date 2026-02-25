@@ -46,12 +46,27 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
     setIsLoading(true);
 
     const fetchScores = async () => {
+      // Only show the long loader on the initial load
+      // If you want it every time they switch events, keep setIsLoading(true) above
+
       try {
-        // Dynamically build the URL based on context state
-        const response = await fetch(`/data/events/${currentEvent}/${currentYear}/latest.json`);
-        if (!response.ok) throw new Error(`Data not found for ${currentEvent} ${currentYear}`);
-        const data = await response.json();
-        if (isMounted) setRawTeams(data);
+        // 1. Create a promise that resolves after 1 second
+        const minWaitTimer = new Promise((resolve) => setTimeout(resolve, 2000));
+
+        // 2. Create the data fetch promise
+        const fetchData = (async () => {
+          const response = await fetch(`/data/events/${currentEvent}/${currentYear}/latest.json`);
+          if (!response.ok) throw new Error(`Data not found for ${currentEvent} ${currentYear}`);
+          return await response.json();
+        })();
+
+        // 3. Wait for BOTH to finish
+        // This ensures even if the JSON loads in 100ms, we wait at least 2000ms
+        const [data] = await Promise.all([fetchData, minWaitTimer]);
+
+        if (isMounted) {
+          setRawTeams(data);
+        }
       } catch (error) {
         console.error('Failed to fetch latest scores', error);
         if (isMounted) setRawTeams([]);
