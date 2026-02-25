@@ -49,8 +49,9 @@
 
     // Style for when they finish their round for the day ("F")
     &.finished {
-        background-color: var(--white);
-        color: var(--green);
-        border-radius: 100px;
+        display: none;
+        // background-color: var(--white);
+        // color: var(--green);
+        // border-radius: 100px;
     }
 }
