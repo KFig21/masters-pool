@@ -5,6 +5,7 @@ import { Scorecard } from './components/scorecard/Scorecard';
 import Logo from '../../../assets/images/logo.png';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import './styles.scss';
+import { Loading } from '../../components/loading/Loading';
 
 export const Team = () => {
   const { owner } = useParams();
@@ -12,13 +13,7 @@ export const Team = () => {
   const { getTeamByOwner, isLoading } = useScores();
 
   if (isLoading) {
-    return (
-      <div className="team-wrapper">
-        <div style={{ padding: '4rem', textAlign: 'center', color: 'white' }}>
-          Loading team data...
-        </div>
-      </div>
-    );
+    return <Loading />;
   }
 
   const teamInfo = owner ? getTeamByOwner(owner) : undefined;

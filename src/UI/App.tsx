@@ -6,7 +6,6 @@ import { BackgroundSlider } from './components/backgroundSlider/BackgroundSlider
 import { NoLandscape } from './components/noLandscape/NoLandscape';
 import './styles/index.scss';
 import { useScores } from '../context/ScoreContext';
-import { Loading } from './components/loading/Loading';
 
 function App() {
   const { isLoading, teams } = useScores();
@@ -18,11 +17,7 @@ function App() {
       <div className="content-wrap">
         <Routes>
           <Route path="/" element={<Leaderboard />} />
-          {isLoading ? (
-            <Route path="/team/:owner" element={<Loading />} />
-          ) : (
-            <Route path="/team/:owner" element={<Team />} />
-          )}
+          <Route path="/team/:owner" element={<Team />} />
         </Routes>
       </div>
       {!isLoading && teams.length > 0 && <BottomNav />}
