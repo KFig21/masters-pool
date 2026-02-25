@@ -21,6 +21,11 @@
             letter-spacing: 2px;
             filter: drop-shadow(0 0 20px var(--darkGreen));
             display: flex;
+            padding-left: 15px;
+
+            @include mobile {
+                font-size: 2rem;
+            }
 
             span {
                 display: inline-block;
