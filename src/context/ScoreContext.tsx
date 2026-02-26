@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
 import { CURRENT_EVENT, CURRENT_YEAR } from '../constants';
-import type { Team, Golfer } from '../types/team';
+import type { Team, Golfer, EventType } from '../types/team';
 
 export interface TeamStats {
   sumR1: number;
@@ -23,9 +23,9 @@ export interface ProcessedTeam extends Omit<Team, 'golfers'> {
 interface ScoreContextType {
   teams: ProcessedTeam[];
   getTeamByOwner: (ownerName: string) => ProcessedTeam | undefined;
-  currentEvent: string;
+  currentEvent: EventType;
   currentYear: number;
-  setCurrentEvent: (event: string) => void;
+  setCurrentEvent: (event: EventType) => void;
   setCurrentYear: (year: number) => void;
   isLoading: boolean;
   isTournamentComplete: boolean;
@@ -35,7 +35,7 @@ const ScoreContext = createContext<ScoreContextType | undefined>(undefined);
 
 export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
   // 2. ADD GLOBAL STATE FOR EVENT AND YEAR
-  const [currentEvent, setCurrentEvent] = useState<string>(CURRENT_EVENT);
+  const [currentEvent, setCurrentEvent] = useState<EventType>(CURRENT_EVENT as EventType);
   const [currentYear, setCurrentYear] = useState<number>(CURRENT_YEAR);
   const [rawTeams, setRawTeams] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);

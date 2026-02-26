@@ -9,7 +9,8 @@ import {
 } from '../../utils/formatters';
 import './styles.scss';
 import { ThruBadge } from '../../../../../../components/thruBadge/ThruBadge';
-import { CURRENT_EVENT, CURRENT_YEAR, EVENT_MATRIX } from '../../../../../../../constants';
+import { EVENT_MATRIX } from '../../../../../../../constants';
+import type { EventKey } from '../../../../../../../types/event';
 
 interface Props {
   golfers: Golfer[];
@@ -17,7 +18,7 @@ interface Props {
 }
 
 export const ThruTable = ({ golfers, stats }: Props) => {
-  const { isTournamentComplete } = useScores();
+  const { isTournamentComplete, currentEvent, currentYear } = useScores();
 
   return (
     <div className="scorecard-section-container">
@@ -41,7 +42,10 @@ export const ThruTable = ({ golfers, stats }: Props) => {
         </div>
 
         {golfers.map((golfer, index) => {
-          const CUT_LINE = EVENT_MATRIX[CURRENT_EVENT].years[CURRENT_YEAR].cutLine;
+          const eventKey = currentEvent as EventKey;
+          const eventData = EVENT_MATRIX[eventKey];
+
+          const CUT_LINE = eventData.years[currentYear].cutLine;
           const isCutoff = index === CUT_LINE - 1;
           const isTopX = index < CUT_LINE;
           const rowClass = isTopX ? 'top-scorers' : 'not-top-scorers';

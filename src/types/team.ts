@@ -1,3 +1,5 @@
+import type { eventsEnum } from '../constants/enums';
+
 export interface Round {
   total: number | null;
   scoreRound: number | null;
@@ -37,3 +39,5 @@ export interface Team {
   golferData?: Golfer[];
   isDisqualified?: boolean; // TODO: Find a way to make use of this
 }
+
+export type EventType = (typeof eventsEnum)[keyof typeof eventsEnum];
