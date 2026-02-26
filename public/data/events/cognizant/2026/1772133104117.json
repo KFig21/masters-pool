@@ -1,0 +1,1262 @@
+[
+  {
+    "owner": "Andy",
+    "golfers": [
+      {
+        "id": "205",
+        "name": "Charley Hoffman",
+        "score": 1,
+        "displayScore": "+1",
+        "thru": "Thru 4",
+        "status": "ACTIVE",
+        "isCut": false,
+        "scorecard": {
+          "round1": {
+            "total": 18,
+            "scoreRound": 1,
+            "thruScore": 1,
+            "isCountingScore": true
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      },
+      {
+        "id": "4364873",
+        "name": "Viktor Hovland",
+        "score": 99,
+        "displayScore": "DNP",
+        "thru": "-",
+        "status": "DNP",
+        "isCut": true,
+        "scorecard": {
+          "round1": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      },
+      {
+        "id": "4410932",
+        "name": "Min Woo Lee",
+        "score": 99,
+        "displayScore": "DNP",
+        "thru": "-",
+        "status": "DNP",
+        "isCut": true,
+        "scorecard": {
+          "round1": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      },
+      {
+        "id": "10980",
+        "name": "Sahith Theegala",
+        "score": 99,
+        "displayScore": "DNP",
+        "thru": "-",
+        "status": "DNP",
+        "isCut": true,
+        "scorecard": {
+          "round1": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      },
+      {
+        "id": "3449",
+        "name": "Chris Kirk",
+        "score": -1,
+        "displayScore": "-1",
+        "thru": "F",
+        "status": "ACTIVE",
+        "isCut": false,
+        "scorecard": {
+          "round1": {
+            "total": 70,
+            "scoreRound": -1,
+            "thruScore": -1,
+            "isCountingScore": true
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "owner": "Jay",
+    "golfers": [
+      {
+        "id": "11056",
+        "name": "Austin Smotherman",
+        "score": -9,
+        "displayScore": "-9",
+        "thru": "F",
+        "status": "ACTIVE",
+        "isCut": false,
+        "scorecard": {
+          "round1": {
+            "total": 62,
+            "scoreRound": -9,
+            "thruScore": -9,
+            "isCountingScore": true
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      },
+      {
+        "id": "569",
+        "name": "Justin Rose",
+        "score": 99,
+        "displayScore": "DNP",
+        "thru": "-",
+        "status": "DNP",
+        "isCut": true,
+        "scorecard": {
+          "round1": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      },
+      {
+        "id": "7081",
+        "name": "Si Woo Kim",
+        "score": 99,
+        "displayScore": "DNP",
+        "thru": "-",
+        "status": "DNP",
+        "isCut": true,
+        "scorecard": {
+          "round1": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      },
+      {
+        "id": "3702",
+        "name": "Rickie Fowler",
+        "score": 99,
+        "displayScore": "DNP",
+        "thru": "-",
+        "status": "DNP",
+        "isCut": true,
+        "scorecard": {
+          "round1": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      },
+      {
+        "id": "10140",
+        "name": "Xander Schauffele",
+        "score": 99,
+        "displayScore": "DNP",
+        "thru": "-",
+        "status": "DNP",
+        "isCut": true,
+        "scorecard": {
+          "round1": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "owner": "Fig",
+    "golfers": [
+      {
+        "id": "4408316",
+        "name": "Nico Echavarria",
+        "score": -8,
+        "displayScore": "-8",
+        "thru": "F",
+        "status": "ACTIVE",
+        "isCut": false,
+        "scorecard": {
+          "round1": {
+            "total": 63,
+            "scoreRound": -8,
+            "thruScore": -8,
+            "isCountingScore": true
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      },
+      {
+        "id": "5860",
+        "name": "Hideki Matsuyama",
+        "score": 99,
+        "displayScore": "DNP",
+        "thru": "-",
+        "status": "DNP",
+        "isCut": true,
+        "scorecard": {
+          "round1": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      },
+      {
+        "id": "9126",
+        "name": "Corey Conners",
+        "score": 99,
+        "displayScore": "DNP",
+        "thru": "-",
+        "status": "DNP",
+        "isCut": true,
+        "scorecard": {
+          "round1": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      },
+      {
+        "id": "4587",
+        "name": "Shane Lowry",
+        "score": -1,
+        "displayScore": "-1",
+        "thru": "F",
+        "status": "ACTIVE",
+        "isCut": false,
+        "scorecard": {
+          "round1": {
+            "total": 70,
+            "scoreRound": -1,
+            "thruScore": -1,
+            "isCountingScore": true
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      },
+      {
+        "id": "1225",
+        "name": "Brian Harman",
+        "score": 99,
+        "displayScore": "DNP",
+        "thru": "-",
+        "status": "DNP",
+        "isCut": true,
+        "scorecard": {
+          "round1": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "owner": "T",
+    "golfers": [
+      {
+        "id": "6007",
+        "name": "Patrick Cantlay",
+        "score": 99,
+        "displayScore": "DNP",
+        "thru": "-",
+        "status": "DNP",
+        "isCut": true,
+        "scorecard": {
+          "round1": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      },
+      {
+        "id": "1680",
+        "name": "Jason Day",
+        "score": 99,
+        "displayScore": "DNP",
+        "thru": "-",
+        "status": "DNP",
+        "isCut": true,
+        "scorecard": {
+          "round1": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      },
+      {
+        "id": "5539",
+        "name": "Tommy Fleetwood",
+        "score": 99,
+        "displayScore": "DNP",
+        "thru": "-",
+        "status": "DNP",
+        "isCut": true,
+        "scorecard": {
+          "round1": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      },
+      {
+        "id": "9877",
+        "name": "Will Zalatoris",
+        "score": 99,
+        "displayScore": "DNP",
+        "thru": "-",
+        "status": "DNP",
+        "isCut": true,
+        "scorecard": {
+          "round1": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      },
+      {
+        "id": "8961",
+        "name": "Sepp Straka",
+        "score": 99,
+        "displayScore": "DNP",
+        "thru": "-",
+        "status": "DNP",
+        "isCut": true,
+        "scorecard": {
+          "round1": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "owner": "Nalls",
+    "golfers": [
+      {
+        "id": "10592",
+        "name": "Collin Morikawa",
+        "score": 99,
+        "displayScore": "DNP",
+        "thru": "-",
+        "status": "DNP",
+        "isCut": true,
+        "scorecard": {
+          "round1": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      },
+      {
+        "id": "2230",
+        "name": "Tony Finau",
+        "score": 99,
+        "displayScore": "DNP",
+        "thru": "-",
+        "status": "DNP",
+        "isCut": true,
+        "scorecard": {
+          "round1": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      },
+      {
+        "id": "9938",
+        "name": "Sam Burns",
+        "score": 99,
+        "displayScore": "DNP",
+        "thru": "-",
+        "status": "DNP",
+        "isCut": true,
+        "scorecard": {
+          "round1": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      },
+      {
+        "id": "6086",
+        "name": "Tom Hoge",
+        "score": 99,
+        "displayScore": "DNP",
+        "thru": "-",
+        "status": "DNP",
+        "isCut": true,
+        "scorecard": {
+          "round1": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      },
+      {
+        "id": "8906",
+        "name": "Keith Mitchell",
+        "score": -3,
+        "displayScore": "-3",
+        "thru": "F",
+        "status": "ACTIVE",
+        "isCut": false,
+        "scorecard": {
+          "round1": {
+            "total": 68,
+            "scoreRound": -3,
+            "thruScore": -3,
+            "isCountingScore": true
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "owner": "Do",
+    "golfers": [
+      {
+        "id": "8973",
+        "name": "Max Homa",
+        "score": 1,
+        "displayScore": "+1",
+        "thru": "Thru 7",
+        "status": "ACTIVE",
+        "isCut": false,
+        "scorecard": {
+          "round1": {
+            "total": 28,
+            "scoreRound": 1,
+            "thruScore": 1,
+            "isCountingScore": true
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      },
+      {
+        "id": "10577",
+        "name": "Aaron Wise",
+        "score": -1,
+        "displayScore": "-1",
+        "thru": "Thru 6",
+        "status": "ACTIVE",
+        "isCut": false,
+        "scorecard": {
+          "round1": {
+            "total": 23,
+            "scoreRound": -1,
+            "thruScore": -1,
+            "isCountingScore": true
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      },
+      {
+        "id": "6798",
+        "name": "Brooks Koepka",
+        "score": 0,
+        "displayScore": "E",
+        "thru": "Thru 7",
+        "status": "ACTIVE",
+        "isCut": false,
+        "scorecard": {
+          "round1": {
+            "total": 27,
+            "scoreRound": 0,
+            "thruScore": 0,
+            "isCountingScore": true
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      },
+      {
+        "id": "199",
+        "name": "Justin Hicks",
+        "score": 0,
+        "displayScore": "E",
+        "thru": "Thru 2",
+        "status": "ACTIVE",
+        "isCut": false,
+        "scorecard": {
+          "round1": {
+            "total": 9,
+            "scoreRound": 0,
+            "thruScore": 0,
+            "isCountingScore": true
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      },
+      {
+        "id": "4602673",
+        "name": "Tom Kim",
+        "score": 2,
+        "displayScore": "+2",
+        "thru": "Thru 5",
+        "status": "ACTIVE",
+        "isCut": false,
+        "scorecard": {
+          "round1": {
+            "total": 22,
+            "scoreRound": 2,
+            "thruScore": 2,
+            "isCountingScore": false
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "owner": "Burg",
+    "golfers": [
+      {
+        "id": "9037",
+        "name": "Matt Fitzpatrick",
+        "score": 99,
+        "displayScore": "DNP",
+        "thru": "-",
+        "status": "DNP",
+        "isCut": true,
+        "scorecard": {
+          "round1": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      },
+      {
+        "id": "5553",
+        "name": "Tyrrell Hatton",
+        "score": 99,
+        "displayScore": "DNP",
+        "thru": "-",
+        "status": "DNP",
+        "isCut": true,
+        "scorecard": {
+          "round1": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      },
+      {
+        "id": "5409",
+        "name": "Russell Henley",
+        "score": 99,
+        "displayScore": "DNP",
+        "thru": "-",
+        "status": "DNP",
+        "isCut": true,
+        "scorecard": {
+          "round1": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      },
+      {
+        "id": "11119",
+        "name": "Wyndham Clark",
+        "score": 99,
+        "displayScore": "DNP",
+        "thru": "-",
+        "status": "DNP",
+        "isCut": true,
+        "scorecard": {
+          "round1": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      },
+      {
+        "id": "5467",
+        "name": "Jordan Spieth",
+        "score": 99,
+        "displayScore": "DNP",
+        "thru": "-",
+        "status": "DNP",
+        "isCut": true,
+        "scorecard": {
+          "round1": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round2": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round3": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          },
+          "round4": {
+            "total": null,
+            "scoreRound": null,
+            "thruScore": null,
+            "isCountingScore": false
+          }
+        }
+      }
+    ]
+  }
+]
