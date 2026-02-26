@@ -30,6 +30,8 @@ export type EventYearInfo = {
   teams: Team[] | null;
   rosterSize: number;
   cutLine: number;
+  startDate: string; // Format: "YYYY-MM-DD"
+  endDate: string; // Format: "YYYY-MM-DD"
 };
 
 export type EventYears = Record<number, EventYearInfo>;

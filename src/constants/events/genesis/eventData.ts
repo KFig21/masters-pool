@@ -33,6 +33,8 @@ export const genesisEventData: EventConfig = {
       teams: teams_genesis_2026,
       rosterSize: 6,
       cutLine: 4,
+      startDate: '2026-02-19', // Thursday of Masters week
+      endDate: '2026-02-22', // Sunday of Masters week
     },
   },
   Rounds: [1, 2, 3, 4],

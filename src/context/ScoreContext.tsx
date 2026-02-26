@@ -50,35 +50,30 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
       // If you want it every time they switch events, keep setIsLoading(true) above
 
       try {
-        // 1. Create a promise that resolves after 1 second
-        const minWaitTimer = new Promise((resolve) => setTimeout(resolve, 2000));
+        const response = await fetch(`/api/scores/${currentEvent}/${currentYear}`);
 
-        // 2. Create the data fetch promise
-        const fetchData = (async () => {
-          const response = await fetch(`/data/events/${currentEvent}/${currentYear}/latest.json`);
-          if (!response.ok) throw new Error(`Data not found for ${currentEvent} ${currentYear}`);
-          return await response.json();
-        })();
-
-        // 3. Wait for BOTH to finish
-        // This ensures even if the JSON loads in 100ms, we wait at least 2000ms
-        const [data] = await Promise.all([fetchData, minWaitTimer]);
-
-        if (isMounted) {
-          setRawTeams(data);
+        if (!response.ok) {
+          throw new Error(`Data not found`);
+        } else {
+          console.log('polled for new data - successful');
         }
+        const data = await response.json();
+
+        if (isMounted) setRawTeams(data);
       } catch (error) {
         console.error('Failed to fetch latest scores', error);
         if (isMounted) setRawTeams([]);
       } finally {
-        if (isMounted) setIsLoading(false);
+        if (isMounted) {
+          setIsLoading(false);
+        }
       }
     };
 
     fetchScores();
 
-    // Poll for new data every 5 minutes
-    const intervalId = setInterval(fetchScores, 5 * 60 * 1000);
+    // Poll for new data every 1 minutes
+    const intervalId = setInterval(fetchScores, 1 * 60 * 1000);
 
     // Cleanup function to prevent state updates if the component unmounts
     return () => {

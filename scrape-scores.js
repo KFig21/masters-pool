@@ -1,9 +1,13 @@
+// scrape-scores.js
 import fs from 'fs';
 import path from 'path';
 import fetch from 'node-fetch';
 import { CURRENT_EVENT, CURRENT_YEAR, EVENT_MATRIX } from './src/constants/index.ts';
+import { Score } from './server/models/Score.js';
 
-console.log(`Starting data scrape for ${EVENT_MATRIX[CURRENT_EVENT].title} ${CURRENT_YEAR}...`);
+console.log(
+  `Starting data scraper initialization for ${EVENT_MATRIX[CURRENT_EVENT].title} ${CURRENT_YEAR}...`,
+);
 
 // Grab tournament id for the current event in constants
 const TOURNAMENT_ID = EVENT_MATRIX[CURRENT_EVENT].years[CURRENT_YEAR].id;
@@ -20,6 +24,8 @@ function parseRelScore(scoreStr) {
 
 // Define your current context
 const EVENT_NAME = EVENT_MATRIX[CURRENT_EVENT].id;
+const EVENT_TITLE = EVENT_MATRIX[CURRENT_EVENT].title;
+const EVENT_YEAR = EVENT_MATRIX[CURRENT_EVENT].years[CURRENT_YEAR];
 const TEAMS = EVENT_MATRIX[CURRENT_EVENT].years[CURRENT_YEAR].teams;
 const CUT_LINE = EVENT_MATRIX[CURRENT_EVENT].years[CURRENT_YEAR].cutLine;
 
@@ -33,28 +39,65 @@ const DATA_DIR = path.join(
   CURRENT_YEAR.toString(),
 );
 
-async function scrapeData() {
-  console.log('Fetching live tournament data...');
+// EFFICIENCY CHECK 1: Is it the right week?
+function isTournamentWeek() {
+  const now = new Date();
+
+  // Guard clause: If dates aren't defined in your constants yet, default to true
+  // so the scraper doesn't break while you are updating your files.
+  if (!EVENT_YEAR.startDate || !EVENT_YEAR.endDate) {
+    console.warn(
+      `⚠️ Warning: startDate or endDate missing for ${EVENT_NAME} ${CURRENT_YEAR}. Scraper will run continuously.`,
+    );
+    return true;
+  }
+
+  // Create dates from strings (setting time to start/end of day)
+  const start = new Date(`${EVENT_YEAR.startDate}T00:00:00`);
+  const end = new Date(`${EVENT_YEAR.endDate}T23:59:59`);
+
+  return now >= start && now <= end;
+}
+
+export async function scrapeData() {
+  if (!isTournamentWeek()) {
+    console.log(`💤 ${EVENT_TITLE} is not active this week. Scraper sleeping.`);
+    return; // Exit early, do not fetch from ESPN
+  }
+
+  console.log('⛳️ Checking live scores...');
+
   try {
     const response = await fetch(LEADERBOARD_URL);
-    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-
     const data = await response.json();
 
-    // Quick validation: If the API sends an empty array, throw an error to trigger the fallback
-    if (!data.events?.[0]?.competitions?.[0]?.competitors) {
-      throw new Error('API returned empty competitor data.');
+    // EFFICIENCY CHECK 2: Is the tournament finished?
+    const tournamentStatus = data.events?.[0]?.competitions?.[0]?.status?.type?.completed;
+    if (tournamentStatus === true) {
+      console.log(`🏁 ${EVENT_TITLE} is marked as COMPLETED. No further scraping needed.`);
+      return; // Exit early, no need to process or save
     }
 
     const cleanLeaderboard = processLeaderboard(data);
     const compiledTeams = compileTeamData(cleanLeaderboard.leaderboard);
 
+    // SAVE TO MONGO
+    await Score.findOneAndUpdate(
+      { eventId: CURRENT_EVENT, year: CURRENT_YEAR },
+      {
+        tournamentName: EVENT_TITLE, // Added this field based on the previous schema update
+        data: compiledTeams,
+        lastUpdated: new Date(),
+      },
+      { upsert: true, new: true },
+    );
+
+    // Keep the local file backups as a safety net
     saveDataWithBackups(compiledTeams);
 
-    console.log(`✅ Success! Data compiled and saved.`);
+    console.log('✅ Database updated with latest scores.');
   } catch (error) {
-    console.error('❌ Error fetching data, looking for fallback...', error);
-    restoreFromFallback();
+    console.error('❌ Scraper failed:', error);
   }
 }
 
@@ -73,10 +116,10 @@ function saveDataWithBackups(compiledTeams) {
   // 2. Write the historical backup
   fs.writeFileSync(backupPath, jsonString);
 
-  // 3. Overwrite the 'latest' file for the React app to read
+  // 3. Overwrite the 'latest' file for the React app to read (if they still use it)
   fs.writeFileSync(latestPath, jsonString);
 
-  // Optional: Clean up old files so the folder doesn't get too massive
+  // Clean up old files so the folder doesn't get too massive
   cleanupOldBackups(DATA_DIR, 20); // Keep last 20 pulls
 }
 
@@ -268,4 +311,6 @@ function compileTeamData(leaderboardPlayers) {
   });
 }
 
-scrapeData();
+// Ensure this file executes when imported by server.js (if not already handled)
+// The scrapeData() is intentionally left at the end, but the server.js interval
+// will be the primary driver of this function in production.
