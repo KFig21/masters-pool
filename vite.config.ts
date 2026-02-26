@@ -6,9 +6,4 @@ export default defineConfig({
   plugins: [react()],
   // base: '/masters-pool/', // NECESSARY FOR GITHUB PAGES (doesnt work with browser router tho :( )
   base: '/',
-  server: {
-    proxy: {
-      '/api': 'http://localhost:3001', // forward API calls to Express in dev
-    },
-  },
 });
