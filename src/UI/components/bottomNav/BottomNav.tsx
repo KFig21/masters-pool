@@ -6,13 +6,15 @@ import { useScores } from '../../../context/ScoreContext';
 export const BottomNav = () => {
   const location = useLocation();
   const { teams } = useScores();
-  const { favoriteTeam } = useFavoriteTeam(); // Get current favorite
+  const { favoriteTeam } = useFavoriteTeam();
 
   const isActive = (path: string) => {
     if (path === '/' && location.pathname === '/') return true;
     if (path !== '/' && location.pathname.includes(path)) return true;
     return false;
   };
+
+  const sortedTeamsAlphabetically = [...teams].sort((a, b) => a.owner.localeCompare(b.owner));
 
   return (
     <div className="bottomNav-wrapper">
@@ -21,7 +23,7 @@ export const BottomNav = () => {
           <div className="team-name">Leaderboard</div>
         </Link>
 
-        {teams.map((team) => {
+        {sortedTeamsAlphabetically.map((team) => {
           const isFav = favoriteTeam === team.owner;
 
           return (

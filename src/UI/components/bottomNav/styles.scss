@@ -1,8 +1,6 @@
 @use '../../styles/colors' as *;
 @use '../../styles/index' as *;
 
-$tab-min-width: 100px;
-
 .bottomNav-wrapper {
     position: fixed;
     bottom: 0;
@@ -47,8 +45,7 @@ $tab-min-width: 100px;
             font-family: "Masters", serif;
             font-size: 1rem;
             height: 100%;
-            padding: 0px 12px;
-            min-width: $tab-min-width;
+            padding: 0px 20px;
             transition: all 0.2s ease;
             cursor: pointer;
 
