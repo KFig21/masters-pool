@@ -55,9 +55,10 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
 
         // 2. Create the data fetch promise
         const fetchData = (async () => {
-          const response = await fetch(`/data/events/${currentEvent}/${currentYear}/latest.json`);
+          const response = await fetch(`/api/scores/${currentEvent}/${currentYear}`);
           if (!response.ok) throw new Error(`Data not found for ${currentEvent} ${currentYear}`);
-          return await response.json();
+          const json = await response.json();
+          return json.data; // API wraps in { data, updatedAt }
         })();
 
         // 3. Wait for BOTH to finish
