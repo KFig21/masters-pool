@@ -25,7 +25,12 @@ app.get('/api/scores/:event/:year', async (req, res) => {
     const { event, year } = req.params;
     const scores = await Score.findOne({ eventId: event, year: parseInt(year) });
     if (!scores) return res.status(404).json({ error: 'No data found' });
-    res.json(scores.data);
+
+    // Send both the team data AND the timestamp
+    res.json({
+      teams: scores.data,
+      lastUpdated: scores.lastUpdated,
+    });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

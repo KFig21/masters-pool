@@ -66,6 +66,7 @@ export async function scrapeData() {
     const compiledTeams = compileTeamData(cleanLeaderboard.leaderboard);
     const date = new Date();
     const formattedDate = date.toLocaleString('en-US', {
+      timeZone: 'America/New_York',
       month: 'short',
       day: 'numeric',
       hour: '2-digit',

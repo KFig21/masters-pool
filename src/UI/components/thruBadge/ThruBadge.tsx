@@ -31,7 +31,7 @@ export const ThruBadge = ({ thru, isCut, status, isTournamentComplete }: Props) 
 
   // 2. Formatting for mobile
   // If it's a tee time, mobile shows the time. If it's "Thru 17", it shows "T17"
-  const mobileThru = isTeeTime ? displayThru : displayThru.replace('Thru ', 'T');
+  // const mobileThru = isTeeTime ? displayThru : displayThru.replace('Thru ', 'T');
 
   // 3. Determine CSS class
   // Logic:
@@ -43,7 +43,7 @@ export const ThruBadge = ({ thru, isCut, status, isTournamentComplete }: Props) 
   return (
     <span className={`thru-badge ${badgeClass}`}>
       <span className="desktop-badge-label">{displayThru}</span>
-      <span className="mobile-badge-label">{mobileThru}</span>
+      <span className="mobile-badge-label">{displayThru}</span>
     </span>
   );
 };

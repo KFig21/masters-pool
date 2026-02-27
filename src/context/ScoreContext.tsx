@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
-import { CURRENT_EVENT, CURRENT_YEAR } from '../constants';
+import { CURRENT_EVENT, CURRENT_YEAR, EVENT_MATRIX } from '../constants';
 import type { Team, Golfer, EventType } from '../types/team';
 
 export interface TeamStats {
@@ -22,6 +22,7 @@ export interface ProcessedTeam extends Omit<Team, 'golfers'> {
 // 1. TYPE DEFINITION
 interface ScoreContextType {
   teams: ProcessedTeam[];
+  lastUpdated: string | null;
   getTeamByOwner: (ownerName: string) => ProcessedTeam | undefined;
   currentEvent: EventType;
   currentYear: number;
@@ -29,37 +30,52 @@ interface ScoreContextType {
   setCurrentYear: (year: number) => void;
   isLoading: boolean;
   isTournamentComplete: boolean;
+  isTournamentActive: boolean;
 }
 
 const ScoreContext = createContext<ScoreContextType | undefined>(undefined);
 
 export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
-  // 2. ADD GLOBAL STATE FOR EVENT AND YEAR
   const [currentEvent, setCurrentEvent] = useState<EventType>(CURRENT_EVENT as EventType);
   const [currentYear, setCurrentYear] = useState<number>(CURRENT_YEAR);
   const [rawTeams, setRawTeams] = useState<any[]>([]);
+  const [lastUpdated, setLastUpdated] = useState<string | null>(null); // Added state
   const [isLoading, setIsLoading] = useState(true);
 
-  // 3. FETCH DATA DYNAMICALLY BASED ON STATE
+  const isTournamentActive = useMemo(() => {
+    const eventData = EVENT_MATRIX[currentEvent as keyof typeof EVENT_MATRIX];
+    const yearConfig = eventData?.years[currentYear];
+
+    if (!yearConfig?.startDate || !yearConfig?.endDate) return false;
+
+    const now = new Date();
+    const start = new Date(`${yearConfig.startDate}T00:00:00`);
+    const end = new Date(`${yearConfig.endDate}T23:59:59`);
+
+    return now >= start && now <= end;
+  }, [currentEvent, currentYear]);
+
+  // 3. FETCH DATA DYNAMICALLY
   useEffect(() => {
     let isMounted = true;
     setIsLoading(true);
 
     const fetchScores = async () => {
-      // Only show the long loader on the initial load
-      // If you want it every time they switch events, keep setIsLoading(true) above
-
       try {
         const response = await fetch(`/api/scores/${currentEvent}/${currentYear}`);
 
         if (!response.ok) {
           throw new Error(`Data not found`);
-        } else {
-          console.log('polled for new data - successful');
         }
-        const data = await response.json();
 
-        if (isMounted) setRawTeams(data);
+        const result = await response.json();
+
+        if (isMounted) {
+          // Destructure the new object format { teams: [...], lastUpdated: "..." }
+          setRawTeams(result.teams || []);
+          setLastUpdated(result.lastUpdated || null);
+          console.log('Polled for new data at:', result.lastUpdated);
+        }
       } catch (error) {
         console.error('Failed to fetch latest scores', error);
         if (isMounted) setRawTeams([]);
@@ -72,10 +88,9 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
 
     fetchScores();
 
-    // Poll for new data every 1 minutes
+    // Poll for new data every 1 minute
     const intervalId = setInterval(fetchScores, 1 * 60 * 1000);
 
-    // Cleanup function to prevent state updates if the component unmounts
     return () => {
       isMounted = false;
       clearInterval(intervalId);
@@ -88,7 +103,6 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
       return { teams: [], isTournamentComplete: false };
     }
 
-    // --- Helper for Calculations ---
     const getBest4Sum = (
       golfers: Golfer[],
       roundKey: 'round1' | 'round2' | 'round3' | 'round4',
@@ -102,15 +116,12 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
       return scores.slice(0, 4).reduce((acc, curr) => acc + curr, 0);
     };
 
-    // --- Completion Logic ---
-    // A tournament is done if Round 4 has started and all active golfers are finished ('F')
     const allGolfers = rawTeams.flatMap((t) => t.golfers as Golfer[]);
     const activeGolfers = allGolfers.filter((g) => !g.isCut);
-    const hasR4Started = activeGolfers.some((g) => g.scorecard?.round4);
+    const hasR4Started = activeGolfers.some((g) => g.scorecard?.round4?.thruScore !== null);
     const allActiveFinished = activeGolfers.every((g) => g.thru === 'F');
     const isComplete = hasR4Started && allActiveFinished;
 
-    // --- STEP 1: Process Raw Data ---
     const teamsWithStats = rawTeams.map((team) => {
       const golfers = team.golfers as Golfer[];
       const sumR1 = getBest4Sum(golfers, 'round1');
@@ -139,7 +150,6 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
       };
     });
 
-    // --- STEP 2: Sort Teams ---
     const sorted = [...teamsWithStats].sort((a, b) => {
       const scoreA = a.stats.activeTotal;
       const scoreB = b.stats.activeTotal;
@@ -151,7 +161,6 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
       return (scoreA as number) - (scoreB as number);
     });
 
-    // --- STEP 3: Assign Ranks ---
     const processedTeams = sorted.map((team, index) => ({
       ...team,
       rank: index + 1,
@@ -168,6 +177,7 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
     <ScoreContext.Provider
       value={{
         teams,
+        lastUpdated,
         getTeamByOwner,
         currentEvent,
         currentYear,
@@ -175,6 +185,7 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
         setCurrentYear,
         isLoading,
         isTournamentComplete,
+        isTournamentActive,
       }}
     >
       {children}

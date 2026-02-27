@@ -179,8 +179,6 @@
             @include mobile {
 
                 .cell {
-                    // font-family: 'Oswald', sans-serif;
-                    // font-weight: 400;
                     font-size: 0.75rem; // Smaller header text
                 }
             }
@@ -188,33 +186,78 @@
     }
 
     .leaderboard-footer {
-        background-color: var(--darkGreen);
-        border-radius: 0px 0px 5px 5px;
         display: flex;
         align-items: center;
-        justify-content: flex-start;
+        justify-content: space-between;
+        background-color: var(--darkGreen);
+        border-radius: 0px 0px 5px 5px;
 
-        .tournament-selector-icon-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 5px 10px;
-
-            .tournament-selector-icon {
-                width: 24px;
-                height: 24px;
+        .footer-left {
+            .tournament-selector-icon-container {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                margin-right: 4px;
+                padding: 5px 10px;
+
+                .tournament-selector-icon {
+                    width: 24px;
+                    height: 24px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-right: 4px;
+                    color: var(--white);
+                    opacity: 0.4;
+                    cursor: pointer;
+                    transition: all 0.12s ease;
+
+                    &:hover {
+                        color: var(--yellow);
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+
+        .footer-right {
+            padding-right: 12px;
+
+            .update-info {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                font-family: "Work Sans", sans-serif;
+                font-size: 10px;
+                letter-spacing: 0.5px;
                 color: var(--white);
-                opacity: 0.4;
+                opacity: 0.5;
+                font-style: italic;
                 cursor: pointer;
-                transition: all 0.12s ease;
+                transition: all ease .12s;
 
                 &:hover {
-                    color: var(--yellow);
-                    opacity: 1;
+                    opacity: .8;
+                }
+
+                .label {
+                    font-weight: 700;
+                    // color: var(--yellow);
+                    // font-style: italic;
+                }
+
+                .value {
+                    // color: var(--white);
+                    font-weight: 600;
+                }
+
+                .divider {
+                    margin: 0 4px;
+                    opacity: 0.3;
+                }
+
+                @include mobile {
+                    font-size: 9px;
+                    gap: 4px;
                 }
             }
         }

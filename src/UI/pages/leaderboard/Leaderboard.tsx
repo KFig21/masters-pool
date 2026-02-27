@@ -10,6 +10,7 @@ import './styles.scss';
 import { TournamentSelectorModal } from './components/modals/tournamentSelectorModal/TournamentSelectorModal';
 import { NoData } from './components/noData/NoData';
 import { Loading } from '../../components/loading/Loading';
+import { UpdateModal } from './components/modals/updateModal/updateModal';
 
 export interface ScoreboardTeamData {
   rank: number;
@@ -26,12 +27,18 @@ export interface ScoreboardTeamData {
 export const Leaderboard = () => {
   const { favoriteTeam } = useFavoriteTeam();
   // Pulling the new context variables
-  const { teams, isLoading, currentYear, currentEvent } = useScores();
+  const { teams, isLoading, currentYear, currentEvent, lastUpdated, isTournamentActive } =
+    useScores();
   const [isScoringModalOpen, setIsScoringModalOpen] = useState(false);
+  const [isScoringUpdateModalOpen, setIsScoringUpdateModalOpen] = useState(false);
   const [isTournamentSelectorModalOpen, setIsTournamentSelectorModalOpen] = useState(false);
 
   const handleScoringModal = () => {
     setIsScoringModalOpen(!isScoringModalOpen);
+  };
+
+  const handleScoringUpdateModal = () => {
+    setIsScoringUpdateModalOpen(!isScoringUpdateModalOpen);
   };
 
   const handleTournamentSelectorModal = () => {
@@ -44,6 +51,15 @@ export const Leaderboard = () => {
 
   // Safely grab the friendly name of the current event
   const eventName = EVENT_MATRIX[currentEvent as keyof typeof EVENT_MATRIX]?.title || 'Golf';
+
+  const formatTimestamp = (dateString: string | null) => {
+    if (!dateString) return '--:--';
+    return new Date(dateString).toLocaleTimeString([], {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true,
+    });
+  };
 
   return (
     <>
@@ -117,12 +133,22 @@ export const Leaderboard = () => {
             </div>
           </div>
           <div className="leaderboard-footer">
-            <div
-              className="tournament-selector-icon-container"
-              onClick={() => handleTournamentSelectorModal()}
-            >
-              <ManageSearchIcon className="tournament-selector-icon" />
+            <div className="footer-left">
+              <div
+                className="tournament-selector-icon-container"
+                onClick={() => handleTournamentSelectorModal()}
+              >
+                <ManageSearchIcon className="tournament-selector-icon" />
+              </div>
             </div>
+            {isTournamentActive && (
+              <div className="footer-right">
+                <div className="update-info" onClick={() => handleScoringUpdateModal()}>
+                  <span className="label">LAST UPDATED:</span>
+                  <span className="value">{formatTimestamp(lastUpdated)}</span>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       )}
@@ -130,6 +156,7 @@ export const Leaderboard = () => {
       {isTournamentSelectorModalOpen && (
         <TournamentSelectorModal handleModal={handleTournamentSelectorModal} />
       )}
+      {isScoringUpdateModalOpen && <UpdateModal handleModal={handleScoringUpdateModal} />}
     </>
   );
 };
