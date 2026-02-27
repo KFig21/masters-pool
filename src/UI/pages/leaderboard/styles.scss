@@ -4,7 +4,7 @@
 
 .leaderboard-wrapper {
     background-color: transparent;
-    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.21));
+    filter: drop-shadow(0px 0px 10px rgba(255, 252, 201, 0.15));
 
     @include mobile {
         margin-top: 85px;
@@ -36,7 +36,7 @@
             flex-direction: row;
             align-items: center;
             justify-content: center;
-            padding: 0px 0px 28px 0px;
+            padding: 0px 0px 0px 0px;
             gap: 16px;
 
             @include mobile {
@@ -45,10 +45,10 @@
             }
 
             .logo-container {
-                $logo-size: 45px;
+                $logo-size: 38px;
                 max-height: $logo-size;
                 height: $logo-size;
-                transform: translateY(-12px);
+                transform: translateY(-26px);
 
                 img {
                     height: inherit;
@@ -67,7 +67,7 @@
             }
 
             .leaderboard-header-title {
-                $titleFontSize: 34px;
+                $titleFontSize: 30px;
                 font-size: $titleFontSize;
                 color: var(--scoreboard-FC-column);
                 font-family: "Masters", serif;
@@ -76,6 +76,7 @@
                 align-items: first baseline;
                 flex-direction: row;
                 gap: 14px;
+                transform: translateY(-16px);
 
                 .header-title-year {
                     font-size: calc($titleFontSize * 0.85);
@@ -168,12 +169,6 @@
                         }
                     }
                 }
-
-                .leaderboard-teams {
-                    background-color: var(--scoreboard-BG-row);
-                    display: flex;
-                    flex-direction: column;
-                }
             }
 
             @include mobile {
@@ -183,6 +178,13 @@
                 }
             }
         }
+    }
+
+    .leaderboard-teams {
+        background-color: var(--scoreboard-BG-row);
+        display: flex;
+        flex-direction: column;
+        // padding: 4px 0px;
     }
 
     .leaderboard-footer {
