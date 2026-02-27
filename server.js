@@ -1,3 +1,4 @@
+// masters-pool/server.js
 import express from 'express';
 import mongoose from 'mongoose';
 import path from 'path';
@@ -10,16 +11,19 @@ dotenv.config();
 const app = express();
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+// Connection Logic
 const MONGODB_URI = process.env.MONGODB_URI;
+if (!MONGODB_URI) {
+  console.error('🚨 ERROR: MONGODB_URI is not defined in environment variables!');
+  process.exit(1);
+}
 
 mongoose
-  .connect(MONGODB_URI, {
-    dbName: 'masters_pool', // This creates a specific DB for this app
-  })
-  .then(() => console.log('⛳️ Connected to Golf Database'))
+  .connect(MONGODB_URI, { dbName: 'masters_pool' })
+  .then(() => console.log('⛳️ Connected to MongoDB'))
   .catch((err) => console.error('❌ MongoDB Connection Error:', err));
 
-// --- API ENDPOINT ---
+// API Endpoints
 app.get('/api/scores/:event/:year', async (req, res) => {
   try {
     const { event, year } = req.params;
@@ -31,15 +35,23 @@ app.get('/api/scores/:event/:year', async (req, res) => {
   }
 });
 
-// --- SCRAPER TIMER ---
-setInterval(scrapeData, 5 * 60 * 1000); // 5 minutes
-scrapeData(); // Initial run on start
+// Timer - 5 minute interval
+setInterval(
+  () => {
+    scrapeData().catch((err) => console.error('Scraper Interval Error:', err));
+  },
+  5 * 60 * 1000,
+);
 
-// --- SERVE FRONTEND ---
+// Kick off first scrape
+scrapeData();
+
+// Serve Static Files (Vite build output)
 app.use(express.static(path.join(__dirname, 'dist')));
+
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));

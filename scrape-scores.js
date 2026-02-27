@@ -2,6 +2,9 @@
 import fs from 'fs';
 import path from 'path';
 import fetch from 'node-fetch';
+// FIX: In Node/ESM, you must include the full file extension.
+// Also, importing .ts directly into a .js file run by 'node' will fail.
+// Ensure index.ts is written as clean JS or rename it to index.js.
 import { CURRENT_EVENT, CURRENT_YEAR, EVENT_MATRIX } from './src/constants/index.ts';
 import { Score } from './server/models/Score.js';
 
