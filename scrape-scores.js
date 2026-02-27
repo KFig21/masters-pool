@@ -1,173 +1,99 @@
 // scrape-scores.js
-import fs from 'fs';
-import path from 'path';
 import fetch from 'node-fetch';
-// FIX: In Node/ESM, you must include the full file extension.
-// Also, importing .ts directly into a .js file run by 'node' will fail.
-// Ensure index.ts is written as clean JS or rename it to index.js.
 import { CURRENT_EVENT, CURRENT_YEAR, EVENT_MATRIX } from './src/constants/index.ts';
 import { Score } from './server/models/Score.js';
 
-console.log(
-  `Starting data scraper initialization for ${EVENT_MATRIX[CURRENT_EVENT].title} ${CURRENT_YEAR}...`,
-);
+/**
+ * SCRAPER CONFIGURATION
+ */
+const EVENT_DATA = EVENT_MATRIX[CURRENT_EVENT];
+const EVENT_TITLE = EVENT_DATA.title;
+const EVENT_YEAR_CONFIG = EVENT_DATA.years[CURRENT_YEAR];
+const TOURNAMENT_ID = EVENT_YEAR_CONFIG.id;
+const TEAMS = EVENT_YEAR_CONFIG.teams;
+const CUT_LINE = EVENT_YEAR_CONFIG.cutLine;
 
-// Grab tournament id for the current event in constants
-const TOURNAMENT_ID = EVENT_MATRIX[CURRENT_EVENT].years[CURRENT_YEAR].id;
 const LEADERBOARD_URL = `https://site.web.api.espn.com/apis/site/v2/sports/golf/leaderboard?league=pga&event=${TOURNAMENT_ID}`;
 
-// Helper function to safely parse ESPN's string scores ("E", "-3", "+2") into integers
+console.log(`🚀 Scraper initialized for ${EVENT_TITLE} ${CURRENT_YEAR}`);
+
+/**
+ * HELPER: Parse ESPN scores ("E", "-3", "+2") to Integers
+ */
 function parseRelScore(scoreStr) {
   if (!scoreStr) return 0;
   const cleanStr = String(scoreStr).trim().toUpperCase();
   if (cleanStr === 'E' || cleanStr === 'EVEN' || cleanStr === '0') return 0;
-  // parseInt naturally handles minus signs, we just need to strip out the '+'
   return parseInt(cleanStr.replace('+', ''), 10) || 0;
 }
 
-// Define your current context
-const EVENT_NAME = EVENT_MATRIX[CURRENT_EVENT].id;
-const EVENT_TITLE = EVENT_MATRIX[CURRENT_EVENT].title;
-const EVENT_YEAR = EVENT_MATRIX[CURRENT_EVENT].years[CURRENT_YEAR];
-const TEAMS = EVENT_MATRIX[CURRENT_EVENT].years[CURRENT_YEAR].teams;
-const CUT_LINE = EVENT_MATRIX[CURRENT_EVENT].years[CURRENT_YEAR].cutLine;
-
-// Path to the public directory where React can fetch the files
-const DATA_DIR = path.join(
-  process.cwd(),
-  'public',
-  'data',
-  'events',
-  EVENT_NAME,
-  CURRENT_YEAR.toString(),
-);
-
-// EFFICIENCY CHECK 1: Is it the right week?
+/**
+ * CHECK: Is the tournament active based on dates in constants?
+ */
 function isTournamentWeek() {
   const now = new Date();
-
-  // Guard clause: If dates aren't defined in your constants yet, default to true
-  // so the scraper doesn't break while you are updating your files.
-  if (!EVENT_YEAR.startDate || !EVENT_YEAR.endDate) {
-    console.warn(
-      `⚠️ Warning: startDate or endDate missing for ${EVENT_NAME} ${CURRENT_YEAR}. Scraper will run continuously.`,
-    );
+  if (!EVENT_YEAR_CONFIG.startDate || !EVENT_YEAR_CONFIG.endDate) {
+    console.warn(`⚠️ Dates missing for ${EVENT_TITLE}. Running anyway.`);
     return true;
   }
-
-  // Create dates from strings (setting time to start/end of day)
-  const start = new Date(`${EVENT_YEAR.startDate}T00:00:00`);
-  const end = new Date(`${EVENT_YEAR.endDate}T23:59:59`);
-
+  const start = new Date(`${EVENT_YEAR_CONFIG.startDate}T00:00:00`);
+  const end = new Date(`${EVENT_YEAR_CONFIG.endDate}T23:59:59`);
   return now >= start && now <= end;
 }
 
+/**
+ * MAIN SCRAPE FUNCTION
+ */
 export async function scrapeData() {
   if (!isTournamentWeek()) {
-    console.log(`💤 ${EVENT_TITLE} is not active this week. Scraper sleeping.`);
-    return; // Exit early, do not fetch from ESPN
+    console.log(`💤 ${EVENT_TITLE} is outside scheduled dates. Skipping.`);
+    return;
   }
 
-  console.log('⛳️ Checking live scores...');
+  console.log('⛳️ Fetching live scores from ESPN...');
 
   try {
     const response = await fetch(LEADERBOARD_URL);
     const data = await response.json();
 
-    // EFFICIENCY CHECK 2: Is the tournament finished?
     const tournamentStatus = data.events?.[0]?.competitions?.[0]?.status?.type?.completed;
     if (tournamentStatus === true) {
-      console.log(`🏁 ${EVENT_TITLE} is marked as COMPLETED. No further scraping needed.`);
-      return; // Exit early, no need to process or save
+      console.log(`🏁 ${EVENT_TITLE} is COMPLETED. Skipping update.`);
+      return;
     }
 
     const cleanLeaderboard = processLeaderboard(data);
     const compiledTeams = compileTeamData(cleanLeaderboard.leaderboard);
+    const date = new Date();
+    const formattedDate = date.toLocaleString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true,
+    });
 
-    // SAVE TO MONGO
+    // SAVE TO MONGODB ONLY
     await Score.findOneAndUpdate(
       { eventId: CURRENT_EVENT, year: CURRENT_YEAR },
       {
-        tournamentName: EVENT_TITLE, // Added this field based on the previous schema update
+        tournamentName: EVENT_TITLE,
         data: compiledTeams,
-        lastUpdated: new Date(),
+        lastUpdated: date,
       },
       { upsert: true, new: true },
     );
 
-    // Keep the local file backups as a safety net
-    saveDataWithBackups(compiledTeams);
-
-    console.log('✅ Database updated with latest scores.');
+    console.log(`✅ DB Updated: ${formattedDate}.`);
   } catch (error) {
-    console.error('❌ Scraper failed:', error);
+    console.error('❌ Scraper Error:', error);
   }
 }
 
-function saveDataWithBackups(compiledTeams) {
-  // 1. Ensure the directory exists
-  if (!fs.existsSync(DATA_DIR)) {
-    fs.mkdirSync(DATA_DIR, { recursive: true });
-  }
-
-  const timestamp = Date.now();
-  const backupPath = path.join(DATA_DIR, `${timestamp}.json`);
-  const latestPath = path.join(DATA_DIR, `latest.json`);
-
-  const jsonString = JSON.stringify(compiledTeams, null, 2);
-
-  // 2. Write the historical backup
-  fs.writeFileSync(backupPath, jsonString);
-
-  // 3. Overwrite the 'latest' file for the React app to read (if they still use it)
-  fs.writeFileSync(latestPath, jsonString);
-
-  // Clean up old files so the folder doesn't get too massive
-  cleanupOldBackups(DATA_DIR, 20); // Keep last 20 pulls
-}
-
-function restoreFromFallback() {
-  if (!fs.existsSync(DATA_DIR)) return;
-
-  // Get all timestamped JSON files, sort descending (newest first)
-  const files = fs
-    .readdirSync(DATA_DIR)
-    .filter((f) => f !== 'latest.json' && f.endsWith('.json'))
-    .sort()
-    .reverse();
-
-  for (const file of files) {
-    try {
-      const filePath = path.join(DATA_DIR, file);
-      const fileData = fs.readFileSync(filePath, 'utf8');
-      const parsedData = JSON.parse(fileData);
-
-      if (parsedData && parsedData.length > 0) {
-        console.log(`🔄 Restored fallback data from ${file}`);
-        // Overwrite latest.json with this valid backup
-        fs.writeFileSync(path.join(DATA_DIR, 'latest.json'), fileData);
-        return;
-      }
-    } catch (e) {
-      console.warn(`⚠️ Backup ${file} is corrupted, trying next...`);
-    }
-  }
-  console.error('🚨 All fallbacks failed.');
-}
-
-function cleanupOldBackups(directory, keepCount) {
-  const files = fs
-    .readdirSync(directory)
-    .filter((f) => f !== 'latest.json' && f.endsWith('.json'))
-    .sort()
-    .reverse(); // Newest first
-
-  if (files.length > keepCount) {
-    const filesToDelete = files.slice(keepCount);
-    filesToDelete.forEach((file) => fs.unlinkSync(path.join(directory, file)));
-  }
-}
-
+/**
+ * DATA PROCESSING: Format ESPN API response
+ */
 function processLeaderboard(apiData) {
   const competitors = apiData.events?.[0]?.competitions?.[0]?.competitors || [];
 
@@ -176,16 +102,13 @@ function processLeaderboard(apiData) {
     const scorecard = {};
     let runningTotal = 0;
 
-    // Process rounds 1-4
     [0, 1, 2, 3].forEach((index) => {
       const roundNum = index + 1;
       const roundData = rounds[index];
 
-      // We check for displayValue instead of just 'value' to safely handle live rounds
       if (roundData && roundData.displayValue) {
-        const total = parseInt(roundData.value) || 0; // Total strokes taken so far this round
-        const roundScore = parseRelScore(roundData.displayValue); // The relative-to-par score
-
+        const total = parseInt(roundData.value) || 0;
+        const roundScore = parseRelScore(roundData.displayValue);
         runningTotal += roundScore;
 
         scorecard[`round${roundNum}`] = {
@@ -194,42 +117,23 @@ function processLeaderboard(apiData) {
           thruScore: runningTotal,
         };
       } else {
-        scorecard[`round${roundNum}`] = {
-          total: null,
-          scoreRound: null,
-          thruScore: null,
-        };
+        scorecard[`round${roundNum}`] = { total: null, scoreRound: null, thruScore: null };
       }
     });
 
     const statusStr = player.status?.displayValue || '';
-
     let status = 'ACTIVE';
     let isCut = false;
 
-    if (statusStr === 'CUT' || statusStr === 'WD' || statusStr === 'DQ') {
+    if (['CUT', 'WD', 'DQ'].includes(statusStr)) {
       status = statusStr;
       isCut = true;
-      // If player is cut, nullify round 3 and 4
-      scorecard[`round3`] = {
-        total: null,
-        scoreRound: null,
-        thruScore: null,
-      };
-      scorecard[`round4`] = {
-        total: null,
-        scoreRound: null,
-        thruScore: null,
-      };
-    } else if (player.status?.type?.id === '3') {
-      status = 'ACTIVE';
+      scorecard.round3 = { total: null, scoreRound: null, thruScore: null };
+      scorecard.round4 = { total: null, scoreRound: null, thruScore: null };
     }
 
-    // UPDATED LOGIC: Use our perfectly calculated runningTotal as the source of truth!
-    let currentScore = runningTotal;
-
-    // Format the display string dynamically based on the math
-    let displayScore =
+    const currentScore = runningTotal;
+    const displayScore =
       currentScore === 0 ? 'E' : currentScore > 0 ? `+${currentScore}` : String(currentScore);
 
     return {
@@ -249,6 +153,9 @@ function processLeaderboard(apiData) {
   return { leaderboard: formattedPlayers };
 }
 
+/**
+ * TEAM COMPILATION: Match live scores to user teams
+ */
 function compileTeamData(leaderboardPlayers) {
   const statsLookup = {};
   leaderboardPlayers.forEach((entry) => {
@@ -261,14 +168,10 @@ function compileTeamData(leaderboardPlayers) {
       return {
         id: ref.id,
         name: ref.name,
-        // Give missing players a 99 so they sort below any active golfer shooting over par
         score: stats ? stats.score : 99,
-        // Display as DNP so the UI is clear to the user
         displayScore: stats ? stats.displayScore : 'DNP',
         thru: stats ? stats.thru : '-',
-        // Mark them as DNP instead of ACTIVE
         status: stats ? stats.status : 'DNP',
-        // Treat them as CUT so they are completely excluded from active team math
         isCut: stats ? stats.isCut : true,
         scorecard: stats
           ? stats.scorecard
@@ -281,25 +184,16 @@ function compileTeamData(leaderboardPlayers) {
       };
     });
 
-    // Calculate the top 'X' (CUT_LINE) based on THRU score
+    // Handle best-ball counting scores logic
     [1, 2, 3, 4].forEach((roundNum) => {
       const roundKey = `round${roundNum}`;
-
-      // 1. Get all valid scores for this round using thruScore
       const scoredGolfers = processedGolfers
-        .filter((g) => g.scorecard[roundKey] && g.scorecard[roundKey].thruScore !== null)
-        .map((g) => ({
-          id: g.id,
-          score: g.scorecard[roundKey].thruScore,
-        }));
+        .filter((g) => g.scorecard[roundKey]?.thruScore !== null)
+        .map((g) => ({ id: g.id, score: g.scorecard[roundKey].thruScore }))
+        .sort((a, b) => a.score - b.score);
 
-      // 2. Sort ascending (lowest cumulative score is best)
-      scoredGolfers.sort((a, b) => a.score - b.score);
-
-      // 3. Grab the IDs of the top 'X'
       const topXScoreIds = new Set(scoredGolfers.slice(0, CUT_LINE).map((g) => g.id));
 
-      // 4. Mark the scorecard for those top 'X'
       processedGolfers.forEach((g) => {
         if (g.scorecard[roundKey]) {
           g.scorecard[roundKey].isCountingScore = topXScoreIds.has(g.id);
@@ -307,13 +201,6 @@ function compileTeamData(leaderboardPlayers) {
       });
     });
 
-    return {
-      ...team,
-      golfers: processedGolfers,
-    };
+    return { ...team, golfers: processedGolfers };
   });
 }
-
-// Ensure this file executes when imported by server.js (if not already handled)
-// The scrapeData() is intentionally left at the end, but the server.js interval
-// will be the primary driver of this function in production.
