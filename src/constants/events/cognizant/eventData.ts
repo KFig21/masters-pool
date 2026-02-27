@@ -31,7 +31,7 @@ export const cognizantEventData: EventConfig = {
     2026: {
       id: 401811934,
       teams: teams_cognizant_2026,
-      rosterSize: 5,
+      rosterSize: 6,
       cutLine: 4,
       startDate: '2026-02-26',
       endDate: '2026-03-01',

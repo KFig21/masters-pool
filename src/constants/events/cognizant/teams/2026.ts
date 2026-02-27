@@ -10,6 +10,7 @@ export const teams_cognizant_2026: Team[] = [
       GOLFERS_2026.BillyHorschel,
       GOLFERS_2026.BrandtSnedeker,
       GOLFERS_2026.BenSilverman,
+      GOLFERS_2026.WilliamMouw,
     ],
   },
   {
@@ -20,6 +21,7 @@ export const teams_cognizant_2026: Team[] = [
       GOLFERS_2026.StevenFisk,
       GOLFERS_2026.DannyWillett,
       GOLFERS_2026.RasmusHojgaard,
+      GOLFERS_2026.KristofferReitan,
     ],
   },
   {
@@ -30,6 +32,7 @@ export const teams_cognizant_2026: Team[] = [
       GOLFERS_2026.CamDavis,
       GOLFERS_2026.MaxMcGreevy,
       GOLFERS_2026.SeamusPower,
+      GOLFERS_2026.TakumiKanaya,
     ],
   },
   {
@@ -40,6 +43,7 @@ export const teams_cognizant_2026: Team[] = [
       GOLFERS_2026.SudarshanYellamaraju,
       GOLFERS_2026.KarlVilips,
       GOLFERS_2026.AdrienSaddier,
+      GOLFERS_2026.JimmyStanger,
     ],
   },
   {
@@ -50,6 +54,7 @@ export const teams_cognizant_2026: Team[] = [
       GOLFERS_2026.ChandlerBlanchet,
       GOLFERS_2026.DavidLipsky,
       GOLFERS_2026.KeithMitchell,
+      GOLFERS_2026.CarsonYoung,
     ],
   },
   {
@@ -60,6 +65,7 @@ export const teams_cognizant_2026: Team[] = [
       GOLFERS_2026.BrooksKoepka,
       GOLFERS_2026.JustinHicks,
       GOLFERS_2026.TomKim,
+      GOLFERS_2026.AJEwart,
     ],
   },
   {
@@ -70,6 +76,7 @@ export const teams_cognizant_2026: Team[] = [
       GOLFERS_2026.KevinStreelman,
       GOLFERS_2026.CamiloVillegas,
       GOLFERS_2026.ChrisKirk,
+      GOLFERS_2026.MarkHubbard,
     ],
   },
 ];
