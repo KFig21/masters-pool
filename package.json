@@ -9,9 +9,9 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "scrape": "tsx scrape-scores.js",
-    "start": "tsx server.js",
-    "server": "tsx server.js",
+    "start": "node --import tsx server.js",
+    "server": "node --import tsx server.js",
+    "scrape": "node --import tsx scrape-scores.js",
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
