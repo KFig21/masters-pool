@@ -10,8 +10,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "scrape": "tsx scrape-scores.js",
-    "start": "tsx server.js",
-    "server": "tsx server.js",
+    "start": "npx tsx server.js",
+    "server": "npx tsx server.js",
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
