@@ -1,4 +1,4 @@
-import type { eventsEnum } from '../constants/enums';
+import type { eventsEnum } from '../constants/enums.ts';
 
 export interface Round {
   total: number | null;

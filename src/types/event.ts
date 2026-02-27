@@ -1,5 +1,5 @@
-import type { eventsEnum } from '../constants/enums';
-import type { Team } from './team';
+import type { eventsEnum } from '../constants/enums.ts';
+import type { Team } from './team.ts';
 
 export type EventKey = (typeof eventsEnum)[keyof typeof eventsEnum];
 
