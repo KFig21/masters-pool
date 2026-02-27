@@ -1,8 +1,8 @@
-import { eventsEnum } from './enums';
-import { mastersEventData } from './events/masters/eventData';
-import type { EventMatrix } from '../types/event';
-import { genesisEventData } from './events/genesis/eventData';
-import { cognizantEventData } from './events/cognizant/eventData';
+import { eventsEnum } from './enums.ts';
+import { mastersEventData } from './events/masters/eventData.ts';
+import type { EventMatrix } from '../types/event.ts';
+import { genesisEventData } from './events/genesis/eventData.ts';
+import { cognizantEventData } from './events/cognizant/eventData.ts';
 
 export const EVENT_MATRIX: EventMatrix = {
   [eventsEnum.MASTERS]: mastersEventData,
