@@ -56,7 +56,7 @@ export const Leaderboard = () => {
   const formatTimestamp = (dateString: string | null) => {
     if (!dateString) return '--:--';
     return new Date(dateString).toLocaleTimeString([], {
-      hour: '2-digit',
+      hour: 'numeric', // Change from '2-digit' to 'numeric'
       minute: '2-digit',
       hour12: true,
     });

@@ -80,7 +80,7 @@ export const AnimationTester = () => {
         <div className="teamRow-container" style={{ cursor: 'default' }}>
           <AnimatedCell className="cell rank" value={rank} isTied={isTied} />
 
-          <AnimatedCell className="cell name" value="TEST" animationTrigger={rank} />
+          <AnimatedCell className="cell name" value="TEST" />
 
           {/* Dummy Rounds */}
           <div className="cell score even-par">72</div>
@@ -95,18 +95,6 @@ export const AnimationTester = () => {
           />
         </div>
       </div>
-
-      <p
-        style={{
-          color: '#888',
-          fontSize: '10px',
-          textAlign: 'center',
-          marginTop: '8px',
-          fontFamily: 'Work Sans',
-        }}
-      >
-        Sequence: Double Flash → Slide Down → Tile Swap → Slide In From Top
-      </p>
     </div>
   );
 };

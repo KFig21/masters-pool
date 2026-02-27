@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 // masters-pool/src/UI/pages/leaderboard/components/teamRow/AnimatedCell.tsx
 
 import { useState, useEffect, useRef } from 'react';
@@ -5,42 +6,29 @@ import { useState, useEffect, useRef } from 'react';
 interface AnimatedCellProps {
   value: string | number;
   className?: string;
-  animationTrigger?: string | number;
   isTied?: boolean;
 }
 
-const FLASH_MS = 600;
-const PAUSE_MS = 300;
-const FLIP_MS = 1200;
-const HOLD_MS = 800;
-const FADE_MS = 200;
+// MATCH THE SCSS EXACTLY
+const SLIDE_MS = 500;
+const HOLD_MS = 1000;
+const TOTAL_DURATION_MS = SLIDE_MS * 2 + HOLD_MS;
 
-const TOTAL_DURATION_MS = FLASH_MS + PAUSE_MS + FLIP_MS + HOLD_MS + FADE_MS;
-const SWAP_TIME_MS = FLASH_MS + PAUSE_MS + FLIP_MS / 2;
+// Swap exactly in the middle of the 1.5s black-out hold
+const SWAP_TIME_MS = SLIDE_MS + HOLD_MS / 2;
 
-export const AnimatedCell = ({
-  value,
-  className = '',
-  animationTrigger,
-  isTied = false,
-}: AnimatedCellProps) => {
+export const AnimatedCell = ({ value, className = '', isTied = false }: AnimatedCellProps) => {
   const [displayValue, setDisplayValue] = useState(value);
   const [isAnimating, setIsAnimating] = useState(false);
   const prevValueRef = useRef(value);
-  const prevTriggerRef = useRef(animationTrigger);
 
   useEffect(() => {
-    const valueChanged = value !== prevValueRef.current;
-    const triggerChanged =
-      animationTrigger !== undefined && animationTrigger !== prevTriggerRef.current;
-
-    if (valueChanged || triggerChanged) {
+    // Only trigger if the value actually changes
+    if (value !== prevValueRef.current) {
       prevValueRef.current = value;
-      prevTriggerRef.current = animationTrigger;
-
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsAnimating(true);
 
+      // The "Magic" swap happens while the tile is hidden
       const swapTimer = setTimeout(() => {
         setDisplayValue(value);
       }, SWAP_TIME_MS);
@@ -54,9 +42,8 @@ export const AnimatedCell = ({
         clearTimeout(endTimer);
       };
     }
-  }, [value, animationTrigger]);
+  }, [value]);
 
-  // Apply the animating class to the OUTER div (the .cell)
   return (
     <div className={`${className} ${isAnimating ? 'is-animating-cell' : ''}`}>
       <span className="score-tile-inner">

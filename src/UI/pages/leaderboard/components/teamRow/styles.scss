@@ -38,17 +38,18 @@
             background-color: var(--scoreboard-BG-row--hover);
 
             .cell {
-                background-color: var(--scoreboard-BG-cell--hover);
+                .score-tile-inner {
+                    background-color: var(--scoreboard-BG-cell--hover);
+                }
             }
         }
 
         .cell {
+            background-color: var(--green);
             color: var(--scoreboard-FC-row);
-            background-color: var(--scoreboard-BG-row);
+            box-shadow: var(--scoreboard-boxShadow-cell);
             font-size: 30px;
             font-weight: 500;
-            padding: 0px 10px;
-            box-shadow: var(--scoreboard-boxShadow-cell);
             height: 40px;
             display: flex;
             align-items: center;
@@ -59,6 +60,22 @@
                 font-size: 22px;
                 padding: 0px 4px;
                 height: 32px;
+            }
+
+            .score-tile-inner {
+                display: flex;
+                width: 100%;
+                height: 100%;
+                justify-content: center;
+                align-items: center;
+                box-shadow: var(--scoreboard-boxShadow-cell);
+                background-color: var(--scoreboard-BG-row);
+                will-change: transform;
+
+                // Ensure the tied 'T-' stays inside the tile
+                .is-tied {
+                    margin-right: 2px;
+                }
             }
 
             &.rank {
@@ -141,110 +158,67 @@
             background-color: var(--scoreboard-BG-row-favorite);
 
             .cell {
-                background-color: var(--scoreboard-BG-cell-favorite);
+                .score-tile-inner {
+                    background-color: var(--scoreboard-BG-cell-favorite);
+                }
             }
 
             &:hover {
                 background-color: var(--scoreboard-BG-row-favorite--hover);
 
                 .cell {
-                    background-color: var(--scoreboard-BG-cell-favorite--hover);
+                    .score-tile-inner {
+                        background-color: var(--scoreboard-BG-cell-favorite--hover);
+                    }
                 }
             }
-
         }
     }
 }
 
 
-// Timing Variables (Match your AnimatedCell.tsx constants)
-$flash-duration: 0.6s;
-$pause-duration: 0.3s;
-$flip-duration: 1.2s;
-$hold-after-duration: 0.8s;
-$fade-out-duration: 0.2s;
-$total-duration: $flash-duration + $pause-duration + $flip-duration + $hold-after-duration + $fade-out-duration;
+// Timing Config
+$slide-duration: 0.5s;
+$hold-duration: 1.0s; // Increased to 1.5s as requested
+$total-animation: (
+    $slide-duration * 2) + $hold-duration;
 
-// Key Percentages
-$stage1-end: calc(($flash-duration / $total-duration) * 100%);
-$stage2-end: calc((($flash-duration + $pause-duration) / $total-duration) * 100%);
-$swap-point: calc((($flash-duration + $pause-duration + ($flip-duration / 2)) / $total-duration) * 100%);
-$flip-end: calc((($flash-duration + $pause-duration + $flip-duration) / $total-duration) * 100%);
-$fade-start: calc((($flash-duration + $pause-duration + $flip-duration + $hold-after-duration) / $total-duration) * 100%);
+// Keyframe Percentages
+$exit-end: calc(($slide-duration / $total-animation) * 100%
+);
+$re-entry-start: calc((($slide-duration + $hold-duration) / $total-animation) * 100%);
 
 .cell {
     position: relative;
-    overflow: hidden; // Keeps the "tiles" inside the box
+    overflow: hidden;
 
     &.is-animating-cell {
-        animation: cellBackgroundFlash #{$total-duration} ease-in-out forwards;
+        box-shadow: inset 0 3px 10px rgb(0, 0, 0) !important;
 
+        // We no longer animate the background color here
         .score-tile-inner {
-            animation: tileSlideSequence #{$total-duration} ease-in-out forwards;
+            animation: fenwaySlide #{$total-animation} cubic-bezier(0.45, 0.05, 0.55, 0.95) forwards;
         }
     }
 }
 
-.score-tile-inner {
-    display: flex;
-    width: 100%;
-    height: 100%; // Ensure it fills the cell height for proper alignment
-    justify-content: center;
-    align-items: center;
-    will-change: transform; // Optimize for the movement
-}
-
-// 1. Background Animation: Brings back the "Flash"
-@keyframes cellBackgroundFlash {
-
-    // Stage 1: The Flash (Pulse twice)
-    0%,
-    #{$stage1-end * 0.5},
-    #{$stage1-end} {
-        background-color: var(--scoreboard-BG-row);
-    }
-
-    #{$stage1-end * 0.25},
-    #{$stage1-end * 0.75} {
-        background-color: var(--scoreboard-BG-row--hover);
-    }
-
-    // Stage 2 & 3: Keep it highlighted while the tile moves
-    #{$stage2-end},
-    #{$fade-start} {
-        background-color: var(--scoreboard-BG-row--hover);
-    }
-
-    // Stage 5: Fade back
-    100% {
-        background-color: var(--scoreboard-BG-row);
-    }
-}
-
-// 2. Manual Slide Animation (Fenway Style)
-@keyframes tileSlideSequence {
-
-    // Hold position during initial flash
-    0%,
-    #{$stage2-end} {
+@keyframes fenwaySlide {
+    0% {
         transform: translateY(0);
-        opacity: 1;
     }
 
-    // Slide DOWN and out
-    #{($swap-point - 0.01%)} {
-        transform: translateY(110%); // Slide down out of view
-        opacity: 0;
+    // 1. Slide DOWN out of view
+    #{$exit-end} {
+        transform: translateY(110%);
     }
 
-    #{$swap-point} {
-        opacity: 0;
+    // 2. THE HOLD: Keep it at the bottom (invisible)
+    #{$re-entry-start - 0.01%} {
+        transform: translateY(110%);
     }
 
-    // Slide DOWN into position
-    #{$flip-end},
+    // 3. Slide DOWN back into position
     100% {
         transform: translateY(0);
-        opacity: 1;
     }
 }

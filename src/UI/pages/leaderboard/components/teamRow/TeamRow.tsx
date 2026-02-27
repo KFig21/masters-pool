@@ -35,7 +35,7 @@ export const TeamRow = ({ data }: Props) => {
       <Link to={`/team/${owner}`} className="teamRow-container">
         <AnimatedCell className="cell rank" value={rank} isTied={isTied} />
 
-        <AnimatedCell className="cell name" value={owner.toUpperCase()} animationTrigger={rank} />
+        <AnimatedCell className="cell name" value={owner.toUpperCase()} />
 
         <AnimatedCell className={`cell score ${getScoreClass(r1)}`} value={formatScore(r1)} />
         <AnimatedCell className={`cell score ${getScoreClass(r2)}`} value={formatScore(r2)} />
