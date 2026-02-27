@@ -165,23 +165,22 @@ $hold-after-duration: 0.8s;
 $fade-out-duration: 0.2s;
 $total-duration: $flash-duration + $pause-duration + $flip-duration + $hold-after-duration + $fade-out-duration;
 
-// Percentage Calculations
+// Key Percentages
 $stage1-end: calc(($flash-duration / $total-duration) * 100%);
 $stage2-end: calc((($flash-duration + $pause-duration) / $total-duration) * 100%);
 $swap-point: calc((($flash-duration + $pause-duration + ($flip-duration / 2)) / $total-duration) * 100%);
 $flip-end: calc((($flash-duration + $pause-duration + $flip-duration) / $total-duration) * 100%);
-// The moment the "hold" ends and the "fade" begins
 $fade-start: calc((($flash-duration + $pause-duration + $flip-duration + $hold-after-duration) / $total-duration) * 100%);
 
 .cell {
     position: relative;
+    overflow: hidden; // Keeps the "tiles" inside the box
 
     &.is-animating-cell {
-        // 'forwards' ensures it stays at the final keyframe until React removes the class
         animation: cellBackgroundFlash #{$total-duration} ease-in-out forwards;
 
         .score-tile-inner {
-            animation: tileFlipSequence #{$total-duration} ease-in-out forwards;
+            animation: tileSlideSequence #{$total-duration} ease-in-out forwards;
         }
     }
 }
@@ -189,21 +188,20 @@ $fade-start: calc((($flash-duration + $pause-duration + $flip-duration + $hold-a
 .score-tile-inner {
     display: flex;
     width: 100%;
+    height: 100%; // Ensure it fills the cell height for proper alignment
     justify-content: center;
     align-items: center;
-    transform-style: preserve-3d;
-    perspective: 1000px;
-    backface-visibility: hidden;
+    will-change: transform; // Optimize for the movement
 }
 
-// 1. Background Animation: Handles the fill of the .cell
+// 1. Background Animation: Brings back the "Flash"
 @keyframes cellBackgroundFlash {
 
-    // Stage 1: Flashing (Initial State -> Hover State -> Initial State)
+    // Stage 1: The Flash (Pulse twice)
     0%,
     #{$stage1-end * 0.5},
     #{$stage1-end} {
-        background-color: var(--scoreboard-BG-row); // Start at row default
+        background-color: var(--scoreboard-BG-row);
     }
 
     #{$stage1-end * 0.25},
@@ -211,52 +209,42 @@ $fade-start: calc((($flash-duration + $pause-duration + $flip-duration + $hold-a
         background-color: var(--scoreboard-BG-row--hover);
     }
 
-    // Stage 2 & 3: Flip (Transition to highlight at the swap point)
-    #{$stage2-end} {
-        background-color: var(--scoreboard-BG-row--hover);
-    }
-
-    #{$swap-point} {
-        background-color: var(--scoreboard-BG-row--hover);
-    }
-
-    // Stage 4: Hold the highlight
+    // Stage 2 & 3: Keep it highlighted while the tile moves
+    #{$stage2-end},
     #{$fade-start} {
         background-color: var(--scoreboard-BG-row--hover);
     }
 
-    // Stage 5: Fade back to original row color
+    // Stage 5: Fade back
     100% {
         background-color: var(--scoreboard-BG-row);
     }
 }
 
-// 2. 3D Flip Animation: Handles the perspective of the text
-@keyframes tileFlipSequence {
+// 2. Manual Slide Animation (Fenway Style)
+@keyframes tileSlideSequence {
 
-    // Stay flat until flip starts
+    // Hold position during initial flash
     0%,
     #{$stage2-end} {
-        transform: rotateX(0deg);
+        transform: translateY(0);
         opacity: 1;
     }
 
-    // Flip to 90 degrees (vertical)
+    // Slide DOWN and out
     #{($swap-point - 0.01%)} {
-        transform: rotateX(90deg);
-        opacity: 1;
-    }
-
-    // Teleport to -90 degrees while invisible (this is when React swaps the value)
-    #{$swap-point} {
-        transform: rotateX(-90deg);
+        transform: translateY(110%); // Slide down out of view
         opacity: 0;
     }
 
-    // Finish the rotation back to 0
+    #{$swap-point} {
+        opacity: 0;
+    }
+
+    // Slide DOWN into position
     #{$flip-end},
     100% {
-        transform: rotateX(0deg);
+        transform: translateY(0);
         opacity: 1;
     }
 }
