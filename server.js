@@ -37,7 +37,7 @@ app.get('/api/scores/:event/:year', async (req, res) => {
 });
 
 // --- SCRAPER TIMER ---
-setInterval(scrapeData, 5 * 60 * 1000); // 5 minutes
+setInterval(scrapeData, 3 * 60 * 1000); // 3 minutes
 scrapeData(); // Initial run on start
 
 // --- SERVE FRONTEND ---

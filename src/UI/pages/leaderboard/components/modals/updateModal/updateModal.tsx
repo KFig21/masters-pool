@@ -9,7 +9,7 @@ export const UpdateModal = ({ handleModal }: Props) => {
     <div className="modal-overlay" onClick={() => handleModal()}>
       <div className="modal-content fade-in-up" onClick={(e) => e.stopPropagation()}>
         <div className="modal-title">Scoring Updates</div>
-        <p>The scores should update about every 5 minutes.</p>
+        <p>The scores should update about every 3 minutes.</p>
         <button className="close-btn" onClick={() => handleModal()}>
           Close
         </button>

@@ -154,3 +154,58 @@
         }
     }
 }
+
+// ----------------------------------------
+// Scoreboard Flip Animation Utilities
+// ----------------------------------------
+
+.score-tile-inner {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    border-radius: 4px; // Gives it a slight "tile" feel when flashing
+    transition: background-color 0.3s ease;
+
+    // Allows the 3D rotation to look realistic
+    transform-style: preserve-3d;
+    perspective: 1000px;
+
+    .is-tied {
+        display: flex;
+    }
+
+    &.is-flipping {
+        animation: flipTileBoard 0.6s ease-in-out forwards;
+    }
+}
+
+// Keyframes that mimic an old airport/sports scoreboard tile
+@keyframes flipTileBoard {
+    0% {
+        transform: rotateX(0deg);
+        background-color: transparent;
+    }
+
+    49.9% {
+        // Flip it down so it disappears, flash it yellow briefly to draw the eye
+        transform: rotateX(90deg);
+        background-color: rgba(255, 204, 0, 0.4); // A subtle yellow flash
+        opacity: 0;
+    }
+
+    // At 50%, React swaps the number instantly while it's invisible at 90deg
+    50% {
+        transform: rotateX(-90deg);
+        background-color: rgba(255, 204, 0, 0.4);
+        opacity: 0;
+    }
+
+    100% {
+        // Flip the new number up into view
+        transform: rotateX(0deg);
+        background-color: transparent;
+        opacity: 1;
+    }
+}

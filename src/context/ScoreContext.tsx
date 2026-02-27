@@ -89,7 +89,9 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
     fetchScores();
 
     // Poll for new data every 1 minute
-    const intervalId = setInterval(fetchScores, 1 * 60 * 1000);
+    // SMART POLLING: 30s if active, 5 minutes if not
+    const pollInterval = isTournamentActive ? 30 * 1000 : 5 * 60 * 1000;
+    const intervalId = setInterval(fetchScores, pollInterval);
 
     return () => {
       isMounted = false;
@@ -161,10 +163,16 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
       return (scoreA as number) - (scoreB as number);
     });
 
-    const processedTeams = sorted.map((team, index) => ({
-      ...team,
-      rank: index + 1,
-    })) as ProcessedTeam[];
+    const processedTeams = sorted.map((team) => {
+      // Find the first index where this specific score appears in the sorted array
+      // This is the "Golf Rank"
+      const golfRank = sorted.findIndex((t) => t.stats.activeTotal === team.stats.activeTotal) + 1;
+
+      return {
+        ...team,
+        rank: golfRank,
+      };
+    }) as ProcessedTeam[];
 
     return { teams: processedTeams, isTournamentComplete: isComplete };
   }, [rawTeams]);

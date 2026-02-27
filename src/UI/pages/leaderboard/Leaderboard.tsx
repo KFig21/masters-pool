@@ -15,6 +15,7 @@ import { UpdateModal } from './components/modals/updateModal/updateModal';
 export interface ScoreboardTeamData {
   rank: number;
   owner: string;
+  isTied: boolean;
   r1: number | string;
   r2: number | string;
   r3: number | string;
@@ -104,8 +105,13 @@ export const Leaderboard = () => {
               ) : teams.length === 0 ? (
                 <NoData handleModal={handleTournamentSelectorModal} />
               ) : (
-                teams.map((team) => {
+                teams.map((team, index) => {
                   const { sumR1, sumR2, sumR3, sumR4, activeTotal, isTeamCut } = team.stats;
+
+                  // Determine if this rank is a tie
+                  const isTied =
+                    (teams[index - 1] && teams[index - 1].stats.activeTotal === activeTotal) ||
+                    (teams[index + 1] && teams[index + 1].stats.activeTotal === activeTotal);
 
                   const r1Display = sumR1;
                   const r2Display =
@@ -118,6 +124,7 @@ export const Leaderboard = () => {
                   const propData: ScoreboardTeamData = {
                     rank: team.rank,
                     owner: team.owner,
+                    isTied: isTied,
                     r1: formatDiff(r1Display),
                     r2: formatDiff(r2Display),
                     r3: formatDiff(r3Display),
