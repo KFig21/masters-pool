@@ -1,3 +1,5 @@
+// masters-pool/server.js
+
 import express from 'express';
 import mongoose from 'mongoose';
 import path from 'path';
@@ -14,7 +16,7 @@ const MONGODB_URI = process.env.MONGODB_URI;
 
 mongoose
   .connect(MONGODB_URI, {
-    dbName: 'masters_pool', // This creates a specific DB for this app
+    dbName: 'masters_pool',
   })
   .then(() => console.log('⛳️ Connected to Golf Database'))
   .catch((err) => console.error('❌ MongoDB Connection Error:', err));
@@ -26,7 +28,6 @@ app.get('/api/scores/:event/:year', async (req, res) => {
     const scores = await Score.findOne({ eventId: event, year: parseInt(year) });
     if (!scores) return res.status(404).json({ error: 'No data found' });
 
-    // Send both the team data AND the timestamp
     res.json({
       teams: scores.data,
       lastUpdated: scores.lastUpdated,
@@ -36,9 +37,37 @@ app.get('/api/scores/:event/:year', async (req, res) => {
   }
 });
 
-// --- SCRAPER TIMER ---
-setInterval(scrapeData, 3 * 60 * 1000); // 3 minutes
-scrapeData(); // Initial run on start
+// --- SMART SCRAPER TIMER ---
+async function runSmartScraper() {
+  try {
+    await scrapeData();
+  } catch (err) {
+    console.error('❌ Smart Scraper Error:', err);
+  } finally {
+    scheduleNextScrape();
+  }
+}
+
+function scheduleNextScrape() {
+  // Get current hour in Eastern Time (Augusta, GA time)
+  const now = new Date();
+  const estString = now.toLocaleString('en-US', { timeZone: 'America/New_York' });
+  const estDate = new Date(estString);
+  const hour = estDate.getHours(); // Returns 0-23
+
+  let delayMinutes = 3; // Default: Active Tournament Hours
+
+  // If it's 8 PM (20) or later, OR before 6 AM (6), slow down to once an hour
+  if (hour >= 20 || hour < 6) {
+    delayMinutes = 60;
+    console.log(`🌙 Off-hours detected (Hour: ${hour} EST). Next DB update in 60 minutes.`);
+  }
+
+  setTimeout(runSmartScraper, delayMinutes * 60 * 1000);
+}
+
+// Kick off the initial scrape cycle
+runSmartScraper();
 
 // --- SERVE FRONTEND ---
 app.use(express.static(path.join(__dirname, 'dist')));
