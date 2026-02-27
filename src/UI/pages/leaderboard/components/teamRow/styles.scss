@@ -58,7 +58,6 @@
 
             @include mobile {
                 font-size: 22px;
-                padding: 0px 4px;
                 height: 32px;
             }
 
@@ -75,6 +74,10 @@
                 // Ensure the tied 'T-' stays inside the tile
                 .is-tied {
                     margin-right: 2px;
+                }
+
+                @include mobile {
+                    padding: 0px 4px;
                 }
             }
 
