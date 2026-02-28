@@ -38,22 +38,22 @@ export const teams_cognizant_2026: Team[] = [
   {
     owner: 'Barrett',
     golfers: [
-      GOLFERS_2026.NealShipley,
       GOLFERS_2026.JacksonSuber,
       GOLFERS_2026.SudarshanYellamaraju,
       GOLFERS_2026.KarlVilips,
       GOLFERS_2026.AdrienSaddier,
       GOLFERS_2026.JimmyStanger,
+      GOLFERS_2026.KeithMitchell,
     ],
   },
   {
     owner: 'Nalls',
     golfers: [
+      GOLFERS_2026.NealShipley,
       GOLFERS_2026.BeauHossler,
       GOLFERS_2026.LeeHodges,
       GOLFERS_2026.ChandlerBlanchet,
       GOLFERS_2026.DavidLipsky,
-      GOLFERS_2026.KeithMitchell,
       GOLFERS_2026.CarsonYoung,
     ],
   },

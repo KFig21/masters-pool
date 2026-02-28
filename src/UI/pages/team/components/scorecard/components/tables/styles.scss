@@ -195,7 +195,8 @@
                     position: relative;
 
                     @include mobile {
-                        padding-left: 8px;
+                        padding-left: 6px;
+                        gap: 4px;
                         white-space: nowrap;
                         overflow: hidden;
                         text-overflow: ellipsis;
