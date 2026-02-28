@@ -13,7 +13,7 @@
 
     .leaderboard-arch {
         background-color: var(--darkGreen);
-        height: 60px;
+        height: 80px;
         width: 100%;
         border-radius: 50% 50% 0 0 / 100% 100% 0 0;
         position: relative;
@@ -48,7 +48,7 @@
                 $logo-size: 38px;
                 max-height: $logo-size;
                 height: $logo-size;
-                transform: translateY(-26px);
+                transform: translateY(-36px);
 
                 img {
                     height: inherit;
@@ -76,7 +76,7 @@
                 align-items: first baseline;
                 flex-direction: row;
                 gap: 14px;
-                transform: translateY(-16px);
+                transform: translateY(-26px);
 
                 .header-title-year {
                     font-size: calc($titleFontSize * 0.85);
