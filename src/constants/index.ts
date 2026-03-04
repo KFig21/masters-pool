@@ -12,6 +12,6 @@ export const EVENT_MATRIX: EventMatrix = {
   [eventsEnum.ARNOLD_PALMER]: arnoldPalmerEventData,
 };
 
-// VERY IMPORTANT: KEEP THESE UPDATED
+// IMPORTANT: KEEP THESE UPDATED
 export const CURRENT_EVENT = eventsEnum.ARNOLD_PALMER;
 export const CURRENT_YEAR = 2026;
