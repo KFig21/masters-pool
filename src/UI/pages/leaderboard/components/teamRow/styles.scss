@@ -101,6 +101,12 @@
                     margin-left: 4px;
                 }
 
+                // ALIGN NAME TILES TO THE LEFT
+                // .score-tile-inner {
+                //     justify-content: flex-start;
+                //     padding-left: 10px;
+                // }
+
                 @include mobile {
                     font-size: 22px;
                     margin: 0px 5px;
