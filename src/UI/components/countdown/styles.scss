@@ -1,0 +1,53 @@
+@use '../../styles/colors' as *;
+@use '../../styles/index' as *;
+
+.footer-center.countdown {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: "Work Sans", sans-serif;
+    font-size: 14px;
+    color: var(--nav-FC);
+    white-space: nowrap;
+    font-style: italic;
+    cursor: default;
+
+    .label {
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        // color: var(--white)
+    }
+
+    .time {
+        font-weight: 600;
+        font-variant-numeric: tabular-nums; // Keeps the timer from jittering when numbers change widths
+        display: flex;
+        flex-direction: row;
+        gap: 4px;
+
+        .time-section {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .timer-digit {
+            // color: var(--yellow);
+        }
+
+        .timer-label {
+            opacity: .7;
+        }
+    }
+
+    @include mobile {
+        font-size: 12px;
+        gap: 4px;
+
+        .label {
+            // display: none; // Hide 'TEE TIME:' on tiny screens to save space
+        }
+    }
+}

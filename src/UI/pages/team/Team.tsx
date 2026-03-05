@@ -10,7 +10,7 @@ import { Loading } from '../../components/loading/Loading';
 export const Team = () => {
   const { owner } = useParams();
   const { favoriteTeam, toggleFavorite } = useFavoriteTeam();
-  const { getTeamByOwner, isLoading } = useScores();
+  const { getTeamByOwner, isLoading, isTournamentActive, isTournamentComplete } = useScores();
 
   if (isLoading) {
     return <Loading />;
@@ -32,10 +32,6 @@ export const Team = () => {
   // const { rank } = teamInfo;
   const { activeTotal, isTeamCut } = teamInfo.stats;
 
-  // Testing CUT strikethrough
-  // let { activeTotal, isTeamCut } = teamInfo.stats;
-  // isTeamCut = Math.random() < 0.5;
-
   const displayScore =
     activeTotal === 999
       ? 'E'
@@ -46,6 +42,7 @@ export const Team = () => {
   return (
     <div className="team-wrapper">
       <div className="team-container">
+        {/*  HEADER */}
         <div className={`team-header ${isTeamCut ? 'is-cut' : ''}`}>
           {/* Mobile back button */}
           <Link to="/" className="mobile-back-button">
@@ -64,21 +61,19 @@ export const Team = () => {
           {/* Team name and score */}
           <div className="team-header-data-container">
             <div className="team-header-data name">{owner}</div>
-            {!isTeamCut && <div className="team-header-data score">{displayScore}</div>}
+            {/* Only show score if: 1. The tournament is active (or complete) 2. The team isn't cut */}
+            {(isTournamentActive || isTournamentComplete) && !isTeamCut && (
+              <div className="team-header-data score">
+                {displayScore === 0 ? 'E' : displayScore}
+              </div>
+            )}
           </div>
         </div>
 
         {/* Scorecard */}
         <div className="team-stats fade-in-up ">
           <Scorecard team={teamInfo} />
-          {/* map thru players - NEED HOLE BY HOLE SCORES */}
-          <div className="team-players">
-            {/* <Player_FullScorecard player="Tiger Woods" />
-          <Player_FullScorecard player="Rory McIlroy" />
-          <Player_FullScorecard player="Dustin Johnson" />
-          <Player_FullScorecard player="Shane Lowry" />
-          <Player_FullScorecard player="Jason Day" /> */}
-          </div>
+
           <div className="team-footer">
             <Link to="/" className="logo-container">
               <img src={Logo} alt="Masters Pool Logo" />

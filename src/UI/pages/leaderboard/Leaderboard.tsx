@@ -6,11 +6,12 @@ import { EVENT_MATRIX } from '../../../constants';
 import Logo from '../../../assets/images/logo.png';
 import { ScoringModal } from './components/modals/scoringModal/ScoringModal';
 import ManageSearchIcon from '@mui/icons-material/ManageSearch';
-import './styles.scss';
 import { TournamentSelectorModal } from './components/modals/tournamentSelectorModal/TournamentSelectorModal';
 import { NoData } from './components/noData/NoData';
 import { Loading } from '../../components/loading/Loading';
 import { UpdateModal } from './components/modals/updateModal/updateModal';
+import { Countdown } from '../../components/countdown/Countdown';
+import './styles.scss';
 
 export interface ScoreboardTeamData {
   rank: number;
@@ -51,7 +52,11 @@ export const Leaderboard = () => {
   };
 
   // Safely grab the friendly name of the current event
-  const eventName = EVENT_MATRIX[currentEvent as keyof typeof EVENT_MATRIX]?.title || 'Golf';
+  const eventConfig = EVENT_MATRIX[currentEvent as keyof typeof EVENT_MATRIX];
+  const eventName = eventConfig?.title || 'Golf';
+
+  // Extract the start date dynamically based on the current active tournament
+  const tournamentStartDate = eventConfig?.years[currentYear]?.startDate || null;
 
   const formatTimestamp = (dateString: string | null) => {
     if (!dateString) return '--:--';
@@ -148,6 +153,9 @@ export const Leaderboard = () => {
                 <ManageSearchIcon className="tournament-selector-icon" />
               </div>
             </div>
+
+            <Countdown targetDateStr={tournamentStartDate} />
+
             {isTournamentActive && (
               <div className="footer-right">
                 <div className="update-info" onClick={() => handleScoringUpdateModal()}>
