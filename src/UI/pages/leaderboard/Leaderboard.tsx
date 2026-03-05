@@ -28,7 +28,6 @@ export interface ScoreboardTeamData {
 
 export const Leaderboard = () => {
   const { favoriteTeam } = useFavoriteTeam();
-  // Pulling the new context variables
   const { teams, isLoading, currentYear, currentEvent, lastUpdated, isTournamentActive } =
     useScores();
   const [isScoringModalOpen, setIsScoringModalOpen] = useState(false);
@@ -67,6 +66,27 @@ export const Leaderboard = () => {
     });
   };
 
+  // --- Dynamic Header Title Scaling Logic ---
+  const fullTitle = `${eventName} Pool`;
+  const baseLength = 12; // Length of "Masters Pool"
+
+  // We calculate how many characters over the base we are
+  const charDiff = Math.max(0, fullTitle.length - baseLength);
+
+  // 0.013 is the "magic number" that gets Arnold Palmer (~18 chars) to ~0.92 scale
+  // We clamp it at 0.7 so it never gets too tiny to read
+  const scaleFactor = Math.max(0.7, 1 - charDiff * 0.015);
+
+  const dynamicHeaderStyle = {
+    transform: `scale(${scaleFactor})`,
+    transformOrigin: 'center center',
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  } as React.CSSProperties;
+  // -----------------------------
+
   return (
     <>
       {isLoading ? (
@@ -75,7 +95,7 @@ export const Leaderboard = () => {
         <div className="leaderboard-wrapper fade-in-up">
           <div className="leaderboard-arch"></div>
           <div className="leaderboard-container">
-            <div className="leaderboard-title-container">
+            <div className="leaderboard-title-container" style={dynamicHeaderStyle}>
               <div className="logo-container">
                 <img src={Logo} alt={`${eventName} Pool Logo`} />
               </div>
@@ -102,6 +122,7 @@ export const Leaderboard = () => {
             </div>
 
             <div className="leaderboard-teams">
+              {/* // TODO: What the heck is this? */}
               {/* Added Loading and Empty State handling */}
               {isLoading ? (
                 <div style={{ padding: '2rem', textAlign: 'center', fontFamily: 'Work Sans' }}>
