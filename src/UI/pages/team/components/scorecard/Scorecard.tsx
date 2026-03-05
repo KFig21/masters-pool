@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import type { ProcessedTeam } from '../../../../../context/ScoreContext';
+import { useScores, type ProcessedTeam } from '../../../../../context/ScoreContext';
 import { RoundTable } from './components/tables/RoundTable';
 import { ThruTable } from './components/tables/ThruTable';
 import './styles.scss';
@@ -9,6 +9,7 @@ interface Props {
 }
 
 export const Scorecard = ({ team }: Props) => {
+  const { isTournamentActive, lastUpdated } = useScores();
   // Sort golfers: Best Score first, Cut players last
   const sortedGolfers = useMemo(() => {
     return [...team.golfers].sort((a, b) => {
@@ -21,11 +22,27 @@ export const Scorecard = ({ team }: Props) => {
     });
   }, [team.golfers]);
 
+  const formatTimestamp = (dateString: string | null) => {
+    if (!dateString) return '--:--';
+    return new Date(dateString).toLocaleTimeString([], {
+      hour: 'numeric', // Change from '2-digit' to 'numeric'
+      minute: '2-digit',
+      hour12: true,
+    });
+  };
+
   return (
     <div className="scorecard-wrapper">
       <ThruTable golfers={sortedGolfers} stats={team.stats} />
       <div className="spacer-row" />
       <RoundTable golfers={sortedGolfers} stats={team.stats} />
+
+      {isTournamentActive && (
+        <div className="scorecard-update-info">
+          <span className="label">Updated:</span>
+          <span className="value">{formatTimestamp(lastUpdated)}</span>
+        </div>
+      )}
     </div>
   );
 };

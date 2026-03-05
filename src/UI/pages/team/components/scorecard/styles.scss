@@ -18,6 +18,18 @@
     .spacer-row {
         height: 10px;
     }
+
+    .scorecard-update-info {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        padding: 0px 8px;
+        gap: 4px;
+        font-size: 0.8rem;
+        font-style: italic;
+        font-weight: 500;
+        color: var(--green);
+    }
 }
 
 /* --- The Toggle Switch CSS --- */

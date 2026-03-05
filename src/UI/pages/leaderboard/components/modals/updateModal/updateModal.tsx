@@ -18,7 +18,7 @@ export const UpdateModal = ({ handleModal }: Props) => {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="modal-title">Scoring Updates</div>
-        <p>The scores should update about every 3 minutes.</p>
+        <p>During tournament hours the scores will update about every 3 minutes.</p>
         <button className="close-button" onClick={() => onClose(setIsClosing, handleModal)}>
           Close
         </button>
