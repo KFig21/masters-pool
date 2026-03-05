@@ -177,12 +177,16 @@ export const Leaderboard = () => {
 
             <Countdown targetDateStr={tournamentStartDate} />
 
-            {isTournamentActive && (
+            {isTournamentActive ? (
               <div className="footer-right">
                 <div className="update-info" onClick={() => handleScoringUpdateModal()}>
                   <span className="label">LAST UPDATED:</span>
                   <span className="value">{formatTimestamp(lastUpdated)}</span>
                 </div>
+              </div>
+            ) : (
+              <div className="footer-right">
+                <div className="empty-block"></div>
               </div>
             )}
           </div>

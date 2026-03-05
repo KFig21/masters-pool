@@ -194,6 +194,7 @@
         background-color: var(--darkGreen);
         border-radius: 0px 0px 5px 5px;
         position: relative;
+        padding-right: 12px;
 
         .footer-left {
             .tournament-selector-icon-container {
@@ -223,7 +224,7 @@
         }
 
         .footer-right {
-            padding-right: 12px;
+            display: block;
 
             .update-info {
                 display: flex;
@@ -262,6 +263,12 @@
                     font-size: 9px;
                     gap: 4px;
                 }
+            }
+
+            // This is to center the tee-time in the footer
+            // The icon on the left takes up 48px, since the padding-right of the footer is 12px we need another 36px to even it out
+            .empty-block {
+                width: 36px;
             }
         }
     }
