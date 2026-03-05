@@ -73,7 +73,7 @@ export const Leaderboard = () => {
   // We calculate how many characters over the base we are
   const charDiff = Math.max(0, fullTitle.length - baseLength);
 
-  // 0.013 is the "magic number" that gets Arnold Palmer (~18 chars) to ~0.92 scale
+  // 0.015 is the "magic number" that gets Arnold Palmer (~18 chars) to ~0.92 scale
   // We clamp it at 0.7 so it never gets too tiny to read
   const scaleFactor = Math.max(0.7, 1 - charDiff * 0.015);
 
