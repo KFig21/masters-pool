@@ -1,13 +1,23 @@
+import { useState } from 'react';
 import './styles.scss';
+import { onClose } from '../utils';
 
 interface Props {
   handleModal: () => void;
 }
 
 export const ScoringModal = ({ handleModal }: Props) => {
+  const [isClosing, setIsClosing] = useState(false);
+
   return (
-    <div className="modal-overlay" onClick={() => handleModal()}>
-      <div className="modal-content fade-in-up" onClick={(e) => e.stopPropagation()}>
+    <div
+      className={`modal-overlay ${isClosing ? 'is-closing' : ''}`}
+      onClick={() => onClose(setIsClosing, handleModal)}
+    >
+      <div
+        className={`modal-content ${isClosing ? 'is-closing' : ''}`}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="modal-title">Scoring Rules</div>
         <p>
           Calculates the team's total score based on the <strong>best 4 cumulative scores</strong>{' '}
@@ -21,7 +31,7 @@ export const ScoringModal = ({ handleModal }: Props) => {
           <strong>Example:</strong> If the team was -8 after R1 and moved to -11 after R2, the R2
           column will display -3.
         </div>
-        <button className="close-btn" onClick={() => handleModal()}>
+        <button className="close-button" onClick={() => onClose(setIsClosing, handleModal)}>
           Close
         </button>
       </div>

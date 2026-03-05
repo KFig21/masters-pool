@@ -2,6 +2,8 @@ import { useScores } from '../../../../../../context/ScoreContext';
 import { EVENT_MATRIX, CURRENT_EVENT } from '../../../../../../constants';
 import './styles.scss';
 import type { EventType } from '../../../../../../types/team';
+import { useState } from 'react';
+import { onClose } from '../utils';
 
 interface Props {
   handleModal: () => void;
@@ -9,6 +11,7 @@ interface Props {
 
 export const TournamentSelectorModal = ({ handleModal }: Props) => {
   const { currentEvent, currentYear, setCurrentEvent, setCurrentYear } = useScores();
+  const [isClosing, setIsClosing] = useState(false);
 
   const handleEventChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newEvent = e.target.value as EventType;
@@ -48,8 +51,14 @@ export const TournamentSelectorModal = ({ handleModal }: Props) => {
     : [];
 
   return (
-    <div className="modal-overlay" onClick={handleModal}>
-      <div className="modal-content fade-in-up" onClick={(e) => e.stopPropagation()}>
+    <div
+      className={`modal-overlay ${isClosing ? 'is-closing' : ''}`}
+      onClick={() => onClose(setIsClosing, handleModal)}
+    >
+      <div
+        className={`modal-content ${isClosing ? 'is-closing' : ''}`}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="modal-title">Select a Pool</div>
         <p>Choose a tournament and year to view a leaderboard.</p>
 
@@ -90,7 +99,7 @@ export const TournamentSelectorModal = ({ handleModal }: Props) => {
           </div>
         </div>
 
-        <button className="close-btn" onClick={handleModal}>
+        <button className="close-button" onClick={() => onClose(setIsClosing, handleModal)}>
           Done
         </button>
       </div>
