@@ -15,6 +15,12 @@
     font-style: italic;
     cursor: default;
 
+    @include mobile {
+        position: relative;
+        left: unset;
+        transform: translateX(0%);
+    }
+
     .label {
         font-weight: 700;
         letter-spacing: 0.5px;
