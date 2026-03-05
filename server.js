@@ -21,6 +21,9 @@ mongoose
   .then(() => console.log('⛳️ Connected to Golf Database'))
   .catch((err) => console.error('❌ MongoDB Connection Error:', err));
 
+// Add a variable to hold the next scrape time
+let nextScrapeTime = null;
+
 // --- API ENDPOINT ---
 app.get('/api/scores/:event/:year', async (req, res) => {
   try {
@@ -31,6 +34,7 @@ app.get('/api/scores/:event/:year', async (req, res) => {
     res.json({
       teams: scores.data,
       lastUpdated: scores.lastUpdated,
+      nextUpdate: nextScrapeTime,
     });
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -63,7 +67,11 @@ function scheduleNextScrape() {
     console.log(`🌙 Off-hours detected (Hour: ${hour} EST). Next DB update in 60 minutes.`);
   }
 
-  setTimeout(runSmartScraper, delayMinutes * 60 * 1000);
+  // Calculate and store the exact time of the next scrape
+  const delayMs = delayMinutes * 60 * 1000;
+  nextScrapeTime = new Date(Date.now() + delayMs).toISOString();
+
+  setTimeout(runSmartScraper, delayMs);
 }
 
 // Kick off the initial scrape cycle

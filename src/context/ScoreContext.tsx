@@ -23,6 +23,7 @@ export interface ProcessedTeam extends Omit<Team, 'golfers'> {
 interface ScoreContextType {
   teams: ProcessedTeam[];
   lastUpdated: string | null;
+  nextUpdate: string | null;
   getTeamByOwner: (ownerName: string) => ProcessedTeam | undefined;
   currentEvent: EventType;
   currentYear: number;
@@ -39,7 +40,8 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
   const [currentEvent, setCurrentEvent] = useState<EventType>(CURRENT_EVENT as EventType);
   const [currentYear, setCurrentYear] = useState<number>(CURRENT_YEAR);
   const [rawTeams, setRawTeams] = useState<any[]>([]);
-  const [lastUpdated, setLastUpdated] = useState<string | null>(null); // Added state
+  const [lastUpdated, setLastUpdated] = useState<string | null>(null);
+  const [nextUpdate, setNextUpdate] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const isTournamentActive = useMemo(() => {
@@ -58,7 +60,7 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
   // 3. FETCH DATA DYNAMICALLY
   useEffect(() => {
     let isMounted = true;
-    setIsLoading(true);
+    let timeoutId: ReturnType<typeof setTimeout>;
 
     const fetchScores = async () => {
       try {
@@ -71,33 +73,61 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
         const result = await response.json();
 
         if (isMounted) {
-          // Destructure the new object format { teams: [...], lastUpdated: "..." }
           setRawTeams(result.teams || []);
           setLastUpdated(result.lastUpdated || null);
+          setNextUpdate(result.nextUpdate || null);
           console.log('Polled for new data at:', result.lastUpdated);
+
+          // Schedule the next fetch based on the server's exact timestamp
+          scheduleNextFetch(result.nextUpdate);
         }
       } catch (error) {
         console.error('Failed to fetch latest scores', error);
-        if (isMounted) setRawTeams([]);
-      } finally {
         if (isMounted) {
-          setIsLoading(false);
+          setRawTeams([]);
+          scheduleNextFetch(null); // Fallback if error
         }
+      } finally {
+        if (isMounted) setIsLoading(false);
       }
     };
 
-    fetchScores();
+    const scheduleNextFetch = (targetTimeStr: string | null) => {
+      if (!isMounted) return;
+      clearTimeout(timeoutId);
 
-    // Poll for new data every 1 minute
-    // SMART POLLING: 30s if active, 5 minutes if not
-    const pollInterval = isTournamentActive ? 30 * 1000 : 5 * 60 * 1000;
-    const intervalId = setInterval(fetchScores, pollInterval);
+      // Default fallback intervals
+      let delayMs = isTournamentActive ? 30 * 1000 : 5 * 60 * 1000;
+
+      if (targetTimeStr && isTournamentActive) {
+        const now = Date.now();
+        const targetTime = new Date(targetTimeStr).getTime();
+        const msUntilUpdate = targetTime - now;
+
+        if (msUntilUpdate > 0) {
+          // Wait until the target time PLUS 5 seconds for the backend to finish saving to the DB
+          delayMs = msUntilUpdate + 5000;
+        } else {
+          // If we are already past the target time (desync), try again in 10 seconds
+          delayMs = 10000;
+        }
+
+        // Clamp the delay so it never goes completely crazy (min 5s, max 5 mins)
+        delayMs = Math.min(Math.max(delayMs, 5000), 5 * 60 * 1000);
+      }
+
+      timeoutId = setTimeout(fetchScores, delayMs);
+    };
+
+    // Initial fetch
+    setIsLoading(true);
+    fetchScores();
 
     return () => {
       isMounted = false;
-      clearInterval(intervalId);
+      clearTimeout(timeoutId);
     };
-  }, [currentEvent, currentYear]);
+  }, [currentEvent, currentYear, isTournamentActive]);
 
   // Combined Memo for Processing Data and Completion State
   const { teams, isTournamentComplete } = useMemo(() => {
@@ -186,6 +216,7 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
       value={{
         teams,
         lastUpdated,
+        nextUpdate,
         getTeamByOwner,
         currentEvent,
         currentYear,

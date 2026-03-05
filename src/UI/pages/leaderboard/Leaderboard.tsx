@@ -10,7 +10,8 @@ import { TournamentSelectorModal } from './components/modals/tournamentSelectorM
 import { NoData } from './components/noData/NoData';
 import { Loading } from '../../components/loading/Loading';
 import { UpdateModal } from './components/modals/updateModal/updateModal';
-import { Countdown } from '../../components/countdown/Countdown';
+import { TeeTimeCountdown } from '../../components/TeeTimeCountdown/TeeTimeCountdown';
+import { FooterRight } from './components/footerRight/FooterRight';
 import './styles.scss';
 
 export interface ScoreboardTeamData {
@@ -28,8 +29,15 @@ export interface ScoreboardTeamData {
 
 export const Leaderboard = () => {
   const { favoriteTeam } = useFavoriteTeam();
-  const { teams, isLoading, currentYear, currentEvent, lastUpdated, isTournamentActive } =
-    useScores();
+  const {
+    teams,
+    isLoading,
+    currentYear,
+    currentEvent,
+    lastUpdated,
+    nextUpdate,
+    isTournamentActive,
+  } = useScores();
   const [isScoringModalOpen, setIsScoringModalOpen] = useState(false);
   const [isScoringUpdateModalOpen, setIsScoringUpdateModalOpen] = useState(false);
   const [isTournamentSelectorModalOpen, setIsTournamentSelectorModalOpen] = useState(false);
@@ -56,15 +64,6 @@ export const Leaderboard = () => {
 
   // Extract the start date dynamically based on the current active tournament
   const tournamentStartDate = eventConfig?.years[currentYear]?.startDate || null;
-
-  const formatTimestamp = (dateString: string | null) => {
-    if (!dateString) return '--:--';
-    return new Date(dateString).toLocaleTimeString([], {
-      hour: 'numeric', // Change from '2-digit' to 'numeric'
-      minute: '2-digit',
-      hour12: true,
-    });
-  };
 
   // --- Dynamic Header Title Scaling Logic ---
   const fullTitle = `${eventName} Pool`;
@@ -175,15 +174,15 @@ export const Leaderboard = () => {
               </div>
             </div>
 
-            <Countdown targetDateStr={tournamentStartDate} />
+            <TeeTimeCountdown targetDateStr={tournamentStartDate} />
 
             {isTournamentActive ? (
-              <div className="footer-right">
-                <div className="update-info" onClick={() => handleScoringUpdateModal()}>
-                  <span className="label">LAST UPDATED:</span>
-                  <span className="value">{formatTimestamp(lastUpdated)}</span>
-                </div>
-              </div>
+              <FooterRight
+                isTournamentActive={isTournamentActive}
+                lastUpdated={lastUpdated}
+                nextUpdate={nextUpdate}
+                onUpdateClick={handleScoringUpdateModal}
+              />
             ) : (
               <div className="footer-right">
                 <div className="empty-block"></div>

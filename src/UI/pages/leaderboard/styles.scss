@@ -224,7 +224,9 @@
         }
 
         .footer-right {
-            display: block;
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
 
             .update-info {
                 display: flex;
@@ -252,6 +254,11 @@
                 .value {
                     // color: var(--white);
                     font-weight: 600;
+
+                    &.low-time {
+                        color: var(--yellow) !important;
+                        opacity: 1 !important;
+                    }
                 }
 
                 .divider {

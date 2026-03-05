@@ -7,7 +7,7 @@ interface CountdownProps {
   targetDateStr: string | null;
 }
 
-export const Countdown = ({ targetDateStr }: CountdownProps) => {
+export const TeeTimeCountdown = ({ targetDateStr }: CountdownProps) => {
   // Track the current time to trigger re-renders
   const [now, setNow] = useState(new Date().getTime());
 
