@@ -3,6 +3,7 @@
 
 .footer-center.countdown {
     position: absolute;
+    height: -webkit-fill-available;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
