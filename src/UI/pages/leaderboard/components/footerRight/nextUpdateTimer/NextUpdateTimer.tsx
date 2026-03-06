@@ -34,7 +34,7 @@ export const NextUpdateTimer = ({ targetDateStr }: NextUpdateTimerProps) => {
       setIsLowTime(diff < 31000);
 
       // Trigger critical state only during the final 5 seconds of the countdown
-      setIsCriticalTime(diff > 0 && diff < 6500);
+      setIsCriticalTime(diff > 0 && diff < 5500);
 
       if (diff <= 0) {
         setTimeLeft('Updating...');
