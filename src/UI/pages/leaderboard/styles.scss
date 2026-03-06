@@ -233,7 +233,7 @@
                 align-items: center;
                 gap: 6px;
                 font-family: "Work Sans", sans-serif;
-                font-size: 10px;
+                font-size: 11px;
                 letter-spacing: 0.5px;
                 color: var(--white);
                 opacity: 0.5;
@@ -241,24 +241,31 @@
                 cursor: pointer;
                 transition: all ease .12s;
 
+                &.low-time {
+                    opacity: 1 !important;
+
+                    .value {
+                        color: var(--yellow) !important;
+                    }
+                }
+
+                &.critical-time {
+
+                    .value {
+                        animation: flash-opacity 1s infinite linear;
+                    }
+                }
+
                 &:hover {
                     opacity: .8;
                 }
 
                 .label {
                     font-weight: 700;
-                    // color: var(--yellow);
-                    // font-style: italic;
                 }
 
                 .value {
-                    // color: var(--white);
                     font-weight: 600;
-
-                    &.low-time {
-                        color: var(--yellow) !important;
-                        opacity: 1 !important;
-                    }
                 }
 
                 .divider {

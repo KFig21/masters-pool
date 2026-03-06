@@ -1,5 +1,5 @@
-import { LastUpdated } from './lastUpdated/LastUpdated';
 import { NextUpdateTimer } from './nextUpdateTimer/NextUpdateTimer';
+// import { LastUpdated } from './lastUpdated/LastUpdated';
 
 interface FooterRightProps {
   isTournamentActive: boolean;
@@ -10,7 +10,7 @@ interface FooterRightProps {
 
 export const FooterRight = ({
   isTournamentActive,
-  lastUpdated,
+  // lastUpdated,
   nextUpdate,
   onUpdateClick,
 }: FooterRightProps) => {
@@ -25,7 +25,7 @@ export const FooterRight = ({
 
   return (
     <div className="footer-right" onClick={onUpdateClick}>
-      <LastUpdated timestamp={lastUpdated} />
+      {/* <LastUpdated timestamp={lastUpdated} /> */}
       <NextUpdateTimer targetDateStr={nextUpdate} />
     </div>
   );

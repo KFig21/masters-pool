@@ -122,3 +122,16 @@ body {
         transform: scaleX(1) skew(-30deg);
     }
 }
+
+// Flash Opacity
+@keyframes flash-opacity {
+
+    0%,
+    100% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
