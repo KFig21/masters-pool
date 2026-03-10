@@ -2,13 +2,15 @@ import { Link } from 'react-router-dom';
 import type { ScoreboardTeamData } from '../../Leaderboard';
 import { AnimatedCell } from './AnimatedCell';
 import './styles.scss';
+import { useScores } from '../../../../../context/ScoreContext';
 
 interface Props {
   data: ScoreboardTeamData;
 }
 
 export const TeamRow = ({ data }: Props) => {
-  const { rank, owner, isTied, r1, r2, r3, r4, totalScore, isFavorite } = data;
+  const { rank, owner, isTied, activeGolfers, r1, r2, r3, r4, totalScore, isFavorite } = data;
+  const { isTournamentActive } = useScores();
 
   const getScoreClass = (score: number | string) => {
     if (score === 'CUT' || score === 'WD' || score === 'DQ') return 'cut-text';
@@ -31,17 +33,29 @@ export const TeamRow = ({ data }: Props) => {
     totalScore === 'CUT' || totalScore === 'WD' || totalScore === 'DQ' ? 'team-cut' : '';
 
   return (
-    <div className={`teamRow-wrapper ${isFavorite ? 'favorite-row' : ''} ${rowClass}`}>
-      <Link to={`/team/${owner}`} className="teamRow-container">
+    <div className={`teamRow-wrapper ${isFavorite ? 'favorite-row' : ''} ${rowClass} `}>
+      <Link to={`/team/${owner}`} className={`teamRow-container ${isTournamentActive && 'active'}`}>
+        {/* LEADERBOARD POSITION */}
         <AnimatedCell className="cell rank" value={rank} isTied={isTied} />
 
+        {/* ACTIVE GOLFERS */}
+        {isTournamentActive && (
+          <AnimatedCell
+            className={`cell active-golfers ${activeGolfers > 0 && 'true'}`}
+            value={activeGolfers}
+          />
+        )}
+
+        {/* TEAM NAME */}
         <AnimatedCell className="cell name" value={owner.toUpperCase()} />
 
+        {/* ROUND SCORES */}
         <AnimatedCell className={`cell score ${getScoreClass(r1)}`} value={formatScore(r1)} />
         <AnimatedCell className={`cell score ${getScoreClass(r2)}`} value={formatScore(r2)} />
         <AnimatedCell className={`cell score ${getScoreClass(r3)}`} value={formatScore(r3)} />
         <AnimatedCell className={`cell score ${getScoreClass(r4)}`} value={formatScore(r4)} />
 
+        {/* TOTAL SCORE */}
         <AnimatedCell
           className={`cell score total ${getScoreClass(totalScore)}`}
           value={formatScore(totalScore)}

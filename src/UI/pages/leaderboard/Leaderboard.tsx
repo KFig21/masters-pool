@@ -12,6 +12,7 @@ import { Loading } from '../../components/loading/Loading';
 import { UpdateModal } from './components/modals/updateModal/updateModal';
 import { TeeTimeCountdown } from '../../components/TeeTimeCountdown/TeeTimeCountdown';
 import { FooterRight } from './components/footerRight/FooterRight';
+import PersonIcon from '@mui/icons-material/Person';
 import './styles.scss';
 
 export interface ScoreboardTeamData {
@@ -23,6 +24,7 @@ export interface ScoreboardTeamData {
   r3: number | string;
   r4: number | string;
   totalScore: number | string;
+  activeGolfers: number;
   isFavorite: boolean;
   isCut: boolean;
 }
@@ -105,8 +107,13 @@ export const Leaderboard = () => {
               </div>
             </div>
 
-            <div className="leaderboard-table-header">
+            <div className={`leaderboard-table-header ${isTournamentActive && 'active'}`}>
               <div className="cell pos">POS</div>
+              {isTournamentActive && (
+                <div className="cell active-golfers">
+                  <PersonIcon className="icon" />
+                </div>
+              )}
               <div className="cell name">TEAM</div>
               <div className="cell round">R1</div>
               <div className="cell round">R2</div>
@@ -155,6 +162,7 @@ export const Leaderboard = () => {
                     r3: formatDiff(r3Display),
                     r4: formatDiff(r4Display),
                     totalScore: activeTotal === 999 ? 'E' : activeTotal,
+                    activeGolfers: team.stats.activeGolfers,
                     isFavorite: favoriteTeam === team.owner,
                     isCut: isTeamCut,
                   };

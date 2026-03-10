@@ -20,6 +20,20 @@
         border-bottom: solid 1px var(--scoreboard-borderColor);
         background-color: var(--scoreboard-BG-row);
 
+        &.active {
+            grid-template-columns: var(--grid-layout-active);
+
+            .cell {
+                &.name {
+                    margin: 0px $grid-name-margin 0px 0px;
+
+                    @include mobile {
+                        margin: 0px 5px 0px 0px;
+                    }
+                }
+            }
+        }
+
         @include mobile {
             gap: 4px;
 
@@ -71,9 +85,8 @@
                 background-color: var(--scoreboard-BG-row);
                 will-change: transform;
 
-                // Ensure the tied 'T-' stays inside the tile
                 .is-tied {
-                    margin-right: 2px;
+                    margin-right: 0px;
                 }
 
                 @include mobile {
@@ -110,6 +123,31 @@
                 @include mobile {
                     font-size: 22px;
                     margin: 0px 5px;
+                }
+            }
+
+            &.active-golfers {
+                font-size: 16px;
+                height: 24px;
+                width: 18px;
+                color: white;
+
+                .score-tile-inner {
+                    color: var(--nav-FC);
+                }
+
+                &.true {
+
+                    .score-tile-inner {
+                        background-color: var(--green);
+                        color: var(--white);
+                    }
+                }
+
+                @include mobile {
+                    font-size: 12px;
+                    height: 20px;
+                    width: 12px;
                 }
             }
 

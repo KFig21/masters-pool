@@ -113,6 +113,10 @@
             color: var(--scoreboard-FC-column);
             gap: 8px;
 
+            &.active {
+                grid-template-columns: var(--grid-layout-active);
+            }
+
             @include mobile {
                 gap: 4px;
             }
@@ -168,6 +172,10 @@
                             color: var(--darkGreen);
                         }
                     }
+                }
+
+                .icon {
+                    font-size: inherit;
                 }
             }
 

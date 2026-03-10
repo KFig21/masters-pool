@@ -34,11 +34,13 @@ html {
 :root {
     // Standard Desktop Grid (approx 570px wide)
     --grid-layout: 60px 200px 50px 50px 50px 50px 120px;
+    --grid-layout-active: 60px 20px 200px 50px 50px 50px 50px 120px; // include column for active golfers cell
     --grid-padding-width: 15px;
 
     @include mobile {
         // Compact Mobile Grid (approx 340px wide to fit phones)
-        --grid-layout: 34px 110px 32px 32px 32px 32px 48px;
+        --grid-layout: 34px 110px 30px 30px 30px 30px 46px;
+        --grid-layout-active: 34px 12px 110px 30px 30px 30px 30px 46px; // include column for active golfers cell
         --grid-padding-width: 8px;
     }
 

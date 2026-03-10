@@ -11,6 +11,7 @@ export interface TeamStats {
   sumR4: number;
   activeTotal: number | string;
   isTeamCut: boolean;
+  activeGolfers: number;
 }
 
 export interface ProcessedTeam extends Omit<Team, 'golfers'> {
@@ -56,6 +57,7 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
 
     return now >= start && now <= end;
   }, [currentEvent, currentYear]);
+  // const isTournamentActive = true;
 
   // 3. FETCH DATA DYNAMICALLY
   useEffect(() => {
@@ -161,8 +163,19 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
       const sumR3 = getBest4Sum(golfers, 'round3');
       const sumR4 = getBest4Sum(golfers, 'round4');
 
-      const activeGolfersCount = golfers.filter((g) => !g.isCut).length;
-      const isTeamCut = activeGolfersCount < 4;
+      // 1. Check who survived the cut to determine if the team is still alive
+      const survivingGolfersCount = golfers.filter((g) => !g.isCut).length;
+      const isTeamCut = survivingGolfersCount < 4;
+
+      // 2. Count who is actively on the course right now (has started, but hasn't finished)
+      const activeGolfers = golfers.filter((g) => {
+        if (g.isCut) return false;
+
+        // Assuming your API returns 'F' for finished, and null/'' for un-started
+        if (!g.thru || g.thru === 'F') return false;
+
+        return true;
+      }).length;
 
       let activeTotal: number | string = 0;
       if (isTeamCut) {
@@ -178,7 +191,7 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
       return {
         ...team,
         golfers,
-        stats: { sumR1, sumR2, sumR3, sumR4, activeTotal, isTeamCut },
+        stats: { sumR1, sumR2, sumR3, sumR4, activeTotal, activeGolfers, isTeamCut },
       };
     });
 
