@@ -34,8 +34,10 @@
             }
         }
 
-        &:hover {
+        &:hover,
+        &:focus-visible {
             background-color: var(--scoreboard-BG-row--hover);
+            outline: none;
 
             .cell {
                 .score-tile-inner {
@@ -192,7 +194,8 @@
                 }
             }
 
-            &:hover {
+            &:hover,
+            &:focus-visible {
                 background-color: var(--scoreboard-BG-row-favorite--hover);
 
                 .cell {
