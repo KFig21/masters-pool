@@ -69,7 +69,7 @@
             .leaderboard-header-title {
                 $titleFontSize: 30px;
                 font-size: $titleFontSize;
-                color: var(--scoreboard-FC-column);
+                color: var(--leaderboard-FC-column);
                 font-family: "Masters", serif;
                 text-align: center;
                 display: flex;
@@ -110,7 +110,7 @@
             background-color: var(--darkGreen);
             border-bottom: 4px solid var(--yellow);
             padding: $grid-padding-height var(--grid-padding-width);
-            color: var(--scoreboard-FC-column);
+            color: var(--leaderboard-FC-column);
             gap: 8px;
 
             @include mobile {
@@ -181,7 +181,7 @@
     }
 
     .leaderboard-teams {
-        background-color: var(--scoreboard-BG-row);
+        background-color: var(--leaderboard-BG-row);
         display: flex;
         flex-direction: column;
         // padding: 4px 0px;

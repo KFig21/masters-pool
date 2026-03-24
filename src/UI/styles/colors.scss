@@ -12,23 +12,27 @@
     --red: rgb(224, 15, 57);
     --white: white;
 
-    /* Scoreboard */
-    --scoreboard-BG-row: white;
-    --scoreboard-BG-row--hover: #e1f4e9;
-    --scoreboard-BG-cell--hover: #f1fcf6;
+    /* Leaderboard */
+    --leaderboard-BG-row: white;
+    --leaderboard-BG-row--hover: #e1f4e9;
+    --leaderboard-BG-cell--hover: #f1fcf6;
 
-    --scoreboard-FC-row: rgb(10, 10, 10);
-    --scoreboard-FC-row-CUT: rgb(101, 107, 109);
-    --scoreboard-FC-column: white;
+    --leaderboard-FC-row: rgb(10, 10, 10);
+    --leaderboard-FC-row-CUT: rgb(101, 107, 109);
+    --leaderboard-FC-column: white;
 
-    --scoreboard-borderColor: rgb(205, 205, 205);
-    --scoreboard-boxShadow-cell: inset 0 1px 3px rgba(0, 0, 0, 0.4);
+    --leaderboard-borderColor: rgb(205, 205, 205);
+    --leaderboard-boxShadow-cell: inset 0 1px 3px rgba(0, 0, 0, 0.4);
 
     /* Favorited */
-    --scoreboard-BG-cell-favorite: rgb(255, 252, 225);
-    --scoreboard-BG-row-favorite: rgb(255, 251, 211);
-    --scoreboard-BG-row-favorite--hover: rgb(255, 249, 181);
-    --scoreboard-BG-cell-favorite--hover: rgb(255, 252, 208);
+    --leaderboard-BG-cell-favorite: rgb(255, 252, 225);
+    --leaderboard-BG-row-favorite: rgb(255, 251, 211);
+    --leaderboard-BG-row-favorite--hover: rgb(255, 249, 181);
+    --leaderboard-BG-cell-favorite--hover: rgb(255, 252, 208);
+
+    /* Scorecard */
+    --scorecard-BG-flash-green: rgba(0, 103, 71, 0.25);
+    --scorecard-BG-flash-red: rgba(224, 15, 57, 0.25);
 
     /* Nav */
     --nav-FC: rgb(215, 215, 215);
@@ -58,5 +62,5 @@
     --color-scheme: light dark;
 
     /* Scoreboard */
-    --scoreboard-BG-row: rgb(22, 27, 34);
+    --leaderboard-BG-row: rgb(22, 27, 34);
 }

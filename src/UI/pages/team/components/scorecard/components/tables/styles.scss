@@ -40,7 +40,7 @@
     .scorecard-table-container {
         display: flex;
         flex-direction: column;
-        background-color: var(--scoreboard-BG-row);
+        background-color: var(--leaderboard-BG-row);
         border: 1px solid $table-color;
         border-radius: 5px;
         overflow-y: hidden;
@@ -239,7 +239,7 @@
                 }
 
                 &.cut {
-                    color: var(--scoreboard-FC-row-CUT);
+                    color: var(--leaderboard-FC-row-CUT);
                     font-style: italic;
                 }
 

@@ -7,6 +7,8 @@ import './styles.scss';
 import { ThruBadge } from '../../../../../../components/thruBadge/ThruBadge';
 import { EVENT_MATRIX } from '../../../../../../../constants';
 import type { EventKey } from '../../../../../../../types/event';
+import { AnimatedTeamCell } from './animatedTeamCell/AnimatedTeamCell';
+// import { ScoreTestHarness } from './animatedTeamCell/ScoreTestHarness';
 
 interface Props {
   golfers: Golfer[];
@@ -24,7 +26,8 @@ export const RoundTable = ({ golfers, stats }: Props) => {
     const roundKey = `round${round}` as keyof typeof golfer.scorecard;
     const data = golfer.scorecard[roundKey];
 
-    if (!data) return { val: '-', class: '', isCounting: false };
+    // Return the rawValue so AnimatedTeamCell can mathematically compare it
+    if (!data) return { val: '-', class: '', isCounting: false, rawValue: null };
 
     const isCounting = !!data.isCountingScore;
 
@@ -130,23 +133,25 @@ export const RoundTable = ({ golfers, stats }: Props) => {
 
               {/* Round Columns */}
               {ROUNDS.map((round) => {
-                const { val, class: colorClass, isCounting } = getCellData(golfer, round);
+                const { val, class: colorClass, isCounting, rawValue } = getCellData(golfer, round);
                 return (
-                  <div
+                  <AnimatedTeamCell
                     key={round}
+                    value={rawValue}
                     className={`scorecard-table-cell stroke ${colorClass} ${isCounting ? 'counting-score' : ''}`}
                   >
                     {val}
-                  </div>
+                  </AnimatedTeamCell>
                 );
               })}
 
               {/* Total Column */}
-              <div
+              <AnimatedTeamCell
+                value={golfer.score}
                 className={`scorecard-table-cell end-col ${getScoreClass(golfer.score, golfer.isCut)}`}
               >
                 {golfer.status !== 'ACTIVE' ? golfer.status : golfer.displayScore}
-              </div>
+              </AnimatedTeamCell>
             </div>
           );
         })}
@@ -157,16 +162,21 @@ export const RoundTable = ({ golfers, stats }: Props) => {
           {ROUNDS.map((r) => {
             const val = getTeamDaily(r);
             return (
-              <div key={r} className={`scorecard-table-cell ${getTeamClass(val)}`}>
+              <AnimatedTeamCell
+                key={r}
+                value={val}
+                className={`scorecard-table-cell ${getTeamClass(val)}`}
+              >
                 {formatTeamValue(val)}
-              </div>
+              </AnimatedTeamCell>
             );
           })}
-          <div
+          <AnimatedTeamCell
+            value={stats.activeTotal}
             className={`scorecard-table-cell end-col ${getTeamClass(stats.activeTotal).toLowerCase()}`}
           >
             {formatTeamValue(stats.activeTotal)}
-          </div>
+          </AnimatedTeamCell>
         </div>
       </div>
     </div>

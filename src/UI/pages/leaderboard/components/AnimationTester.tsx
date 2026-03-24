@@ -37,7 +37,7 @@ export const AnimationTester = () => {
   return (
     <div
       className="animation-tester-container"
-      style={{ margin: '20px 0', borderBottom: '2px dashed var(--scoreboard-borderColor)' }}
+      style={{ margin: '20px 0', borderBottom: '2px dashed var(--leaderboard-borderColor)' }}
     >
       <div
         style={{

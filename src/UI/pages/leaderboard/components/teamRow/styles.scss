@@ -17,8 +17,8 @@
         padding: $grid-padding-height var(--grid-padding-width);
         gap: 8px;
         align-items: center;
-        border-bottom: solid 1px var(--scoreboard-borderColor);
-        background-color: var(--scoreboard-BG-row);
+        border-bottom: solid 1px var(--leaderboard-borderColor);
+        background-color: var(--leaderboard-BG-row);
 
         @include mobile {
             gap: 4px;
@@ -26,30 +26,30 @@
             &:hover,
             &:focus,
             &:active {
-                background-color: var(--scoreboard-BG-row) !important;
+                background-color: var(--leaderboard-BG-row) !important;
 
                 .cell {
-                    background-color: var(--scoreboard-BG-cell) !important;
+                    background-color: var(--leaderboard-BG-cell) !important;
                 }
             }
         }
 
         &:hover,
         &:focus-visible {
-            background-color: var(--scoreboard-BG-row--hover);
+            background-color: var(--leaderboard-BG-row--hover);
             outline: none;
 
             .cell {
                 .score-tile-inner {
-                    background-color: var(--scoreboard-BG-cell--hover);
+                    background-color: var(--leaderboard-BG-cell--hover);
                 }
             }
         }
 
         .cell {
             background-color: var(--green);
-            color: var(--scoreboard-FC-row);
-            box-shadow: var(--scoreboard-boxShadow-cell);
+            color: var(--leaderboard-FC-row);
+            box-shadow: var(--leaderboard-boxShadow-cell);
             font-size: 30px;
             font-weight: 500;
             height: 40px;
@@ -69,8 +69,8 @@
                 height: 100%;
                 justify-content: center;
                 align-items: center;
-                box-shadow: var(--scoreboard-boxShadow-cell);
-                background-color: var(--scoreboard-BG-row);
+                box-shadow: var(--leaderboard-boxShadow-cell);
+                background-color: var(--leaderboard-BG-row);
                 will-change: transform;
 
                 .is-tied {
@@ -170,7 +170,7 @@
                 }
 
                 &.cut-text {
-                    color: var(--scoreboard-FC-row-CUT);
+                    color: var(--leaderboard-FC-row-CUT);
                     font-weight: bold;
                     font-style: italic;
                     font-size: 24px;
@@ -186,21 +186,21 @@
     // FavoriteRow Styles
     &.favorite-row {
         .teamRow-container {
-            background-color: var(--scoreboard-BG-row-favorite);
+            background-color: var(--leaderboard-BG-row-favorite);
 
             .cell {
                 .score-tile-inner {
-                    background-color: var(--scoreboard-BG-cell-favorite);
+                    background-color: var(--leaderboard-BG-cell-favorite);
                 }
             }
 
             &:hover,
             &:focus-visible {
-                background-color: var(--scoreboard-BG-row-favorite--hover);
+                background-color: var(--leaderboard-BG-row-favorite--hover);
 
                 .cell {
                     .score-tile-inner {
-                        background-color: var(--scoreboard-BG-cell-favorite--hover);
+                        background-color: var(--leaderboard-BG-cell-favorite--hover);
                     }
                 }
             }

@@ -1,0 +1,75 @@
+@use '../../../../../../../styles/colors' as *;
+@use '../../../../../../../styles/index' as *;
+
+.anim-cell {
+    transition: background-color 0.2s ease;
+
+    &.improve {
+        animation: bgFlashGreen 1.4s ease forwards;
+    }
+
+    &.worsen {
+        animation: bgFlashRed 1.4s ease forwards;
+    }
+
+    .anim-content {
+        transition: opacity 0.2s ease;
+        opacity: 1;
+
+        &.fade-out {
+            opacity: 0;
+        }
+
+        &.fade-in {
+            opacity: 1;
+        }
+    }
+}
+
+@keyframes bgFlashGreen {
+    0% {
+        background-color: inherit;
+    }
+
+    15% {
+        background-color: var(--scorecard-BG-flash-green);
+    }
+
+    // Flash 1
+    30% {
+        background-color: inherit;
+    }
+
+    45% {
+        background-color: var(--scorecard-BG-flash-green);
+    }
+
+    // Flash 2
+    100% {
+        background-color: var(--scorecard-BG-flash-green);
+    }
+
+    // Hold until dropped by React
+}
+
+@keyframes bgFlashRed {
+    0% {
+        background-color: inherit;
+    }
+
+    15% {
+        background-color: var(--scorecard-BG-flash-red);
+    }
+
+    30% {
+        background-color: inherit;
+    }
+
+    45% {
+        background-color: var(--scorecard-BG-flash-red);
+    }
+
+    100% {
+        background-color: var(--scorecard-BG-flash-red);
+    }
+}

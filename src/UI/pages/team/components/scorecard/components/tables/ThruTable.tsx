@@ -11,6 +11,7 @@ import './styles.scss';
 import { ThruBadge } from '../../../../../../components/thruBadge/ThruBadge';
 import { EVENT_MATRIX } from '../../../../../../../constants';
 import type { EventKey } from '../../../../../../../types/event';
+import { AnimatedTeamCell } from './animatedTeamCell/AnimatedTeamCell';
 
 interface Props {
   golfers: Golfer[];
@@ -83,20 +84,22 @@ export const ThruTable = ({ golfers, stats }: Props) => {
                 const isCounting = !!roundData?.isCountingScore;
 
                 return (
-                  <div
+                  <AnimatedTeamCell
                     key={r}
+                    value={val}
                     className={`scorecard-table-cell stroke ${getScoreClass(val, undefined)} ${isCounting ? 'counting-score' : ''}`}
                   >
                     {formatRelativeScore(val)}
-                  </div>
+                  </AnimatedTeamCell>
                 );
               })}
 
-              <div
+              <AnimatedTeamCell
+                value={golfer.score}
                 className={`scorecard-table-cell end-col ${getScoreClass(golfer.score, golfer.isCut)}`}
               >
                 {golfer.status !== 'ACTIVE' ? golfer.status : golfer.displayScore}
-              </div>
+              </AnimatedTeamCell>
             </div>
           );
         })}
@@ -110,19 +113,21 @@ export const ThruTable = ({ golfers, stats }: Props) => {
             const isValid = val !== Infinity;
 
             return (
-              <div
+              <AnimatedTeamCell
                 key={r}
+                value={val}
                 className={`scorecard-table-cell ${isValid ? getScoreClass(val, undefined) : ''}`}
               >
                 {isValid ? formatRelativeScore(val) : '-'}
-              </div>
+              </AnimatedTeamCell>
             );
           })}
-          <div
+          <AnimatedTeamCell
+            value={stats.activeTotal}
             className={`scorecard-table-cell end-col ${getTeamClass(stats.activeTotal).toLowerCase()}`}
           >
             {formatTeamValue(stats.activeTotal)}
-          </div>
+          </AnimatedTeamCell>
         </div>
       </div>
     </div>

@@ -24,7 +24,7 @@
     }
 
     .modal-content {
-        background-color: var(--scoreboard-BG-row);
+        background-color: var(--leaderboard-BG-row);
         padding: 20px 30px 30px 30px;
         border-radius: 8px;
         max-width: 450px;
@@ -53,7 +53,7 @@
 
         .close-button {
             background-color: var(--green);
-            color: var(--scoreboard-FC-column);
+            color: var(--leaderboard-FC-column);
             border: none;
             padding: 12px 20px;
             border-radius: 4px;
