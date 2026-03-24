@@ -7,6 +7,7 @@ interface AnimatedCellProps {
   value: string | number;
   className?: string;
   isTied?: boolean;
+  activeGolfers?: boolean | null;
 }
 
 // MATCH THE SCSS EXACTLY
@@ -17,7 +18,12 @@ const TOTAL_DURATION_MS = SLIDE_MS * 2 + HOLD_MS;
 // Swap exactly in the middle of the 1.5s black-out hold
 const SWAP_TIME_MS = SLIDE_MS + HOLD_MS / 2;
 
-export const AnimatedCell = ({ value, className = '', isTied = false }: AnimatedCellProps) => {
+export const AnimatedCell = ({
+  value,
+  className = '',
+  isTied = false,
+  activeGolfers = false,
+}: AnimatedCellProps) => {
   const [displayValue, setDisplayValue] = useState(value);
   const [isAnimating, setIsAnimating] = useState(false);
   const prevValueRef = useRef(value);
@@ -46,7 +52,7 @@ export const AnimatedCell = ({ value, className = '', isTied = false }: Animated
 
   return (
     <div className={`${className} ${isAnimating ? 'is-animating-cell' : ''}`}>
-      <span className="score-tile-inner">
+      <span className={`score-tile-inner ${activeGolfers && 'active-golfers'}`}>
         {isTied && <span className="is-tied">T-</span>}
         {displayValue}
       </span>

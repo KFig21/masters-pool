@@ -38,16 +38,12 @@ export const TeamRow = ({ data }: Props) => {
         {/* LEADERBOARD POSITION */}
         <AnimatedCell className="cell rank" value={rank} isTied={isTied} />
 
-        {/* ACTIVE GOLFERS */}
-        {isTournamentActive && (
-          <AnimatedCell
-            className={`cell active-golfers ${activeGolfers > 0 && 'true'}`}
-            value={activeGolfers}
-          />
-        )}
-
         {/* TEAM NAME */}
-        <AnimatedCell className="cell name" value={owner.toUpperCase()} />
+        <AnimatedCell
+          className="cell name"
+          value={owner.toUpperCase()}
+          activeGolfers={activeGolfers === 0}
+        />
 
         {/* ROUND SCORES */}
         <AnimatedCell className={`cell score ${getScoreClass(r1)}`} value={formatScore(r1)} />

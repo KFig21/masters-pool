@@ -20,20 +20,6 @@
         border-bottom: solid 1px var(--scoreboard-borderColor);
         background-color: var(--scoreboard-BG-row);
 
-        &.active {
-            grid-template-columns: var(--grid-layout-active);
-
-            .cell {
-                &.name {
-                    margin: 0px $grid-name-margin 0px 0px;
-
-                    @include mobile {
-                        margin: 0px 5px 0px 0px;
-                    }
-                }
-            }
-        }
-
         @include mobile {
             gap: 4px;
 
@@ -92,6 +78,27 @@
                 @include mobile {
                     padding: 0px 4px;
                 }
+
+                &.active-golfers {
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        width: 0;
+                        height: 0;
+                        // The border hack: transparent left, colored top
+                        border-left: 12px solid transparent;
+                        border-top: 12px solid var(--green);
+                        z-index: 5;
+
+                        @include mobile {
+                            // Slightly smaller earmark on mobile
+                            border-left: 9px solid transparent;
+                            border-top: 9px solid var(--green);
+                        }
+                    }
+                }
             }
 
             &.rank {
@@ -123,31 +130,6 @@
                 @include mobile {
                     font-size: 22px;
                     margin: 0px 5px;
-                }
-            }
-
-            &.active-golfers {
-                font-size: 16px;
-                height: 24px;
-                width: 18px;
-                color: white;
-
-                .score-tile-inner {
-                    color: var(--nav-FC);
-                }
-
-                &.true {
-
-                    .score-tile-inner {
-                        background-color: var(--green);
-                        color: var(--white);
-                    }
-                }
-
-                @include mobile {
-                    font-size: 12px;
-                    height: 20px;
-                    width: 12px;
                 }
             }
 
