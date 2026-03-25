@@ -39,6 +39,12 @@ export const BottomNav = () => {
             </Link>
           );
         })}
+        <Link
+          to="/dashboard"
+          className={`nav-tab scoreboard ${isActive('/dashboard') ? 'active' : ''}`}
+        >
+          <div className="team-name">Dashboard</div>
+        </Link>
       </div>
     </div>
   );

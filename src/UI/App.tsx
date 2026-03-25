@@ -1,11 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
 import { Leaderboard } from './pages/leaderboard/Leaderboard';
 import { Team } from './pages/team/Team';
+import { Dashboard } from './pages/dashboard/Dashboard';
 import { BottomNav } from './components/bottomNav/BottomNav';
 import { BackgroundSlider } from './components/backgroundSlider/BackgroundSlider';
 import { NoLandscape } from './components/noLandscape/NoLandscape';
-import './styles/index.scss';
 import { useScores } from '../context/ScoreContext';
+import './styles/index.scss';
 
 function App() {
   const { isLoading, teams } = useScores();
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Leaderboard />} />
           <Route path="/team/:owner" element={<Team />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </div>
       {!isLoading && teams.length > 0 && <BottomNav />}
