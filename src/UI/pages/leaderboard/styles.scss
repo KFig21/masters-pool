@@ -163,9 +163,11 @@
                             display: none;
                         }
 
-                        &:hover {
+                        &:hover,
+                        &:focus-visible {
                             background-color: var(--yellow);
                             color: var(--darkGreen);
+                            outline: none;
                         }
                     }
                 }

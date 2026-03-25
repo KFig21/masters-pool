@@ -42,7 +42,7 @@ export const TeamRow = ({ data }: Props) => {
         <AnimatedCell
           className="cell name"
           value={owner.toUpperCase()}
-          activeGolfers={activeGolfers === 0}
+          activeGolfers={activeGolfers > 0}
         />
 
         {/* ROUND SCORES */}
