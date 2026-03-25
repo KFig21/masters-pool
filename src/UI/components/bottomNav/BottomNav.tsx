@@ -1,7 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
-import { useFavoriteTeam } from '../../../hooks/useFavoriteTeam'; // Import hook
-import './styles.scss';
+import { useFavoriteTeam } from '../../../hooks/useFavoriteTeam';
 import { useScores } from '../../../context/ScoreContext';
+import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
+import './styles.scss';
 
 export const BottomNav = () => {
   const location = useLocation();
@@ -39,11 +40,10 @@ export const BottomNav = () => {
             </Link>
           );
         })}
-        <Link
-          to="/dashboard"
-          className={`nav-tab scoreboard ${isActive('/dashboard') ? 'active' : ''}`}
-        >
-          <div className="team-name">Dashboard</div>
+        <Link to="/dashboard" className={`nav-tab ${isActive('/dashboard') ? 'active' : ''}`}>
+          <div className="team-name">
+            <SpaceDashboardIcon className="dashboard-icon" />
+          </div>
         </Link>
       </div>
     </div>

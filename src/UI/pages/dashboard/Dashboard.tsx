@@ -1,20 +1,30 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useScores } from '../../../context/ScoreContext';
 import { DashboardTeamLeaderboard } from './components/DashboardTeamLeaderboard';
 import { DashboardGolferLeaderboard } from './components/DashboardGolferLeaderboard';
 import { ExpandableTeamList } from './components/ExpandableTeamList';
 import './styles.scss';
+import { useFavoriteTeam } from '../../../hooks/useFavoriteTeam';
 
 export const Dashboard = () => {
   const { teams } = useScores();
+  const { favoriteTeam } = useFavoriteTeam();
   const [selectedOwner, setSelectedOwner] = useState<string | null>(null);
+
+  // Default to favorite team on load
+  useEffect(() => {
+    if (favoriteTeam) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setSelectedOwner(favoriteTeam);
+    }
+  }, []);
 
   const toggleTeam = (owner: string) => {
     setSelectedOwner((prev) => (prev === owner ? null : owner));
   };
 
   return (
-    <div className="dashboard-page">
+    <div className="dashboard-page fade-in-up">
       <div className="dashboard-grid">
         {/* LEFT COLUMN: 2 Components */}
         <div className="dashboard-left-col">

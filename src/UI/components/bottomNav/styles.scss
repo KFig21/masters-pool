@@ -70,6 +70,10 @@
                     font-size: 1rem;
                     color: var(--yellow);
                 }
+
+                .dashboard-icon {
+                    transform: translateY(-3px) rotate(180deg);
+                }
             }
 
             &:hover {
