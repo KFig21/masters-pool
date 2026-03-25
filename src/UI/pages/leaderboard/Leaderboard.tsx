@@ -168,12 +168,12 @@ export const Leaderboard = () => {
           </div>
           <div className="leaderboard-footer">
             <div className="footer-left">
-              <div
+              <button
                 className="tournament-selector-icon-container"
                 onClick={() => handleTournamentSelectorModal()}
               >
                 <ManageSearchIcon className="tournament-selector-icon" />
-              </div>
+              </button>
             </div>
 
             <TeeTimeCountdown targetDateStr={tournamentStartDate} />

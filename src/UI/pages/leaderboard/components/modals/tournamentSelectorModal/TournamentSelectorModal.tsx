@@ -3,7 +3,7 @@ import { EVENT_MATRIX, CURRENT_EVENT } from '../../../../../../constants';
 import './styles.scss';
 import type { EventType } from '../../../../../../types/team';
 import { useState } from 'react';
-import { onClose } from '../utils';
+import { onClose, useEscapeKey } from '../utils';
 
 interface Props {
   handleModal: () => void;
@@ -12,6 +12,8 @@ interface Props {
 export const TournamentSelectorModal = ({ handleModal }: Props) => {
   const { currentEvent, currentYear, setCurrentEvent, setCurrentYear } = useScores();
   const [isClosing, setIsClosing] = useState(false);
+
+  useEscapeKey(() => onClose(setIsClosing, handleModal));
 
   const handleEventChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newEvent = e.target.value as EventType;

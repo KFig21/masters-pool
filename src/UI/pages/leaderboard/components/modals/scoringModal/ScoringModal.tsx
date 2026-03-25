@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './styles.scss';
-import { onClose } from '../utils';
+import { onClose, useEscapeKey } from '../utils';
 
 interface Props {
   handleModal: () => void;
@@ -8,6 +8,8 @@ interface Props {
 
 export const ScoringModal = ({ handleModal }: Props) => {
   const [isClosing, setIsClosing] = useState(false);
+
+  useEscapeKey(() => onClose(setIsClosing, handleModal));
 
   return (
     <div

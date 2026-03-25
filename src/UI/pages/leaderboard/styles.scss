@@ -204,6 +204,19 @@
                 align-items: center;
                 justify-content: center;
                 padding: 5px 10px;
+                background-color: inherit;
+                border: none;
+                cursor: pointer;
+
+                &:hover,
+                &:focus-visible {
+                    outline: none;
+
+                    .tournament-selector-icon {
+                        color: var(--yellow);
+                        opacity: 1;
+                    }
+                }
 
                 .tournament-selector-icon {
                     width: 24px;
@@ -214,7 +227,6 @@
                     margin-right: 4px;
                     color: var(--white);
                     opacity: 0.4;
-                    cursor: pointer;
                     transition: all 0.12s ease;
 
                     &:hover {
