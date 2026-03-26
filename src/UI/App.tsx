@@ -6,16 +6,20 @@ import { BottomNav } from './components/bottomNav/BottomNav';
 import { BackgroundSlider } from './components/backgroundSlider/BackgroundSlider';
 import { NoLandscape } from './components/noLandscape/NoLandscape';
 import { useScores } from '../context/ScoreContext';
+import { useTheme } from '../context/ThemeContext';
 import './styles/index.scss';
+import { ThemeToggle } from './components/themeToggle/ThemeToggle';
 
 function App() {
   const { isLoading, teams, currentEvent } = useScores();
+  const { theme } = useTheme();
 
   return (
-    <div className="app-container" data-tournament={currentEvent.toLowerCase()}>
+    <div className="app-container" data-tournament={currentEvent.toLowerCase()} data-theme={theme}>
       <BackgroundSlider />
       <NoLandscape />
       <div className="content-wrap">
+        <ThemeToggle />
         <Routes>
           <Route path="/" element={<Leaderboard />} />
           <Route path="/team/:owner" element={<Team />} />

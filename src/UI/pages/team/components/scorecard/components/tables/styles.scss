@@ -27,10 +27,10 @@
             gap: 10px;
             font-size: 0.8rem;
             font-weight: bold;
-            color: #999;
+            color: var(--scorecard-toggle-inactive-FC);
 
             span.active {
-                color: var(--scorecard-toggle-active);
+                color: var(--scorecard-toggle-active-FC);
             }
         }
     }
@@ -155,6 +155,7 @@
                 justify-content: center;
                 height: 35px;
                 font-size: 1rem;
+                color: var(--scorecard-table-FC);
                 border-right: 1px solid var(--scorecard-table-primary-color);
                 font-weight: bold;
                 position: relative;
@@ -215,7 +216,7 @@
                 &.name-cell {
                     font-weight: 500;
                     font-family: 'Tiempo', serif;
-                    color: var(--green);
+                    color: var(--scorecard-table-FC);
                     background-color: var(--scorecard-table-name-BG);
                 }
 

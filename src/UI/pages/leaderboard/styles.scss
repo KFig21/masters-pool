@@ -4,7 +4,7 @@
 
 .leaderboard-wrapper {
     background-color: transparent;
-    filter: drop-shadow(0px 0px 10px rgba(255, 252, 201, 0.15));
+    filter: var(--leaderboard-drop-shadow);
 
     @include mobile {
         margin-top: 85px;

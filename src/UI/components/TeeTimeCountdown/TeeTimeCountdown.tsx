@@ -1,5 +1,3 @@
-// masters-pool/src/UI/components/countdown/Countdown.tsx
-
 import { useState, useEffect } from 'react';
 import './styles.scss';
 

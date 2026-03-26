@@ -2,6 +2,7 @@
     /* THEME SPECIFICS */
     --mastersGreen: rgb(0, 103, 71);
     --mastersDarkGreen: rgb(0, 68, 50);
+    --midnightGreen: rgb(0, 38, 28);
     --mastersYellow: rgb(252, 227, 0);
 
     /* THEME GLOBALS */
@@ -9,6 +10,8 @@
     --secondary: var(--mastersDarkGreen);
     --accent: var(--mastersYellow);
     --white_Var: var(--white);
+
+    --primaryOpacity50: rgba(3, 44, 30, 0.75);
 
     /* --------------------------- */
     /* --- MASTERS LIGHT THEME --- */
@@ -41,6 +44,7 @@
     --leaderboard-tournament-icon: var(--white_Var);
     --leaderboard-tournament-icon-hover: var(--accent);
     --leaderboard-active-golfers-indicator: var(--primary);
+    --leaderboard-drop-shadow: drop-shadow(0px 0px 10px rgba(255, 252, 201, 0.15));
 
     /* Modals */
     --modal-BG: var(--white_Var);
@@ -68,6 +72,7 @@
     --scorecard-table-primary-color: var(--primary);
     --scorecard-table-column-FC: var(--white_Var);
     --scorecard-table-BG: var(--white_Var);
+    --scorecard-table-FC: var(--primary);
     --scorecard-table-name-FC: var(--primary);
     --scorecard-table-name-BG: rgba(0, 103, 71, 0.12);
     --scorecard-table-endCol-BG: rgba(236, 192, 13, 0.18);
@@ -79,6 +84,8 @@
     --scorecard-toggle: #ccc;
     --scorecard-toggle-slider: var(--white_Var);
     --scorecard-toggle-active: var(--primary);
+    --scorecard-toggle-active-FC: var(--primary);
+    --scorecard-toggle-inactive-FC: #999;
     --scorecard-update-FC: var(--primary);
     --scorecard-BG-flash-green: rgba(0, 103, 71, 0.25);
     --scorecard-BG-flash-red: rgba(224, 15, 57, 0.25);
@@ -88,6 +95,8 @@
     --nav-FC: rgb(215, 215, 215);
     --nav-FC-highlight: var(--accent);
     --nav-border-color: var(--accent);
+    --nav-tab--hover-BG: rgba(255, 255, 255, 0.15);
+    --nav-tab--focus-BG: rgba(255, 255, 255, 0.07);
     --nav-favorite-icon-color: var(--accent);
 
     /* Loading / NoLandscape / NoData */
@@ -105,6 +114,8 @@
     /* Other */
     --color-scheme: light;
     --background-slider-tint: var(--primary);
+    --themeToggle: rgba(255, 255, 255, 0.4);
+    --themeToggle-active: var(--accent);
 
 
     /* -------------------------- */
@@ -112,24 +123,103 @@
     /* -------------------------- */
 
     &[data-theme='dark'] {
-        /* Backgrounds */
-        --BG-main: rgb(22, 27, 34);
-        --BG-activeTab: #1f2428;
-        --BG-primaryButton: #30363d;
+        --leaderboard-row-BG: var(--primary);
+        --leaderboard-row--hover-BG: var(--secondary);
+        --leaderboard-cell-BG: var(--primary);
+        --leaderboard-cell--hover-BG: var(--secondary);
+        --leaderboard-row-favorite-BG: rgb(2, 137, 95);
+        --leaderboard-row-favorite--hover-BG: var(--secondary);
+        --leaderboard-cell-favorite-BG: rgb(2, 137, 95);
+        --leaderboard-cell-favorite--hover-BG: var(--secondary);
 
-        /* Text */
-        --fontColor-primary: #e6edf3;
-        --fontColor-secondary: #8b949e;
+        --leaderboard-row-FC: var(--white_Var);
+        --leaderboard-row-CUT-FC: rgb(101, 107, 109);
+        --leaderboard-cell-over-FC: var(--white_Var);
+        --leaderboard-cell-under-FC: var(--accent);
+        --leaderboard-cell-position-FC: var(--white_Var);
+        --leaderboard-cell-backdrop: var(--secondary); // behind the active cell component
+        --leaderboard-row-border-color: var(--secondary);
+        --leaderboard-cell-boxShadow: inset 0 1px 3px rgba(0, 0, 0, 0.6);
 
-        /* Accents */
-        --borderColor: #30363d;
-        --primary: rgb(0, 103, 71);
-        --secondary: rgb(0, 71, 43);
-        --accent: rgb(252, 227, 0);
-        --white_Var: #e6edf3;
-        --color-scheme: light dark;
+        --leaderboard-title-BG: var(--secondary);
+        --leaderboard-title-FC: var(--white_Var);
+        --leaderboard-column-FC: var(--white_Var);
+        --leaderboard-border-color: var(--midnightGreen);
+        --leaderboard-info: var(--accent);
+        --leaderboard-tournament-icon: var(--white_Var);
+        --leaderboard-tournament-icon-hover: var(--accent);
+        --leaderboard-active-golfers-indicator: var(--midnightGreen);
+        --leaderboard-drop-shadow: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.5));
 
-        /* Scoreboard */
-        --leaderboard-row-BG: rgb(22, 27, 34);
+        /* Modals */
+        --modal-BG: var(--white_Var);
+        --modal-FC: var(--primary);
+        --modal-border-color: var(--primary);
+        --modal-button-FC: var(--white_Var);
+        --modal-button-BG: var(--primary);
+        --modal-button--hover-BG: var(--secondary);
+        --modal-example-BG: #f3f3f3;
+        --modal-example-border-color: var(--accent);
+        --modal-backdrop: rgba(0, 0, 0, 0.7);
+
+        /* Team page */
+        --teamPage-box-shadow: 0px 0px 30px 10px transparent;
+        --teamPage-BG: var(--primaryOpacity50);
+        --teamPage-header-BG: var(--secondary);
+        --teamPage-header-FC: var(--white_Var);
+        --teamPage-header-border-color: var(--primary);
+        --teamPage-header-favorite: var(--accent);
+        --teamPage-header-favorite-inactive: rgba(255, 255, 255, 0.6);
+        --teamPage-header-CUT-line-color: #ff4d4d;
+
+        /* Scorecard */
+        --scorecard-title-FC: var(--white_Var);
+        --scorecard-table-primary-color: var(--primary);
+        --scorecard-table-column-FC: var(--white_Var);
+        --scorecard-table-BG: --transparent;
+        --scorecard-table-FC: var(--white_Var);
+        --scorecard-table-name-FC: var(--white_Var);
+        --scorecard-table-name-BG: rgba(0, 103, 70, 0.3);
+        --scorecard-table-endCol-BG: rgba(0, 0, 0, 0.3);
+        --scorecard-cell-over-FC: var(--white_Var);
+        --scorecard-cell-under-FC: var(--accent);
+        --scorecard-cell-CUT-FC: rgb(101, 107, 109);
+        --scorecard-active-score-indicator: var(--primary);
+
+        --scorecard-toggle: rgba(0, 0, 0, 0.3);
+        --scorecard-toggle-slider: var(--primary);
+        --scorecard-toggle-active: rgba(0, 0, 0, 0.3);
+        --scorecard-toggle-active-FC: var(--white_Var);
+        --scorecard-toggle-inactive-FC: #999;
+        --scorecard-update-FC: #999;
+        --scorecard-BG-flash-green: rgba(0, 103, 71, 0.25);
+        --scorecard-BG-flash-red: rgba(224, 15, 57, 0.25);
+
+        /* Nav */
+        --nav-BG: var(--secondary);
+        --nav-FC: rgb(215, 215, 215);
+        --nav-FC-highlight: var(--accent);
+        --nav-border-color: var(--primary);
+        --nav-tab--hover-BG: var(--midnightGreen);
+        --nav-tab--focus-BG: rgb(0, 55, 41);
+        --nav-favorite-icon-color: var(--accent);
+
+        /* Loading / NoLandscape / NoData */
+        --loading-FC: var(--accent);
+        --loading-subtext-FC: var(--white_Var);
+        --loading-dropShadow: var(--secondary);
+        --noData-FC: var(--primary);
+
+        /* thruBadge */
+        --thruBadge-teeTime-FC: var(--white_Var);
+        --thruBadge-teeTime-BG: var(--primary);
+        --thruBadge-active-FC: var(--primary);
+        --thruBadge-active-BG: var(--accent);
+
+        /* Other */
+        --color-scheme: light;
+        --background-slider-tint: var(--secondary);
+        --themeToggle: rgba(255, 255, 255, 0.4);
+        --themeToggle-active: var(--accent);
     }
 }

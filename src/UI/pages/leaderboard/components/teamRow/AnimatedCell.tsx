@@ -52,7 +52,7 @@ export const AnimatedCell = ({
 
   return (
     <div className={`${className} ${isAnimating ? 'is-animating-cell' : ''}`}>
-      <span className={`score-tile-inner ${activeGolfers && 'active-golfers'}`}>
+      <span className={`score-tile-inner ${activeGolfers ? 'active-golfers' : ''}`}>
         {isTied && <span className="is-tied">T-</span>}
         {displayValue}
       </span>

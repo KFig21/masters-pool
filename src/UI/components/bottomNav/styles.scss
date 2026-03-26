@@ -76,14 +76,10 @@
                 }
             }
 
-            &:hover {
-                background-color: rgba(255, 255, 255, 0.15);
-                color: white;
-            }
-
-            &:focus {
+            &:focus,
+            &:focus-visible {
                 outline: none;
-                background-color: rgba(255, 255, 255, 0.07);
+                background-color: var(--nav-tab--focus-BG);
 
                 .team-name {
                     transition: all 0.24s ease;
@@ -91,9 +87,13 @@
                 }
             }
 
+            &:hover,
             &.active {
+                background-color: var(--nav-tab--hover-BG);
                 color: white;
-                background-color: rgba(255, 255, 255, 0.15);
+            }
+
+            &.active {
                 font-weight: bold;
                 border-bottom: 3px solid var(--nav-border-color);
                 outline: none;
