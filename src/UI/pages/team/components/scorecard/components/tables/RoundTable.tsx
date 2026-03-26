@@ -48,6 +48,7 @@ export const RoundTable = ({ golfers, stats }: Props) => {
         val: isUnder ? val : `+${val}`,
         class: isUnder ? 'under' : 'over',
         isCounting,
+        rawValue: val,
       };
     }
   };
