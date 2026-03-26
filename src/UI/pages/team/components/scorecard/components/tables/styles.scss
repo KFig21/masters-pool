@@ -13,7 +13,7 @@
         .section-title {
             font-family: 'Tiempo', serif;
             font-size: 1.2rem;
-            color: var(--green);
+            color: var(--scorecard-title-FC);
             font-weight: 500;
 
             @include mobile {
@@ -30,18 +30,16 @@
             color: #999;
 
             span.active {
-                color: var(--green);
+                color: var(--scorecard-toggle-active);
             }
         }
     }
 
-    $table-color: var(--green);
-
     .scorecard-table-container {
         display: flex;
         flex-direction: column;
-        background-color: var(--leaderboard-BG-row);
-        border: 1px solid $table-color;
+        background-color: var(--scorecard-table-BG);
+        border: 1px solid var(--scorecard-table-primary-color);
         border-radius: 5px;
         overflow-y: hidden;
         border-radius: 5px;
@@ -52,7 +50,7 @@
             $round-width: 65px;
             // Name | R1 | R2 | R3 | R4 | End
             grid-template-columns: 260px repeat(4, $round-width) 80px;
-            border-top: 1px solid $table-color;
+            border-top: 1px solid var(--scorecard-table-primary-color);
 
             // 2. FORCE WIDTH SO IT DOESN'T CRUNCH
             min-width: max-content;
@@ -65,7 +63,7 @@
 
             /* The "Thick Border" for the 4th Golfer */
             &.cutoff-border {
-                border-bottom: 2px solid $table-color;
+                border-bottom: 2px solid var(--scorecard-table-primary-color);
             }
 
             &.is-cut {
@@ -119,8 +117,8 @@
             }
 
             &.header {
-                background-color: $table-color;
-                color: var(--white);
+                background-color: var(--scorecard-table-primary-color);
+                color: var(--scorecard-table-column-FC);
                 font-weight: 600;
                 font-size: 0.85rem;
                 border-bottom: none;
@@ -131,21 +129,21 @@
 
                 .scorecard-table-cell {
                     // border-right-color: rgba(255, 255, 255, 0.12);
-                    color: var(--white);
+                    color: var(--scorecard-table-column-FC);
                 }
             }
 
             &.team-row {
-                background-color: var(--white);
+                background-color: var(--scorecard-table-BG);
                 font-weight: bold;
-                border-top: 3px solid $table-color;
+                border-top: 3px solid var(--scorecard-table-primary-color);
 
                 @include mobile {
                     font-size: 0.85rem;
                 }
 
                 .scorecard-table-cell.name-col {
-                    color: var(--green);
+                    color: var(--scorecard-table-name-FC);
                     font-family: 'Tiempo', serif;
                     font-weight: bold;
                 }
@@ -157,7 +155,7 @@
                 justify-content: center;
                 height: 35px;
                 font-size: 1rem;
-                border-right: 1px solid $table-color;
+                border-right: 1px solid var(--scorecard-table-primary-color);
                 font-weight: bold;
                 position: relative;
 
@@ -172,13 +170,13 @@
                         height: 0;
                         // The border hack: transparent left, colored top
                         border-left: 8px solid transparent;
-                        border-top: 8px solid var(--green);
+                        border-top: 8px solid var(--scorecard-active-score-indicator);
                         z-index: 5;
 
                         @include mobile {
                             // Slightly smaller earmark on mobile
                             border-left: 6px solid transparent;
-                            border-top: 6px solid var(--green);
+                            border-top: 6px solid var(--scorecard-active-score-indicator);
                         }
                     }
                 }
@@ -218,28 +216,28 @@
                     font-weight: 500;
                     font-family: 'Tiempo', serif;
                     color: var(--green);
-                    background-color: rgba(0, 103, 71, 0.12);
+                    background-color: var(--scorecard-table-name-BG);
                 }
 
                 &.end-col {
-                    background-color: rgba(236, 192, 13, 0.18);
+                    background-color: var(--scorecard-table-endCol-BG);
                 }
 
                 /* Color Coding */
                 &.under {
-                    color: var(--red);
+                    color: var(--scorecard-cell-under-FC);
                 }
 
                 &.over {
-                    color: var(--green);
+                    color: var(--scorecard-cell-over-FC);
                 }
 
                 &.even {
-                    color: var(--green);
+                    color: var(--scorecard-cell-over-FC);
                 }
 
                 &.cut {
-                    color: var(--leaderboard-FC-row-CUT);
+                    color: var(--scorecard-cell-CUT-FC);
                     font-style: italic;
                 }
 

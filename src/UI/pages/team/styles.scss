@@ -5,9 +5,9 @@
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
-    height: calc(100vh - #{$footer-height});
-    background-color: white;
-    box-shadow: 0px 0px 30px 10px var(--darkGreen);
+    height: calc(100vh - #{var(--footer-height)});
+    background-color: var(--teamPage-BG);
+    box-shadow: var(--teamPage-box-shadow);
 
     @include mobile {
         height: 100dvh;
@@ -38,13 +38,13 @@
             justify-content: center;
             flex-direction: column;
             align-items: center;
-            background-color: var(--green);
+            background-color: var(--teamPage-header-BG);
             box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.1);
             position: absolute;
             top: 0;
             z-index: 3;
             width: 100%;
-            border-bottom: solid $header-border-height var(--yellow);
+            border-bottom: solid $header-border-height var(--teamPage-header-border-color);
             height: $header-height;
 
             @include mobile {
@@ -57,7 +57,7 @@
                 left: 15px;
                 top: 50%;
                 transform: translateY(-50%);
-                color: var(--white);
+                color: var(--teamPage-header-FC);
                 text-decoration: none;
                 font-weight: bold;
                 font-size: 1.75rem;
@@ -70,7 +70,7 @@
             &.is-cut {
                 .team-header-data.name {
                     font-style: italic;
-                    color: rgba(255, 255, 255, 0.6);
+                    color: var(--teamPage-header-favorite-inactive);
 
                     &::after {
                         /* Syntax: [name] [duration] [timing-function] [delay] [fill-mode] */
@@ -101,12 +101,12 @@
                     border: none;
                     font-size: 24px;
                     cursor: pointer;
-                    color: #bbbbbb;
+                    color: var(--teamPage-header-favorite-inactive);
                     transition: transform 0.2s, color 0.2s;
                 }
 
                 &.active .favorite-icon {
-                    color: var(--yellow);
+                    color: var(--teamPage-header-favorite);
                 }
             }
 
@@ -127,7 +127,7 @@
                 .team-header-data {
                     font-size: 2.5rem;
                     font-weight: 400;
-                    color: var(--white);
+                    color: var(--teamPage-header-FC);
                     font-family: 'Tiempo', serif;
 
                     @include mobile {
@@ -146,7 +146,7 @@
                             right: -20px;
                             top: 48%;
                             height: 6px;
-                            background-color: #ff4d4d;
+                            background-color: var(--teamPage-header-CUT-line-color);
                             transform: scaleX(0);
                             transform-origin: left;
                             pointer-events: none;
@@ -205,28 +205,6 @@
                     }
                 }
             }
-
-            // &::-webkit-scrollbar {
-            //     width: 13px;
-            // }
-
-            // &::-webkit-scrollbar-track {
-            //     background: transparent; // Track stays invisible
-            // }
-
-            // &::-webkit-scrollbar-thumb {
-            //     // Use an RGBA version of your green with 0 opacity
-            //     background-color: rgba(0, 128, 0, 0);
-            //     border: solid 3px transparent;
-            //     border-radius: 20px;
-            //     background-clip: content-box;
-            //     transition: background-color 0.3s ease; // Smooth transition for thumb color
-
-            //     &:hover {
-            //         background-color: var(--green); // Pop to full color on hover
-            //     }
-            // }
-
         }
     }
 }

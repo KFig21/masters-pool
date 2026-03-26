@@ -1,66 +1,19 @@
-:root,
-[data-theme='light'] {
-    /* Backgrounds */
+@use './_variables' as *;
+@use './themes/default' as *;
+@use './themes/masters' as *;
 
-    /* Text */
-
-
-    /* Accents */
+:root {
+    /* COLORS */
     --green: rgb(0, 103, 71);
-    --darkGreen: rgb(0, 68, 50);
-    --yellow: rgb(252, 227, 0);
     --red: rgb(224, 15, 57);
     --white: white;
 
-    /* Leaderboard */
-    --leaderboard-BG-row: white;
-    --leaderboard-BG-row--hover: #e1f4e9;
-    --leaderboard-BG-cell--hover: #f1fcf6;
+    /* DIMENSIONS */
+    --footer-height: #{$footer-height};
+    --grid-padding-height: #{$grid-padding-height};
+    --grid-name-margin: #{$grid-name-margin};
 
-    --leaderboard-FC-row: rgb(10, 10, 10);
-    --leaderboard-FC-row-CUT: rgb(101, 107, 109);
-    --leaderboard-FC-column: white;
-
-    --leaderboard-borderColor: rgb(205, 205, 205);
-    --leaderboard-boxShadow-cell: inset 0 1px 3px rgba(0, 0, 0, 0.4);
-
-    /* Favorited */
-    --leaderboard-BG-cell-favorite: rgb(255, 252, 225);
-    --leaderboard-BG-row-favorite: rgb(255, 251, 211);
-    --leaderboard-BG-row-favorite--hover: rgb(255, 249, 181);
-    --leaderboard-BG-cell-favorite--hover: rgb(255, 252, 208);
-
-    /* Scorecard */
-    --scorecard-BG-flash-green: rgba(0, 103, 71, 0.25);
-    --scorecard-BG-flash-red: rgba(224, 15, 57, 0.25);
-
-    /* Nav */
-    --nav-FC: rgb(215, 215, 215);
-
-    /* Other */
-    --color-scheme: light;
-}
-
-
-/* Dark Theme */
-[data-theme='dark'] {
-    /* Backgrounds */
-    --BG-main: rgb(22, 27, 34);
-    --BG-activeTab: #1f2428;
-    --BG-primaryButton: #30363d;
-
-    /* Text */
-    --fontColor-primary: #e6edf3;
-    --fontColor-secondary: #8b949e;
-
-    /* Accents */
-    --borderColor: #30363d;
-    --green: rgb(0, 103, 71);
-    --darkGreen: rgb(0, 71, 43);
-    --yellow: rgb(252, 227, 0);
-    --white: #e6edf3;
-    --color-scheme: light dark;
-
-    /* Scoreboard */
-    --leaderboard-BG-row: rgb(22, 27, 34);
+    // Keep your default tournament fallback
+    // TODO: SET AS 'default' WHEN YOU MAKE A DEFAULT THEME
+    @extend [data-tournament='masters'];
 }

@@ -28,7 +28,7 @@
             }
 
             select {
-                background-color: var(--leaderboard-BG-row--hover);
+                background-color: var(--leaderboard-row--hover-BG);
                 color: var(--green);
                 border: 1px solid var(--green);
                 border-radius: 4px;
@@ -40,7 +40,7 @@
                 outline: none;
 
                 &:focus {
-                    background-color: var(--leaderboard-BG-row-favorite--hover);
+                    background-color: var(--leaderboard-row-favorite--hover-BG);
                 }
             }
         }

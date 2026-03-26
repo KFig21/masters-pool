@@ -1,0 +1,130 @@
+[data-tournament='default'] {
+    /* THEME GLOBALS */
+    --primary: rgb(45, 59, 117);
+    --secondary: rgb(22, 42, 85);
+    --accent: rgb(255, 230, 0);
+    --white_Var: var(--white);
+
+    /* --------------------------- */
+    /* --- MASTERS LIGHT THEME --- */
+    /* --------------------------- */
+
+    /* Leaderboard */
+    --leaderboard-row-BG: var(--white_Var);
+    --leaderboard-row--hover-BG: #e1f4e9;
+    --leaderboard-cell-BG: var(--white_Var);
+    --leaderboard-cell--hover-BG: #f1fcf6;
+    --leaderboard-row-favorite-BG: rgb(255, 251, 211);
+    --leaderboard-row-favorite--hover-BG: rgb(255, 249, 181);
+    --leaderboard-cell-favorite-BG: rgb(255, 252, 225);
+    --leaderboard-cell-favorite--hover-BG: rgb(255, 252, 208);
+
+    --leaderboard-row-FC: rgb(10, 10, 10);
+    --leaderboard-row-CUT-FC: rgb(101, 107, 109);
+    --leaderboard-cell-over-FC: var(--green);
+    --leaderboard-cell-under-FC: var(--red);
+    --leaderboard-cell-position-FC: var(--primary);
+    --leaderboard-cell-backdrop: var(--primary); // behind the active cell component
+    --leaderboard-row-border-color: rgb(205, 205, 205);
+    --leaderboard-cell-boxShadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
+
+    --leaderboard-title-BG: var(--secondary);
+    --leaderboard-title-FC: var(--white_Var);
+    --leaderboard-column-FC: var(--white_Var);
+    --leaderboard-border-color: var(--accent);
+    --leaderboard-info: var(--accent);
+    --leaderboard-tournament-icon: var(--white_Var);
+    --leaderboard-tournament-icon-hover: var(--accent);
+    --leaderboard-active-golfers-indicator: var(--primary);
+
+    /* Modals */
+    --modal-BG: var(--white_Var);
+    --modal-FC: var(--primary);
+    --modal-border-color: var(--primary);
+    --modal-button-FC: var(--white_Var);
+    --modal-button-BG: var(--primary);
+    --modal-button--hover-BG: var(--secondary);
+    --modal-example-BG: #f3f3f3;
+    --modal-example-border-color: var(--accent);
+    --modal-backdrop: rgba(0, 0, 0, 0.7);
+
+    /* Team page */
+    --teamPage-box-shadow: 0px 0px 30px 10px var(--secondary);
+    --teamPage-BG: var(--white_Var);
+    --teamPage-header-BG: var(--primary);
+    --teamPage-header-FC: var(--white_Var);
+    --teamPage-header-border-color: var(--accent);
+    --teamPage-header-favorite: var(--accent);
+    --teamPage-header-favorite-inactive: rgba(255, 255, 255, 0.6);
+    --teamPage-header-CUT-line-color: #ff4d4d;
+
+    /* Scorecard */
+    --scorecard-title-FC: var(--primary);
+    --scorecard-table-primary-color: var(--primary);
+    --scorecard-table-column-FC: var(--white_Var);
+    --scorecard-table-BG: var(--white_Var);
+    --scorecard-table-name-FC: var(--primary);
+    --scorecard-table-name-BG: rgba(0, 103, 71, 0.12);
+    --scorecard-table-endCol-BG: rgba(236, 192, 13, 0.18);
+    --scorecard-cell-over-FC: var(--green);
+    --scorecard-cell-under-FC: var(--red);
+    --scorecard-cell-CUT-FC: rgb(101, 107, 109);
+    --scorecard-active-score-indicator: var(--primary);
+
+    --scorecard-toggle: #ccc;
+    --scorecard-toggle-slider: var(--white_Var);
+    --scorecard-toggle-active: var(--primary);
+    --scorecard-update-FC: var(--primary);
+    --scorecard-BG-flash-green: rgba(0, 103, 71, 0.25);
+    --scorecard-BG-flash-red: rgba(224, 15, 57, 0.25);
+
+    /* Nav */
+    --nav-BG: var(--secondary);
+    --nav-FC: rgb(215, 215, 215);
+    --nav-FC-highlight: var(--accent);
+    --nav-border-color: var(--accent);
+    --nav-favorite-icon-color: var(--accent);
+
+    /* Loading / NoLandscape / NoData */
+    --loading-FC: var(--accent);
+    --loading-subtext-FC: var(--white_Var);
+    --loading-dropShadow: var(--secondary);
+    --noData-FC: var(--primary);
+
+    /* thruBadge */
+    --thruBadge-teeTime-FC: var(--white_Var);
+    --thruBadge-teeTime-BG: var(--primary);
+    --thruBadge-active-FC: var(--primary);
+    --thruBadge-active-BG: var(--accent);
+
+    /* Other */
+    --color-scheme: light;
+    --background-slider-tint: rgb(255, 249, 220);
+
+
+    /* -------------------------- */
+    /* --- MASTERS DARK THEME --- */
+    /* -------------------------- */
+
+    &[data-theme='dark'] {
+        /* Backgrounds */
+        --BG-main: rgb(22, 27, 34);
+        --BG-activeTab: #1f2428;
+        --BG-primaryButton: #30363d;
+
+        /* Text */
+        --fontColor-primary: #e6edf3;
+        --fontColor-secondary: #8b949e;
+
+        /* Accents */
+        --borderColor: #30363d;
+        --primary: rgb(0, 103, 71);
+        --secondary: rgb(0, 71, 43);
+        --accent: rgb(252, 227, 0);
+        --white_Var: #e6edf3;
+        --color-scheme: light dark;
+
+        /* Scoreboard */
+        --leaderboard-row-BG: rgb(22, 27, 34);
+    }
+}

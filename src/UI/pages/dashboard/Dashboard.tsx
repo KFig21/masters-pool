@@ -14,9 +14,9 @@ export const Dashboard = () => {
   // Default to favorite team on load
   useEffect(() => {
     if (favoriteTeam) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setSelectedOwner(favoriteTeam);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const toggleTeam = (owner: string) => {

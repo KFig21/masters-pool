@@ -1,3 +1,4 @@
+@use './_variables.scss' as *;
 @use './colors.scss' as *;
 @use './fonts.scss';
 
@@ -15,11 +16,6 @@
         display: none !important;
     }
 }
-
-// SCSS Variables for layout defaults
-$grid-padding-height: 5px;
-$grid-name-margin: 15px;
-$footer-height: 50px;
 
 * {
     box-sizing: border-box;
@@ -51,7 +47,6 @@ html {
     sans-serif;
     line-height: 1.5;
     font-weight: 400;
-    // color-scheme: var(--color-scheme);
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -80,7 +75,7 @@ body {
 
 .content-wrap {
     width: 100%;
-    min-height: calc(100vh - #{$footer-height});
+    min-height: calc(100vh - #{var(--footer-height)});
     overflow-y: hidden;
     position: relative;
     z-index: 2;

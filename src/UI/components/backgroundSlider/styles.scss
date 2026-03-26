@@ -42,7 +42,7 @@
     .bg-overlay {
         position: absolute;
         inset: 0;
-        background-color: var(--green);
+        background-color: var(--background-slider-tint);
         z-index: 0; // Behind the images, or remove this if you want images ON TOP of green
         // actually, usually you want images to blend ON TOP of the base green background
         // defined in .app-container. 

@@ -9,12 +9,12 @@ import { useScores } from '../context/ScoreContext';
 import './styles/index.scss';
 
 function App() {
-  const { isLoading, teams } = useScores();
+  const { isLoading, teams, currentEvent } = useScores();
 
   return (
-    <div className="app-container">
+    <div className="app-container" data-tournament={currentEvent.toLowerCase()}>
       <BackgroundSlider />
-      <NoLandscape /> {/* Add here */}
+      <NoLandscape />
       <div className="content-wrap">
         <Routes>
           <Route path="/" element={<Leaderboard />} />

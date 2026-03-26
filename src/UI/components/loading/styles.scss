@@ -14,12 +14,12 @@
         flex-direction: column;
 
         .loading-text {
-            color: var(--yellow);
+            color: var(--loading-FC);
             font-family: "Masters", serif;
             font-size: 3rem;
             margin: 0;
             letter-spacing: 2px;
-            filter: drop-shadow(0 0 20px var(--darkGreen));
+            filter: drop-shadow(0 0 20px var(--loading-dropShadow));
             display: flex;
             padding-left: 15px;
 

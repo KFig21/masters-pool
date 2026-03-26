@@ -34,7 +34,7 @@
         .no-data-text {
             font-family: "tiempo", serif;
             padding-top: 10px;
-            color: var(--green);
+            color: var(--noData-FC);
             font-size: 1.75rem;
             margin: 0;
 
@@ -50,10 +50,9 @@
                 font-family: 'Garamond', serif;
                 font-size: 1.1rem;
                 font-weight: 600;
-                color: var(--green);
+                color: var(--noData-FC);
                 font-style: italic;
             }
         }
     }
-
 }

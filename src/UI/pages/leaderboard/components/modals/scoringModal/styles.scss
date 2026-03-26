@@ -10,9 +10,9 @@
     }
 
     .modal-example {
-        background-color: #f3f3f3;
+        background-color: var(--modal-example-BG);
         padding: 12px;
-        border-left: 4px solid var(--yellow);
+        border-left: 4px solid var(--modal-example-border-color);
         font-style: italic;
         margin-bottom: 20px;
         font-size: 0.9rem;

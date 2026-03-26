@@ -14,11 +14,11 @@
         text-decoration: none;
         display: grid;
         grid-template-columns: var(--grid-layout);
-        padding: $grid-padding-height var(--grid-padding-width);
+        padding: var(--grid-padding-height) var(--grid-padding-width);
         gap: 8px;
         align-items: center;
-        border-bottom: solid 1px var(--leaderboard-borderColor);
-        background-color: var(--leaderboard-BG-row);
+        border-bottom: solid 1px var(--leaderboard-row-border-color);
+        background-color: var(--leaderboard-row-BG);
 
         @include mobile {
             gap: 4px;
@@ -26,7 +26,7 @@
             &:hover,
             &:focus,
             &:active {
-                background-color: var(--leaderboard-BG-row) !important;
+                background-color: var(--leaderboard-row-BG) !important;
 
                 .cell {
                     background-color: var(--leaderboard-BG-cell) !important;
@@ -36,20 +36,20 @@
 
         &:hover,
         &:focus-visible {
-            background-color: var(--leaderboard-BG-row--hover);
+            background-color: var(--leaderboard-row--hover-BG);
             outline: none;
 
             .cell {
                 .score-tile-inner {
-                    background-color: var(--leaderboard-BG-cell--hover);
+                    background-color: var(--leaderboard-cell--hover-BG);
                 }
             }
         }
 
         .cell {
-            background-color: var(--green);
-            color: var(--leaderboard-FC-row);
-            box-shadow: var(--leaderboard-boxShadow-cell);
+            background-color: var(--leaderboard-cell-backdrop);
+            color: var(--leaderboard-row-FC);
+            box-shadow: var(--leaderboard-cell-boxShadow);
             font-size: 30px;
             font-weight: 500;
             height: 40px;
@@ -69,8 +69,8 @@
                 height: 100%;
                 justify-content: center;
                 align-items: center;
-                box-shadow: var(--leaderboard-boxShadow-cell);
-                background-color: var(--leaderboard-BG-row);
+                box-shadow: var(--leaderboard-cell-boxShadow);
+                background-color: var(--leaderboard-cell-BG);
                 will-change: transform;
 
                 .is-tied {
@@ -91,13 +91,13 @@
                         height: 0;
                         // The border hack: transparent left, colored top
                         border-left: 12px solid transparent;
-                        border-top: 12px solid var(--green);
+                        border-top: 12px solid var(--leaderboard-active-golfers-indicator);
                         z-index: 5;
 
                         @include mobile {
                             // Slightly smaller earmark on mobile
                             border-left: 9px solid transparent;
-                            border-top: 9px solid var(--green);
+                            border-top: 9px solid var(--leaderboard-active-golfers-indicator);
                         }
                     }
                 }
@@ -105,7 +105,7 @@
 
             &.rank {
                 text-align: center;
-                color: var(--green);
+                color: var(--leaderboard-cell-position-FC);
                 display: flex;
                 justify-content: center;
             }
@@ -115,7 +115,7 @@
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
-                margin: 0px $grid-name-margin;
+                margin: 0px var(--grid-name-margin);
                 font-family: Oswald, Arial;
 
                 .favorite-star {
@@ -138,39 +138,39 @@
             &.score {
                 display: flex;
                 justify-content: center;
-                color: var(--green);
+                color: var(--leaderboard-cell-over-FC);
                 // font-size: 28px;
 
                 &.under-par {
-                    color: var(--red)
+                    color: var(--leaderboard-cell-under-FC)
                 }
 
                 &.even-par {
-                    color: var(--green);
+                    color: var(--leaderboard-cell-over-FC);
                 }
             }
 
             &.total {
-                margin-left: $grid-name-margin;
+                margin-left: var(--grid-name-margin);
 
                 @include mobile {
                     margin-left: 5px;
                 }
 
                 &.under-par {
-                    color: var(--red);
+                    color: var(--leaderboard-cell-under-FC);
                 }
 
                 &.even-par {
-                    color: var(--green);
+                    color: var(--leaderboard-cell-over-FC);
                 }
 
                 &.over-par {
-                    color: var(--green);
+                    color: var(--leaderboard-cell-over-FC);
                 }
 
                 &.cut-text {
-                    color: var(--leaderboard-FC-row-CUT);
+                    color: var(--leaderboard-row-CUT-FC);
                     font-weight: bold;
                     font-style: italic;
                     font-size: 24px;
@@ -186,21 +186,21 @@
     // FavoriteRow Styles
     &.favorite-row {
         .teamRow-container {
-            background-color: var(--leaderboard-BG-row-favorite);
+            background-color: var(--leaderboard-row-favorite-BG);
 
             .cell {
                 .score-tile-inner {
-                    background-color: var(--leaderboard-BG-cell-favorite);
+                    background-color: var(--leaderboard-cell-favorite-BG);
                 }
             }
 
             &:hover,
             &:focus-visible {
-                background-color: var(--leaderboard-BG-row-favorite--hover);
+                background-color: var(--leaderboard-row-favorite--hover-BG);
 
                 .cell {
                     .score-tile-inner {
-                        background-color: var(--leaderboard-BG-cell-favorite--hover);
+                        background-color: var(--leaderboard-cell-favorite--hover-BG);
                     }
                 }
             }
