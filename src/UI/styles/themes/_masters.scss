@@ -99,6 +99,15 @@
     --nav-tab--focus-BG: rgba(255, 255, 255, 0.07);
     --nav-favorite-icon-color: var(--accent);
 
+    /* Dashboard */
+    --dashboard-BG: var(--white_Var);
+    --dashboard-panel-BG: var(--white_Var);
+    --dashboard-panel-title: var(--primary);
+    --dashboard-table-FC: var(--primary);
+    --dashboard-table-header-BG: var(--secondary);
+    --dashboard-row-border-color: rgb(228, 228, 228);
+    --dashboard-team-container-BG: var(--white_Var);
+
     /* Loading / NoLandscape / NoData */
     --loading-FC: var(--accent);
     --loading-subtext-FC: var(--white_Var);
@@ -123,13 +132,13 @@
     /* -------------------------- */
 
     &[data-theme='dark'] {
-        --leaderboard-row-BG: var(--primary);
-        --leaderboard-row--hover-BG: var(--secondary);
-        --leaderboard-cell-BG: var(--primary);
-        --leaderboard-cell--hover-BG: var(--secondary);
-        --leaderboard-row-favorite-BG: rgb(2, 137, 95);
+        --leaderboard-row-BG: var(--secondary);
+        --leaderboard-row--hover-BG: var(--primary);
+        --leaderboard-cell-BG: var(--secondary);
+        --leaderboard-cell--hover-BG: var(--primary);
+        --leaderboard-row-favorite-BG: var(--primary);
         --leaderboard-row-favorite--hover-BG: var(--secondary);
-        --leaderboard-cell-favorite-BG: rgb(2, 137, 95);
+        --leaderboard-cell-favorite-BG: var(--primary);
         --leaderboard-cell-favorite--hover-BG: var(--secondary);
 
         --leaderboard-row-FC: var(--white_Var);
@@ -203,6 +212,15 @@
         --nav-tab--hover-BG: var(--midnightGreen);
         --nav-tab--focus-BG: rgb(0, 55, 41);
         --nav-favorite-icon-color: var(--accent);
+
+        /* Dashboard */
+        --dashboard-BG: var(--transparent);
+        --dashboard-panel-BG: var(--primaryOpacity50);
+        --dashboard-panel-title: var(--accent);
+        --dashboard-table-FC: var(--white_Var);
+        --dashboard-table-header-BG: var(--midnightGreen);
+        --dashboard-row-border-color: var(--secondary);
+        --dashboard-team-container-BG: var(--transparent);
 
         /* Loading / NoLandscape / NoData */
         --loading-FC: var(--accent);

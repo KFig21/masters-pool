@@ -29,7 +29,11 @@
                 background-color: var(--leaderboard-row-BG) !important;
 
                 .cell {
-                    background-color: var(--leaderboard-BG-cell) !important;
+                    background-color: var(--leaderboard-cell-BG) !important;
+
+                    .score-tile-inner {
+                        background-color: var(--leaderboard-cell-BG) !important;
+                    }
                 }
             }
         }

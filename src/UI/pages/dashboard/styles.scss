@@ -1,14 +1,20 @@
+@use '../../styles/colors' as *;
+@use '../../styles/index' as *;
+@use '../../styles/fonts' as *;
+@use '../../styles/variables' as *;
+
 .dashboard-page {
     padding: 20px;
-    max-width: 1400px;
+    // max-width: 1400px;
     margin: 0 auto;
     color: var(--text-primary, #fff); // Update variables to match your colors.scss
-    height: calc(100vh - 80px); // Assuming bottom nav is ~80px
+    height: calc(100vh - $footer-height); // Assuming bottom nav is ~80px
     overflow: hidden;
+    background-color: var(--dashboard-BG);
 
     .dashboard-grid {
         display: grid;
-        grid-template-columns: 1fr 1.2fr; // Left side a bit smaller than right side
+        grid-template-columns: auto 1fr auto;
         gap: 20px;
         height: 100%;
 
@@ -32,8 +38,8 @@
     }
 
     .dashboard-panel {
-        background: rgba(10, 42, 30, 0.85); // Adjust to your theme
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: var(--dashboard-panel-BG); // Adjust to your theme
+        border: 1px solid var(--primary);
         border-radius: 12px;
         padding: 16px;
         display: flex;
@@ -42,7 +48,7 @@
 
         .panel-header {
             font-family: 'Tiempo', serif; // Adjust to your font
-            color: #ecc00d; // Masters Yellow
+            color: var(--dashboard-panel-title); // Masters Yellow
             font-size: 1.2rem;
             margin-bottom: 12px;
             text-transform: uppercase;
@@ -59,6 +65,8 @@
 // --- Team Leaderboard (Left) ---
 .mini-leaderboard {
     font-size: 0.9rem;
+    color: var(--dashboard-table-FC);
+    flex: 1;
 
     .ml-header,
     .ml-row {
@@ -66,11 +74,11 @@
         grid-template-columns: 40px 1fr 60px 60px 60px 60px 60px;
         align-items: center;
         padding: 8px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        border-bottom: 1px solid var(--dashboard-row-border-color);
     }
 
     .ml-header {
-        color: rgba(255, 255, 255, 0.5);
+        color: var(--dashboard-table-FC);
         font-size: 0.75rem;
         font-weight: bold;
     }
@@ -104,11 +112,13 @@
     overflow-y: auto;
     height: 100%;
     padding-right: 8px;
+    flex: 1;
 
     .golfer-table {
         width: 100%;
         border-collapse: collapse;
         font-size: 0.85rem;
+        color: var(--dashboard-table-FC);
 
         th,
         td {
@@ -120,11 +130,10 @@
         th {
             position: sticky;
             top: 0;
-            background: #0a2a1e; // Needs to match panel background to hide scrolling items
+            background: var(--dashboard-table-header-BG);
             z-index: 2;
-            color: rgba(255, 255, 255, 0.5);
+            color: var(--dashboard-table-FC);
             font-size: 0.75rem;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
@@ -137,7 +146,7 @@
         }
 
         .team-name {
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--dashboard-table-FC);
             font-size: 0.8rem;
         }
 
@@ -158,6 +167,7 @@
     overflow-y: auto;
     height: 100%;
     padding-right: 8px;
+    max-width: fit-content;
 
     .accordion-list {
         display: flex;
@@ -165,14 +175,13 @@
         gap: 8px;
 
         .accordion-item {
-            background: rgba(0, 0, 0, 0.2);
+            background: var(--dashboard-team-container-BG);
             border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--primary);
             transition: all 0.3s ease;
 
             &.expanded {
-                background: rgba(0, 0, 0, 0.4);
-                border-color: rgba(236, 192, 13, 0.3);
+                background: var(--dashboard-team-container-BG);
             }
 
             .accordion-header {
@@ -224,6 +233,47 @@
                 background: #004c35; // Masters Green
                 border-color: #2ecc71;
             }
+        }
+    }
+}
+
+// --- General Info Panel ---
+.general-info-container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 12px;
+    color: var(--dashboard-table-FC);
+    width: 100%;
+    font-size: 0.9rem;
+
+    .info-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--dashboard-row-border-color);
+
+        &:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+    }
+
+    .info-label {
+        font-weight: bold;
+        opacity: 0.8;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 0.5px;
+    }
+
+    .info-value {
+        font-weight: 500;
+
+        &.active-count {
+            color: #ecc00d; // Matches the Masters Yellow accent used elsewhere
+            font-weight: bold;
         }
     }
 }

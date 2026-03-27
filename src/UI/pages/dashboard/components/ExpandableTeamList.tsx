@@ -20,7 +20,7 @@ export const ExpandableTeamList: React.FC<Props> = ({ teams, selectedOwner, onTo
           >
             <button className="accordion-header" onClick={() => onToggleTeam(team.owner)}>
               <span className="owner-name">{team.owner}</span>
-              <span className="accordion-icon">{selectedOwner === team.owner ? '−' : '+'}</span>
+              {selectedOwner != team.owner && <span className="accordion-icon">+</span>}
             </button>
 
             {selectedOwner === team.owner && (
