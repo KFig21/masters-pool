@@ -7,7 +7,6 @@
         line-height: 1.5;
         font-size: 1rem;
         margin-bottom: 25px;
-        color: var(--green);
     }
 
     .modal-selector-container {
@@ -24,13 +23,13 @@
             label {
                 font-family: "Tiempo", sans-serif;
                 font-size: 1rem;
-                color: var(--green);
+                color: var(--modal-select-label);
             }
 
             select {
-                background-color: var(--leaderboard-row--hover-BG);
-                color: var(--green);
-                border: 1px solid var(--green);
+                background-color: var(--modal-select-BG);
+                color: var(--modal-select-FC);
+                border: var(--modal-select-border);
                 border-radius: 4px;
                 padding: 10px;
                 font-family: "Work Sans", sans-serif;

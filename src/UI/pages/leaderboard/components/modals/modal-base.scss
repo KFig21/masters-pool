@@ -51,6 +51,13 @@
             font-weight: 500;
         }
 
+        p {
+            line-height: 1.5;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            color: var(--modal-FC);
+        }
+
         .close-button {
             background-color: var(--modal-button-BG);
             color: var(--modal-button-FC);
@@ -62,8 +69,10 @@
             width: 100%;
             transition: background 0.2s;
 
-            &:hover {
+            &:hover,
+            &:focus-visible {
                 background-color: var(--modal-button--hover-BG);
+                outline: none;
             }
         }
     }
