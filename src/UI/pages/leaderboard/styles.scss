@@ -243,63 +243,6 @@
             display: flex;
             flex-direction: row;
             gap: 20px;
-
-            .update-info {
-                display: flex;
-                align-items: center;
-                gap: 6px;
-                font-family: "Work Sans", sans-serif;
-                font-size: 11px;
-                letter-spacing: 0.5px;
-                color: var(--leaderboard-tournament-icon);
-                opacity: 0.5;
-                font-style: italic;
-                cursor: pointer;
-                transition: all ease .12s;
-
-                &.low-time {
-                    opacity: 1 !important;
-
-                    .value {
-                        color: var(--leaderboard-tournament-icon-hover) !important;
-                    }
-                }
-
-                &.critical-time {
-
-                    .value {
-                        animation: flash-opacity 1s infinite linear;
-                    }
-                }
-
-                &:hover {
-                    opacity: .8;
-                }
-
-                .label {
-                    font-weight: 700;
-                }
-
-                .value {
-                    font-weight: 600;
-                }
-
-                .divider {
-                    margin: 0 4px;
-                    opacity: 0.3;
-                }
-
-                @include mobile {
-                    font-size: 9px;
-                    gap: 4px;
-                }
-            }
-
-            // This is to center the tee-time in the footer
-            // The icon on the left takes up 48px, since the padding-right of the footer is 12px we need another 36px to even it out
-            .empty-block {
-                width: 36px;
-            }
         }
     }
 }

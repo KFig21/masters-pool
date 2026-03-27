@@ -132,14 +132,14 @@
     /* -------------------------- */
 
     &[data-theme='dark'] {
-        --leaderboard-row-BG: var(--secondary);
-        --leaderboard-row--hover-BG: var(--primary);
-        --leaderboard-cell-BG: var(--secondary);
-        --leaderboard-cell--hover-BG: var(--primary);
-        --leaderboard-row-favorite-BG: var(--primary);
-        --leaderboard-row-favorite--hover-BG: var(--secondary);
-        --leaderboard-cell-favorite-BG: var(--primary);
-        --leaderboard-cell-favorite--hover-BG: var(--secondary);
+        --leaderboard-row-BG: var(--primary);
+        --leaderboard-row--hover-BG: rgb(0, 85, 58);
+        --leaderboard-cell-BG: var(--primary);
+        --leaderboard-cell--hover-BG: rgb(0, 85, 58);
+        --leaderboard-row-favorite-BG: rgb(0, 124, 85);
+        --leaderboard-row-favorite--hover-BG: rgb(0, 85, 58);
+        --leaderboard-cell-favorite-BG: rgb(0, 124, 85);
+        --leaderboard-cell-favorite--hover-BG: rgb(0, 85, 58);
 
         --leaderboard-row-FC: var(--white_Var);
         --leaderboard-row-CUT-FC: rgb(101, 107, 109);
@@ -150,10 +150,10 @@
         --leaderboard-row-border-color: var(--secondary);
         --leaderboard-cell-boxShadow: inset 0 1px 3px rgba(0, 0, 0, 0.6);
 
-        --leaderboard-title-BG: var(--secondary);
+        --leaderboard-title-BG: var(--primary);
         --leaderboard-title-FC: var(--white_Var);
         --leaderboard-column-FC: var(--white_Var);
-        --leaderboard-border-color: var(--midnightGreen);
+        --leaderboard-border-color: var(--secondary);
         --leaderboard-info: var(--accent);
         --leaderboard-tournament-icon: var(--white_Var);
         --leaderboard-tournament-icon-hover: var(--accent);

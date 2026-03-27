@@ -53,15 +53,6 @@ export const RoundTable = ({ golfers, stats }: Props) => {
     }
   };
 
-  // Helper for Team Daily Aggregate
-  const getTeamDaily = (rNum: number) => {
-    const prevSum = rNum === 1 ? 0 : (stats[`sumR${rNum - 1}` as keyof TeamStats] as number);
-    const currSum = stats[`sumR${rNum}` as keyof TeamStats] as number;
-
-    if (currSum === Infinity || prevSum === Infinity) return null;
-    return currSum - prevSum;
-  };
-
   return (
     <div className="scorecard-section-container">
       {/* Controls Header */}
@@ -160,8 +151,13 @@ export const RoundTable = ({ golfers, stats }: Props) => {
         {/* Team Daily Row */}
         <div className="scorecard-table-row team-row">
           <div className="scorecard-table-cell name-col">TEAM DAILY</div>
+
+          {/* ROUNDS */}
           {ROUNDS.map((r) => {
-            const val = getTeamDaily(r);
+            // Dynamically grab dailyR1, dailyR2, etc. directly from context stats
+            const dailyKey = `dailyR${r}` as keyof TeamStats;
+            const val = stats[dailyKey] as number | null;
+
             return (
               <AnimatedTeamCell
                 key={r}
@@ -172,6 +168,8 @@ export const RoundTable = ({ golfers, stats }: Props) => {
               </AnimatedTeamCell>
             );
           })}
+
+          {/* TOTAL */}
           <AnimatedTeamCell
             value={stats.activeTotal}
             className={`scorecard-table-cell end-col ${getTeamClass(stats.activeTotal).toLowerCase()}`}

@@ -3,13 +3,14 @@ import { useScores, type ProcessedTeam } from '../../../../../context/ScoreConte
 import { RoundTable } from './components/tables/RoundTable';
 import { ThruTable } from './components/tables/ThruTable';
 import './styles.scss';
+import { NextUpdateTimer } from '../../../leaderboard/components/footerRight/nextUpdateTimer/NextUpdateTimer';
 
 interface Props {
   team: ProcessedTeam;
 }
 
 export const Scorecard = ({ team }: Props) => {
-  const { isTournamentActive, lastUpdated } = useScores();
+  const { isTournamentActive, nextUpdate } = useScores();
   // Sort golfers: Best Score first, Cut players last
   const sortedGolfers = useMemo(() => {
     return [...team.golfers].sort((a, b) => {
@@ -22,15 +23,6 @@ export const Scorecard = ({ team }: Props) => {
     });
   }, [team.golfers]);
 
-  const formatTimestamp = (dateString: string | null) => {
-    if (!dateString) return '--:--';
-    return new Date(dateString).toLocaleTimeString([], {
-      hour: 'numeric', // Change from '2-digit' to 'numeric'
-      minute: '2-digit',
-      hour12: true,
-    });
-  };
-
   return (
     <div className="scorecard-wrapper">
       <ThruTable golfers={sortedGolfers} stats={team.stats} />
@@ -39,8 +31,7 @@ export const Scorecard = ({ team }: Props) => {
 
       {isTournamentActive && (
         <div className="scorecard-update-info">
-          <span className="label">Updated:</span>
-          <span className="value">{formatTimestamp(lastUpdated)}</span>
+          <NextUpdateTimer targetDateStr={nextUpdate} />
         </div>
       )}
     </div>

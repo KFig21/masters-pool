@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import './styles.scss';
 
 interface NextUpdateTimerProps {
   targetDateStr: string | null;

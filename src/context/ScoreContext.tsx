@@ -9,6 +9,10 @@ export interface TeamStats {
   sumR2: number;
   sumR3: number;
   sumR4: number;
+  dailyR1: number | null;
+  dailyR2: number | null;
+  dailyR3: number | null;
+  dailyR4: number | null;
   activeTotal: number | string;
   isTeamCut: boolean;
   activeGolfers: number;
@@ -163,6 +167,12 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
       const sumR3 = getBest4Sum(golfers, 'round3');
       const sumR4 = getBest4Sum(golfers, 'round4');
 
+      // Calculate the daily deltas
+      const dailyR1 = sumR1 === Infinity ? null : sumR1;
+      const dailyR2 = sumR2 === Infinity || sumR1 === Infinity ? null : sumR2 - sumR1;
+      const dailyR3 = sumR3 === Infinity || sumR2 === Infinity ? null : sumR3 - sumR2;
+      const dailyR4 = sumR4 === Infinity || sumR3 === Infinity ? null : sumR4 - sumR3;
+
       // 1. Check who survived the cut to determine if the team is still alive
       const survivingGolfersCount = golfers.filter((g) => !g.isCut).length;
       const isTeamCut = survivingGolfersCount < 4;
@@ -191,7 +201,19 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
       return {
         ...team,
         golfers,
-        stats: { sumR1, sumR2, sumR3, sumR4, activeTotal, activeGolfers, isTeamCut },
+        stats: {
+          sumR1,
+          sumR2,
+          sumR3,
+          sumR4,
+          dailyR1,
+          dailyR2,
+          dailyR3,
+          dailyR4,
+          activeTotal,
+          activeGolfers,
+          isTeamCut,
+        },
       };
     });
 

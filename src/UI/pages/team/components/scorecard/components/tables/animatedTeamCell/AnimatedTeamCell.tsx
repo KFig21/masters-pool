@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import React, { useState, useEffect, useRef } from 'react';
 
 interface Props {
@@ -10,55 +11,67 @@ export const AnimatedTeamCell = ({ value, className = '', children }: Props) => 
   const [displayContent, setDisplayContent] = useState(children);
   const [animState, setAnimState] = useState<'idle' | 'improve' | 'worsen'>('idle');
   const [fadeClass, setFadeClass] = useState('');
-  const prevValue = useRef(value);
 
+  const prevValue = useRef(value);
+  // Keep a ref of the absolute latest children to avoid stale closures in timeouts
+  const latestChildren = useRef(children);
+
+  // 1. Always keep our ref synced with the latest render
   useEffect(() => {
-    // Only trigger if we have a previous value and it has actually changed
+    latestChildren.current = children;
+    // Keep content perfectly synced if the user toggles view modes (Strokes vs Par)
+    // while the component is resting
+    if (animState === 'idle') {
+      setDisplayContent(children);
+    }
+  }, [children, animState]);
+
+  // 2. Only fire the animation sequence when the underlying raw value changes
+  useEffect(() => {
+    let t1: ReturnType<typeof setTimeout>;
+    let t2: ReturnType<typeof setTimeout>;
+    let t3: ReturnType<typeof setTimeout>;
+
     if (prevValue.current !== undefined && value !== prevValue.current) {
       const oldNum = Number(prevValue.current);
       const newNum = Number(value);
 
       let direction: 'idle' | 'improve' | 'worsen' = 'idle';
 
-      // Golf logic: Lower is better (improve = green, worsen = red)
       if (!isNaN(oldNum) && !isNaN(newNum)) {
         if (newNum < oldNum) direction = 'improve';
         if (newNum > oldNum) direction = 'worsen';
       } else if (prevValue.current === null && !isNaN(newNum)) {
-        // Player just started their round
         direction = newNum <= 0 ? 'improve' : 'worsen';
       }
 
       if (direction !== 'idle') {
         setAnimState(direction);
 
-        // Timeline Step 1: 0ms -> CSS handles the double flash and hold
+        t1 = setTimeout(() => setFadeClass('fade-out'), 600);
 
-        // Timeline Step 2: 600ms -> Fade the old text out
-        setTimeout(() => setFadeClass('fade-out'), 600);
-
-        // Timeline Step 3: 800ms -> Swap to the new value, start fading text in
-        setTimeout(() => {
-          setDisplayContent(children);
+        t2 = setTimeout(() => {
+          // Use the REF here, not the scoped `children` prop!
+          setDisplayContent(latestChildren.current);
           setFadeClass('fade-in');
         }, 900);
 
-        // Timeline Step 4: 1100ms -> Drop the background color and finish fade
-        setTimeout(() => {
+        t3 = setTimeout(() => {
           setAnimState('idle');
           setFadeClass('');
         }, 1400);
-      } else {
-        setDisplayContent(children);
       }
-    } else if (animState === 'idle') {
-      // Keep content synced if parent re-renders without a value change
-      setDisplayContent(children);
     }
 
     prevValue.current = value;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value, children]);
+
+    // CLEANUP: If value changes rapidly, clear the old timeouts so animations don't overlap
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+    };
+  }, [value]);
 
   return (
     <div className={`${className} anim-cell ${animState}`}>
