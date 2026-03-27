@@ -31,7 +31,7 @@ export const Scorecard = ({ team }: Props) => {
 
       {isTournamentActive && (
         <div className="scorecard-update-info">
-          <NextUpdateTimer targetDateStr={nextUpdate} />
+          <NextUpdateTimer targetDateStr={nextUpdate} page={'scorecard'} />
         </div>
       )}
     </div>

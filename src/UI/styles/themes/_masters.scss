@@ -87,6 +87,8 @@
     --scorecard-toggle-active-FC: var(--primary);
     --scorecard-toggle-inactive-FC: #999;
     --scorecard-update-FC: var(--primary);
+    --scorecard-update-value-low-FC: var(--primary);
+    --scorecard-update-opacity: 1;
     --scorecard-BG-flash-green: rgba(0, 103, 71, 0.25);
     --scorecard-BG-flash-red: rgba(224, 15, 57, 0.25);
 
@@ -200,7 +202,9 @@
         --scorecard-toggle-active: rgba(0, 0, 0, 0.3);
         --scorecard-toggle-active-FC: var(--white_Var);
         --scorecard-toggle-inactive-FC: #999;
-        --scorecard-update-FC: #999;
+        --scorecard-update-FC: var(--white_Var);
+        --scorecard-update-value-low-FC: var(--accent);
+        --scorecard-update-opacity: .5;
         --scorecard-BG-flash-green: rgba(0, 103, 71, 0.25);
         --scorecard-BG-flash-red: rgba(224, 15, 57, 0.25);
 

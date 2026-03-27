@@ -3,9 +3,10 @@ import './styles.scss';
 
 interface NextUpdateTimerProps {
   targetDateStr: string | null;
+  page: string;
 }
 
-export const NextUpdateTimer = ({ targetDateStr }: NextUpdateTimerProps) => {
+export const NextUpdateTimer = ({ targetDateStr, page }: NextUpdateTimerProps) => {
   const [timeLeft, setTimeLeft] = useState<string>('--:--');
   const [isLowTime, setIsLowTime] = useState(false);
   const [isCriticalTime, setIsCriticalTime] = useState(false);
@@ -55,7 +56,9 @@ export const NextUpdateTimer = ({ targetDateStr }: NextUpdateTimerProps) => {
   }, [targetDateStr]);
 
   return (
-    <div className={`update-info ${isLowTime && 'low-time'} ${isCriticalTime && 'critical-time'}`}>
+    <div
+      className={`update-info ${isLowTime && 'low-time'} ${isCriticalTime && 'critical-time'} ${page}`}
+    >
       <span className="label">{isUpdating ? '' : 'NEXT UPDATE'}</span>
       <span className={`value`}>{timeLeft}</span>
     </div>

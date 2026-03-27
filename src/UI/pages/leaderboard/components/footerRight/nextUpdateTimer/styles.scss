@@ -9,17 +9,37 @@
     font-family: "Work Sans", sans-serif;
     font-size: 11px;
     letter-spacing: 0.5px;
-    color: var(--leaderboard-tournament-icon);
-    opacity: 0.5;
     font-style: italic;
     cursor: pointer;
     transition: all ease .12s;
+
+    &.leaderboard {
+        opacity: 0.5;
+        color: var(--leaderboard-tournament-icon);
+    }
+
+    &.scorecard {
+        opacity: var(--scorecard-update-opacity);
+        color: var(--scorecard-update-FC);
+    }
 
     &.low-time {
         opacity: 1 !important;
 
         .value {
             color: var(--leaderboard-tournament-icon-hover) !important;
+        }
+    }
+
+    &.low-time.leaderboard {
+        .value {
+            color: var(--leaderboard-tournament-icon-hover) !important;
+        }
+    }
+
+    &.low-time.scorecard {
+        .value {
+            color: var(--scorecard-update-value-low-FC) !important;
         }
     }
 

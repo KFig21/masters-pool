@@ -26,7 +26,7 @@ export const FooterRight = ({
   return (
     <div className="footer-right" onClick={onUpdateClick}>
       {/* <LastUpdated timestamp={lastUpdated} /> */}
-      <NextUpdateTimer targetDateStr={nextUpdate} />
+      <NextUpdateTimer targetDateStr={nextUpdate} page={'leaderboard'} />
     </div>
   );
 };
