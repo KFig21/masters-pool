@@ -13,7 +13,7 @@ export const ScoreTestHarness = () => {
   };
 
   return (
-    <div style={{ padding: '40px', background: '#0a2a1e', minHeight: '100vh', color: 'white' }}>
+    <div style={{ padding: '40px', background: '#0a2a1e', color: 'white' }}>
       <h2 style={{ fontFamily: 'Tiempo, serif', color: '#ecc00d' }}>
         Scorecard Animation Laboratory
       </h2>

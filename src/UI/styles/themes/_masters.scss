@@ -108,7 +108,7 @@
     --nav-favorite-icon-color: var(--accent);
 
     /* Dashboard */
-    --dashboard-BG: var(--white_Var);
+    --dashboard-BG: --transparent;
     --dashboard-panel-BG: var(--white_Var);
     --dashboard-panel-title: var(--primary);
     --dashboard-table-FC: var(--primary);
@@ -150,7 +150,7 @@
         --leaderboard-cell-favorite--hover-BG: rgb(0, 85, 58);
 
         --leaderboard-row-FC: var(--white_Var);
-        --leaderboard-row-CUT-FC: rgb(101, 107, 109);
+        --leaderboard-row-CUT-FC: rgb(178, 188, 192);
         --leaderboard-cell-over-FC: var(--white_Var);
         --leaderboard-cell-under-FC: var(--accent);
         --leaderboard-cell-position-FC: var(--white_Var);
@@ -206,7 +206,7 @@
         --scorecard-table-endCol-BG: rgba(0, 0, 0, 0.3);
         --scorecard-cell-over-FC: var(--white_Var);
         --scorecard-cell-under-FC: var(--accent);
-        --scorecard-cell-CUT-FC: rgb(101, 107, 109);
+        --scorecard-cell-CUT-FC: rgb(135, 143, 146);
         --scorecard-active-score-indicator: var(--primary);
 
         --scorecard-toggle: rgba(0, 0, 0, 0.3);
