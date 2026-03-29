@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/refs */
 import React, { useState, useEffect, useRef } from 'react';
 import './styles.scss';
 
@@ -8,89 +7,73 @@ interface Props {
   children: React.ReactNode;
 }
 
-const UNSET = Symbol('unset');
-
 export const AnimatedTeamCell = ({ value, className = '', children }: Props) => {
+  // 1. Initialize displayContent with children
   const [displayContent, setDisplayContent] = useState(children);
-  const [flashKey, setFlashKey] = useState(0);
+  const [animState, setAnimState] = useState<'idle' | 'improve' | 'worsen'>('idle');
   const [isFading, setIsFading] = useState(false);
 
-  const animDirection = useRef<'idle' | 'improve' | 'worsen'>('idle');
-  const prevValue = useRef<typeof value | typeof UNSET>(UNSET);
-  const isAnimating = useRef(false);
-  const timersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
+  const prevValue = useRef(value);
   const latestChildren = useRef(children);
 
-  latestChildren.current = children;
+  // Keep latestChildren ref in sync so timeouts always have the fresh UI
+  useEffect(() => {
+    latestChildren.current = children;
+
+    // If we aren't animating, update the display immediately (handles View Mode toggles)
+    if (animState === 'idle') {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setDisplayContent(children);
+    }
+  }, [children, animState]);
 
   useEffect(() => {
-    // 1. First render initialization
-    if (prevValue.current === UNSET) {
-      prevValue.current = value;
-      return;
-    }
+    // Only trigger if value actually changed and it's not the first mount
+    if (prevValue.current !== undefined && value !== prevValue.current) {
+      const oldNum = Number(prevValue.current ?? 0);
+      const newNum = Number(value ?? 0);
 
-    const oldVal = prevValue.current;
-    const newVal = value;
-    prevValue.current = newVal;
+      let direction: 'improve' | 'worsen' | 'idle' = 'idle';
 
-    // 2. If the value hasn't changed, we're not animating a score change.
-    // We just update the content instantly (e.g., the parent re-rendered for another reason).
-    if (oldVal === newVal) {
-      if (!isAnimating.current) {
-        setDisplayContent(children);
+      // Golf Logic: Lower is better
+      if (newNum < oldNum) direction = 'improve';
+      else if (newNum > oldNum) direction = 'worsen';
+      // Handle null -> value transitions
+      else if (prevValue.current === null && value !== null) {
+        direction = newNum <= 0 ? 'improve' : 'worsen';
       }
-      return;
+
+      if (direction !== 'idle') {
+        // Start Animation Sequence
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setAnimState(direction);
+
+        // Start text fade-out just before the swap
+        const fadeTimer = setTimeout(() => setIsFading(true), 600);
+
+        // The "Magic Swap": update text while background is solid color
+        const swapTimer = setTimeout(() => {
+          setDisplayContent(latestChildren.current);
+          setIsFading(false); // Fade back in
+        }, 900);
+
+        // Reset everything
+        const endTimer = setTimeout(() => {
+          setAnimState('idle');
+        }, 1400);
+
+        return () => {
+          clearTimeout(fadeTimer);
+          clearTimeout(swapTimer);
+          clearTimeout(endTimer);
+        };
+      }
     }
-
-    // 3. Value HAS changed -> Determine animation direction
-    const nOld = oldVal === null || oldVal === undefined ? null : Number(oldVal);
-    const nNew = newVal === null || newVal === undefined ? null : Number(newVal);
-
-    let direction: 'improve' | 'worsen' | 'idle' = 'idle';
-    if (nNew !== null) {
-      if (nOld === null) direction = 'improve';
-      else if (nNew < nOld) direction = 'improve';
-      else if (nNew > nOld) direction = 'worsen';
-    }
-
-    if (direction === 'idle') {
-      setDisplayContent(children);
-      return;
-    }
-
-    // 4. Trigger the full Animation Sequence
-    timersRef.current.forEach(clearTimeout);
-    timersRef.current = [];
-
-    isAnimating.current = true;
-    animDirection.current = direction;
-
-    // Incrementing flashKey and putting it on the OUTER div forces React to
-    // completely remount the element, guaranteeing the CSS animation restarts.
-    setFlashKey((k) => k + 1);
-
-    const t1 = setTimeout(() => setIsFading(true), 600);
-    const t2 = setTimeout(() => {
-      setDisplayContent(latestChildren.current);
-      setIsFading(false);
-    }, 900);
-    const t3 = setTimeout(() => {
-      animDirection.current = 'idle';
-      isAnimating.current = false;
-      // Force a render to strip the animation class
-      setFlashKey((k) => k + 1);
-    }, 1400);
-
-    timersRef.current = [t1, t2, t3];
-
-    return () => {
-      timersRef.current.forEach(clearTimeout);
-    };
-  }, [value, children]); // Depend on both to prevent the race condition
+    prevValue.current = value;
+  }, [value]);
 
   return (
-    <div key={flashKey} className={`${className} anim-cell ${animDirection.current}`}>
+    <div className={`${className} anim-cell ${animState}`}>
       <span className={`anim-content ${isFading ? 'fade-out' : 'fade-in'}`}>{displayContent}</span>
     </div>
   );
