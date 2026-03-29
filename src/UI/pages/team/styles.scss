@@ -103,6 +103,12 @@
                     cursor: pointer;
                     color: var(--teamPage-header-favorite-inactive);
                     transition: transform 0.2s, color 0.2s;
+
+                    &:focus-visible,
+                    &:active {
+                        outline: none;
+                        color: var(--teamPage-header-favorite);
+                    }
                 }
 
                 &.active .favorite-icon {

@@ -34,14 +34,17 @@ export const RoundTable = ({ golfers, stats }: Props) => {
     if (viewMode === 'strokes') {
       const strokeVal = data.total ? data.total : '-';
       const val = data.scoreRound;
-      if (val === null || val === undefined) return { val: '-', class: '', isCounting };
+      if (val === null || val === undefined)
+        return { val: '-', class: '', isCounting, rawValue: null };
 
       const isUnder = val < 0;
-      return { val: strokeVal, class: isUnder ? 'under' : 'over', isCounting };
+      return { val: strokeVal, class: isUnder ? 'under' : 'over', isCounting, rawValue: val };
     } else {
       const val = data.scoreRound;
-      if (val === null || val === undefined) return { val: '-', class: '', isCounting };
-      if (val === 0) return { val: 'E', class: 'even', isCounting };
+
+      if (val === null || val === undefined)
+        return { val: '-', class: '', isCounting, rawValue: null };
+      if (val === 0) return { val: 'E', class: 'even', isCounting, rawValue: val };
 
       const isUnder = val < 0;
       return {

@@ -159,6 +159,7 @@
                 border-right: 1px solid var(--scorecard-table-primary-color);
                 font-weight: bold;
                 position: relative;
+                background-color: transparent;
 
                 // --- Top 4 Earmark ---
                 &.counting-score {

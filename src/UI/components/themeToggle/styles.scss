@@ -15,5 +15,6 @@
     &:hover,
     &:focus-visible {
         color: var(--themeToggle-active);
+        outline: none;
     }
 }
