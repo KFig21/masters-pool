@@ -1,0 +1,65 @@
+@use '../../styles/colors' as *;
+@use '../../styles/index' as *;
+
+.errorView-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    .errorView-content {
+        padding: 2rem;
+        margin: 40px 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: "tiempo", serif;
+        font-weight: 500;
+        cursor: pointer;
+
+        .errorView-image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+
+            .errorView-image {
+                height: inherit;
+                width: inherit;
+            }
+        }
+
+
+        .errorView-text {
+            font-family: "tiempo", serif;
+            padding-top: 12px;
+            color: var(--white_Var);
+            font-size: 2rem;
+            margin: 0;
+
+            @include mobile {
+                font-size: 1.5rem;
+            }
+        }
+
+        .errorView-subtext-container {
+            padding-top: 6px;
+
+            .errorView-subtext {
+                font-family: "tiempo", serif;
+                font-size: 1.1rem;
+                font-weight: 400;
+                color: var(--white_Var);
+                font-style: italic;
+                letter-spacing: 0.85px;
+
+                .errorView-link {
+                    color: var(--loading-FC);
+                    text-decoration: none;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}

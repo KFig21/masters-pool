@@ -6,6 +6,7 @@ import Logo from '../../../assets/images/logo.png';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import './styles.scss';
 import { Loading } from '../../components/loading/Loading';
+import { ErrorView } from '../../components/errorView/ErrorView';
 
 export const Team = () => {
   const { owner } = useParams();
@@ -19,11 +20,7 @@ export const Team = () => {
   const teamInfo = owner ? getTeamByOwner(owner) : undefined;
 
   if (!owner || !teamInfo) {
-    return (
-      <div className="team-wrapper">
-        <div style={{ padding: '4rem', textAlign: 'center', color: 'white' }}>Team not found</div>
-      </div>
-    );
+    return <ErrorView />;
   }
 
   console.log('teamInfo', teamInfo); // teamInfo.stats.isTeamCut is where you know if they are cut. possibly move this out of stats and into the team root
