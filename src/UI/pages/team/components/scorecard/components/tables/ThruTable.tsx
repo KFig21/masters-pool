@@ -21,6 +21,10 @@ interface Props {
 export const ThruTable = ({ golfers, stats }: Props) => {
   const { isTournamentComplete, currentEvent, currentYear } = useScores();
 
+  // Create the fingerprint to ensure keys change when the team changes,
+  // preventing animations during navigation.
+  const teamFingerprint = golfers.map((g) => g.id).join('-');
+
   return (
     <div className="scorecard-section-container">
       <div className="scorecard-controls">
@@ -85,7 +89,7 @@ export const ThruTable = ({ golfers, stats }: Props) => {
 
                 return (
                   <AnimatedTeamCell
-                    key={r}
+                    key={`golfer-${golfer.id}-thru-${r}-${teamFingerprint}`}
                     value={val}
                     className={`scorecard-table-cell stroke ${getScoreClass(val, undefined)} ${isCounting ? 'counting-score' : ''}`}
                   >
@@ -95,6 +99,7 @@ export const ThruTable = ({ golfers, stats }: Props) => {
               })}
 
               <AnimatedTeamCell
+                key={`golfer-${golfer.id}-total-${teamFingerprint}`}
                 value={golfer.score}
                 className={`scorecard-table-cell end-col ${getScoreClass(golfer.score, golfer.isCut)}`}
               >
@@ -114,16 +119,20 @@ export const ThruTable = ({ golfers, stats }: Props) => {
 
             return (
               <AnimatedTeamCell
-                key={r}
-                value={val}
+                // Fingerprint added to key
+                key={`team-thru-${r}-${teamFingerprint}`}
+                value={isValid ? val : null}
                 className={`scorecard-table-cell ${isValid ? getScoreClass(val, undefined) : ''}`}
               >
                 {isValid ? formatRelativeScore(val) : '-'}
               </AnimatedTeamCell>
             );
           })}
+
           <AnimatedTeamCell
-            value={stats.activeTotal}
+            // Fingerprint added to key
+            key={`team-thru-total-${teamFingerprint}`}
+            value={stats.activeTotal === 'CUT' ? null : stats.activeTotal}
             className={`scorecard-table-cell end-col ${getTeamClass(stats.activeTotal).toLowerCase()}`}
           >
             {formatTeamValue(stats.activeTotal)}

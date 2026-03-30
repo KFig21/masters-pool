@@ -21,6 +21,10 @@ export const RoundTable = ({ golfers, stats }: Props) => {
   const [viewMode, setViewMode] = useState<ViewMode>('relative');
   const { isTournamentComplete, currentEvent, currentYear } = useScores();
 
+  // Create the fingerprint to ensure keys change when the team changes,
+  // preventing animations during navigation.
+  const teamFingerprint = golfers.map((g) => g.id).join('-');
+
   // Formatting Helper specific to RoundTable's view modes
   const getCellData = (golfer: Golfer, round: number) => {
     const roundKey = `round${round}` as keyof typeof golfer.scorecard;
@@ -131,7 +135,7 @@ export const RoundTable = ({ golfers, stats }: Props) => {
                 const { val, class: colorClass, isCounting, rawValue } = getCellData(golfer, round);
                 return (
                   <AnimatedTeamCell
-                    key={round}
+                    key={`golfer-${golfer.id}-r${round}-${teamFingerprint}`}
                     value={rawValue}
                     className={`scorecard-table-cell stroke ${colorClass} ${isCounting ? 'counting-score' : ''}`}
                   >
@@ -142,6 +146,7 @@ export const RoundTable = ({ golfers, stats }: Props) => {
 
               {/* Total Column */}
               <AnimatedTeamCell
+                key={`golfer-${golfer.id}-total-${teamFingerprint}`}
                 value={golfer.score}
                 className={`scorecard-table-cell end-col ${getScoreClass(golfer.score, golfer.isCut)}`}
               >
@@ -157,13 +162,12 @@ export const RoundTable = ({ golfers, stats }: Props) => {
 
           {/* ROUNDS */}
           {ROUNDS.map((r) => {
-            // Dynamically grab dailyR1, dailyR2, etc. directly from context stats
             const dailyKey = `dailyR${r}` as keyof TeamStats;
             const val = stats[dailyKey] as number | null;
 
             return (
               <AnimatedTeamCell
-                key={r}
+                key={`team-${teamFingerprint}-daily-${r}`}
                 value={val}
                 className={`scorecard-table-cell ${getTeamClass(val)}`}
               >
@@ -174,6 +178,7 @@ export const RoundTable = ({ golfers, stats }: Props) => {
 
           {/* TOTAL */}
           <AnimatedTeamCell
+            key={`team-${teamFingerprint}-total`}
             value={stats.activeTotal}
             className={`scorecard-table-cell end-col ${getTeamClass(stats.activeTotal).toLowerCase()}`}
           >
