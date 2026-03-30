@@ -6,12 +6,18 @@ import { ExpandableTeamList } from './components/ExpandableTeamList';
 import { useFavoriteTeam } from '../../../hooks/useFavoriteTeam';
 import './styles.scss';
 import { DashboardGeneralInfo } from './components/DashboardGeneralInfo';
+import { ErrorView } from '../../components/errorView/ErrorView';
 
 export const Dashboard = () => {
   const { teams } = useScores();
   const { favoriteTeam } = useFavoriteTeam();
   const [selectedOwner, setSelectedOwner] = useState<string | null>(null);
 
+  if (!teams || teams.length === 0) {
+    return <ErrorView />;
+  }
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     // Only set a default if we don't have a selection yet and data is ready
     if (teams.length > 0 && !selectedOwner) {
