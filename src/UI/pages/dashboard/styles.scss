@@ -12,15 +12,23 @@
     overflow: hidden;
     background-color: var(--dashboard-BG);
 
+    @include mobile {
+        height: unset;
+    }
+
     .dashboard-grid {
         display: grid;
         grid-template-columns: auto 1fr auto;
         gap: 20px;
         height: 100%;
 
-        @media (max-width: 1024px) {
-            grid-template-columns: 1fr;
-            overflow-y: auto;
+        // @media (max-width: 1024px) {
+        //     grid-template-columns: 1fr;
+        //     overflow-y: auto;
+        // }
+
+        @include mobile {
+            grid-template-columns: 1fr
         }
     }
 

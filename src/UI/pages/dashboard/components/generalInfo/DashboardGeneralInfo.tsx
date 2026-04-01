@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import { useScores, type ProcessedTeam } from '../../../../../context/ScoreContext';
-import { CURRENT_EVENT, CURRENT_YEAR, EVENT_MATRIX } from '../../../../../constants';
-import type { EventType } from '../../../../../types/team';
+import { EVENT_MATRIX } from '../../../../../constants';
 
 interface Props {
   teams: ProcessedTeam[];
