@@ -1,21 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useScores } from '../../../context/ScoreContext';
-import { DashboardTeamLeaderboard } from './components/DashboardTeamLeaderboard';
-import { DashboardGolferLeaderboard } from './components/DashboardGolferLeaderboard';
-import { ExpandableTeamList } from './components/ExpandableTeamList';
+import { DashboardTeamLeaderboard } from './components/teamLeaderboard/DashboardTeamLeaderboard';
+import { DashboardGolferLeaderboard } from './components/golfersLeaderboard/DashboardGolferLeaderboard';
+import { ExpandableTeamList } from './components/teamList/ExpandableTeamList';
 import { useFavoriteTeam } from '../../../hooks/useFavoriteTeam';
 import './styles.scss';
-import { DashboardGeneralInfo } from './components/DashboardGeneralInfo';
+import { DashboardGeneralInfo } from './components/generalInfo/DashboardGeneralInfo';
 import { ErrorView } from '../../components/errorView/ErrorView';
 
 export const Dashboard = () => {
   const { teams } = useScores();
   const { favoriteTeam } = useFavoriteTeam();
   const [selectedOwner, setSelectedOwner] = useState<string | null>(null);
-
-  if (!teams || teams.length === 0) {
-    return <ErrorView />;
-  }
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
@@ -29,6 +25,10 @@ export const Dashboard = () => {
     // but keeping it with the !selectedOwner check is safer for when favoriteTeam loads late.
   }, [teams, favoriteTeam, selectedOwner]);
 
+  if (!teams || teams.length === 0) {
+    return <ErrorView />;
+  }
+
   const handleSelectTeam = (owner: string) => {
     setSelectedOwner(owner);
   };
@@ -38,45 +38,27 @@ export const Dashboard = () => {
       <div className="dashboard-grid">
         {/* LEFT COLUMN: 2 Components */}
         <div className="dashboard-left-col">
-          <div className="dashboard-panel">
-            <h2 className="panel-header">Tournament Info</h2>
-            <DashboardGeneralInfo
-              eventName="The Masters"
-              startDate="2026-04-09"
-              endDate="2026-04-12"
-              coursePar={72}
-              teams={teams}
-            />
-          </div>
+          <DashboardGeneralInfo teams={teams} />
 
-          <div className="dashboard-panel">
-            <h2 className="panel-header">Team Leaderboard</h2>
-            <DashboardTeamLeaderboard
-              teams={teams}
-              selectedOwner={selectedOwner}
-              onSelectTeam={handleSelectTeam}
-            />
-          </div>
+          <DashboardTeamLeaderboard
+            teams={teams}
+            selectedOwner={selectedOwner}
+            onSelectTeam={handleSelectTeam}
+          />
         </div>
 
         {/* CENTER COLUMN: 1 Component */}
         <div className="dashboard-right-col">
-          <div className="dashboard-panel">
-            <h2 className="panel-header">Team Details</h2>
-            <ExpandableTeamList
-              teams={teams}
-              selectedOwner={selectedOwner}
-              onToggleTeam={handleSelectTeam}
-            />
-          </div>
+          <ExpandableTeamList
+            teams={teams}
+            selectedOwner={selectedOwner}
+            onToggleTeam={handleSelectTeam}
+          />
         </div>
 
         {/* RIGHT COLUMN: 1 Component */}
         <div className="dashboard-right-col">
-          <div className="dashboard-panel golfer-panel">
-            <h2 className="panel-header">Individual Leaderboard</h2>
-            <DashboardGolferLeaderboard teams={teams} />
-          </div>
+          <DashboardGolferLeaderboard teams={teams} selectedOwner={selectedOwner} />
         </div>
       </div>
     </div>

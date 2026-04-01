@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { RoundTable } from '../../team/components/scorecard/components/tables/RoundTable';
-import { ThruTable } from '../../team/components/scorecard/components/tables/ThruTable';
-import type { ProcessedTeam } from '../../../../context/ScoreContext';
+import { RoundTable } from '../../../team/components/scorecard/components/tables/RoundTable';
+import { ThruTable } from '../../../team/components/scorecard/components/tables/ThruTable';
+import type { ProcessedTeam } from '../../../../../context/ScoreContext';
 
 interface Props {
   teams: ProcessedTeam[];
@@ -11,25 +11,32 @@ interface Props {
 
 export const ExpandableTeamList: React.FC<Props> = ({ teams, selectedOwner, onToggleTeam }) => {
   return (
-    <div className="accordion-container">
-      <div className="accordion-list">
-        {teams.map((team) => (
-          <div
-            key={team.owner}
-            className={`accordion-item ${selectedOwner === team.owner ? 'expanded' : ''}`}
-          >
-            <button className="accordion-header" onClick={() => onToggleTeam(team.owner)}>
-              <span className="owner-name">{team.owner}</span>
-              {selectedOwner != team.owner && <span className="accordion-icon">+</span>}
-            </button>
+    <div className="dashboard-panel">
+      <div className="panel-upper team-details">
+        <div className="panel-header">Team Details</div>
+      </div>
+      <div className="panel-lower">
+        <div className="accordion-container">
+          <div className="accordion-list">
+            {teams.map((team) => (
+              <div
+                key={team.owner}
+                className={`accordion-item ${selectedOwner === team.owner ? 'expanded' : ''}`}
+              >
+                <button className="accordion-header" onClick={() => onToggleTeam(team.owner)}>
+                  <span className="owner-name">{team.owner}</span>
+                  {selectedOwner != team.owner && <span className="accordion-icon">+</span>}
+                </button>
 
-            {selectedOwner === team.owner && (
-              <div className="accordion-content">
-                <TeamTablesWrapper team={team} />
+                {selectedOwner === team.owner && (
+                  <div className="accordion-content">
+                    <TeamTablesWrapper team={team} />
+                  </div>
+                )}
               </div>
-            )}
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );

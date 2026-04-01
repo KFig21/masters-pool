@@ -4,15 +4,18 @@ import { BrowserRouter } from 'react-router-dom';
 import { ScoreProvider } from './context/ScoreContext';
 import { ThemeProvider } from './context/ThemeContext';
 import App from './UI/App.tsx';
+import { ErrorBoundary } from './UI/components/errorView/ErrorBoundary.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
-      <ThemeProvider>
-        <ScoreProvider>
-          <App />
-        </ScoreProvider>
-      </ThemeProvider>
-    </BrowserRouter>
+    <ErrorBoundary>
+      <BrowserRouter>
+        <ThemeProvider>
+          <ScoreProvider>
+            <App />
+          </ScoreProvider>
+        </ThemeProvider>
+      </BrowserRouter>
+    </ErrorBoundary>
   </StrictMode>,
 );

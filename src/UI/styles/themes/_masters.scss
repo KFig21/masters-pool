@@ -110,10 +110,20 @@
     /* Dashboard */
     --dashboard-BG: --transparent;
     --dashboard-panel-BG: var(--white_Var);
+    --dashboard-panel-border-color: var(--primary);
+    --dashboard-panel-upper-BG: rgba(0, 103, 71, 0.12);
+    --dashboard-panel-lower-BG: var(--white_Var);
+    --dashboard-panel-event-name: var(--primary);
     --dashboard-panel-title: var(--primary);
     --dashboard-table-FC: var(--primary);
+    --dashboard-table-BG: var(--white_Var);
+    --dashboard-table-header-FC: var(--primary);
     --dashboard-table-header-BG: var(--secondary);
-    --dashboard-row-border-color: rgb(228, 228, 228);
+    --dashboard-header-border-color: var(--primary);
+    --dashboard-row-border-color: rgb(225, 225, 225);
+    --dashboard-row-highlight: var(--primary);
+    --dashboard-row-selected: #ccc;
+    --dashboard-team-detail-FC: var(--primary);
     --dashboard-team-container-BG: var(--white_Var);
 
     /* Loading / NoLandscape / NoData */
@@ -232,10 +242,20 @@
         /* Dashboard */
         --dashboard-BG: var(--transparent);
         --dashboard-panel-BG: var(--primaryOpacity50);
-        --dashboard-panel-title: var(--accent);
+        --dashboard-panel-border-color: var(--primary);
+        --dashboard-panel-upper-BG: var(--primaryOpacity50);
+        --dashboard-panel-lower-BG: var(--transparent);
+        --dashboard-panel-event-name: var(--white_Var);
+        --dashboard-panel-title: var(--white_Var);
         --dashboard-table-FC: var(--white_Var);
+        --dashboard-table-BG: var(--transparent);
+        --dashboard-table-header-FC: var(--white_Var);
         --dashboard-table-header-BG: var(--midnightGreen);
+        --dashboard-header-border-color: var(--primary);
         --dashboard-row-border-color: var(--secondary);
+        --dashboard-row-highlight: var(--accent);
+        --dashboard-row-selected: #ffffff82;
+        --dashboard-team-detail-FC: var(--white_Var);
         --dashboard-team-container-BG: var(--transparent);
 
         /* Loading / NoLandscape / NoData */
