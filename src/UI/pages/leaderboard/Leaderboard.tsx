@@ -176,6 +176,10 @@ export const Leaderboard = () => {
               >
                 <ManageSearchIcon className="tournament-selector-icon" />
               </button>
+
+              <Link to="/dashboard" className="dashboard-button">
+                <SpaceDashboardIcon className="dashboard-icon" />
+              </Link>
             </div>
 
             <TeeTimeCountdown targetDateStr={tournamentStartDate} />
@@ -193,12 +197,6 @@ export const Leaderboard = () => {
               </div>
             )}
           </div>
-
-          <Link to="/dashboard" className="dashboard-button">
-            <div className="header-text">
-              <SpaceDashboardIcon />
-            </div>
-          </Link>
         </div>
       )}
       {isScoringModalOpen && <ScoringModal handleModal={handleScoringModal} />}
