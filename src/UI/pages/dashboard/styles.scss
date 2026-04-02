@@ -55,8 +55,16 @@
         max-height: stretch;
         // box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.2);
 
+
+
+        @include mobile {
+            max-height: 80vh;
+        }
+
         $TeamTableColumns: 40px 1fr 60px 60px 60px 60px 60px;
         $GolferTableColumns: 40px 1fr 70px 34px 34px 34px 34px 60px;
+        $Mobile_TeamTableColumns: 42px 1fr 48px 48px 48px 48px 58px;
+        $Mobile_GolferTableColumns: 60px 1fr 80px 60px;
 
         .panel-upper {
             background-color: var(--dashboard-panel-upper-BG);
@@ -92,11 +100,26 @@
 
                 &.team-table {
                     grid-template-columns: $TeamTableColumns;
+
+                    @include mobile {
+                        grid-template-columns: $Mobile_TeamTableColumns;
+                    }
                 }
 
                 &.golfer-table {
                     grid-template-columns: $GolferTableColumns;
                     padding-right: 6px; // account for the scrollbar
+
+                    @include mobile {
+                        grid-template-columns: $Mobile_GolferTableColumns;
+                        padding-right: 0px;
+
+                        .round-score {
+                            @include mobile {
+                                display: none;
+                            }
+                        }
+                    }
                 }
 
                 .col {
@@ -109,11 +132,19 @@
 
                 .pos {
                     padding-left: 16px;
+
+                    @include mobile {
+                        padding-left: 8px;
+                    }
                 }
 
 
                 .total-score {
                     padding-right: 16px;
+
+                    @include mobile {
+                        padding-right: 6px;
+                    }
                 }
             }
         }
@@ -139,10 +170,26 @@
 
                     &.team-table {
                         grid-template-columns: $TeamTableColumns;
+
+                        @include mobile {
+                            grid-template-columns: $Mobile_TeamTableColumns;
+                        }
                     }
 
                     &.golfer-table {
                         grid-template-columns: $GolferTableColumns;
+                        padding-right: 6px; // account for the scrollbar
+
+                        @include mobile {
+                            grid-template-columns: $Mobile_GolferTableColumns;
+                            padding-right: 0px;
+                        }
+
+                        .round-score {
+                            @include mobile {
+                                display: none;
+                            }
+                        }
                     }
 
                     // Apply a border only if there is a .leaderboard-row before it
@@ -164,6 +211,10 @@
 
                     .pos {
                         padding-left: 16px;
+
+                        @include mobile {
+                            padding-left: 8px;
+                        }
                     }
 
                     .team {
@@ -182,13 +233,13 @@
                         font-size: 13px;
                     }
 
-                    .round-score {
-                        // opacity: .8;
-                    }
-
                     .total-score {
                         padding-right: 16px;
                         background-color: var(--scorecard-table-endCol-BG);
+
+                        @include mobile {
+                            padding-right: 6px;
+                        }
                     }
 
                     &.selected {
@@ -236,8 +287,6 @@
 
         .accordion-item {
             background: var(--dashboard-team-container-BG);
-            // border-radius: 8px;
-            transition: all 0.3s ease;
 
             // Apply a border only if there is a .leaderboard-row before it
             &+.accordion-item {
@@ -253,7 +302,7 @@
                 background: none;
                 border: none;
                 color: var(--dashboard-team-detail-FC);
-                padding: 16px;
+                padding: 10px 16px;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
