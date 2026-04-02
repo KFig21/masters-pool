@@ -5,6 +5,7 @@ import { genesisEventData } from './events/genesis/eventData.ts';
 import { cognizantEventData } from './events/cognizant/eventData.ts';
 import { arnoldPalmerEventData } from './events/arnold_palmer/eventData.ts';
 import { houstonEventData } from './events/houston/eventData.ts';
+import { texasEventData } from './events/texas/eventData.ts';
 
 export const EVENT_MATRIX: EventMatrix = {
   [eventsEnum.MASTERS]: mastersEventData,
@@ -12,8 +13,9 @@ export const EVENT_MATRIX: EventMatrix = {
   [eventsEnum.COGNIZANT]: cognizantEventData,
   [eventsEnum.ARNOLD_PALMER]: arnoldPalmerEventData,
   [eventsEnum.HOUSTON]: houstonEventData,
+  [eventsEnum.TEXAS]: texasEventData,
 };
 
 // IMPORTANT: KEEP THESE UPDATED
-export const CURRENT_EVENT = eventsEnum.HOUSTON;
+export const CURRENT_EVENT = eventsEnum.TEXAS;
 export const CURRENT_YEAR = 2026;
