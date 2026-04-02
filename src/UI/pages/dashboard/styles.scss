@@ -161,6 +161,7 @@
                     align-items: center;
                     cursor: pointer;
                     transition: background 0.2s;
+                    background-color: var(--dashboard-table-BG);
                     border-left: 3px solid var(--scorecard-table-name-BG); // needed to match the extra padding from the highlighted row
 
                     &.team-table {

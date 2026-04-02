@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { motion } from 'framer-motion';
 import { useScores, type ProcessedTeam } from '../../../../../context/ScoreContext';
 import type { Golfer } from '../../../../../types/team';
 import { useFavoriteTeam } from '../../../../../hooks/useFavoriteTeam';
@@ -90,8 +91,10 @@ export const DashboardGolferLeaderboard: React.FC<Props> = ({
               const totalScore = golfer.isCut ? 'CUT' : golfer.score;
 
               return (
-                <div
-                  key={`${golfer.id}-${i}`}
+                <motion.div
+                  layout // THIS IS THE MAGIC PROP. It automatically animates positional changes!
+                  transition={{ type: 'spring', stiffness: 130, damping: 30 }}
+                  key={golfer.id}
                   onClick={() => onSelectTeam?.(golfer.teamOwner)}
                   className={`leaderboard-row golfer-table ${golfer.isCut ? 'cut-row' : ''} ${favoriteTeam === golfer.teamOwner ? 'favorite' : ''} ${selectedOwner === golfer.teamOwner ? 'selected' : ''}`}
                 >
@@ -129,7 +132,7 @@ export const DashboardGolferLeaderboard: React.FC<Props> = ({
                   <div className={`col total-score ${getScoreClass(totalScore)}`}>
                     {formatScore(totalScore)}
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>

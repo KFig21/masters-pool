@@ -1,7 +1,8 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import type { ProcessedTeam } from '../../../../../context/ScoreContext';
-import './styles.scss';
 import { useFavoriteTeam } from '../../../../../hooks/useFavoriteTeam';
+import './styles.scss';
 
 interface Props {
   teams: ProcessedTeam[];
@@ -59,8 +60,10 @@ export const DashboardTeamLeaderboard: React.FC<Props> = ({
                 arr.filter((t) => t.stats.activeTotal === team.stats.activeTotal).length > 1;
 
               return (
-                <div
-                  key={team.owner}
+                <motion.div
+                  layout // 3. The magic layout prop
+                  transition={{ type: 'spring', stiffness: 130, damping: 30 }}
+                  key={team.owner} // Already perfect!
                   className={`leaderboard-row team-table ${favoriteTeam === team.owner ? 'favorite' : ''}
                   ${selectedOwner === team.owner ? 'selected' : ''}`}
                   onClick={() => onSelectTeam(team.owner)}
@@ -84,7 +87,7 @@ export const DashboardTeamLeaderboard: React.FC<Props> = ({
                   <div className={`col total-score ${getScoreClass(team.stats.activeTotal)}`}>
                     {formatScore(team.stats.activeTotal)}
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
