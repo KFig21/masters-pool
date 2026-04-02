@@ -82,7 +82,7 @@
                             // MOBILE GRID SIZING
                             @include mobile {
                                 $round-width-mobile: 38px;
-                                grid-template-columns: 138px repeat(4, $round-width-mobile) 48px;
+                                grid-template-columns: 140px repeat(4, $round-width-mobile) 48px;
                             }
 
                             .scorecard-table-cell {
