@@ -9,7 +9,7 @@ export const teams_texas_2026: Team[] = [
       GOLFERS_2026.PatrickRodgers,
       GOLFERS_2026.MaxHoma,
       GOLFERS_2026.AdamSchenk,
-      GOLFERS_2026.RickieFowler,
+      GOLFERS_2026.RyoHisatsune,
       GOLFERS_2026.JJSpaun,
     ],
   },
