@@ -1,7 +1,8 @@
 import React, { useMemo } from 'react';
-import type { ProcessedTeam } from '../../../../../context/ScoreContext';
+import { useScores, type ProcessedTeam } from '../../../../../context/ScoreContext';
 import type { Golfer } from '../../../../../types/team';
 import { useFavoriteTeam } from '../../../../../hooks/useFavoriteTeam';
+import { ThruBadge } from '../../../../components/thruBadge/ThruBadge';
 
 interface Props {
   teams: ProcessedTeam[];
@@ -9,6 +10,7 @@ interface Props {
 }
 
 export const DashboardGolferLeaderboard: React.FC<Props> = ({ teams, selectedOwner }) => {
+  const { isTournamentComplete } = useScores();
   const { favoriteTeam } = useFavoriteTeam();
   const sortedGolfers = useMemo(() => {
     // 1. Flatten all golfers and attach their team owner
@@ -74,7 +76,16 @@ export const DashboardGolferLeaderboard: React.FC<Props> = ({ teams, selectedOwn
                 >
                   {/* Swapped <td> to <div> for valid Grid layout */}
                   <div className="col pos">{i + 1}</div>
-                  <div className="col golfer">{golfer.name}</div>
+                  <div className="col golfer">
+                    {golfer.name}
+
+                    <ThruBadge
+                      thru={golfer.thru}
+                      isCut={golfer.isCut}
+                      status={golfer.status}
+                      isTournamentComplete={isTournamentComplete}
+                    />
+                  </div>
                   <div className="col team">{golfer.teamOwner}</div>
 
                   {/* Apply both the value formatter and the class generator */}

@@ -10,6 +10,13 @@ interface Props {
 }
 
 export const ExpandableTeamList: React.FC<Props> = ({ teams, selectedOwner, onToggleTeam }) => {
+  const [sortedTeams, setSortedTeams] = useState<ProcessedTeam[]>([]);
+  // sort by team alphabetically
+  useMemo(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-render
+    setSortedTeams(teams.sort((a, b) => a.owner.localeCompare(b.owner)));
+  }, [teams]);
+
   return (
     <div className="dashboard-panel">
       <div className="panel-upper team-details">
@@ -18,7 +25,7 @@ export const ExpandableTeamList: React.FC<Props> = ({ teams, selectedOwner, onTo
       <div className="panel-lower">
         <div className="accordion-container">
           <div className="accordion-list">
-            {teams.map((team) => (
+            {sortedTeams.map((team) => (
               <div
                 key={team.owner}
                 className={`accordion-item ${selectedOwner === team.owner ? 'expanded' : ''}`}
