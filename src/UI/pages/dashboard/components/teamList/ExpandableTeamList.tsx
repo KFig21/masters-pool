@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { RoundTable } from '../../../team/components/scorecard/components/tables/RoundTable';
-import { ThruTable } from '../../../team/components/scorecard/components/tables/ThruTable';
 import type { ProcessedTeam } from '../../../../../context/ScoreContext';
+import './styles.scss';
 
 interface Props {
   teams: ProcessedTeam[];
@@ -52,8 +52,6 @@ export const ExpandableTeamList: React.FC<Props> = ({ teams, selectedOwner, onTo
 
 // Sub-component to handle the toggle state between Round/Thru tables for the expanded team
 const TeamTablesWrapper = ({ team }: { team: ProcessedTeam }) => {
-  const [view, setView] = useState<'round' | 'cumulative'>('round');
-
   const sortedGolfers = useMemo(() => {
     return [...team.golfers].sort((a, b) => {
       // If both are cut or both active, sort by score
@@ -65,28 +63,5 @@ const TeamTablesWrapper = ({ team }: { team: ProcessedTeam }) => {
     });
   }, [team.golfers]);
 
-  return (
-    <div className="team-tables-wrapper">
-      <div className="table-toggle">
-        <button className={view === 'round' ? 'active' : ''} onClick={() => setView('round')}>
-          Round View
-        </button>
-        <button
-          className={view === 'cumulative' ? 'active' : ''}
-          onClick={() => setView('cumulative')}
-        >
-          Cumulative View
-        </button>
-      </div>
-
-      <div className="table-render-area">
-        {/* Pass whatever props your actual components require here */}
-        {view === 'round' ? (
-          <RoundTable golfers={sortedGolfers} stats={team.stats} />
-        ) : (
-          <ThruTable golfers={sortedGolfers} stats={team.stats} />
-        )}
-      </div>
-    </div>
-  );
+  return <RoundTable golfers={sortedGolfers} stats={team.stats} />;
 };
