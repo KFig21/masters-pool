@@ -13,8 +13,9 @@ export const ExpandableTeamList: React.FC<Props> = ({ teams, selectedOwner, onTo
   const [sortedTeams, setSortedTeams] = useState<ProcessedTeam[]>([]);
   // sort by team alphabetically
   useMemo(() => {
+    const teamsCopy = [...teams];
     // eslint-disable-next-line react-hooks/set-state-in-render
-    setSortedTeams(teams.sort((a, b) => a.owner.localeCompare(b.owner)));
+    setSortedTeams(teamsCopy.sort((a, b) => a.owner.localeCompare(b.owner)));
   }, [teams]);
 
   return (
