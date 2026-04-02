@@ -90,7 +90,11 @@ export const DashboardGolferLeaderboard: React.FC<Props> = ({ teams, selectedOwn
                   className={`leaderboard-row golfer-table ${golfer.isCut ? 'cut-row' : ''} ${favoriteTeam === golfer.teamOwner ? 'favorite' : ''} ${selectedOwner === golfer.teamOwner ? 'selected' : ''}`}
                 >
                   <div className="col pos">
-                    {golfer.isBadStatus ? '-' : golfer.isTied ? `T-${golfer.rank}` : golfer.rank}
+                    {i > 0 && golfer.rank === sortedGolfers[i - 1].rank
+                      ? ''
+                      : golfer.isBadStatus
+                        ? '-'
+                        : golfer.rank}
                   </div>
                   <div className="col golfer">
                     {golfer.name}
