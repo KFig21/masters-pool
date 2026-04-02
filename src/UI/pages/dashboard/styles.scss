@@ -64,7 +64,7 @@
         $TeamTableColumns: 40px 1fr 60px 60px 60px 60px 60px;
         $GolferTableColumns: 40px 1fr 70px 34px 34px 34px 34px 60px;
         $Mobile_TeamTableColumns: 38px 1fr 44px 44px 44px 44px 58px;
-        $Mobile_GolferTableColumns: 60px 1fr 80px 60px;
+        $Mobile_GolferTableColumns: 40px 1fr 90px 60px;
 
         .panel-upper {
             background-color: var(--dashboard-panel-upper-BG);
@@ -112,7 +112,6 @@
 
                     @include mobile {
                         grid-template-columns: $Mobile_GolferTableColumns;
-                        padding-right: 0px;
 
                         .round-score {
                             @include mobile {
@@ -138,6 +137,9 @@
                     }
                 }
 
+                .golfer {
+                    justify-content: flex-start;
+                }
 
                 .total-score {
                     padding-right: 16px;
@@ -231,6 +233,7 @@
 
                     .golfer {
                         font-size: 13px;
+                        justify-content: flex-start;
                     }
 
                     .total-score {
@@ -248,16 +251,6 @@
 
                     &.favorite {
                         border-left: 3px solid var(--dashboard-row-highlight);
-
-                        // .golfer {
-                        //     color: var(--accent)
-                        // }
-
-                        // .team,
-                        // .pos {
-                        //     background-color: var(--primary);
-                        //     color: var(--accent);
-                        // }
                     }
                 }
             }
@@ -415,7 +408,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding: 35px 0px;
+    padding: 25px 0px;
 
     @include mobile {
         display: flex;
