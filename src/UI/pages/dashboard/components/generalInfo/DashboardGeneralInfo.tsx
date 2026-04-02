@@ -13,15 +13,13 @@ export const DashboardGeneralInfo: React.FC<Props> = ({ teams }) => {
 
   // Calculate unique, active golfers across all teams
   const activeGolfersCount = useMemo(() => {
-    const allGolfers = teams.flatMap((t) => t.golfers);
+    let activeGolfers = 0;
 
-    // Remove duplicates in case multiple teams drafted the same golfer
-    const uniqueGolfers = Array.from(new Map(allGolfers.map((g) => [g.id, g])).values());
+    teams.forEach((team) => {
+      activeGolfers += team.stats.activeGolfers;
+    });
 
-    // Filter out CUT, WD (Withdrawn), and DQ (Disqualified)
-    const active = uniqueGolfers.filter((g) => !g.isCut && g.status !== 'WD' && g.status !== 'DQ');
-
-    return active.length;
+    return activeGolfers;
   }, [teams]);
 
   // Safely format the date string (e.g., '2026-04-09' -> 'Apr 9')

@@ -18,6 +18,31 @@ export const ExpandableTeamList: React.FC<Props> = ({ teams, selectedOwner, onTo
     setSortedTeams(teamsCopy.sort((a, b) => a.owner.localeCompare(b.owner)));
   }, [teams]);
 
+  // const getTeamGolferStatus = (team: ProcessedTeam) => {
+  //   const statuses = {
+  //     cut: 0,
+  //     done: 0,
+  //     left: 0,
+  //     active: 0,
+  //     null: 0,
+  //   };
+  //   team.golfers.forEach((golfer) => {
+  //     const status = golfer.isCut
+  //       ? 'cut'
+  //       : golfer.thru === 'F'
+  //         ? 'done'
+  //         : golfer.thru && golfer.thru.split(' ').includes('Thru')
+  //           ? 'active'
+  //           : golfer.thru
+  //             ? 'left'
+  //             : 'null';
+
+  //     statuses[status] += 1;
+  //   });
+
+  //   return statuses;
+  // };
+
   return (
     <div className="dashboard-panel">
       <div className="panel-upper team-details">
@@ -33,6 +58,10 @@ export const ExpandableTeamList: React.FC<Props> = ({ teams, selectedOwner, onTo
               >
                 <button className="accordion-header" onClick={() => onToggleTeam(team.owner)}>
                   <span className="owner-name">{team.owner}</span>
+                  {/* <div className="team-stats">
+                    <span className="stat">Score: {team.displayScore}</span>
+                    <span className="stat">Active: {team.stats.activeGolfers}</span>
+                  </div> */}
                   {selectedOwner != team.owner && <span className="accordion-icon">+</span>}
                 </button>
 
