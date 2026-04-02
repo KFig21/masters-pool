@@ -12,17 +12,32 @@ interface Props {
 export const DashboardGolferLeaderboard: React.FC<Props> = ({ teams, selectedOwner }) => {
   const { isTournamentComplete } = useScores();
   const { favoriteTeam } = useFavoriteTeam();
+
   const sortedGolfers = useMemo(() => {
     // 1. Flatten all golfers and attach their team owner
     const all = teams.flatMap((t) => t.golfers.map((g) => ({ ...g, teamOwner: t.owner })));
 
+    // Helper to get score for sorting and ranking
+    const getScore = (g: Golfer) => {
+      if (g.isCut || g.status === 'WD' || g.status === 'DQ') return 999;
+      return typeof g.score === 'number' ? g.score : 0;
+    };
+
     // 2. Sort by total score (handle cuts/WDs by pushing to bottom)
-    return all.sort((a, b) => {
-      const getScore = (g: Golfer) => {
-        if (g.isCut || g.status === 'WD' || g.status === 'DQ') return 999;
-        return typeof g.score === 'number' ? g.score : 0; // fallback depending on your exact prop name
-      };
-      return getScore(a) - getScore(b);
+    const sorted = all.sort((a, b) => getScore(a) - getScore(b));
+
+    // 3. Calculate rank and ties
+    return sorted.map((golfer, _, arr) => {
+      const currentScore = getScore(golfer);
+      const isBadStatus = currentScore === 999;
+
+      // Rank is the first index where this score appears + 1
+      const rank = arr.findIndex((g) => getScore(g) === currentScore) + 1;
+
+      // It's a tie if more than one person has this exact score (and they aren't cut)
+      const isTied = !isBadStatus && arr.filter((g) => getScore(g) === currentScore).length > 1;
+
+      return { ...golfer, rank, isTied, isBadStatus };
     });
   }, [teams]);
 
@@ -74,8 +89,9 @@ export const DashboardGolferLeaderboard: React.FC<Props> = ({ teams, selectedOwn
                   key={`${golfer.id}-${i}`}
                   className={`leaderboard-row golfer-table ${golfer.isCut ? 'cut-row' : ''} ${favoriteTeam === golfer.teamOwner ? 'favorite' : ''} ${selectedOwner === golfer.teamOwner ? 'selected' : ''}`}
                 >
-                  {/* Swapped <td> to <div> for valid Grid layout */}
-                  <div className="col pos">{i + 1}</div>
+                  <div className="col pos">
+                    {golfer.isBadStatus ? '-' : golfer.isTied ? `T-${golfer.rank}` : golfer.rank}
+                  </div>
                   <div className="col golfer">
                     {golfer.name}
 
@@ -88,7 +104,6 @@ export const DashboardGolferLeaderboard: React.FC<Props> = ({ teams, selectedOwn
                   </div>
                   <div className="col team">{golfer.teamOwner}</div>
 
-                  {/* Apply both the value formatter and the class generator */}
                   <div className={`col round-score ${getScoreClass(r1Score)}`}>
                     {formatScore(r1Score)}
                   </div>

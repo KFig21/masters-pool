@@ -58,10 +58,10 @@
             max-height: 80vh;
         }
 
-        $TeamTableColumns: 40px 1fr 50px 50px 50px 50px 60px;
-        $GolferTableColumns: 40px 1fr 70px 34px 34px 34px 34px 60px;
-        $Mobile_TeamTableColumns: 38px 1fr 44px 44px 44px 44px 58px;
-        $Mobile_GolferTableColumns: 40px 1fr 90px 60px;
+        $TeamTableColumns: 48px 1fr 50px 50px 50px 50px 60px;
+        $GolferTableColumns: 56px 1fr 70px 34px 34px 34px 34px 60px;
+        $Mobile_TeamTableColumns: 42px 1fr 44px 44px 44px 44px 54px;
+        $Mobile_GolferTableColumns: 46px 1fr 66px 44px;
 
         .panel-upper {
             background-color: var(--dashboard-panel-upper-BG);

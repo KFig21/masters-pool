@@ -51,32 +51,42 @@ export const DashboardTeamLeaderboard: React.FC<Props> = ({
       <div className="panel-lower">
         <div className="mini-leaderboard">
           <div className="ml-body">
-            {teams.map((team) => (
-              <div
-                key={team.owner}
-                className={`leaderboard-row team-table ${favoriteTeam === team.owner ? 'favorite' : ''}
+            {teams.map((team, _, arr) => {
+              // Determine ties by checking if any other team has the exact same score
+              const isBadStatus = typeof team.stats.activeTotal === 'string'; // Catches 'CUT', 'WD', etc.
+              const isTied =
+                !isBadStatus &&
+                arr.filter((t) => t.stats.activeTotal === team.stats.activeTotal).length > 1;
+
+              return (
+                <div
+                  key={team.owner}
+                  className={`leaderboard-row team-table ${favoriteTeam === team.owner ? 'favorite' : ''}
                   ${selectedOwner === team.owner ? 'selected' : ''}`}
-                onClick={() => onSelectTeam(team.owner)}
-              >
-                <div className="col pos">{team.rank}</div>
-                <div className="col team">{team.owner}</div>
-                <div className={`col round-score ${getScoreClass(team.stats.sumR1)}`}>
-                  {formatScore(team.stats.sumR1)}
+                  onClick={() => onSelectTeam(team.owner)}
+                >
+                  <div className="col pos">
+                    {isBadStatus ? '-' : isTied ? `T-${team.rank}` : team.rank}
+                  </div>
+                  <div className="col team">{team.owner}</div>
+                  <div className={`col round-score ${getScoreClass(team.stats.sumR1)}`}>
+                    {formatScore(team.stats.sumR1)}
+                  </div>
+                  <div className={`col round-score ${getScoreClass(team.stats.sumR2)}`}>
+                    {formatScore(team.stats.sumR2)}
+                  </div>
+                  <div className={`col round-score ${getScoreClass(team.stats.sumR3)}`}>
+                    {formatScore(team.stats.sumR3)}
+                  </div>
+                  <div className={`col round-score ${getScoreClass(team.stats.sumR4)}`}>
+                    {formatScore(team.stats.sumR4)}
+                  </div>
+                  <div className={`col total-score ${getScoreClass(team.stats.activeTotal)}`}>
+                    {formatScore(team.stats.activeTotal)}
+                  </div>
                 </div>
-                <div className={`col round-score ${getScoreClass(team.stats.sumR2)}`}>
-                  {formatScore(team.stats.sumR2)}
-                </div>
-                <div className={`col round-score ${getScoreClass(team.stats.sumR3)}`}>
-                  {formatScore(team.stats.sumR3)}
-                </div>
-                <div className={`col round-score ${getScoreClass(team.stats.sumR4)}`}>
-                  {formatScore(team.stats.sumR4)}
-                </div>
-                <div className={`col total-score ${getScoreClass(team.stats.activeTotal)}`}>
-                  {formatScore(team.stats.activeTotal)}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
