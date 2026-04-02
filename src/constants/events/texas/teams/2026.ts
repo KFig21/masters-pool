@@ -38,7 +38,7 @@ export const teams_texas_2026: Team[] = [
   {
     owner: 'Barrett',
     golfers: [
-      GOLFERS_2026.BudCauley,
+      GOLFERS_2026.ChristoLamprecht,
       GOLFERS_2026.RickieFowler,
       GOLFERS_2026.WebbSimpson,
       GOLFERS_2026.DavisThompson,
