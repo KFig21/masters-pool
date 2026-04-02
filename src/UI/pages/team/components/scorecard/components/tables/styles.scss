@@ -136,7 +136,7 @@
             &.team-row {
                 background-color: var(--scorecard-table-BG);
                 font-weight: bold;
-                border-top: 3px solid var(--scorecard-table-primary-color);
+                border-top: 3px solid var(--scorecard-table-primary-color) !important;
 
                 @include mobile {
                     font-size: 0.85rem;
