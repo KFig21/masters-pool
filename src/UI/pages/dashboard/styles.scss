@@ -63,7 +63,7 @@
 
         $TeamTableColumns: 40px 1fr 60px 60px 60px 60px 60px;
         $GolferTableColumns: 40px 1fr 70px 34px 34px 34px 34px 60px;
-        $Mobile_TeamTableColumns: 42px 1fr 48px 48px 48px 48px 58px;
+        $Mobile_TeamTableColumns: 38px 1fr 44px 44px 44px 44px 58px;
         $Mobile_GolferTableColumns: 60px 1fr 80px 60px;
 
         .panel-upper {
@@ -404,6 +404,58 @@
             color: #ecc00d; // Matches the Masters Yellow accent used elsewhere
             font-weight: bold;
         }
+    }
+}
+
+
+// MOBILE HEADER and FOOTER
+.dashboard-footer,
+.dashboard-header {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 35px 0px;
+
+    @include mobile {
+        display: flex;
+    }
+
+    .logo-container {
+        $logo-size: 35px;
+        max-height: $logo-size;
+        height: $logo-size;
+        display: block;
+        text-decoration: none;
+        outline: none;
+
+        img {
+            height: inherit;
+        }
+    }
+}
+
+.dashboard-header {
+    text-decoration: none;
+    color: var(--LeaderboardDashboardNav-FC);
+    display: none;
+    padding: 10px 0px 20px 0px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    @include mobile {
+        display: flex;
+    }
+
+    .header-arrow {
+        font-size: 24px;
+    }
+
+    .header-text {
+        font-family: 'masters';
+        font-size: 16px;
+        transform: translateY(5px);
     }
 }
 

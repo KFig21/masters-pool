@@ -12,6 +12,8 @@ import { Loading } from '../../components/loading/Loading';
 import { UpdateModal } from './components/modals/updateModal/updateModal';
 import { TeeTimeCountdown } from '../../components/TeeTimeCountdown/TeeTimeCountdown';
 import { FooterRight } from './components/footerRight/FooterRight';
+import { Link } from 'react-router-dom';
+import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
 import './styles.scss';
 
 export interface ScoreboardTeamData {
@@ -191,6 +193,12 @@ export const Leaderboard = () => {
               </div>
             )}
           </div>
+
+          <Link to="/dashboard" className="dashboard-button">
+            <div className="header-text">
+              <SpaceDashboardIcon />
+            </div>
+          </Link>
         </div>
       )}
       {isScoringModalOpen && <ScoringModal handleModal={handleScoringModal} />}

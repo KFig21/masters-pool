@@ -4,9 +4,11 @@ import { DashboardTeamLeaderboard } from './components/teamLeaderboard/Dashboard
 import { DashboardGolferLeaderboard } from './components/golfersLeaderboard/DashboardGolferLeaderboard';
 import { ExpandableTeamList } from './components/teamList/ExpandableTeamList';
 import { useFavoriteTeam } from '../../../hooks/useFavoriteTeam';
-import './styles.scss';
 import { DashboardGeneralInfo } from './components/generalInfo/DashboardGeneralInfo';
 import { ErrorView } from '../../components/errorView/ErrorView';
+import { Link } from 'react-router-dom';
+import Logo from '../../../assets/images/logo.png';
+import './styles.scss';
 
 export const Dashboard = () => {
   const { teams } = useScores();
@@ -35,6 +37,14 @@ export const Dashboard = () => {
 
   return (
     <div className="dashboard-page fade-in-up">
+      {/* MOBILE HEADER */}
+      {/* <div className="dashboard-header"> */}
+      <Link to="/" className="dashboard-header">
+        <div className="header-arrow">←</div>
+        <div className="header-text">Back to Leaderboard</div>
+      </Link>
+      {/* </div> */}
+      {/* DASHBOARD GRID */}
       <div className="dashboard-grid">
         {/* LEFT COLUMN: 2 Components */}
         <div className="dashboard-left-col">
@@ -60,6 +70,12 @@ export const Dashboard = () => {
         <div className="dashboard-right-col">
           <DashboardGolferLeaderboard teams={teams} selectedOwner={selectedOwner} />
         </div>
+      </div>
+      {/* MOBILE FOOTER */}
+      <div className="dashboard-footer">
+        <Link to="/" className="logo-container">
+          <img src={Logo} alt="Masters Pool Logo" />
+        </Link>
       </div>
     </div>
   );

@@ -245,4 +245,29 @@
             gap: 20px;
         }
     }
+
+    .dashboard-button {
+        text-decoration: none;
+        color: var(--LeaderboardDashboardNav-FC);
+        display: none;
+        padding: 20px 0px 20px 0px;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        opacity: .7;
+
+        @include mobile {
+            display: flex;
+        }
+
+        .header-arrow {
+            font-size: 24px;
+        }
+
+        .header-text {
+            font-family: 'masters';
+            font-size: 16px;
+            transform: translateY(5px);
+        }
+    }
 }
