@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { RoundTable } from '../../../team/components/scorecard/components/tables/RoundTable';
 import { ThruTable } from '../../../team/components/scorecard/components/tables/ThruTable';
 import type { ProcessedTeam } from '../../../../../context/ScoreContext';
@@ -46,6 +46,17 @@ export const ExpandableTeamList: React.FC<Props> = ({ teams, selectedOwner, onTo
 const TeamTablesWrapper = ({ team }: { team: ProcessedTeam }) => {
   const [view, setView] = useState<'round' | 'cumulative'>('round');
 
+  const sortedGolfers = useMemo(() => {
+    return [...team.golfers].sort((a, b) => {
+      // If both are cut or both active, sort by score
+      if (a.isCut === b.isCut) {
+        return (a.score || 0) - (b.score || 0);
+      }
+      // If a is cut, he goes after b (return 1)
+      return a.isCut ? 1 : -1;
+    });
+  }, [team.golfers]);
+
   return (
     <div className="team-tables-wrapper">
       <div className="table-toggle">
@@ -63,9 +74,9 @@ const TeamTablesWrapper = ({ team }: { team: ProcessedTeam }) => {
       <div className="table-render-area">
         {/* Pass whatever props your actual components require here */}
         {view === 'round' ? (
-          <RoundTable golfers={team.golfers} stats={team.stats} />
+          <RoundTable golfers={sortedGolfers} stats={team.stats} />
         ) : (
-          <ThruTable golfers={team.golfers} stats={team.stats} />
+          <ThruTable golfers={sortedGolfers} stats={team.stats} />
         )}
       </div>
     </div>

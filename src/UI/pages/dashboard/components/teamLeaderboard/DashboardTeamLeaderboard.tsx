@@ -15,10 +15,23 @@ export const DashboardTeamLeaderboard: React.FC<Props> = ({
   selectedOwner,
 }) => {
   const { favoriteTeam } = useFavoriteTeam();
-  const formatScore = (val: number | string) => {
+
+  const formatScore = (val: number | string | null | undefined) => {
+    // Catch missing data and Infinity
+    if (val === null || val === undefined || val === Infinity) return '-';
+    // Pass strings through (e.g., "CUT", "WD")
     if (typeof val === 'string') return val;
+    // Format golf numbers
     if (val === 0) return 'E';
     return val > 0 ? `+${val}` : val;
+  };
+
+  const getScoreClass = (val: number | string | null | undefined) => {
+    if (val === 'CUT') return 'cut';
+    if (typeof val !== 'number' || val === Infinity) return '';
+    if (val < 0) return 'under-par';
+    if (val > 0) return 'over-par';
+    return 'even-par';
   };
 
   return (
@@ -47,11 +60,21 @@ export const DashboardTeamLeaderboard: React.FC<Props> = ({
               >
                 <div className="col pos">{team.rank}</div>
                 <div className="col team">{team.owner}</div>
-                <td className="col round-score">{team.stats.sumR1 || '-'}</td>
-                <td className="col round-score">{team.stats.sumR2 || '-'}</td>
-                <td className="col round-score">{team.stats.sumR3 || '-'}</td>
-                <td className="col round-score">{team.stats.sumR4 || '-'}</td>
-                <div className="col total-score">{formatScore(team.stats.activeTotal)}</div>
+                <div className={`col round-score ${getScoreClass(team.stats.sumR1)}`}>
+                  {formatScore(team.stats.sumR1)}
+                </div>
+                <div className={`col round-score ${getScoreClass(team.stats.sumR2)}`}>
+                  {formatScore(team.stats.sumR2)}
+                </div>
+                <div className={`col round-score ${getScoreClass(team.stats.sumR3)}`}>
+                  {formatScore(team.stats.sumR3)}
+                </div>
+                <div className={`col round-score ${getScoreClass(team.stats.sumR4)}`}>
+                  {formatScore(team.stats.sumR4)}
+                </div>
+                <div className={`col total-score ${getScoreClass(team.stats.activeTotal)}`}>
+                  {formatScore(team.stats.activeTotal)}
+                </div>
               </div>
             ))}
           </div>
