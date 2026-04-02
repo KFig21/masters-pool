@@ -78,7 +78,11 @@ export const Dashboard = () => {
 
         {/* RIGHT COLUMN: 1 Component */}
         <div className="dashboard-right-col">
-          <DashboardGolferLeaderboard teams={teams} selectedOwner={selectedOwner} />
+          <DashboardGolferLeaderboard
+            teams={teams}
+            selectedOwner={selectedOwner}
+            onSelectTeam={handleSelectTeam}
+          />
         </div>
       </div>
       {/* MOBILE FOOTER */}

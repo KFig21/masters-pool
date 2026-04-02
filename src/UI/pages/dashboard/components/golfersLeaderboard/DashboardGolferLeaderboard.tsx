@@ -7,9 +7,14 @@ import { ThruBadge } from '../../../../components/thruBadge/ThruBadge';
 interface Props {
   teams: ProcessedTeam[];
   selectedOwner?: string | null;
+  onSelectTeam?: (owner: string) => void;
 }
 
-export const DashboardGolferLeaderboard: React.FC<Props> = ({ teams, selectedOwner }) => {
+export const DashboardGolferLeaderboard: React.FC<Props> = ({
+  teams,
+  selectedOwner,
+  onSelectTeam,
+}) => {
   const { isTournamentComplete } = useScores();
   const { favoriteTeam } = useFavoriteTeam();
 
@@ -87,6 +92,7 @@ export const DashboardGolferLeaderboard: React.FC<Props> = ({ teams, selectedOwn
               return (
                 <div
                   key={`${golfer.id}-${i}`}
+                  onClick={() => onSelectTeam?.(golfer.teamOwner)}
                   className={`leaderboard-row golfer-table ${golfer.isCut ? 'cut-row' : ''} ${favoriteTeam === golfer.teamOwner ? 'favorite' : ''} ${selectedOwner === golfer.teamOwner ? 'selected' : ''}`}
                 >
                   <div className="col pos">
