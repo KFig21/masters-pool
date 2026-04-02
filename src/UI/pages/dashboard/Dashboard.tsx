@@ -9,11 +9,16 @@ import { ErrorView } from '../../components/errorView/ErrorView';
 import { Link } from 'react-router-dom';
 import Logo from '../../../assets/images/logo.png';
 import './styles.scss';
+import { DashboardTimerPanel } from './components/timerPanel/DashboardTimerPanel';
+import { EVENT_MATRIX } from '../../../constants';
 
 export const Dashboard = () => {
-  const { teams } = useScores();
+  const { teams, isTournamentActive, nextUpdate, currentEvent, currentYear } = useScores();
   const { favoriteTeam } = useFavoriteTeam();
   const [selectedOwner, setSelectedOwner] = useState<string | null>(null);
+  // Extract the start date dynamically based on the current active tournament
+  const eventConfig = EVENT_MATRIX[currentEvent as keyof typeof EVENT_MATRIX];
+  const tournamentStartDate = eventConfig?.years[currentYear]?.startDate || null;
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
@@ -38,12 +43,11 @@ export const Dashboard = () => {
   return (
     <div className="dashboard-page fade-in-up">
       {/* MOBILE HEADER */}
-      {/* <div className="dashboard-header"> */}
       <Link to="/" className="dashboard-header">
         <div className="header-arrow">←</div>
         <div className="header-text">Back to Leaderboard</div>
       </Link>
-      {/* </div> */}
+
       {/* DASHBOARD GRID */}
       <div className="dashboard-grid">
         {/* LEFT COLUMN: 2 Components */}
@@ -54,6 +58,12 @@ export const Dashboard = () => {
             teams={teams}
             selectedOwner={selectedOwner}
             onSelectTeam={handleSelectTeam}
+          />
+
+          <DashboardTimerPanel
+            isTournamentActive={isTournamentActive}
+            nextUpdate={nextUpdate}
+            targetDateStr={tournamentStartDate}
           />
         </div>
 

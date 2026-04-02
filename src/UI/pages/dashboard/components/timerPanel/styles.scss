@@ -1,0 +1,79 @@
+@use '../../../../styles/colors' as *;
+@use '../../../../styles/index' as *;
+@use '../../../../styles/fonts' as *;
+@use '../../../../styles/variables' as *;
+
+.dashboard-panel {
+    transition: background-color 0.3s ease; // Smooth transition for critical state
+}
+
+.timer-display {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 3px;
+    padding: 12px;
+    color: var(--dashboard-timer-FC);
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+
+    .next-update {
+        font-family: 'Work Sans', sans-serif;
+        font-weight: 600;
+        padding-right: 12px;
+        font-size: 14px;
+        font-style: italic;
+        opacity: .7;
+    }
+
+    &.updating {
+        font-family: 'Work Sans', sans-serif;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        font-style: italic;
+    }
+
+    .time-section {
+        display: flex;
+        align-items: baseline;
+
+        .timer-digit {
+            opacity: 0.7;
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 700;
+        }
+    }
+
+    // Low Time State: Under 30s
+    &.low-time {
+        color: var(--dashboard-timer-low-FC);
+
+        .next-update {
+            opacity: 1; // Make labels clearer on high contrast background
+        }
+
+        .time-section {
+            .timer-digit {
+                opacity: 1;
+            }
+        }
+    }
+
+    // Critical State: Under 5s
+    &.critical,
+    &.updating {
+        color: var(--dashboard-timer-critical-FC);
+        background-color: var(--dashboard-timer-critical-BG) !important;
+        opacity: 1;
+
+        .next-update {
+            opacity: 1; // Make labels clearer on high contrast background
+        }
+
+        .time-section {
+            .timer-digit {
+                opacity: 1;
+            }
+        }
+    }
+}

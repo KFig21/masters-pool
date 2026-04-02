@@ -125,6 +125,10 @@
     --dashboard-row-selected: #ccc;
     --dashboard-team-detail-FC: var(--primary);
     --dashboard-team-container-BG: var(--white_Var);
+    --dashboard-timer-FC: var(--primary);
+    --dashboard-timer-low-FC: var(--primary);
+    --dashboard-timer-critical-BG: var(--secondary);
+    --dashboard-timer-critical-FC: var(--accent);
 
     /* Loading / NoLandscape / NoData */
     --loading-FC: var(--accent);
@@ -258,6 +262,10 @@
         --dashboard-row-selected: #ffffff82;
         --dashboard-team-detail-FC: var(--white_Var);
         --dashboard-team-container-BG: var(--transparent);
+        --dashboard-timer-FC: var(--white_Var);
+        --dashboard-timer-low-FC: var(--accent);
+        --dashboard-timer-critical-BG: var(--accent);
+        --dashboard-timer-critical-FC: var(--primary);
 
         /* Loading / NoLandscape / NoData */
         --loading-FC: var(--accent);

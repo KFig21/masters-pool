@@ -379,9 +379,11 @@
         padding: 12px 0;
 
         .event-name {
+            max-width: 320px;
             color: var(--dashboard-panel-event-name);
             font-size: 24px;
             font-family: 'masters';
+            text-align: center;
         }
     }
 
