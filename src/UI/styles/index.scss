@@ -56,11 +56,13 @@ html {
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     margin: 0;
+    background-color: var(--primary);
+    overscroll-behavior-y: none;
 }
 
 .app-container {
     margin: 0 auto;
-    min-height: 100vh;
+    min-height: 100dvh;
     background-color: var(--primary);
     display: flex;
     flex-direction: column;
@@ -75,7 +77,7 @@ body {
 
 .content-wrap {
     width: 100%;
-    min-height: calc(100vh - #{var(--footer-height)});
+    min-height: calc(100dvh - #{var(--footer-height)});
     overflow-y: hidden;
     position: relative;
     z-index: 2;

@@ -8,7 +8,7 @@
     // max-width: 1400px;
     margin: 0 auto;
     color: var(--text-primary, #fff); // Update variables to match your colors.scss
-    height: calc(100vh - $footer-height); // Assuming bottom nav is ~80px
+    height: calc(100dvh - $footer-height); // Assuming bottom nav is ~80px
     overflow: hidden;
     background-color: var(--dashboard-BG);
 
