@@ -3,11 +3,17 @@
 @use '../../../../styles/fonts' as *;
 @use '../../../../styles/variables' as *;
 
+.panel-lower {
+    display: flex;
+    justify-content: center;
+}
+
 .dashboard-team-scorecard-wrapper {
     overflow-y: auto;
     height: 100%;
     // padding-right: 8px;
-    max-width: fit-content;
+    width: 100%;
+    max-width: stretch;
 
 
     .dashboard-team-scorecard {
@@ -43,7 +49,7 @@
                     // MOBILE GRID SIZING
                     @include mobile {
                         $round-width-mobile: 38px;
-                        grid-template-columns: 142px repeat(4, $round-width-mobile) 48px;
+                        grid-template-columns: 1fr repeat(4, $round-width-mobile) 48px;
                     }
 
                     &.header {
