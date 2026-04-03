@@ -3,96 +3,65 @@
 @use '../../../../styles/fonts' as *;
 @use '../../../../styles/variables' as *;
 
-.accordion-container {
+.dashboard-team-scorecard-wrapper {
     overflow-y: auto;
     height: 100%;
     // padding-right: 8px;
     max-width: fit-content;
 
-    .accordion-list {
-        display: flex;
-        flex-direction: column;
-        // gap: 8px;
-        padding: 0;
 
-        .accordion-item {
-            background: var(--dashboard-team-container-BG);
+    .dashboard-team-scorecard {
+        // padding: 16px;
+        animation: fadeInDown 0.3s ease forwards;
 
-            // Apply a border only if there is a .leaderboard-row before it
-            &+.accordion-item {
-                border-top: 1px solid var(--primary);
+        @include mobile {
+            padding: 0;
+        }
+
+        .scorecard-section-container {
+            .scorecard-controls {
+                display: none;
             }
 
-            &.expanded {
-                background: var(--dashboard-team-container-BG);
-            }
-
-            .accordion-header {
+            .scorecard-table-container {
                 width: 100%;
-                background: none;
+                border-radius: 0px;
                 border: none;
-                color: var(--dashboard-team-detail-FC);
-                padding: 10px 16px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                cursor: pointer;
-                font-size: 1.1rem;
-                font-family: 'Tiempo', serif;
-                font-weight: 500;
 
-                .accordion-icon {
-                    color: var(--dashboard-team-detail-FC);
-                    font-size: 1.5rem;
-                    font-weight: normal;
-                }
-            }
+                @include mobile {}
 
-            .accordion-content {
-                padding: 0 16px 16px 16px;
-                animation: fadeInDown 0.3s ease forwards;
+                .scorecard-table-row {
+                    display: grid;
+                    $round-width: 50px;
+                    // Name | R1 | R2 | R3 | R4 | End
+                    grid-template-columns: 220px repeat(4, $round-width) 60px;
+                    border-top: 1px solid var(--scorecard-table-primary-color);
 
-                @include mobile {
-                    padding: 0;
-                }
+                    // 2. FORCE WIDTH SO IT DOESN'T CRUNCH
+                    min-width: max-content;
 
-                .scorecard-section-container {
-                    .scorecard-controls {
-                        display: none;
+                    // MOBILE GRID SIZING
+                    @include mobile {
+                        $round-width-mobile: 38px;
+                        grid-template-columns: 142px repeat(4, $round-width-mobile) 48px;
                     }
 
-                    .scorecard-table-container {
-                        width: 100%;
+                    &.header {
+                        background-color: var(--dashboard-panel-upper-BG);
+                        border-top: none;
+                        color: var(--dashboard-table-header-FC);
+
+                        .scorecard-table-cell {
+                            color: var(--dashboard-table-header-FC);
+                            border: none;
+                        }
+                    }
+
+                    .scorecard-table-cell {
+                        font-size: 14px;
 
                         @include mobile {
-                            border-radius: 0px;
-                            border-left: none;
-                            border-right: none;
-                        }
-
-                        .scorecard-table-row {
-                            display: grid;
-                            $round-width: 50px;
-                            // Name | R1 | R2 | R3 | R4 | End
-                            grid-template-columns: 220px repeat(4, $round-width) 60px;
-                            border-top: 1px solid var(--scorecard-table-primary-color);
-
-                            // 2. FORCE WIDTH SO IT DOESN'T CRUNCH
-                            min-width: max-content;
-
-                            // MOBILE GRID SIZING
-                            @include mobile {
-                                $round-width-mobile: 38px;
-                                grid-template-columns: 142px repeat(4, $round-width-mobile) 48px;
-                            }
-
-                            .scorecard-table-cell {
-                                font-size: 14px;
-
-                                @include mobile {
-                                    font-size: 12px;
-                                }
-                            }
+                            font-size: 12px;
                         }
                     }
                 }

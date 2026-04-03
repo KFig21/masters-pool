@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { RoundTable } from '../../../team/components/scorecard/components/tables/RoundTable';
 import type { ProcessedTeam } from '../../../../../context/ScoreContext';
 import './styles.scss';
@@ -9,14 +9,13 @@ interface Props {
   onToggleTeam: (owner: string) => void;
 }
 
-export const ExpandableTeamList: React.FC<Props> = ({ teams, selectedOwner, onToggleTeam }) => {
-  const [sortedTeams, setSortedTeams] = useState<ProcessedTeam[]>([]);
-  // sort by team alphabetically
-  useMemo(() => {
-    const teamsCopy = [...teams];
-    // eslint-disable-next-line react-hooks/set-state-in-render
-    setSortedTeams(teamsCopy.sort((a, b) => a.owner.localeCompare(b.owner)));
-  }, [teams]);
+export const ExpandableTeamList: React.FC<Props> = ({ teams, selectedOwner }) => {
+  const [selectedTeam, setSelectedTeam] = useState<ProcessedTeam>(teams[0]);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setSelectedTeam(teams.find((team) => team.owner === selectedOwner) || teams[0]);
+  }, [teams, selectedOwner]);
 
   // const getTeamGolferStatus = (team: ProcessedTeam) => {
   //   const statuses = {
@@ -45,33 +44,13 @@ export const ExpandableTeamList: React.FC<Props> = ({ teams, selectedOwner, onTo
 
   return (
     <div className="dashboard-panel">
-      <div className="panel-upper team-details">
-        <div className="panel-header">Team Details</div>
+      <div className="panel-upper ">
+        <div className="panel-header">Team Details - {selectedOwner}</div>
       </div>
       <div className="panel-lower">
-        <div className="accordion-container">
-          <div className="accordion-list">
-            {sortedTeams.map((team) => (
-              <div
-                key={team.owner}
-                className={`accordion-item ${selectedOwner === team.owner ? 'expanded' : ''}`}
-              >
-                <button className="accordion-header" onClick={() => onToggleTeam(team.owner)}>
-                  <span className="owner-name">{team.owner}</span>
-                  {/* <div className="team-stats">
-                    <span className="stat">Score: {team.displayScore}</span>
-                    <span className="stat">Active: {team.stats.activeGolfers}</span>
-                  </div> */}
-                  {selectedOwner != team.owner && <span className="accordion-icon">+</span>}
-                </button>
-
-                {selectedOwner === team.owner && (
-                  <div className="accordion-content">
-                    <TeamTablesWrapper team={team} />
-                  </div>
-                )}
-              </div>
-            ))}
+        <div className="dashboard-team-scorecard-wrapper">
+          <div className="dashboard-team-scorecard">
+            <TeamTablesWrapper team={selectedTeam} />
           </div>
         </div>
       </div>

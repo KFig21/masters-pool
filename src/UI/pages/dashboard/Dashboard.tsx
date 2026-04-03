@@ -51,14 +51,8 @@ export const Dashboard = () => {
       {/* DASHBOARD GRID */}
       <div className="dashboard-grid">
         {/* LEFT COLUMN: 2 Components */}
-        <div className="dashboard-left-col">
+        <div className="dashboard-col">
           <DashboardGeneralInfo teams={teams} />
-
-          <DashboardTeamLeaderboard
-            teams={teams}
-            selectedOwner={selectedOwner}
-            onSelectTeam={handleSelectTeam}
-          />
 
           <DashboardTimerPanel
             isTournamentActive={isTournamentActive}
@@ -68,7 +62,13 @@ export const Dashboard = () => {
         </div>
 
         {/* CENTER COLUMN: 1 Component */}
-        <div className="dashboard-right-col">
+        <div className="dashboard-col">
+          <DashboardTeamLeaderboard
+            teams={teams}
+            selectedOwner={selectedOwner}
+            onSelectTeam={handleSelectTeam}
+          />
+
           <ExpandableTeamList
             teams={teams}
             selectedOwner={selectedOwner}
@@ -77,7 +77,7 @@ export const Dashboard = () => {
         </div>
 
         {/* RIGHT COLUMN: 1 Component */}
-        <div className="dashboard-right-col">
+        <div className="dashboard-col">
           <DashboardGolferLeaderboard
             teams={teams}
             selectedOwner={selectedOwner}
