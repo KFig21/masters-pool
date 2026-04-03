@@ -13,8 +13,7 @@
     background-color: var(--dashboard-BG);
 
     @include mobile {
-        height: 100%;
-        overflow: scroll;
+        height: unset;
     }
 
     .dashboard-grid {
