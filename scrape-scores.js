@@ -4,20 +4,6 @@ import { CURRENT_EVENT, CURRENT_YEAR, EVENT_MATRIX } from './src/constants/index
 import { Score } from './server/models/Score.js';
 
 /**
- * SCRAPER CONFIGURATION
- */
-const EVENT_DATA = EVENT_MATRIX[CURRENT_EVENT];
-const EVENT_TITLE = EVENT_DATA.title;
-const EVENT_YEAR_CONFIG = EVENT_DATA.years[CURRENT_YEAR];
-const TOURNAMENT_ID = EVENT_YEAR_CONFIG.id;
-const TEAMS = EVENT_YEAR_CONFIG.teams;
-const CUT_LINE = EVENT_YEAR_CONFIG.cutLine;
-
-const LEADERBOARD_URL = `https://site.web.api.espn.com/apis/site/v2/sports/golf/leaderboard?league=pga&event=${TOURNAMENT_ID}`;
-
-console.log(`🚀 Scraper initialized for ${EVENT_TITLE} ${CURRENT_YEAR}`);
-
-/**
  * HELPER: Parse ESPN scores ("E", "-3", "+2") to Integers
  */
 function parseRelScore(scoreStr) {
@@ -28,29 +14,38 @@ function parseRelScore(scoreStr) {
 }
 
 /**
- * CHECK: Is the tournament active based on dates in constants?
- */
-function isTournamentWeek() {
-  const now = new Date();
-  if (!EVENT_YEAR_CONFIG.startDate || !EVENT_YEAR_CONFIG.endDate) {
-    console.warn(`⚠️ Dates missing for ${EVENT_TITLE}. Running anyway.`);
-    return true;
-  }
-  const start = new Date(`${EVENT_YEAR_CONFIG.startDate}T00:00:00`);
-  const end = new Date(`${EVENT_YEAR_CONFIG.endDate}T23:59:59`);
-  return now >= start && now <= end;
-}
-
-/**
  * MAIN SCRAPE FUNCTION
  */
 export async function scrapeData() {
-  if (!isTournamentWeek()) {
-    console.log(`💤 ${EVENT_TITLE} is outside scheduled dates. Skipping.`);
+  // 1. FRESH CONFIG EXTRACTION
+  // We extract these INSIDE the function to ensure we always use the latest state
+  const EVENT_DATA = EVENT_MATRIX[CURRENT_EVENT];
+  const EVENT_YEAR_CONFIG = EVENT_DATA.years[CURRENT_YEAR];
+
+  if (!EVENT_YEAR_CONFIG) {
+    console.error(`❌ No configuration found for ${CURRENT_EVENT} ${CURRENT_YEAR}`);
     return;
   }
 
-  console.log('⛳️ Fetching live scores from ESPN...');
+  // 2. THE "ZOMBIE KILLER": DEEP CLONE
+  // By using structuredClone, we sever the reference to the constants file.
+  // This ensures TEAMS starts as a 100% clean slate every 3 minutes.
+  const TEAMS_CLEAN = structuredClone(EVENT_YEAR_CONFIG.teams);
+  const CUT_LINE = EVENT_YEAR_CONFIG.cutLine;
+  const TOURNAMENT_ID = EVENT_YEAR_CONFIG.id;
+  const LEADERBOARD_URL = `https://site.web.api.espn.com/apis/site/v2/sports/golf/leaderboard?league=pga&event=${TOURNAMENT_ID}`;
+
+  // Date Check
+  const now = new Date();
+  const start = new Date(`${EVENT_YEAR_CONFIG.startDate}T00:00:00`);
+  const end = new Date(`${EVENT_YEAR_CONFIG.endDate}T23:59:59`);
+
+  if (now < start || now > end) {
+    console.log(`💤 ${EVENT_DATA.title} is outside scheduled dates. Skipping.`);
+    return;
+  }
+
+  console.log(`⛳️ Fetching live scores for ${EVENT_DATA.title}...`);
 
   try {
     const response = await fetch(LEADERBOARD_URL);
@@ -58,35 +53,27 @@ export async function scrapeData() {
 
     const tournamentStatus = data.events?.[0]?.competitions?.[0]?.status?.type?.completed;
     if (tournamentStatus === true) {
-      console.log(`🏁 ${EVENT_TITLE} is COMPLETED. Skipping update.`);
+      console.log(`🏁 Tournament is COMPLETED. Skipping update.`);
       return;
     }
 
     const cleanLeaderboard = processLeaderboard(data);
-    const compiledTeams = compileTeamData(cleanLeaderboard.leaderboard);
-    const date = new Date();
-    const formattedDate = date.toLocaleString('en-US', {
-      timeZone: 'America/New_York',
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-      hour12: true,
-    });
 
-    // SAVE TO MONGODB ONLY
+    // We pass the CLEANED, CLONED teams here
+    const compiledTeams = compileTeamData(cleanLeaderboard.leaderboard, TEAMS_CLEAN, CUT_LINE);
+
+    const date = new Date();
     await Score.findOneAndUpdate(
       { eventId: CURRENT_EVENT, year: CURRENT_YEAR },
       {
-        tournamentName: EVENT_TITLE,
+        tournamentName: EVENT_DATA.title,
         data: compiledTeams,
         lastUpdated: date,
       },
       { upsert: true, new: true },
     );
 
-    console.log(`✅ DB Updated: ${formattedDate}.`);
+    console.log(`✅ DB Updated at ${date.toLocaleTimeString()}.`);
   } catch (error) {
     console.error('❌ Scraper Error:', error);
   }
@@ -157,13 +144,14 @@ function processLeaderboard(apiData) {
 /**
  * TEAM COMPILATION: Match live scores to user teams
  */
-function compileTeamData(leaderboardPlayers) {
+function compileTeamData(leaderboardPlayers, cleanTeams, cutLine) {
   const statsLookup = {};
   leaderboardPlayers.forEach((entry) => {
     statsLookup[entry.player.id] = entry.player;
   });
 
-  return TEAMS.map((team) => {
+  // Notice we are mapping over cleanTeams (the clone), not the global constant
+  return cleanTeams.map((team) => {
     const processedGolfers = team.golfers.map((ref) => {
       const stats = statsLookup[ref.id];
       return {
@@ -175,7 +163,7 @@ function compileTeamData(leaderboardPlayers) {
         status: stats ? stats.status : 'DNP',
         isCut: stats ? stats.isCut : true,
         scorecard: stats
-          ? stats.scorecard
+          ? structuredClone(stats.scorecard)
           : {
               round1: { total: null, scoreRound: null, thruScore: null, isCountingScore: false },
               round2: { total: null, scoreRound: null, thruScore: null, isCountingScore: false },
@@ -193,7 +181,7 @@ function compileTeamData(leaderboardPlayers) {
         .map((g) => ({ id: g.id, score: g.scorecard[roundKey].thruScore }))
         .sort((a, b) => a.score - b.score);
 
-      const topXScoreIds = new Set(scoredGolfers.slice(0, CUT_LINE).map((g) => g.id));
+      const topXScoreIds = new Set(scoredGolfers.slice(0, cutLine).map((g) => g.id));
 
       processedGolfers.forEach((g) => {
         if (g.scorecard[roundKey]) {
