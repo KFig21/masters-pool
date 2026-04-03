@@ -3,6 +3,12 @@ import fetch from 'node-fetch';
 import { CURRENT_EVENT, CURRENT_YEAR, EVENT_MATRIX } from './src/constants/index.ts';
 import { Score } from './server/models/Score.js';
 
+// Polyfill for older Node versions if structuredClone is missing
+const clone = (obj) => {
+  if (typeof structuredClone === 'function') return structuredClone(obj);
+  return JSON.parse(JSON.stringify(obj));
+};
+
 /**
  * HELPER: Parse ESPN scores ("E", "-3", "+2") to Integers
  */
@@ -30,7 +36,7 @@ export async function scrapeData() {
   // 2. THE "ZOMBIE KILLER": DEEP CLONE
   // By using structuredClone, we sever the reference to the constants file.
   // This ensures TEAMS starts as a 100% clean slate every 3 minutes.
-  const TEAMS_CLEAN = structuredClone(EVENT_YEAR_CONFIG.teams);
+  const TEAMS_CLEAN = clone(EVENT_YEAR_CONFIG.teams);
   const CUT_LINE = EVENT_YEAR_CONFIG.cutLine;
   const TOURNAMENT_ID = EVENT_YEAR_CONFIG.id;
   const LEADERBOARD_URL = `https://site.web.api.espn.com/apis/site/v2/sports/golf/leaderboard?league=pga&event=${TOURNAMENT_ID}`;
@@ -51,6 +57,36 @@ export async function scrapeData() {
     const response = await fetch(LEADERBOARD_URL);
     const data = await response.json();
 
+    // Tournament metadata
+    const eventInfo = data.events?.[0];
+    const tournamentInfo = eventInfo?.tournament;
+    const currentRound = eventInfo?.competitions?.[0]?.status.period;
+    const status = eventInfo?.competitions?.[0]?.status.type.name;
+    const course = eventInfo?.courses?.[0]?.name || 'Unknown Course';
+    const weather = eventInfo?.courses?.[0]?.weather || 'null';
+
+    const tournamentMetadata = {
+      cutScore: tournamentInfo.cutScore,
+      cutCount: tournamentInfo.cutCount,
+      currentRound: currentRound,
+      status: status,
+      course: course,
+      weather: {
+        type: weather.type || null,
+        displayValue: weather.displayValue || null,
+        conditionId: weather.conditionId || null,
+        zipCode: weather.zipCode || null,
+        temperature: weather.temperature || null,
+        lowTemperature: weather.lowTemperature || null,
+        highTemperature: weather.highTemperature || null,
+        precipitation: weather.precipitation || null,
+        gust: weather.gust || null,
+        windSpeed: weather.windSpeed || null,
+        windDirection: weather.windDirection || null,
+        lastUpdated: weather.lastUpdated || null,
+      },
+    };
+
     const tournamentStatus = data.events?.[0]?.competitions?.[0]?.status?.type?.completed;
     if (tournamentStatus === true) {
       console.log(`🏁 Tournament is COMPLETED. Skipping update.`);
@@ -69,6 +105,7 @@ export async function scrapeData() {
         tournamentName: EVENT_DATA.title,
         data: compiledTeams,
         lastUpdated: date,
+        tournamentMetadata: tournamentMetadata,
       },
       { upsert: true, new: true },
     );
@@ -163,7 +200,7 @@ function compileTeamData(leaderboardPlayers, cleanTeams, cutLine) {
         status: stats ? stats.status : 'DNP',
         isCut: stats ? stats.isCut : true,
         scorecard: stats
-          ? structuredClone(stats.scorecard)
+          ? clone(stats.scorecard)
           : {
               round1: { total: null, scoreRound: null, thruScore: null, isCountingScore: false },
               round2: { total: null, scoreRound: null, thruScore: null, isCountingScore: false },

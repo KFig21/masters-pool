@@ -35,6 +35,7 @@ app.get('/api/scores/:event/:year', async (req, res) => {
       teams: scores.data,
       lastUpdated: scores.lastUpdated,
       nextUpdate: nextScrapeTime,
+      tournamentMetadata: scores.tournamentMetadata,
     });
   } catch (err) {
     res.status(500).json({ error: err.message });

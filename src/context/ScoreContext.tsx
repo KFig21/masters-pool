@@ -24,6 +24,28 @@ export interface ProcessedTeam extends Omit<Team, 'golfers'> {
   rank: number;
 }
 
+interface TournamentMetadata {
+  cutScore: number | null;
+  cutCount: number | null;
+  currentRound: number | null;
+  status: string | null;
+  course: string | null;
+  weather: {
+    type: string | null;
+    displayValue: string | null;
+    conditionId: string | null;
+    zipCode: string | null;
+    temperature: number | null;
+    lowTemperature: number | null;
+    highTemperature: number | null;
+    precipitation: number | null;
+    gust: number | null;
+    windSpeed: number | null;
+    windDirection: string | null;
+    lastUpdated: string | null;
+  };
+}
+
 // 1. TYPE DEFINITION
 interface ScoreContextType {
   teams: ProcessedTeam[];
@@ -37,6 +59,7 @@ interface ScoreContextType {
   isLoading: boolean;
   isTournamentComplete: boolean;
   isTournamentActive: boolean;
+  tournamentMetadata: TournamentMetadata | null;
 }
 
 const ScoreContext = createContext<ScoreContextType | undefined>(undefined);
@@ -48,6 +71,7 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
   const [lastUpdated, setLastUpdated] = useState<string | null>(null);
   const [nextUpdate, setNextUpdate] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [tournamentMetadata, setTournamentMetadata] = useState<TournamentMetadata | null>(null);
 
   const isTournamentActive = useMemo(() => {
     const eventData = EVENT_MATRIX[currentEvent as keyof typeof EVENT_MATRIX];
@@ -83,6 +107,7 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
           setLastUpdated(result.lastUpdated || null);
           setNextUpdate(result.nextUpdate || null);
           console.log('Polled for new data at:', result.lastUpdated);
+          setTournamentMetadata(result.tournamentMetadata || null);
 
           // Schedule the next fetch based on the server's exact timestamp
           scheduleNextFetch(result.nextUpdate);
@@ -181,10 +206,9 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
       const activeGolfers = golfers.filter((g) => {
         if (g.isCut) return false;
 
-        // Assuming your API returns 'F' for finished, and null/'' for un-started
-        if (!g.thru || g.thru === 'F') return false;
+        if (g.thru?.split(' ').includes('Thru')) return true; // Actively on course
 
-        return true;
+        return false;
       }).length;
 
       let activeTotal: number | string = 0;
@@ -260,6 +284,7 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
         isLoading,
         isTournamentComplete,
         isTournamentActive,
+        tournamentMetadata,
       }}
     >
       {children}

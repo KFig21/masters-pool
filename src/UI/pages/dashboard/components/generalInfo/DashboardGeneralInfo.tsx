@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const DashboardGeneralInfo: React.FC<Props> = ({ teams }) => {
-  const { currentEvent, currentYear } = useScores();
+  const { currentEvent, currentYear, tournamentMetadata } = useScores();
   const eventConfig = EVENT_MATRIX[currentEvent as keyof typeof EVENT_MATRIX];
 
   // Calculate unique, active golfers across all teams
@@ -21,6 +21,8 @@ export const DashboardGeneralInfo: React.FC<Props> = ({ teams }) => {
 
     return activeGolfers;
   }, [teams]);
+
+  console.log('teams', teams);
 
   // Safely format the date string (e.g., '2026-04-09' -> 'Apr 9')
   const formatDate = (dateString: string) => {
@@ -44,14 +46,28 @@ export const DashboardGeneralInfo: React.FC<Props> = ({ teams }) => {
               {formatDate(eventConfig.years[currentYear].endDate)}
             </span>
           </div>
+          {tournamentMetadata && tournamentMetadata.course && (
+            <div className="info-row">
+              <span className="info-label">Course</span>
+              <span className="info-value">{tournamentMetadata.course}</span>
+            </div>
+          )}
           <div className="info-row">
-            <span className="info-label">Course Par</span>
+            <span className="info-label">Par</span>
             <span className="info-value">{eventConfig.par}</span>
           </div>
           <div className="info-row">
             <span className="info-label">Active Golfers</span>
-            <span className="info-value active-count">{activeGolfersCount}</span>
+            <span className="info-value">{activeGolfersCount}</span>
           </div>
+          {tournamentMetadata && tournamentMetadata.currentRound && (
+            <div className="info-row">
+              <span className="info-label">
+                {tournamentMetadata.currentRound < 2 ? `Projected Cut` : `Cut Line`}
+              </span>
+              <span className="info-value">{tournamentMetadata?.cutScore || '-'}</span>
+            </div>
+          )}
         </div>
       </div>
     </div>
