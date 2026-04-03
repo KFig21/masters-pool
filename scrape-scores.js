@@ -2,6 +2,7 @@
 import fetch from 'node-fetch';
 import { CURRENT_EVENT, CURRENT_YEAR, EVENT_MATRIX } from './src/constants/index.ts';
 import { Score } from './server/models/Score.js';
+import fetchEnhancedWeather from './src/scripts/fetchWeather.js';
 
 // Polyfill for older Node versions if structuredClone is missing
 const clone = (obj) => {
@@ -63,7 +64,9 @@ export async function scrapeData() {
     const currentRound = eventInfo?.competitions?.[0]?.status.period;
     const status = eventInfo?.competitions?.[0]?.status.type.name;
     const course = eventInfo?.courses?.[0]?.name || 'Unknown Course';
-    const weather = eventInfo?.courses?.[0]?.weather || 'null';
+    const espnWeather = eventInfo?.courses?.[0]?.weather || 'null';
+
+    const richWeather = await fetchEnhancedWeather(espnWeather.zipCode);
 
     const tournamentMetadata = {
       cutScore: tournamentInfo.cutScore,
@@ -71,19 +74,13 @@ export async function scrapeData() {
       currentRound: currentRound,
       status: status,
       course: course,
-      weather: {
-        type: weather.type || null,
-        displayValue: weather.displayValue || null,
-        conditionId: weather.conditionId || null,
-        zipCode: weather.zipCode || null,
-        temperature: weather.temperature || null,
-        lowTemperature: weather.lowTemperature || null,
-        highTemperature: weather.highTemperature || null,
-        precipitation: weather.precipitation || null,
-        gust: weather.gust || null,
-        windSpeed: weather.windSpeed || null,
-        windDirection: weather.windDirection || null,
-        lastUpdated: weather.lastUpdated || null,
+      weather: richWeather || {
+        conditionId: espnWeather.conditionId || null,
+        temperature: espnWeather.temperature || null,
+        highTemperature: espnWeather.highTemperature || null,
+        lowTemperature: espnWeather.lowTemperature || null,
+        windSpeed: espnWeather.windSpeed || null,
+        windDirection: espnWeather.windDirection || null,
       },
     };
 

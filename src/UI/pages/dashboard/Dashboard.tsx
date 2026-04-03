@@ -11,6 +11,7 @@ import Logo from '../../../assets/images/logo.png';
 import './styles.scss';
 import { DashboardTimerPanel } from './components/timerPanel/DashboardTimerPanel';
 import { EVENT_MATRIX } from '../../../constants';
+import { DashboardWeatherPanel } from './components/weatherPanel/DashboardWeatherPanel';
 
 export const Dashboard = () => {
   const { teams, isTournamentActive, nextUpdate, currentEvent, currentYear } = useScores();
@@ -53,6 +54,8 @@ export const Dashboard = () => {
         {/* LEFT COLUMN: 2 Components */}
         <div className="dashboard-col">
           <DashboardGeneralInfo teams={teams} />
+
+          <DashboardWeatherPanel />
 
           <DashboardTimerPanel
             isTournamentActive={isTournamentActive}

@@ -25,6 +25,8 @@ const scoreSchema = new mongoose.Schema(
         gust: { type: Number },
         windSpeed: { type: Number },
         windDirection: { type: String },
+        sunrise: { type: String },
+        sunset: { type: String },
         lastUpdated: { type: String },
       },
     },

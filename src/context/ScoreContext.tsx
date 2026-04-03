@@ -42,6 +42,8 @@ interface TournamentMetadata {
     gust: number | null;
     windSpeed: number | null;
     windDirection: string | null;
+    sunrise: string | null;
+    sunset: string | null;
     lastUpdated: string | null;
   };
 }

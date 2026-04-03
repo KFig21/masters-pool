@@ -1,0 +1,97 @@
+@use '../../../../styles/colors' as *;
+@use '../../../../styles/index' as *;
+@use '../../../../styles/fonts' as *;
+@use '../../../../styles/variables' as *;
+
+.weather-panel {
+
+    // Matches your existing panel behavior
+    .weather-container {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px;
+        color: var(--dashboard-table-FC);
+
+        .weather-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            padding: 8px 0 16px 0;
+            // border-bottom: 1px solid var(--dashboard-row-border-color);
+
+            .weather-icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0.9;
+
+                // Target the MUI SVG icon specifically to ensure it sizes correctly
+                svg {
+                    width: 48px;
+                    height: 48px;
+                }
+            }
+
+            .temperature-block {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                .temp-main {
+                    font-size: 2.2rem;
+                    font-weight: 700;
+                    line-height: 1;
+                }
+
+                .condition-text {
+                    font-size: 0.85rem;
+                    opacity: 0.8;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                    margin-top: 4px;
+                }
+            }
+        }
+
+        .weather-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            // Reusing your clean info-row logic from DashboardGeneralInfo
+            .info-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding-bottom: 8px;
+                border-bottom: 1px solid var(--dashboard-row-border-color);
+
+                &:last-child {
+                    border-bottom: none;
+                    padding-bottom: 0;
+                }
+
+                .info-label {
+                    font-weight: bold;
+                    opacity: 0.8;
+                    text-transform: uppercase;
+                    font-size: 0.75rem;
+                    letter-spacing: 0.5px;
+                }
+
+                .info-value {
+                    // font-weight: bold;
+                    font-size: 14px;
+                    font-weight: bold;
+
+                    .info-subtext {
+                        font-style: italic;
+                        opacity: .7;
+                    }
+                }
+            }
+        }
+    }
+}
