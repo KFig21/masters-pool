@@ -166,15 +166,22 @@
                     &.team-table {
                         grid-template-columns: $TeamTableColumns;
 
-                        @include mobile {
-                            grid-template-columns: $Mobile_TeamTableColumns;
-                        }
-
                         &:hover {
                             .team .active-golfers-container {
                                 opacity: 1;
                             }
                         }
+
+                        @include mobile {
+                            grid-template-columns: $Mobile_TeamTableColumns;
+
+                            &:hover {
+                                .team .active-golfers-container {
+                                    opacity: .5;
+                                }
+                            }
+                        }
+
 
                         .team {
                             display: flex;
