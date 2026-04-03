@@ -50,7 +50,7 @@
         max-height: stretch;
 
         @include mobile {
-            max-height: 80vh;
+            max-height: 85vh;
         }
 
         $TeamTableColumns: 48px 1fr 50px 50px 50px 50px 60px;
