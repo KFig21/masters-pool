@@ -92,7 +92,8 @@ export const DashboardGolferLeaderboard: React.FC<Props> = ({
 
               return (
                 <motion.div
-                  layout // THIS IS THE MAGIC PROP. It automatically animates positional changes!
+                  layout="position"
+                  layoutDependency={sortedGolfers}
                   transition={{ type: 'spring', stiffness: 130, damping: 30 }}
                   key={golfer.id}
                   onClick={() => onSelectTeam?.(golfer.teamOwner)}

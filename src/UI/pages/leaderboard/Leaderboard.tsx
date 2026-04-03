@@ -134,29 +134,21 @@ export const Leaderboard = () => {
                 <NoData handleModal={handleTournamentSelectorModal} />
               ) : (
                 teams.map((team, index) => {
-                  const { sumR1, sumR2, sumR3, sumR4, activeTotal, isTeamCut } = team.stats;
+                  const { activeTotal, isTeamCut } = team.stats;
 
                   // Determine if this rank is a tie
                   const isTied =
                     (teams[index - 1] && teams[index - 1].stats.activeTotal === activeTotal) ||
                     (teams[index + 1] && teams[index + 1].stats.activeTotal === activeTotal);
 
-                  const r1Display = sumR1;
-                  const r2Display =
-                    sumR2 !== Infinity && sumR1 !== Infinity ? sumR2 - sumR1 : Infinity;
-                  const r3Display =
-                    sumR3 !== Infinity && sumR2 !== Infinity ? sumR3 - sumR2 : Infinity;
-                  const r4Display =
-                    sumR4 !== Infinity && sumR3 !== Infinity ? sumR4 - sumR3 : Infinity;
-
                   const propData: ScoreboardTeamData = {
                     rank: team.rank,
                     owner: team.owner,
                     isTied: isTied,
-                    r1: formatDiff(r1Display),
-                    r2: formatDiff(r2Display),
-                    r3: formatDiff(r3Display),
-                    r4: formatDiff(r4Display),
+                    r1: formatDiff(team.stats.dailyR1 ?? Infinity),
+                    r2: formatDiff(team.stats.dailyR2 ?? Infinity),
+                    r3: formatDiff(team.stats.dailyR3 ?? Infinity),
+                    r4: formatDiff(team.stats.dailyR4 ?? Infinity),
                     totalScore: activeTotal === 999 ? 'E' : activeTotal,
                     activeGolfers: team.stats.activeGolfers,
                     isFavorite: favoriteTeam === team.owner,

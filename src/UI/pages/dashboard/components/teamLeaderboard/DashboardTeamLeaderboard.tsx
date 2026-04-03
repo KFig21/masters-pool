@@ -61,7 +61,8 @@ export const DashboardTeamLeaderboard: React.FC<Props> = ({
 
               return (
                 <motion.div
-                  layout // 3. The magic layout prop
+                  layout="position"
+                  layoutDependency={teams}
                   transition={{ type: 'spring', stiffness: 130, damping: 30 }}
                   key={team.owner} // Already perfect!
                   className={`leaderboard-row team-table ${favoriteTeam === team.owner ? 'favorite' : ''}
@@ -72,17 +73,17 @@ export const DashboardTeamLeaderboard: React.FC<Props> = ({
                     {isBadStatus ? '-' : isTied ? `T-${team.rank}` : team.rank}
                   </div>
                   <div className="col team">{team.owner}</div>
-                  <div className={`col round-score ${getScoreClass(team.stats.sumR1)}`}>
-                    {formatScore(team.stats.sumR1)}
+                  <div className={`col round-score ${getScoreClass(team.stats.dailyR1)}`}>
+                    {formatScore(team.stats.dailyR1)}
                   </div>
-                  <div className={`col round-score ${getScoreClass(team.stats.sumR2)}`}>
-                    {formatScore(team.stats.sumR2)}
+                  <div className={`col round-score ${getScoreClass(team.stats.dailyR2)}`}>
+                    {formatScore(team.stats.dailyR2)}
                   </div>
-                  <div className={`col round-score ${getScoreClass(team.stats.sumR3)}`}>
-                    {formatScore(team.stats.sumR3)}
+                  <div className={`col round-score ${getScoreClass(team.stats.dailyR3)}`}>
+                    {formatScore(team.stats.dailyR3)}
                   </div>
-                  <div className={`col round-score ${getScoreClass(team.stats.sumR4)}`}>
-                    {formatScore(team.stats.sumR4)}
+                  <div className={`col round-score ${getScoreClass(team.stats.dailyR4)}`}>
+                    {formatScore(team.stats.dailyR4)}
                   </div>
                   <div className={`col total-score ${getScoreClass(team.stats.activeTotal)}`}>
                     {formatScore(team.stats.activeTotal)}
