@@ -11,6 +11,7 @@ interface Props {
   onSelectTeam?: (owner: string) => void;
 }
 
+// TODO: INCLUDE GOLFERS NOT ON A TEAM
 export const DashboardGolferLeaderboard: React.FC<Props> = ({
   teams,
   selectedOwner,

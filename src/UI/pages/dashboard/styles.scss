@@ -55,7 +55,7 @@
 
         $TeamTableColumns: 48px 1fr 50px 50px 50px 50px 60px;
         $GolferTableColumns: 40px 1fr 70px 40px 40px 40px 40px 56px;
-        $Mobile_TeamTableColumns: 40px 1fr 42px 42px 42px 42px 50px;
+        $Mobile_TeamTableColumns: 38px 1fr 41px 41px 41px 41px 50px;
         $Mobile_GolferTableColumns: 38px 1fr 66px 54px;
 
         .panel-upper {
@@ -170,16 +170,34 @@
                             grid-template-columns: $Mobile_TeamTableColumns;
                         }
 
+                        &:hover {
+                            .team .active-golfers-container {
+                                opacity: 1;
+                            }
+                        }
+
                         .team {
                             display: flex;
                             align-items: center;
                             justify-content: space-between;
 
-                            .golfer-icon {
-                                margin-left: 4px;
+                            .active-golfers-container {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
                                 color: var(--dashboard-table-FC);
-                                opacity: .7;
+                                opacity: .5;
+
+                                .active-golfers {
+                                    font-size: 0.75rem;
+                                    font-weight: bold;
+                                }
+
+                                .golfer-icon {
+                                    color: var(--dashboard-table-FC);
+                                }
                             }
+
                         }
                     }
 
