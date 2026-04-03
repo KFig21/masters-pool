@@ -78,6 +78,7 @@ export const DashboardTeamLeaderboard: React.FC<Props> = ({
                   </div>
                   <div className="col team">
                     {team.owner}
+                    {/* TODO: Hover tooltip to show number of active golfers */}
                     {golfersStatus.active > 0 && <GolferIcon size="small" />}
                   </div>
                   <div className={`col round-score ${getScoreClass(team.stats.dailyR1)}`}>
