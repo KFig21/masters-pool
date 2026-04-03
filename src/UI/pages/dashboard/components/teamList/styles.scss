@@ -3,11 +3,6 @@
 @use '../../../../styles/fonts' as *;
 @use '../../../../styles/variables' as *;
 
-.panel-lower {
-    display: flex;
-    justify-content: center;
-}
-
 .dashboard-team-scorecard-wrapper {
     overflow-y: auto;
     height: 100%;

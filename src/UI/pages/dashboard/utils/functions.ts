@@ -1,3 +1,5 @@
+import type { ProcessedTeam } from '../../../../context/ScoreContext';
+
 // Helper to add the correct ordinal suffix
 const getOrdinal = (d: number) => {
   if (d > 3 && d < 21) return 'th';
@@ -35,4 +37,29 @@ export const formatTournamentDates = (startStr: string, endStr: string) => {
 
   // If cross-month: "March 30th - April 2nd"
   return `${startMonth} ${startDay} - ${endMonth} ${endDay}`;
+};
+
+export const getTeamGolferStatus = (team: ProcessedTeam) => {
+  const statuses = {
+    cut: 0,
+    done: 0,
+    left: 0,
+    active: 0,
+    null: 0,
+  };
+  team.golfers.forEach((golfer) => {
+    const status = golfer.isCut
+      ? 'cut'
+      : golfer.thru === 'F'
+        ? 'done'
+        : golfer.thru && golfer.thru.split(' ').includes('Thru')
+          ? 'active'
+          : golfer.thru
+            ? 'left'
+            : 'null';
+
+    statuses[status] += 1;
+  });
+
+  return statuses;
 };

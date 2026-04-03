@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import type { ProcessedTeam } from '../../../../../context/ScoreContext';
 import { useFavoriteTeam } from '../../../../../hooks/useFavoriteTeam';
 import './styles.scss';
+import { GolferIcon } from '../../../../../assets/svgs/golferIcon/golferIcon';
+import { getTeamGolferStatus } from '../../utils/functions';
 
 interface Props {
   teams: ProcessedTeam[];
@@ -59,6 +61,8 @@ export const DashboardTeamLeaderboard: React.FC<Props> = ({
                 !isBadStatus &&
                 arr.filter((t) => t.stats.activeTotal === team.stats.activeTotal).length > 1;
 
+              const golfersStatus = getTeamGolferStatus(team);
+
               return (
                 <motion.div
                   layout="position"
@@ -72,7 +76,10 @@ export const DashboardTeamLeaderboard: React.FC<Props> = ({
                   <div className="col pos">
                     {isBadStatus ? '-' : isTied ? `T-${team.rank}` : team.rank}
                   </div>
-                  <div className="col team">{team.owner}</div>
+                  <div className="col team">
+                    {team.owner}
+                    {golfersStatus.active > 0 && <GolferIcon size="small" />}
+                  </div>
                   <div className={`col round-score ${getScoreClass(team.stats.dailyR1)}`}>
                     {formatScore(team.stats.dailyR1)}
                   </div>

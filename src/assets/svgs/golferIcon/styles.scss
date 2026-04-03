@@ -1,0 +1,59 @@
+@use '../../../UI/styles/colors.scss' as *;
+@use '../../../UI/styles/index' as *;
+@use '../../../UI/styles/fonts' as *;
+@use '../../../UI/styles/variables' as *;
+
+.golfer-icon {
+    display: inline-block;
+    transition: color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+    flex-shrink: 0;
+
+    // --- SIZE VARIANTS ---
+    &--small {
+        width: 16px;
+        height: 16px;
+    }
+
+    &--medium {
+        width: 24px;
+        height: 24px;
+    }
+
+    &--large {
+        width: 48px;
+        height: 48px;
+    }
+
+    &--fluid {
+        width: 100%;
+        height: auto;
+    }
+
+    // --- VIEW VARIANTS ---
+    &--default {
+        color: #040404; // The original color from your SVG
+    }
+
+    &--sidebar {
+        color: #64748b; // A softer slate for inactive sidebar items
+
+        &:hover {
+            color: #0f172a; // Darkens on hover
+            transform: scale(1.05);
+        }
+    }
+
+    &--header {
+        color: #ffffff; // Great for dark headers
+    }
+
+    &--minimal {
+        // Inherits whatever text color its parent container uses
+        color: inherit;
+        opacity: 0.6;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+}

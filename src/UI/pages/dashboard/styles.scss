@@ -27,7 +27,7 @@
         //     overflow-y: auto;
         // }
 
-        @include mobile {
+        @media (max-width: 1500px) {
             grid-template-columns: 1fr
         }
     }
@@ -55,7 +55,7 @@
 
         $TeamTableColumns: 48px 1fr 50px 50px 50px 50px 60px;
         $GolferTableColumns: 40px 1fr 70px 40px 40px 40px 40px 56px;
-        $Mobile_TeamTableColumns: 42px 1fr 44px 44px 44px 44px 54px;
+        $Mobile_TeamTableColumns: 40px 1fr 42px 42px 42px 42px 50px;
         $Mobile_GolferTableColumns: 38px 1fr 66px 54px;
 
         .panel-upper {
@@ -144,6 +144,11 @@
             background-color: var(--dashboard-panel-lower-BG);
             overflow: overlay;
 
+            &.team-details {
+                display: flex;
+                justify-content: center;
+            }
+
             .mini-leaderboard {
                 font-size: 0.9rem;
                 color: var(--dashboard-table-FC);
@@ -168,7 +173,13 @@
                         .team {
                             display: flex;
                             align-items: center;
-                            justify-content: flex-start;
+                            justify-content: space-between;
+
+                            .golfer-icon {
+                                margin-left: 4px;
+                                color: var(--dashboard-table-FC);
+                                opacity: .7;
+                            }
                         }
                     }
 

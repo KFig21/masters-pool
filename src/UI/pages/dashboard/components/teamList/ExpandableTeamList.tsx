@@ -47,7 +47,7 @@ export const ExpandableTeamList: React.FC<Props> = ({ teams, selectedOwner }) =>
       <div className="panel-upper ">
         <div className="panel-header">Team Details - {selectedOwner}</div>
       </div>
-      <div className="panel-lower">
+      <div className="panel-lower team-details">
         <div className="dashboard-team-scorecard-wrapper">
           <div className="dashboard-team-scorecard">
             <TeamTablesWrapper team={selectedTeam} />
