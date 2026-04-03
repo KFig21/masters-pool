@@ -2,6 +2,7 @@
 import React, { useMemo } from 'react';
 import { useScores, type ProcessedTeam } from '../../../../../context/ScoreContext';
 import { EVENT_MATRIX } from '../../../../../constants';
+import { formatTournamentDates } from '../../utils/functions';
 
 interface Props {
   teams: ProcessedTeam[];
@@ -10,6 +11,7 @@ interface Props {
 export const DashboardGeneralInfo: React.FC<Props> = ({ teams }) => {
   const { currentEvent, currentYear, tournamentMetadata } = useScores();
   const eventConfig = EVENT_MATRIX[currentEvent as keyof typeof EVENT_MATRIX];
+  const yearConfig = eventConfig?.years[currentYear];
 
   // Calculate unique, active golfers across all teams
   const activeGolfersCount = useMemo(() => {
@@ -22,16 +24,6 @@ export const DashboardGeneralInfo: React.FC<Props> = ({ teams }) => {
     return activeGolfers;
   }, [teams]);
 
-  console.log('teams', teams);
-
-  // Safely format the date string (e.g., '2026-04-09' -> 'Apr 9')
-  const formatDate = (dateString: string) => {
-    if (!dateString) return '';
-    // Append time to prevent timezone shifting issues when parsing
-    const date = new Date(`${dateString}T12:00:00Z`);
-    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
-  };
-
   return (
     <div className="dashboard-panel">
       <div className="panel-lower">
@@ -42,8 +34,7 @@ export const DashboardGeneralInfo: React.FC<Props> = ({ teams }) => {
           <div className="info-row">
             <span className="info-label">Dates</span>
             <span className="info-value">
-              {formatDate(eventConfig.years[currentYear].startDate)} -{' '}
-              {formatDate(eventConfig.years[currentYear].endDate)}
+              {formatTournamentDates(yearConfig?.startDate, yearConfig?.endDate)}
             </span>
           </div>
           {tournamentMetadata && tournamentMetadata.course && (
@@ -63,7 +54,7 @@ export const DashboardGeneralInfo: React.FC<Props> = ({ teams }) => {
           {tournamentMetadata && tournamentMetadata.currentRound && (
             <div className="info-row">
               <span className="info-label">
-                {tournamentMetadata.currentRound < 2 ? `Projected Cut` : `Cut Line`}
+                {tournamentMetadata.currentRound < 3 ? `Projected Cut` : `Cut Line`}
               </span>
               <span className="info-value">{tournamentMetadata?.cutScore || '-'}</span>
             </div>
