@@ -177,7 +177,19 @@
                     cursor: pointer;
                     transition: background 0.2s;
                     background-color: var(--dashboard-table-BG);
-                    border-left: 3px solid var(--scorecard-table-name-BG); // needed to match the extra padding from the highlighted row
+                    border-left: 3px solid var(--dashboard-table-BG); // needed to match the extra padding from the highlighted row
+
+                    &.cut-row {
+                        // Faded background color. You can use rgba or create a new CSS variable
+                        // background-color: rgba(0, 0, 0, 0.083);
+                        opacity: 0.7; // Optional: slightly dims the text/content too
+                    }
+
+                    &.first-cut-row {
+                        // Using your existing cut text color for the border so it matches your theme
+                        // !important is used to override the standard &+.leaderboard-row border
+                        border-top: 1px solid var(--leaderboard-row-CUT-FC) !important;
+                    }
 
                     &.team-table {
                         grid-template-columns: $TeamTableColumns;

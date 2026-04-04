@@ -82,14 +82,15 @@ export const DashboardGolferLeaderboard: React.FC<Props> = ({
         <div className="mini-leaderboard">
           <div className="ml-body">
             {sortedGolfers.map((golfer, i) => {
-              // Extract values for cleaner JSX below
               const r1Score = golfer.scorecard?.round1?.scoreRound;
               const r2Score = golfer.scorecard?.round2?.scoreRound;
               const r3Score = golfer.scorecard?.round3?.scoreRound;
               const r4Score = golfer.scorecard?.round4?.scoreRound;
-
-              // Handle formatting priority for the final column
               const totalScore = golfer.isCut ? 'CUT' : golfer.score;
+
+              // Find if this is the start of the cut line
+              const isCutRow = golfer.isBadStatus;
+              const isFirstCutRow = isCutRow && (i === 0 || !sortedGolfers[i - 1].isBadStatus);
 
               return (
                 <motion.div
@@ -98,13 +99,13 @@ export const DashboardGolferLeaderboard: React.FC<Props> = ({
                   transition={{ type: 'spring', stiffness: 130, damping: 30 }}
                   key={golfer.id}
                   onClick={() => onSelectTeam?.(golfer.teamOwner)}
-                  className={`leaderboard-row golfer-table ${golfer.isCut ? 'cut-row' : ''} ${favoriteTeam === golfer.teamOwner ? 'favorite' : ''} ${selectedOwner === golfer.teamOwner ? 'selected' : ''}`}
+                  className={`leaderboard-row golfer-table ${isCutRow ? 'cut-row' : ''} ${isFirstCutRow ? 'first-cut-row' : ''} ${favoriteTeam === golfer.teamOwner ? 'favorite' : ''} ${selectedOwner === golfer.teamOwner ? 'selected' : ''}`}
                 >
                   <div className="col pos">
                     {i > 0 && golfer.rank === sortedGolfers[i - 1].rank
                       ? ''
                       : golfer.isBadStatus
-                        ? '-'
+                        ? ''
                         : golfer.rank}
                   </div>
                   <div className="col golfer">
