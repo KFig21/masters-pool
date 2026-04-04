@@ -12,8 +12,24 @@
     overflow: hidden;
     background-color: var(--dashboard-BG);
 
+    &.desktop {
+        display: block;
+    }
+
+    &.mobile {
+        display: none;
+    }
+
     @include mobile {
         height: unset;
+
+        &.desktop {
+            display: none;
+        }
+
+        &.mobile {
+            display: block;
+        }
     }
 
     .dashboard-grid {

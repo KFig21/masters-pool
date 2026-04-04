@@ -41,14 +41,8 @@ export const Dashboard = () => {
     setSelectedOwner(owner);
   };
 
-  return (
-    <div className="dashboard-page fade-in-up">
-      {/* MOBILE HEADER */}
-      <Link to="/" className="dashboard-header">
-        <div className="header-arrow">←</div>
-        <div className="header-text">Back to Leaderboard</div>
-      </Link>
-
+  const desktopView = (
+    <div className="dashboard-page desktop fade-in-up">
       {/* DASHBOARD GRID */}
       <div className="dashboard-grid">
         {/* LEFT COLUMN: 2 Components */}
@@ -88,6 +82,57 @@ export const Dashboard = () => {
           />
         </div>
       </div>
+    </div>
+  );
+
+  const mobileView = (
+    <div className="dashboard-page mobile fade-in-up">
+      {/* MOBILE HEADER */}
+      <Link to="/" className="dashboard-header">
+        <div className="header-arrow">←</div>
+        <div className="header-text">Back to Leaderboard</div>
+      </Link>
+
+      {/* DASHBOARD GRID */}
+      <div className="dashboard-grid">
+        {/* LEFT COLUMN: 2 Components */}
+        <div className="dashboard-col">
+          {/* Team Leaderboard */}
+          <DashboardTeamLeaderboard
+            teams={teams}
+            selectedOwner={selectedOwner}
+            onSelectTeam={handleSelectTeam}
+          />
+
+          {/* Team Detail */}
+          <ExpandableTeamList
+            teams={teams}
+            selectedOwner={selectedOwner}
+            onToggleTeam={handleSelectTeam}
+          />
+
+          {/* Update Timer */}
+          <DashboardTimerPanel
+            isTournamentActive={isTournamentActive}
+            nextUpdate={nextUpdate}
+            targetDateStr={tournamentStartDate}
+          />
+
+          {/* Golfer Leaderboard */}
+          <DashboardGolferLeaderboard
+            teams={teams}
+            selectedOwner={selectedOwner}
+            onSelectTeam={handleSelectTeam}
+          />
+
+          {/* Tournament Info */}
+          <DashboardGeneralInfo teams={teams} />
+
+          {/* Weather */}
+          <DashboardWeatherPanel />
+        </div>
+      </div>
+
       {/* MOBILE FOOTER */}
       <div className="dashboard-footer">
         <Link to="/" className="logo-container">
@@ -95,5 +140,12 @@ export const Dashboard = () => {
         </Link>
       </div>
     </div>
+  );
+
+  return (
+    <>
+      {desktopView}
+      {mobileView}
+    </>
   );
 };
