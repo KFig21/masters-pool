@@ -56,7 +56,7 @@ export const DashboardGolferLeaderboard: React.FC<Props> = ({
   };
 
   const getScoreClass = (val: number | string | null | undefined) => {
-    if (val === 'CUT') return 'cut';
+    if (val === 'CUT' || val === 'DQ' || val === 'WD') return 'cut';
     if (typeof val !== 'number' || val === Infinity) return '';
     if (val < 0) return 'under-par';
     if (val > 0) return 'over-par';
@@ -82,11 +82,12 @@ export const DashboardGolferLeaderboard: React.FC<Props> = ({
         <div className="mini-leaderboard">
           <div className="ml-body">
             {sortedGolfers.map((golfer, i) => {
+              console.log(golfer);
               const r1Score = golfer.scorecard?.round1?.scoreRound;
               const r2Score = golfer.scorecard?.round2?.scoreRound;
               const r3Score = golfer.scorecard?.round3?.scoreRound;
               const r4Score = golfer.scorecard?.round4?.scoreRound;
-              const totalScore = golfer.isCut ? 'CUT' : golfer.score;
+              const totalScore = golfer.isCut ? golfer.status : golfer.score;
 
               // Find if this is the start of the cut line
               const isCutRow = golfer.isBadStatus;
