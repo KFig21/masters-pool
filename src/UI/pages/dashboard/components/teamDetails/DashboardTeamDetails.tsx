@@ -9,38 +9,13 @@ interface Props {
   onToggleTeam: (owner: string) => void;
 }
 
-export const ExpandableTeamList: React.FC<Props> = ({ teams, selectedOwner }) => {
+export const DashboardTeamDetails: React.FC<Props> = ({ teams, selectedOwner }) => {
   const [selectedTeam, setSelectedTeam] = useState<ProcessedTeam>(teams[0]);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setSelectedTeam(teams.find((team) => team.owner === selectedOwner) || teams[0]);
   }, [teams, selectedOwner]);
-
-  // const getTeamGolferStatus = (team: ProcessedTeam) => {
-  //   const statuses = {
-  //     cut: 0,
-  //     done: 0,
-  //     left: 0,
-  //     active: 0,
-  //     null: 0,
-  //   };
-  //   team.golfers.forEach((golfer) => {
-  //     const status = golfer.isCut
-  //       ? 'cut'
-  //       : golfer.thru === 'F'
-  //         ? 'done'
-  //         : golfer.thru && golfer.thru.split(' ').includes('Thru')
-  //           ? 'active'
-  //           : golfer.thru
-  //             ? 'left'
-  //             : 'null';
-
-  //     statuses[status] += 1;
-  //   });
-
-  //   return statuses;
-  // };
 
   return (
     <div className="dashboard-panel">

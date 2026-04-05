@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useScores } from '../../../context/ScoreContext';
 import { DashboardTeamLeaderboard } from './components/teamLeaderboard/DashboardTeamLeaderboard';
 import { DashboardGolferLeaderboard } from './components/golfersLeaderboard/DashboardGolferLeaderboard';
-import { ExpandableTeamList } from './components/teamList/ExpandableTeamList';
+import { DashboardTeamDetails } from './components/teamDetails/DashboardTeamDetails';
 import { useFavoriteTeam } from '../../../hooks/useFavoriteTeam';
 import { DashboardGeneralInfo } from './components/generalInfo/DashboardGeneralInfo';
 import { ErrorView } from '../../components/errorView/ErrorView';
@@ -66,7 +66,7 @@ export const Dashboard = () => {
             onSelectTeam={handleSelectTeam}
           />
 
-          <ExpandableTeamList
+          <DashboardTeamDetails
             teams={teams}
             selectedOwner={selectedOwner}
             onToggleTeam={handleSelectTeam}
@@ -105,7 +105,7 @@ export const Dashboard = () => {
           />
 
           {/* Team Detail */}
-          <ExpandableTeamList
+          <DashboardTeamDetails
             teams={teams}
             selectedOwner={selectedOwner}
             onToggleTeam={handleSelectTeam}
