@@ -36,13 +36,13 @@
     --leaderboard-row-border-color: rgb(205, 205, 205);
     --leaderboard-cell-boxShadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
 
-    --leaderboard-title-BG: var(--secondary);
-    --leaderboard-title-FC: var(--white_Var);
-    --leaderboard-column-FC: var(--white_Var);
-    --leaderboard-border-color: var(--accent);
-    --leaderboard-info: var(--accent);
-    --leaderboard-tournament-icon: var(--white_Var);
-    --leaderboard-tournament-icon-hover: var(--accent);
+    --leaderboard-title-BG: var(--white_Var);
+    --leaderboard-title-FC: var(--primary);
+    --leaderboard-column-FC: var(--primary);
+    --leaderboard-border-color: var(--primary);
+    --leaderboard-info: var(--primary);
+    --leaderboard-tournament-icon: var(--primary);
+    --leaderboard-tournament-icon-hover: var(--primary);
     --leaderboard-active-golfers-indicator: var(--primary);
     --leaderboard-drop-shadow: drop-shadow(0px 0px 10px rgba(255, 252, 201, 0.15));
 
@@ -99,13 +99,13 @@
     --scorecard-BG-flash-red: rgba(224, 15, 57, 0.25);
 
     /* Nav */
-    --nav-BG: var(--secondary);
-    --nav-FC: rgb(215, 215, 215);
-    --nav-FC-highlight: var(--accent);
-    --nav-border-color: var(--accent);
-    --nav-tab--hover-BG: rgba(255, 255, 255, 0.15);
+    --nav-BG: var(--white_Var);
+    --nav-FC: rgb(0, 103, 71);
+    --nav-border-color: var(--primary);
+    --nav-tab--hover-FC: var(--white_Var);
+    --nav-tab--hover-BG: var(--secondary);
     --nav-tab--focus-BG: rgba(255, 255, 255, 0.07);
-    --nav-favorite-icon-color: var(--accent);
+    --nav-favorite-icon-color: var(--primary);
 
     /* Dashboard */
     --dashboard-BG: --transparent;
@@ -145,6 +145,7 @@
     /* Other */
     --color-scheme: light;
     --background-slider-tint: var(--primary);
+    --background-slider-opacity: .5;
     --themeToggle: rgba(255, 255, 255, 0.4);
     --themeToggle-active: var(--accent);
     --LeaderboardDashboardNav-FC: var(--white_Var);
@@ -238,8 +239,8 @@
         /* Nav */
         --nav-BG: var(--secondary);
         --nav-FC: rgb(215, 215, 215);
-        --nav-FC-highlight: var(--accent);
         --nav-border-color: var(--primary);
+        --nav-tab--hover-FC: var(--white_Var);
         --nav-tab--hover-BG: var(--midnightGreen);
         --nav-tab--focus-BG: rgb(0, 55, 41);
         --nav-favorite-icon-color: var(--accent);
@@ -282,6 +283,7 @@
         /* Other */
         --color-scheme: light;
         --background-slider-tint: var(--secondary);
+        --background-slider-opacity: .3;
         --themeToggle: rgba(255, 255, 255, 0.4);
         --themeToggle-active: var(--accent);
         --LeaderboardDashboardNav-FC: var(--white_Var);

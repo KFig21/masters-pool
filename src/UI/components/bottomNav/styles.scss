@@ -49,14 +49,6 @@
             transition: all 0.2s ease;
             cursor: pointer;
 
-            &.scoreboard {
-                color: var(--nav-FC-highlight);
-
-                &.active {
-                    color: var(--nav-FC-highlight);
-                }
-            }
-
             .team-name {
                 position: relative;
                 transform: translateY(3px);
@@ -90,13 +82,17 @@
             &:hover,
             &.active {
                 background-color: var(--nav-tab--hover-BG);
-                color: white;
+                color: var(--nav-tab--hover-FC);
             }
 
             &.active {
                 font-weight: bold;
                 border-bottom: 3px solid var(--nav-border-color);
                 outline: none;
+
+                .favorite-icon {
+                    color: var(--accent);
+                }
             }
 
         }
