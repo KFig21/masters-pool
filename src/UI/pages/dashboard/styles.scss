@@ -345,6 +345,11 @@
                         gap: 6px;
                         white-space: nowrap;
                         overflow: hidden;
+                        min-width: 215px;
+
+                        @include mobile {
+                            min-width: unset;
+                        }
 
                         .golfer-name {
                             min-width: 0;
