@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useScores, type ProcessedTeam } from '../../../../../context/ScoreContext';
 import type { Golfer } from '../../../../../types/team';
@@ -11,18 +11,26 @@ interface Props {
   onSelectTeam?: (owner: string) => void;
 }
 
-// TODO: INCLUDE GOLFERS NOT ON A TEAM
 export const DashboardGolferLeaderboard: React.FC<Props> = ({
   teams,
   selectedOwner,
   onSelectTeam,
 }) => {
-  const { isTournamentComplete } = useScores();
+  const { isTournamentComplete, unassignedGolfers } = useScores();
   const { favoriteTeam } = useFavoriteTeam();
+  const [showUnassigned, setShowUnassigned] = useState(true);
+
+  console.log('unassignedGolfers', unassignedGolfers);
 
   const sortedGolfers = useMemo(() => {
     // 1. Flatten all golfers and attach their team owner
     const all = teams.flatMap((t) => t.golfers.map((g) => ({ ...g, teamOwner: t.owner })));
+
+    if (showUnassigned) {
+      all.push(...unassignedGolfers.map((g) => ({ ...g, teamOwner: '' })));
+    }
+
+    console.log('all golfers before sorting:', all);
 
     // Helper to get score for sorting and ranking
     const getScore = (g: Golfer) => {
@@ -46,7 +54,7 @@ export const DashboardGolferLeaderboard: React.FC<Props> = ({
 
       return { ...golfer, rank, isTied, isBadStatus };
     });
-  }, [teams]);
+  }, [teams, unassignedGolfers, showUnassigned]);
 
   const formatScore = (val: number | string | null | undefined) => {
     if (val === null || val === undefined || val === Infinity) return '-';
@@ -56,7 +64,7 @@ export const DashboardGolferLeaderboard: React.FC<Props> = ({
   };
 
   const getScoreClass = (val: number | string | null | undefined) => {
-    if (val === 'CUT' || val === 'DQ' || val === 'WD') return 'cut';
+    if (val === 'CUT' || val === 'DQ' || val === 'WD' || val === 'DNP') return 'cut';
     if (typeof val !== 'number' || val === Infinity) return '';
     if (val < 0) return 'under-par';
     if (val > 0) return 'over-par';
@@ -69,7 +77,19 @@ export const DashboardGolferLeaderboard: React.FC<Props> = ({
         <div className="panel-header">Individual Leaderboard</div>
         <div className="leaderboard-header golfer-table">
           <div className="col header pos">POS</div>
-          <div className="col header golfer">PLAYER</div>
+          <div className="col header golfer">
+            PLAYER
+            <div className="toggle-container" style={{ marginLeft: '10px' }}>
+              <label className="switch">
+                <input
+                  type="checkbox"
+                  checked={showUnassigned}
+                  onChange={() => setShowUnassigned(!showUnassigned)}
+                />
+                <span className="slider round"></span>
+              </label>
+            </div>
+          </div>
           <div className="col header team">TEAM</div>
           <div className="col header round-score">R1</div>
           <div className="col header round-score">R2</div>
@@ -82,7 +102,6 @@ export const DashboardGolferLeaderboard: React.FC<Props> = ({
         <div className="mini-leaderboard">
           <div className="ml-body">
             {sortedGolfers.map((golfer, i) => {
-              console.log(golfer);
               const r1Score = golfer.scorecard?.round1?.scoreRound;
               const r2Score = golfer.scorecard?.round2?.scoreRound;
               const r3Score = golfer.scorecard?.round3?.scoreRound;
@@ -119,7 +138,7 @@ export const DashboardGolferLeaderboard: React.FC<Props> = ({
                       isTournamentComplete={isTournamentComplete}
                     />
                   </div>
-                  <div className="col team">{golfer.teamOwner}</div>
+                  <div className="col team">{golfer.teamOwner ? golfer.teamOwner : '-'}</div>
 
                   <div className={`col round-score ${getScoreClass(r1Score)}`}>
                     {formatScore(r1Score)}

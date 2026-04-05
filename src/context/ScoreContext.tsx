@@ -51,6 +51,7 @@ interface TournamentMetadata {
 // 1. TYPE DEFINITION
 interface ScoreContextType {
   teams: ProcessedTeam[];
+  unassignedGolfers: Golfer[];
   lastUpdated: string | null;
   nextUpdate: string | null;
   getTeamByOwner: (ownerName: string) => ProcessedTeam | undefined;
@@ -163,10 +164,15 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
   }, [currentEvent, currentYear, isTournamentActive]);
 
   // Combined Memo for Processing Data and Completion State
-  const { teams, isTournamentComplete } = useMemo(() => {
+  const { teams, isTournamentComplete, unassignedGolfers } = useMemo(() => {
     if (!rawTeams || rawTeams.length === 0) {
-      return { teams: [], isTournamentComplete: false };
+      return { teams: [], isTournamentComplete: false, unassignedGolfers: [] };
     }
+
+    // Isolate the unselected field BEFORE calculating team stats
+    const actualTeams = rawTeams.filter((t) => t.owner !== 'UNSELECTED_FIELD');
+    const unselectedTeam = rawTeams.find((t) => t.owner === 'UNSELECTED_FIELD');
+    const fieldGolfers = unselectedTeam ? (unselectedTeam.golfers as Golfer[]) : [];
 
     const getBest4Sum = (
       golfers: Golfer[],
@@ -181,13 +187,13 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
       return scores.slice(0, 4).reduce((acc, curr) => acc + curr, 0);
     };
 
-    const allGolfers = rawTeams.flatMap((t) => t.golfers as Golfer[]);
+    const allGolfers = actualTeams.flatMap((t) => t.golfers as Golfer[]);
     const activeGolfers = allGolfers.filter((g) => !g.isCut);
     const hasR4Started = activeGolfers.some((g) => g.scorecard?.round4?.thruScore !== null);
     const allActiveFinished = activeGolfers.every((g) => g.thru === 'F');
     const isComplete = hasR4Started && allActiveFinished;
 
-    const teamsWithStats = rawTeams.map((team) => {
+    const teamsWithStats = actualTeams.map((team) => {
       const golfers = team.golfers as Golfer[];
       const sumR1 = getBest4Sum(golfers, 'round1');
       const sumR2 = getBest4Sum(golfers, 'round2');
@@ -265,7 +271,11 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
       };
     }) as ProcessedTeam[];
 
-    return { teams: processedTeams, isTournamentComplete: isComplete };
+    return {
+      teams: processedTeams,
+      isTournamentComplete: isComplete,
+      unassignedGolfers: fieldGolfers,
+    };
   }, [rawTeams]);
 
   const getTeamByOwner = (ownerName: string) => {
@@ -276,6 +286,7 @@ export const ScoreProvider = ({ children }: { children: React.ReactNode }) => {
     <ScoreContext.Provider
       value={{
         teams,
+        unassignedGolfers,
         lastUpdated,
         nextUpdate,
         getTeamByOwner,

@@ -184,9 +184,12 @@ function compileTeamData(leaderboardPlayers, cleanTeams, cutLine) {
     statsLookup[entry.player.id] = entry.player;
   });
 
-  // Notice we are mapping over cleanTeams (the clone), not the global constant
-  return cleanTeams.map((team) => {
+  // 1. Track assigned golfers to isolate the unselected field
+  const selectedGolferIds = new Set();
+
+  const teams = cleanTeams.map((team) => {
     const processedGolfers = team.golfers.map((ref) => {
+      selectedGolferIds.add(ref.id); // Mark golfer as selected
       const stats = statsLookup[ref.id];
       return {
         id: ref.id,
@@ -226,4 +229,36 @@ function compileTeamData(leaderboardPlayers, cleanTeams, cutLine) {
 
     return { ...team, golfers: processedGolfers };
   });
+
+  // 2. Build the Unselected Team
+  const unselectedGolfers = leaderboardPlayers
+    .filter((entry) => !selectedGolferIds.has(entry.player.id))
+    .map((entry) => {
+      const stats = entry.player;
+      return {
+        id: stats.id,
+        name: stats.name,
+        score: stats.score !== undefined ? stats.score : 99,
+        displayScore: stats.displayScore || 'DNP',
+        thru: stats.thru || '-',
+        status: stats.status || 'DNP',
+        isCut: stats.isCut !== undefined ? stats.isCut : true,
+        scorecard: clone(
+          stats.scorecard || {
+            round1: { total: null, scoreRound: null, thruScore: null, isCountingScore: false },
+            round2: { total: null, scoreRound: null, thruScore: null, isCountingScore: false },
+            round3: { total: null, scoreRound: null, thruScore: null, isCountingScore: false },
+            round4: { total: null, scoreRound: null, thruScore: null, isCountingScore: false },
+          },
+        ),
+      };
+    });
+
+  const unselectedTeam = {
+    owner: 'UNSELECTED_FIELD',
+    name: 'The Field',
+    golfers: unselectedGolfers,
+  };
+
+  return [...teams, unselectedTeam];
 }
