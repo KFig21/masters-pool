@@ -83,7 +83,7 @@ export const DashboardGolferLeaderboard: React.FC<Props> = ({
               <label className="switch">
                 <input
                   type="checkbox"
-                  checked={showUnassigned}
+                  checked={!showUnassigned}
                   onChange={() => setShowUnassigned(!showUnassigned)}
                 />
                 <span className="slider round"></span>
@@ -129,14 +129,16 @@ export const DashboardGolferLeaderboard: React.FC<Props> = ({
                         : golfer.rank}
                   </div>
                   <div className="col golfer">
-                    {golfer.name}
+                    <span className="golfer-name">{golfer.name}</span>
 
-                    <ThruBadge
-                      thru={golfer.thru}
-                      isCut={golfer.isCut}
-                      status={golfer.status}
-                      isTournamentComplete={isTournamentComplete}
-                    />
+                    <div className="badge-container">
+                      <ThruBadge
+                        thru={golfer.thru}
+                        isCut={golfer.isCut}
+                        status={golfer.status}
+                        isTournamentComplete={isTournamentComplete}
+                      />
+                    </div>
                   </div>
                   <div className="col team">{golfer.teamOwner ? golfer.teamOwner : '-'}</div>
 

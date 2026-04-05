@@ -338,10 +338,25 @@
 
                     .golfer {
                         font-size: 13px;
+                        display: flex;
                         justify-content: flex-start;
+                        align-items: center;
+                        width: 100%;
                         gap: 6px;
                         white-space: nowrap;
                         overflow: hidden;
+
+                        .golfer-name {
+                            min-width: 0;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            text-align: left;
+                        }
+
+                        .badge-container {
+                            display: flex;
+                            flex-shrink: 0;
+                        }
                     }
 
                     .total-score {
