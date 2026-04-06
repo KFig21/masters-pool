@@ -74,7 +74,7 @@ export const mastersEventData: EventConfig = {
       endDate: '2025-04-12',
     },
     2026: {
-      id: 401811933, // TODO: GET THE CORRECT ID FOR 2026, THIS IS THE GENESIS INVITATIONAL ID
+      id: 401811941,
       teams: teams_masters_2026,
       rosterSize: 6,
       cutLine: 4,

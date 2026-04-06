@@ -389,6 +389,27 @@
                         border-left: 3px solid var(--dashboard-row-highlight);
                     }
                 }
+
+                .projected-cut-line {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 2px 0;
+                    // border-top: solid 1px var(--white_Var);
+                    // border-bottom: solid 1px var(--white_Var);
+                    border-top: 1px dashed var(--dashboard-row-border-color);
+                    border-bottom: 1px dashed var(--dashboard-row-border-color);
+                    background-color: var(--dashboard-row-projected-cut);
+                    color: var(--leaderboard-row-CUT-FC);
+                    font-size: 0.7rem;
+                    font-weight: 900;
+                    text-transform: uppercase;
+                    letter-spacing: 2px;
+
+                    &:hover {
+                        background: var(--leaderboard-row--hover-BG);
+                    }
+                }
             }
         }
 

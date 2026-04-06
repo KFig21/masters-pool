@@ -16,7 +16,7 @@ export const DashboardGolferLeaderboard: React.FC<Props> = ({
   selectedOwner,
   onSelectTeam,
 }) => {
-  const { isTournamentComplete, unassignedGolfers } = useScores();
+  const { isTournamentComplete, unassignedGolfers, tournamentMetadata } = useScores();
   const { favoriteTeam } = useFavoriteTeam();
   const [showUnassigned, setShowUnassigned] = useState(true);
 
@@ -67,6 +67,25 @@ export const DashboardGolferLeaderboard: React.FC<Props> = ({
     return 'even-par';
   };
 
+  // Projected Cut Line
+  const isDay2 = tournamentMetadata?.currentRound === 2;
+  const projectedCutValue = tournamentMetadata?.cutScore ?? 999;
+
+  // Find the index of the last golfer who makes the projected cut
+  let projectedCutIndex = -1;
+  if (isDay2) {
+    for (let j = 0; j < sortedGolfers.length; j++) {
+      const g = sortedGolfers[j];
+      const gScore = typeof g.score === 'number' ? g.score : 0;
+
+      if (!g.isBadStatus && gScore <= projectedCutValue) {
+        projectedCutIndex = j;
+      } else {
+        break; // The array is already sorted, so we can stop checking
+      }
+    }
+  }
+
   return (
     <div className="dashboard-panel golfer-panel">
       <div className="panel-upper">
@@ -109,51 +128,58 @@ export const DashboardGolferLeaderboard: React.FC<Props> = ({
               const isFirstCutRow = isCutRow && (i === 0 || !sortedGolfers[i - 1].isBadStatus);
 
               return (
-                <motion.div
-                  layout="position"
-                  layoutDependency={sortedGolfers}
-                  transition={{ type: 'spring', stiffness: 130, damping: 30 }}
-                  key={golfer.id}
-                  onClick={() => onSelectTeam?.(golfer.teamOwner)}
-                  className={`leaderboard-row golfer-table ${isCutRow ? 'cut-row' : ''} ${isFirstCutRow ? 'first-cut-row' : ''} ${favoriteTeam === golfer.teamOwner ? 'favorite' : ''} ${selectedOwner === golfer.teamOwner ? 'selected' : ''}`}
-                >
-                  <div className="col pos">
-                    {i > 0 && golfer.rank === sortedGolfers[i - 1].rank
-                      ? ''
-                      : golfer.isBadStatus
+                <React.Fragment key={golfer.id}>
+                  <motion.div
+                    layout="position"
+                    layoutDependency={sortedGolfers}
+                    transition={{ type: 'spring', stiffness: 130, damping: 30 }}
+                    onClick={() => onSelectTeam?.(golfer.teamOwner)}
+                    className={`leaderboard-row golfer-table ${isCutRow ? 'cut-row' : ''} ${isFirstCutRow ? 'first-cut-row' : ''} ${favoriteTeam === golfer.teamOwner ? 'favorite' : ''} ${selectedOwner === golfer.teamOwner ? 'selected' : ''}`}
+                  >
+                    <div className="col pos">
+                      {i > 0 && golfer.rank === sortedGolfers[i - 1].rank
                         ? ''
-                        : golfer.rank}
-                  </div>
-                  <div className="col golfer">
-                    <span className="golfer-name">{golfer.name}</span>
-
-                    <div className="badge-container">
-                      <ThruBadge
-                        thru={golfer.thru}
-                        isCut={golfer.isCut}
-                        status={golfer.status}
-                        isTournamentComplete={isTournamentComplete}
-                      />
+                        : golfer.isBadStatus
+                          ? ''
+                          : golfer.rank}
                     </div>
-                  </div>
-                  <div className="col team">{golfer.teamOwner ? golfer.teamOwner : '-'}</div>
+                    <div className="col golfer">
+                      <span className="golfer-name">{golfer.name}</span>
+                      <div className="badge-container">
+                        <ThruBadge
+                          thru={golfer.thru}
+                          isCut={golfer.isCut}
+                          status={golfer.status}
+                          isTournamentComplete={isTournamentComplete}
+                        />
+                      </div>
+                    </div>
+                    <div className="col team">{golfer.teamOwner ? golfer.teamOwner : '-'}</div>
 
-                  <div className={`col round-score ${getScoreClass(r1Score)}`}>
-                    {formatScore(r1Score)}
-                  </div>
-                  <div className={`col round-score ${getScoreClass(r2Score)}`}>
-                    {formatScore(r2Score)}
-                  </div>
-                  <div className={`col round-score ${getScoreClass(r3Score)}`}>
-                    {formatScore(r3Score)}
-                  </div>
-                  <div className={`col round-score ${getScoreClass(r4Score)}`}>
-                    {formatScore(r4Score)}
-                  </div>
-                  <div className={`col total-score ${getScoreClass(totalScore)}`}>
-                    {formatScore(totalScore)}
-                  </div>
-                </motion.div>
+                    <div className={`col round-score ${getScoreClass(r1Score)}`}>
+                      {formatScore(r1Score)}
+                    </div>
+                    <div className={`col round-score ${getScoreClass(r2Score)}`}>
+                      {formatScore(r2Score)}
+                    </div>
+                    <div className={`col round-score ${getScoreClass(r3Score)}`}>
+                      {formatScore(r3Score)}
+                    </div>
+                    <div className={`col round-score ${getScoreClass(r4Score)}`}>
+                      {formatScore(r4Score)}
+                    </div>
+                    <div className={`col total-score ${getScoreClass(totalScore)}`}>
+                      {formatScore(totalScore)}
+                    </div>
+                  </motion.div>
+
+                  {/* Insert Projected Cut line after the last qualifying golfer */}
+                  {isDay2 && projectedCutIndex === i && (
+                    <motion.div layout="position" className="projected-cut-line">
+                      Projected Cut ({formatScore(projectedCutValue)})
+                    </motion.div>
+                  )}
+                </React.Fragment>
               );
             })}
           </div>

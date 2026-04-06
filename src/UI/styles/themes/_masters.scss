@@ -124,6 +124,7 @@
     --dashboard-row-border-color: rgb(225, 225, 225);
     --dashboard-row-highlight: var(--primary);
     --dashboard-row-selected: #bfbfbf;
+    --dashboard-row-projected-cut: rgba(150, 153, 157, 0.15);
     --dashboard-team-detail-FC: var(--primary);
     --dashboard-team-container-BG: var(--white_Var);
     --dashboard-timer-FC: var(--primary);
@@ -264,6 +265,7 @@
         --dashboard-row-border-color: var(--secondary);
         --dashboard-row-highlight: var(--accent);
         --dashboard-row-selected: #ffffff82;
+        --dashboard-row-projected-cut: rgb(0, 85, 58);
         --dashboard-team-detail-FC: var(--white_Var);
         --dashboard-team-container-BG: var(--transparent);
         --dashboard-timer-FC: var(--white_Var);
