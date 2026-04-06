@@ -175,10 +175,10 @@
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
             height: calc(100% - ($header-height + $header-border-height));
-            margin-top: calc($header-height + $header-border-height);
+            margin-top: calc($header-height);
 
             @include mobile {
-                margin-top: calc($header-height-mobile + $header-border-height);
+                margin-top: calc($header-height-mobile);
                 height: calc(100% - ($header-height-mobile + $header-border-height));
                 padding-top: 10px;
                 width: 100%;
@@ -211,6 +211,18 @@
                     }
                 }
             }
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
         }
     }
 }
