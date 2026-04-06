@@ -38,7 +38,8 @@ export const ThruBadge = ({ thru, isCut, status, isTournamentComplete }: Props) 
   // - If it's "F", it's finished.
   // - If it was a timestamp, it's 'tee-time'.
   // - Otherwise, if it starts with "T" or "Thru", it's 'active'.
-  const badgeClass = displayThru === 'F' ? 'finished' : isTeeTime ? 'tee-time' : 'active';
+  const badgeClass =
+    displayThru === 'F' || displayThru === '-' ? 'finished' : isTeeTime ? 'tee-time' : 'active';
 
   return (
     <span className={`thru-badge ${badgeClass}`}>

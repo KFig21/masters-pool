@@ -91,7 +91,7 @@ export const DashboardTimerPanel = ({
   const showMinutes = minutes > 0;
 
   return (
-    <div className="dashboard-panel fade-in-up">
+    <div className="dashboard-panel">
       <div className="panel-upper">
         <div className="panel-header">Tee Time</div>
       </div>
