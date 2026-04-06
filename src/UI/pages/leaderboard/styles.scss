@@ -7,8 +7,12 @@
     filter: var(--leaderboard-drop-shadow);
 
     @include mobile {
-        margin-top: 85px;
-        margin-bottom: 40px;
+        // margin-top: 85px;
+        height: 100dvh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
     }
 
     .leaderboard-arch {
@@ -199,6 +203,7 @@
         border-radius: 0px 0px 5px 5px;
         position: relative;
         padding-right: 12px;
+        width: 100%;
 
         .footer-left {
             display: flex;
