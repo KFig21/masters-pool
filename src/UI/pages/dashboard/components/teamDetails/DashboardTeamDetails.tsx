@@ -14,13 +14,19 @@ export const DashboardTeamDetails: React.FC<Props> = ({ teams, selectedOwner }) 
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setSelectedTeam(teams.find((team) => team.owner === selectedOwner) || teams[0]);
+    const hasFavorite = teams.find((team) => team.owner === selectedOwner);
+    if (hasFavorite) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setSelectedTeam(hasFavorite);
+    } else {
+      setSelectedTeam(teams[0]);
+    }
   }, [teams, selectedOwner]);
 
   return (
     <div className="dashboard-panel">
       <div className="panel-upper ">
-        <div className="panel-header">Team Details - {selectedOwner}</div>
+        <div className="panel-header">Team Details - {selectedTeam.owner}</div>
       </div>
       <div className="panel-lower team-details">
         <div className="dashboard-team-scorecard-wrapper">

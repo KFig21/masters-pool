@@ -20,8 +20,6 @@ export const DashboardGolferLeaderboard: React.FC<Props> = ({
   const { favoriteTeam } = useFavoriteTeam();
   const [showUnassigned, setShowUnassigned] = useState(true);
 
-  console.log('unassignedGolfers', unassignedGolfers);
-
   const sortedGolfers = useMemo(() => {
     // 1. Flatten all golfers and attach their team owner
     const all = teams.flatMap((t) => t.golfers.map((g) => ({ ...g, teamOwner: t.owner })));
@@ -29,8 +27,6 @@ export const DashboardGolferLeaderboard: React.FC<Props> = ({
     if (showUnassigned) {
       all.push(...unassignedGolfers.map((g) => ({ ...g, teamOwner: '' })));
     }
-
-    console.log('all golfers before sorting:', all);
 
     // Helper to get score for sorting and ranking
     const getScore = (g: Golfer) => {
