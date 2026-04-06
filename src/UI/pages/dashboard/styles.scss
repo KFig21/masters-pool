@@ -351,6 +351,10 @@
                         overflow: hidden;
                         min-width: 215px;
 
+                        @media (max-width: 1500px) {
+                            min-width: unset;
+                        }
+
                         @include mobile {
                             min-width: unset;
                         }
