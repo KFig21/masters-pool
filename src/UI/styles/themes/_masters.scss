@@ -101,11 +101,11 @@
 
     /* Nav */
     --nav-BG: var(--white_Var);
-    --nav-FC: rgb(0, 103, 71);
+    --nav-FC: var(--primary);
     --nav-border-color: var(--primary);
-    --nav-tab--hover-FC: var(--white_Var);
-    --nav-tab--hover-BG: var(--secondary);
-    --nav-tab--focus-BG: rgba(255, 255, 255, 0.07);
+    --nav-tab--hover-FC: var(--primary);
+    --nav-tab--hover-BG: rgba(0, 103, 70, 0.2);
+    --nav-tab--focus-BG: rgba(0, 103, 70, 0.1);
     --nav-favorite-icon-color: var(--primary);
 
     /* Dashboard */

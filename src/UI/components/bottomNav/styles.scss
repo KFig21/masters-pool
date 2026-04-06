@@ -75,7 +75,6 @@
 
                 .team-name {
                     transition: all 0.24s ease;
-                    transform: translateY(5px);
                 }
             }
 
@@ -89,12 +88,7 @@
                 font-weight: bold;
                 border-bottom: 3px solid var(--nav-border-color);
                 outline: none;
-
-                .favorite-icon {
-                    color: var(--accent);
-                }
             }
-
         }
     }
 }
