@@ -190,7 +190,7 @@
                 color: var(--dashboard-table-FC);
                 background-color: var(--dashboard-table-BG);
                 flex: 1;
-                overflow-x: hidden;
+                overflow: hidden;
 
                 .leaderboard-row {
                     display: grid;
