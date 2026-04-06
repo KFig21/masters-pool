@@ -89,6 +89,9 @@ export const DashboardTimerPanel = ({
   const showDays = days > 0;
   const showHours = hours > 0;
 
+  const hoursPadding = days > 0 ? 2 : 1;
+  const minutesPadding = hours > 0 ? 2 : 1;
+
   return (
     <div className="dashboard-panel">
       <div className="panel-lower timer-display countdown">
@@ -107,7 +110,7 @@ export const DashboardTimerPanel = ({
         {(showDays || showHours) && (
           <>
             <div className="time-section">
-              <span className="timer-digit">{hours}</span>
+              <span className="timer-digit">{hours.toString().padStart(hoursPadding, '0')}</span>
             </div>
             <div className="time-section">
               <span className="timer-digit">:</span>
@@ -116,7 +119,7 @@ export const DashboardTimerPanel = ({
         )}
         <>
           <div className="time-section">
-            <span className="timer-digit">{minutes}</span>
+            <span className="timer-digit">{minutes.toString().padStart(minutesPadding, '0')}</span>
           </div>
           <div className="time-section">
             <span className="timer-digit">:</span>
