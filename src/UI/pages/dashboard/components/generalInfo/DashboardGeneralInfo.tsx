@@ -3,6 +3,7 @@ import React, { useMemo } from 'react';
 import { useScores, type ProcessedTeam } from '../../../../../context/ScoreContext';
 import { EVENT_MATRIX } from '../../../../../constants';
 import { formatTournamentDates } from '../../utils/functions';
+import './styles.scss';
 
 interface Props {
   teams: ProcessedTeam[];

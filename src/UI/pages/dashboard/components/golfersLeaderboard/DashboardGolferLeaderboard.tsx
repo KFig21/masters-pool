@@ -78,7 +78,7 @@ export const DashboardGolferLeaderboard: React.FC<Props> = ({
         <div className="leaderboard-header golfer-table">
           <div className="col header pos">POS</div>
           <div className="col header golfer">
-            PLAYER
+            GOLFER
             <div className="toggle-container" style={{ marginLeft: '10px' }}>
               <label className="switch">
                 <input

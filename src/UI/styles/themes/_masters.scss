@@ -150,7 +150,8 @@
     --themeToggle: rgba(255, 255, 255, 0.4);
     --themeToggle-active: var(--accent);
     --LeaderboardDashboardNav-FC: var(--white_Var);
-
+    --scroll-thumb: var(--primary);
+    --scroll-track: rgba(236, 192, 13, 0.18);
 
     /* -------------------------- */
     /* --- MASTERS DARK THEME --- */
@@ -289,5 +290,7 @@
         --themeToggle: rgba(255, 255, 255, 0.4);
         --themeToggle-active: var(--accent);
         --LeaderboardDashboardNav-FC: var(--white_Var);
+        --scroll-thumb: var(--primary);
+        --scroll-track: rgba(0, 0, 0, 0.3);
     }
 }
