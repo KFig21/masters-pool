@@ -18,5 +18,5 @@ export const EVENT_MATRIX: EventMatrix = {
 
 // IMPORTANT: KEEP THESE UPDATED
 export const CURRENT_EVENT = eventsEnum.MASTERS;
-export const CURRENT_YEAR = 2023;
+export const CURRENT_YEAR = 2026;
 export const BACKFILL_OVERRIDE = false; // KEEP FALSE
