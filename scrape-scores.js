@@ -1,6 +1,11 @@
 // scrape-scores.js
 import fetch from 'node-fetch';
-import { CURRENT_EVENT, CURRENT_YEAR, EVENT_MATRIX } from './src/constants/index.ts';
+import {
+  BACKFILL_OVERRIDE,
+  CURRENT_EVENT,
+  CURRENT_YEAR,
+  EVENT_MATRIX,
+} from './src/constants/index.ts';
 import { Score } from './server/models/Score.js';
 import fetchEnhancedWeather from './src/scripts/fetchWeather.js';
 
@@ -47,9 +52,11 @@ export async function scrapeData() {
   const start = new Date(`${EVENT_YEAR_CONFIG.startDate}T00:00:00`);
   const end = new Date(`${EVENT_YEAR_CONFIG.endDate}T23:59:59`);
 
-  if (now < start || now > end) {
-    console.log(`💤 ${EVENT_DATA.title} is outside scheduled dates. Skipping.`);
-    return;
+  if (!BACKFILL_OVERRIDE) {
+    if (now < start || now > end) {
+      console.log(`💤 ${EVENT_DATA.title} is outside scheduled dates. Skipping.`);
+      return;
+    }
   }
 
   console.log(`⛳️ Fetching live scores for ${EVENT_DATA.title}...`);
