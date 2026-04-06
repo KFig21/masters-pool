@@ -24,15 +24,15 @@ export const teams_masters_2026: Team[] = [
   },
   {
     owner: 'Do',
-    golfers: [GOLFERS_2026.LudvigAberg, GOLFERS_2026.BrooksKoepka],
+    golfers: [GOLFERS_2026.LudvigAberg, GOLFERS_2026.BrooksKoepka, GOLFERS_2026.JakeKnapp],
   },
   {
     owner: 'Nordy',
-    golfers: [GOLFERS_2026.MattFitzpatrick, GOLFERS_2026.MinWooLee],
+    golfers: [GOLFERS_2026.MattFitzpatrick, GOLFERS_2026.MinWooLee, GOLFERS_2026.AkshayBhatia],
   },
   {
     owner: 'Jay',
-    golfers: [GOLFERS_2026.CollinMorikawa, GOLFERS_2026.JustinRose],
+    golfers: [GOLFERS_2026.CollinMorikawa, GOLFERS_2026.JustinRose, GOLFERS_2026.RussellHenley],
   },
   {
     owner: 'Andy',
