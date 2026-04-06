@@ -17,6 +17,18 @@
     transition: background-color 0.3s ease;
     font-size: 16px;
 
+    &.countdown {
+        .next-update {
+            opacity: 1;
+        }
+
+        .time-section {
+            .timer-digit {
+                opacity: 1;
+            }
+        }
+    }
+
     .next-update {
         font-family: 'Work Sans', sans-serif;
         font-weight: 600;

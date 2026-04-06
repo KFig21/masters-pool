@@ -88,35 +88,42 @@ export const DashboardTimerPanel = ({
 
   const showDays = days > 0;
   const showHours = hours > 0;
-  const showMinutes = minutes > 0;
 
   return (
     <div className="dashboard-panel">
-      <div className="panel-upper">
-        <div className="panel-header">Tee Time</div>
-      </div>
-      <div className="panel-lower timer-display">
+      <div className="panel-lower timer-display countdown">
+        <div className="next-update">COUNTDOWN</div>
         {showDays && (
-          <div className="time-section">
-            <span className="timer-digit">{days}</span>
-            <span className="timer-label">d</span>
-          </div>
+          <>
+            <div className="time-section">
+              <span className="timer-digit">{days}</span>
+              <span className="timer-digit">d</span>
+            </div>
+            <div className="time-section">
+              <span className="timer-digit">:</span>
+            </div>
+          </>
         )}
         {(showDays || showHours) && (
-          <div className="time-section">
-            <span className="timer-digit">{hours}</span>
-            <span className="timer-label">h</span>
-          </div>
+          <>
+            <div className="time-section">
+              <span className="timer-digit">{hours}</span>
+            </div>
+            <div className="time-section">
+              <span className="timer-digit">:</span>
+            </div>
+          </>
         )}
-        {(showDays || showHours || showMinutes) && (
+        <>
           <div className="time-section">
             <span className="timer-digit">{minutes}</span>
-            <span className="timer-label">m</span>
           </div>
-        )}
+          <div className="time-section">
+            <span className="timer-digit">:</span>
+          </div>
+        </>
         <div className="time-section">
           <span className="timer-digit">{seconds.toString().padStart(2, '0')}</span>
-          <span className="timer-label">s</span>
         </div>
       </div>
     </div>
