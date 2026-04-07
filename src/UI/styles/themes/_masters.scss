@@ -162,6 +162,7 @@
     --LeaderboardDashboardNav-FC: var(--white_Var);
     --scroll-thumb: var(--primary);
     --scroll-track: rgba(236, 192, 13, 0.18);
+    --text-shadow: none;
 
     /* -------------------------- */
     /* --- MASTERS DARK THEME --- */
@@ -312,5 +313,6 @@
         --LeaderboardDashboardNav-FC: var(--white_Var);
         --scroll-thumb: var(--primary);
         --scroll-track: rgba(0, 0, 0, 0.3);
+        --text-shadow: 0px 0px 6px rgb(0, 0, 0);
     }
 }

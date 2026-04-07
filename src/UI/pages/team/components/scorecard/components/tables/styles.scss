@@ -15,6 +15,7 @@
             font-size: 1.2rem;
             color: var(--scorecard-title-FC);
             font-weight: 500;
+            text-shadow: var(--text-shadow);
 
             @include mobile {
                 font-size: 1rem;
@@ -28,9 +29,14 @@
             font-size: 0.8rem;
             font-weight: bold;
             color: var(--scorecard-toggle-inactive-FC);
+            text-shadow: var(--text-shadow);
 
             span.active {
                 color: var(--scorecard-toggle-active-FC);
+            }
+
+            span.inactive {
+                text-shadow: none;
             }
         }
     }
