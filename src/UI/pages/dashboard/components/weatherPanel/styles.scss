@@ -85,10 +85,28 @@
                     // font-weight: bold;
                     font-size: 14px;
                     font-weight: bold;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: row;
 
                     .info-subtext {
                         font-style: italic;
                         opacity: .7;
+                        margin-left: 4px;
+                    }
+
+                    .wind-direction-icon {
+                        margin-right: 1px;
+                    }
+
+                    .sun-time-icon {
+                        margin-right: 2px;
+                    }
+
+                    .sun-time-divider {
+                        margin: 0px 8px;
+                        opacity: .5;
                     }
                 }
             }

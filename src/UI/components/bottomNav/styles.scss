@@ -43,7 +43,7 @@
             color: var(--nav-FC);
             background-color: var(--nav-BG);
             font-family: "Masters", serif;
-            font-size: 1rem;
+            font-size: 0.85rem;
             height: 100%;
             padding: 0px 20px;
             transition: all 0.2s ease;
@@ -51,10 +51,12 @@
 
             &.leaderboard {
                 border-right: solid 2px var(--nav-border-color);
+                font-size: 1rem;
             }
 
             &.dashboard {
                 border-left: solid 2px var(--nav-border-color);
+                font-size: 1rem;
             }
 
             .team-name {

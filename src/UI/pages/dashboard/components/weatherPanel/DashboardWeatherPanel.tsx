@@ -10,6 +10,7 @@ import AirOutlinedIcon from '@mui/icons-material/AirOutlined';
 import WbTwilightOutlinedIcon from '@mui/icons-material/WbTwilightOutlined';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
+import NorthIcon from '@mui/icons-material/North';
 
 import './styles.scss';
 
@@ -27,6 +28,32 @@ const getWeatherIcon = (conditionId: string | null) => {
   if (condition.includes('wind')) return <AirOutlinedIcon fontSize="large" />;
 
   return <WbTwilightOutlinedIcon fontSize="large" />;
+};
+
+const getWindRotation = (dir: string | null) => {
+  if (!dir) return 0;
+
+  // Maps standard 16-point compass directions to degrees
+  const compassMap: Record<string, number> = {
+    N: 0,
+    NNE: 22.5,
+    NE: 45,
+    ENE: 67.5,
+    E: 90,
+    ESE: 112.5,
+    SE: 135,
+    SSE: 157.5,
+    S: 180,
+    SSW: 202.5,
+    SW: 225,
+    WSW: 247.5,
+    W: 270,
+    WNW: 292.5,
+    NW: 315,
+    NNW: 337.5,
+  };
+
+  return compassMap[dir.toUpperCase()] ?? 0;
 };
 
 export const DashboardWeatherPanel: React.FC = () => {
@@ -63,8 +90,18 @@ export const DashboardWeatherPanel: React.FC = () => {
             <div className="info-row">
               <span className="info-label">Wind</span>
               <span className="info-value">
+                {weather.windDirection && (
+                  <NorthIcon
+                    sx={{
+                      fontSize: 16,
+                      transform: `rotate(${getWindRotation(weather.windDirection)}deg)`,
+                      transition: 'transform 0.3s ease',
+                    }}
+                    className="wind-direction-icon"
+                  />
+                )}
                 {weather.windDirection} {weather.windSpeed} mph
-                <span className="info-subtext" style={{ paddingLeft: '2px' }}>
+                <span className="info-subtext">
                   {weather.gust ? ` (Gusts ${weather.gust} mph)` : ''}
                 </span>
               </span>
@@ -74,11 +111,11 @@ export const DashboardWeatherPanel: React.FC = () => {
             {(weather.sunrise || weather.sunset) && (
               <div className="info-row">
                 <span className="info-label">Sun</span>
-                <span className="info-value sun-times">
-                  <LightModeOutlinedIcon sx={{ fontSize: 16, mr: 0.5, mb: '-3px' }} />
+                <span className="info-value">
+                  <LightModeOutlinedIcon sx={{ fontSize: 16 }} className="sun-time-icon" />
                   {weather.sunrise}
-                  <span style={{ margin: '0 6px', opacity: 0.5 }}>|</span>
-                  <DarkModeOutlinedIcon sx={{ fontSize: 16, mr: 0.5, mb: '-3px' }} />
+                  <span className="sun-time-divider">|</span>
+                  <DarkModeOutlinedIcon sx={{ fontSize: 16 }} className="sun-time-icon" />
                   {weather.sunset}
                 </span>
               </div>
