@@ -367,6 +367,7 @@
                         white-space: nowrap;
                         overflow: hidden;
                         min-width: 215px;
+                        max-width: 215px;
 
                         @media (max-width: 1515px) {
                             min-width: unset;
