@@ -49,6 +49,14 @@
             transition: all 0.2s ease;
             cursor: pointer;
 
+            &.leaderboard {
+                border-right: solid 2px var(--nav-border-color);
+            }
+
+            &.dashboard {
+                border-left: solid 2px var(--nav-border-color);
+            }
+
             .team-name {
                 position: relative;
                 transform: translateY(3px);

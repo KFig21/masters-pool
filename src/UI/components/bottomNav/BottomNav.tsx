@@ -20,7 +20,7 @@ export const BottomNav = () => {
   return (
     <div className="bottomNav-wrapper">
       <div className="bottomNav-scroll-container">
-        <Link to="/" className={`nav-tab scoreboard ${isActive('/') ? 'active' : ''}`}>
+        <Link to="/" className={`nav-tab leaderboard ${isActive('/') ? 'active' : ''}`}>
           <div className="team-name">Leaderboard</div>
         </Link>
 
@@ -40,7 +40,10 @@ export const BottomNav = () => {
             </Link>
           );
         })}
-        <Link to="/dashboard" className={`nav-tab ${isActive('/dashboard') ? 'active' : ''}`}>
+        <Link
+          to="/dashboard"
+          className={`nav-tab dashboard ${isActive('/dashboard') ? 'active' : ''}`}
+        >
           <div className="team-name">
             <SpaceDashboardIcon className="dashboard-icon" />
           </div>
