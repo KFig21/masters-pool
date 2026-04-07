@@ -168,6 +168,10 @@
                         display: inline-block;
                         z-index: 2;
 
+                        @include mobile {
+                            color: var(--teamPage-header-FC-mobile);
+                        }
+
                         &::after {
                             content: '';
                             position: absolute;
