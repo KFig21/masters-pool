@@ -7,7 +7,7 @@
     left: 0;
     width: 100%;
     background-color: var(--nav-BG);
-    border-top: 4px solid var(--nav-border-color);
+    // border-top: 4px solid var(--nav-border-color);
     z-index: 1000;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
 
@@ -52,11 +52,13 @@
             &.leaderboard {
                 // border-right: solid 2px var(--nav-border-color);
                 font-size: 1rem;
+                width: 100%;
             }
 
             &.dashboard {
                 // border-left: solid 2px var(--nav-border-color);
                 font-size: 1rem;
+                width: 100%;
             }
 
             .team-name {
@@ -91,12 +93,11 @@
             &:hover,
             &.active {
                 background-color: var(--nav-tab--hover-BG);
-                color: var(--nav-tab--hover-FC);
+                color: var(--nav-active-FC);
             }
 
             &.active {
                 font-weight: bold;
-                // border-bottom: 3px solid var(--nav-border-color);
                 outline: none;
             }
         }

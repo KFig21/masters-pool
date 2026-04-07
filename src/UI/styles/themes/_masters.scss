@@ -101,13 +101,14 @@
     --scorecard-BG-flash-red: rgba(224, 15, 57, 0.25);
 
     /* Nav */
-    --nav-BG: var(--white_Var);
-    --nav-FC: var(--primary);
-    --nav-border-color: var(--primary);
-    --nav-tab--hover-FC: var(--primary);
-    --nav-tab--hover-BG: rgba(0, 103, 70, 0.2);
+    --nav-BG: var(--primary);
+    --nav-FC: var(--white_Var);
+    --nav-active-FC: var(--accent);
+    --nav-border-color: transparent;
+    --nav-tab--hover-FC: var(--white_Var);
+    --nav-tab--hover-BG: var(--secondary);
     --nav-tab--focus-BG: rgba(0, 103, 70, 0.1);
-    --nav-favorite-icon-color: var(--primary);
+    --nav-favorite-icon-color: var(--accent);
 
     /* Dashboard */
     --dashboard-BG: --transparent;
@@ -243,11 +244,12 @@
         --scorecard-BG-flash-red: rgba(224, 15, 57, 0.25);
 
         /* Nav */
-        --nav-BG: var(--secondary);
+        --nav-BG: var(--primary);
         --nav-FC: rgb(215, 215, 215);
+        --nav-active-FC: var(--accent);
         --nav-border-color: var(--primary);
         --nav-tab--hover-FC: var(--white_Var);
-        --nav-tab--hover-BG: var(--midnightGreen);
+        --nav-tab--hover-BG: var(--secondary);
         --nav-tab--focus-BG: rgb(0, 55, 41);
         --nav-favorite-icon-color: var(--accent);
 
@@ -289,8 +291,8 @@
 
         /* Other */
         --color-scheme: light;
-        --background-slider-tint: var(--secondary);
-        --background-slider-opacity: .5;
+        --background-slider-tint: var(--primary);
+        --background-slider-opacity: .6;
         --themeToggle: rgba(255, 255, 255, 0.4);
         --themeToggle-active: var(--accent);
         --LeaderboardDashboardNav-FC: var(--white_Var);
