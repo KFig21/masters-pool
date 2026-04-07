@@ -2,7 +2,6 @@ import { Link, useParams } from 'react-router-dom';
 import { useFavoriteTeam } from '../../../hooks/useFavoriteTeam';
 import { useScores } from '../../../context/ScoreContext';
 import { Scorecard } from './components/scorecard/Scorecard';
-import Logo from '../../../assets/images/logo.png';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import './styles.scss';
 import { Loading } from '../../components/loading/Loading';
@@ -68,14 +67,8 @@ export const Team = () => {
         </div>
 
         {/* Scorecard */}
-        <div className="team-stats fade-in-up ">
+        <div className="team-stats">
           <Scorecard team={teamInfo} />
-
-          <div className="team-footer">
-            <Link to="/" className="logo-container">
-              <img src={Logo} alt="Masters Pool Logo" />
-            </Link>
-          </div>
         </div>
       </div>
     </div>

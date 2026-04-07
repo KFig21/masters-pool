@@ -68,11 +68,11 @@
     /* Team page */
     --teamPage-box-shadow: 0px 0px 30px 10px var(--secondary);
     --teamPage-BG: var(--white_Var);
-    --teamPage-header-BG: var(--primary);
-    --teamPage-header-FC: var(--white_Var);
-    --teamPage-header-border-color: var(--accent);
-    --teamPage-header-favorite: var(--accent);
-    --teamPage-header-favorite-inactive: rgba(255, 255, 255, 0.6);
+    --teamPage-header-BG: var(--white_Var);
+    --teamPage-header-FC: var(--primary);
+    --teamPage-header-border-color: var(--primary);
+    --teamPage-header-favorite: var(--primary);
+    --teamPage-header-favorite-inactive: rgba(0, 103, 71, 0.5);
     --teamPage-header-CUT-line-color: #ff4d4d;
 
     /* Scorecard */
