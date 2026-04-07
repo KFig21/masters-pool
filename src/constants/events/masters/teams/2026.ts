@@ -40,6 +40,7 @@ export const teams_masters_2026: Team[] = [
       GOLFERS_2026.ChrisGotterup,
       GOLFERS_2026.NicolaiHojgaard,
       GOLFERS_2026.MarcoPenge,
+      GOLFERS_2026.RasmusHojgaard,
     ],
   },
   {
