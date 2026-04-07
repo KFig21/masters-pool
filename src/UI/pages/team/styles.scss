@@ -18,9 +18,7 @@
         position: relative;
         display: flex;
         flex-direction: column;
-        // height: 100%;
         background-color: var(--teamPage-BG);
-        // box-shadow: var(--teamPage-box-shadow);
         border: solid 1px var(--teamPage-header-border-color);
         border-radius: 16px;
         overflow: hidden;
@@ -32,6 +30,8 @@
             align-items: center;
             overflow: hidden;
             border-radius: 0px;
+            background-color: var(--teamPage-BG-mobile);
+            border: none;
         }
 
         $header-height: 80px;
@@ -43,8 +43,8 @@
             justify-content: center;
             flex-direction: column;
             align-items: center;
+            color: var(--teamPage-header-FC);
             background-color: var(--teamPage-header-BG);
-            // box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.1);
             position: absolute;
             top: 0;
             z-index: 3;
@@ -54,6 +54,9 @@
 
             @include mobile {
                 height: $header-height-mobile;
+                color: var(--teamPage-header-FC-mobile);
+                background-color: var(--teamPage-header-BG-mobile);
+                border-bottom: solid 4px var(--teamPage-header-border-color-mobile);
             }
 
             .mobile-back-button {
@@ -62,7 +65,7 @@
                 left: 15px;
                 top: 50%;
                 transform: translateY(-50%);
-                color: var(--teamPage-header-FC);
+                color: var(--teamPage-header-FC-mobile);
                 text-decoration: none;
                 font-weight: bold;
                 font-size: 1.75rem;
@@ -92,14 +95,8 @@
                 align-items: center;
                 justify-content: center;
                 position: absolute;
-                top: 0px;
-                right: 3px;
-
-                @include mobile {
-                    right: 5px;
-                    top: 50%;
-                    transform: translateY(-50%);
-                }
+                top: 2px;
+                right: 5px;
 
                 .favorite-icon {
                     background: none;
@@ -118,6 +115,26 @@
 
                 &.active .favorite-icon {
                     color: var(--teamPage-header-favorite);
+                }
+
+
+                @include mobile {
+                    right: 5px;
+                    top: 50%;
+                    transform: translateY(-50%);
+
+                    .favorite-icon {
+                        color: var(--teamPage-header-favorite-inactive-mobile);
+
+                        &:focus-visible,
+                        &:active {
+                            color: var(--teamPage-header-favorite-mobile);
+                        }
+                    }
+
+                    &.active .favorite-icon {
+                        color: var(--teamPage-header-favorite-mobile);
+                    }
                 }
             }
 
@@ -143,6 +160,7 @@
 
                     @include mobile {
                         font-size: 1.8rem; // Scale down header text
+                        color: var(--teamPage-header-FC-mobile);
                     }
 
                     &.name {

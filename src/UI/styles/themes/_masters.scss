@@ -75,6 +75,13 @@
     --teamPage-header-favorite-inactive: rgba(0, 103, 71, 0.5);
     --teamPage-header-CUT-line-color: #ff4d4d;
 
+    --teamPage-BG-mobile: var(--white_Var);
+    --teamPage-header-BG-mobile: var(--primary);
+    --teamPage-header-FC-mobile: var(--white_Var);
+    --teamPage-header-border-color-mobile: var(--accent);
+    --teamPage-header-favorite-mobile: var(--accent);
+    --teamPage-header-favorite-inactive-mobile: rgba(255, 255, 255, 0.6);
+
     /* Scorecard */
     --scorecard-title-FC: var(--primary);
     --scorecard-table-primary-color: var(--primary);
@@ -218,11 +225,18 @@
         --teamPage-header-favorite-inactive: rgba(255, 255, 255, 0.6);
         --teamPage-header-CUT-line-color: #ff4d4d;
 
+        --teamPage-BG-mobile: var(--transparent);
+        --teamPage-header-BG-mobile: var(--secondary);
+        --teamPage-header-FC-mobile: var(--white_Var);
+        --teamPage-header-border-color-mobile: var(--primary);
+        --teamPage-header-favorite-mobile: var(--accent);
+        --teamPage-header-favorite-inactive-mobile: rgba(255, 255, 255, 0.6);
+
         /* Scorecard */
         --scorecard-title-FC: var(--white_Var);
         --scorecard-table-primary-color: var(--primary);
         --scorecard-table-column-FC: var(--white_Var);
-        --scorecard-table-BG: --transparent;
+        --scorecard-table-BG: var(--primaryOpacity50);
         --scorecard-table-FC: var(--white_Var);
         --scorecard-table-name-FC: var(--white_Var);
         --scorecard-table-name-BG: rgba(0, 103, 70, 0.3);
