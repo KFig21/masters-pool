@@ -6,6 +6,7 @@
     align-items: center;
     justify-content: center;
     height: 100%;
+    z-index: 2;
 
     @include mobile {
         height: 100dvh;
