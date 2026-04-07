@@ -64,8 +64,8 @@ export const teams_masters_2026: Team[] = [
       GOLFERS_2026.BrooksKoepka,
       GOLFERS_2026.JakeKnapp,
       GOLFERS_2026.TyrrellHatton,
-      GOLFERS_2026.JoaquinNiemann,
-      GOLFERS_2026.WillZalatoris,
+      GOLFERS_2026.WyndhamClark,
+      GOLFERS_2026.TomKim,
     ],
   },
   {
