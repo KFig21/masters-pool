@@ -17,4 +17,13 @@
         color: var(--themeToggle-active);
         outline: none;
     }
+
+    @include mobile {
+
+        &:hover,
+        &:focus-visible {
+            color: var(--themeToggle);
+            outline: none;
+        }
+    }
 }

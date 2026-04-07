@@ -83,6 +83,7 @@
 
                 @include mobile {
                     padding: 0px 4px;
+                    box-shadow: var(--leaderboard-cell-boxShadow-mobile);
                 }
 
                 &.active-golfers {
@@ -128,10 +129,10 @@
                 }
 
                 // ALIGN NAME TILES TO THE LEFT
-                // .score-tile-inner {
-                //     justify-content: flex-start;
-                //     padding-left: 10px;
-                // }
+                .score-tile-inner {
+                    justify-content: flex-start;
+                    padding-left: 10px;
+                }
 
                 @include mobile {
                     font-size: 22px;

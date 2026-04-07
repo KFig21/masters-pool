@@ -35,6 +35,7 @@
     --leaderboard-cell-backdrop: var(--primary); // behind the active cell component
     --leaderboard-row-border-color: rgb(205, 205, 205);
     --leaderboard-cell-boxShadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
+    --leaderboard-cell-boxShadow-mobile: inset 0 1px 3px rgba(0, 0, 0, 0.35);
 
     --leaderboard-title-BG: var(--white_Var);
     --leaderboard-title-FC: var(--primary);
@@ -176,6 +177,7 @@
         --leaderboard-cell-backdrop: var(--secondary); // behind the active cell component
         --leaderboard-row-border-color: var(--secondary);
         --leaderboard-cell-boxShadow: inset 0 1px 3px rgba(0, 0, 0, 0.6);
+        --leaderboard-cell-boxShadow-mobile: inset 0 1px 3px rgba(0, 0, 0, 0.5);
 
         --leaderboard-title-BG: var(--primary);
         --leaderboard-title-FC: var(--white_Var);
