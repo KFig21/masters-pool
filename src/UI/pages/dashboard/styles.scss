@@ -473,7 +473,6 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    text-shadow: var(--text-shadow);
 
     @include mobile {
         display: flex;
