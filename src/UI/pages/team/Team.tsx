@@ -37,7 +37,7 @@ export const Team = () => {
 
   return (
     <div className="team-wrapper">
-      <div className="team-container">
+      <div className="team-container fade-in-up">
         {/*  HEADER */}
         <div className={`team-header ${isTeamCut ? 'is-cut' : ''}`}>
           {/* Mobile back button */}
