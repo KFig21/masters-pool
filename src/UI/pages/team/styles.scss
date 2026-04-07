@@ -179,7 +179,7 @@
 
             @include mobile {
                 margin-top: calc($header-height-mobile);
-                height: calc(100% - ($header-height-mobile + $header-border-height));
+                height: calc(100% - ($header-height-mobile));
                 padding-top: 10px;
                 width: 100%;
                 display: flex;
