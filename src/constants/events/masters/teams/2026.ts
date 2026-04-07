@@ -10,6 +10,7 @@ export const teams_masters_2026: Team[] = [
       GOLFERS_2026.JustinThomas,
       GOLFERS_2026.SamBurns,
       GOLFERS_2026.HarrisEnglish,
+      GOLFERS_2026.SamStevens,
     ],
   },
   {
@@ -30,6 +31,7 @@ export const teams_masters_2026: Team[] = [
       GOLFERS_2026.SiWooKim,
       GOLFERS_2026.AdamScott,
       GOLFERS_2026.JacobBridgeman,
+      GOLFERS_2026.KeeganBradley,
     ],
   },
   {
