@@ -49,6 +49,8 @@ export const teams_masters_2026: Team[] = [
       GOLFERS_2026.CameronYoung,
       GOLFERS_2026.ShaneLowry,
       GOLFERS_2026.JJSpaun,
+      GOLFERS_2026.GaryWoodland,
+      GOLFERS_2026.KurtKitayama,
     ],
   },
   {
@@ -58,6 +60,8 @@ export const teams_masters_2026: Team[] = [
       GOLFERS_2026.BrooksKoepka,
       GOLFERS_2026.JakeKnapp,
       GOLFERS_2026.TyrrellHatton,
+      GOLFERS_2026.JoaquinNiemann,
+      GOLFERS_2026.WillZalatoris,
     ],
   },
   {
@@ -67,6 +71,8 @@ export const teams_masters_2026: Team[] = [
       GOLFERS_2026.MinWooLee,
       GOLFERS_2026.AkshayBhatia,
       GOLFERS_2026.JordanSpieth,
+      GOLFERS_2026.MaverickMcNealy,
+      GOLFERS_2026.BenGriffin,
     ],
   },
   {
@@ -76,6 +82,8 @@ export const teams_masters_2026: Team[] = [
       GOLFERS_2026.JustinRose,
       GOLFERS_2026.RussellHenley,
       GOLFERS_2026.JasonDay,
+      GOLFERS_2026.DustinJohnson,
+      GOLFERS_2026.CarlosOrtiz,
     ],
   },
   {
@@ -85,6 +93,8 @@ export const teams_masters_2026: Team[] = [
       GOLFERS_2026.HidekiMatsuyama,
       GOLFERS_2026.CoreyConners,
       GOLFERS_2026.SeppStraka,
+      GOLFERS_2026.DanielBerger,
+      GOLFERS_2026.BrianHarman,
     ],
   },
 ];
