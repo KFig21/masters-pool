@@ -19,6 +19,7 @@ export const DashboardGolferLeaderboard: React.FC<Props> = ({
   const { isTournamentComplete, unassignedGolfers, tournamentMetadata } = useScores();
   const { favoriteTeam } = useFavoriteTeam();
   const [showUnassigned, setShowUnassigned] = useState(true);
+  const teamCount = teams.length;
 
   const sortedGolfers = useMemo(() => {
     // 1. Flatten all golfers and attach their team owner
@@ -134,7 +135,11 @@ export const DashboardGolferLeaderboard: React.FC<Props> = ({
                     layoutDependency={sortedGolfers}
                     transition={{ type: 'spring', stiffness: 130, damping: 30 }}
                     onClick={() => onSelectTeam?.(golfer.teamOwner)}
-                    className={`leaderboard-row golfer-table ${isCutRow ? 'cut-row' : ''} ${isFirstCutRow ? 'first-cut-row' : ''} ${favoriteTeam === golfer.teamOwner ? 'favorite' : ''} ${selectedOwner === golfer.teamOwner ? 'selected' : ''}`}
+                    className={`leaderboard-row golfer-table ${isCutRow ? 'cut-row' : ''} 
+                    ${isFirstCutRow ? 'first-cut-row' : ''} 
+                    ${favoriteTeam === golfer.teamOwner ? 'favorite' : ''} 
+                    ${selectedOwner === golfer.teamOwner ? 'selected' : ''}
+                    ${teamCount > 8 && 'compact-9'}`}
                   >
                     <div className="col pos">
                       {i > 0 && golfer.rank === sortedGolfers[i - 1].rank

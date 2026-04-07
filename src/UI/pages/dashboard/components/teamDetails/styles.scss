@@ -40,7 +40,7 @@
                     min-width: max-content;
 
                     // Small screens but not phones
-                    @media (max-width: 1500px) {
+                    @media (max-width: 1515px) {
                         $round-width-mobile: 38px;
                         grid-template-columns: 1fr repeat(4, 60px) 48px;
                     }

@@ -18,6 +18,7 @@ export const DashboardTeamLeaderboard: React.FC<Props> = ({
   selectedOwner,
 }) => {
   const { favoriteTeam } = useFavoriteTeam();
+  const teamCount = teams.length;
 
   const formatScore = (val: number | string | null | undefined) => {
     // Catch missing data and Infinity
@@ -70,7 +71,8 @@ export const DashboardTeamLeaderboard: React.FC<Props> = ({
                   transition={{ type: 'spring', stiffness: 130, damping: 30 }}
                   key={team.owner} // Already perfect!
                   className={`leaderboard-row team-table ${favoriteTeam === team.owner ? 'favorite' : ''}
-                  ${selectedOwner === team.owner ? 'selected' : ''}`}
+                  ${selectedOwner === team.owner ? 'selected' : ''}
+                  ${teamCount > 8 && 'compact-9'}`}
                   onClick={() => onSelectTeam(team.owner)}
                 >
                   <div className="col pos">

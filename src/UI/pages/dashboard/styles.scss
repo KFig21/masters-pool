@@ -19,7 +19,7 @@
         display: none;
     }
 
-    @media (max-width: 1500px) {
+    @media (max-width: 1515px) {
         height: unset;
 
         &.desktop {
@@ -57,7 +57,7 @@
         gap: 20px;
         height: 100%;
 
-        @media (max-width: 1500px) {
+        @media (max-width: 1515px) {
             grid-template-columns: 1fr
         }
     }
@@ -83,7 +83,7 @@
             max-height: 82vh;
         }
 
-        @media (max-width: 1500px) {
+        @media (max-width: 1515px) {
             max-height: 82vh;
         }
 
@@ -303,22 +303,39 @@
                         padding: 8px;
                         font-weight: 600;
 
-                        // TODO: SHRINK the column padding-height for small screens and large amounts of teams
-                        @media (max-height: 850px) {
-                            padding: 6px 8px;
+                        @include mobile {
+                            padding: 8px;
                         }
 
                         &.under-par {
-                            color: var(--leaderboard-cell-under-FC); // Classic golf red. You can extract this to a CSS variable if you prefer!
+                            color: var(--leaderboard-cell-under-FC);
                         }
 
                         &.over-par,
                         &.even-par {
-                            color: var(--leaderboard-cell-over-FC); // Standard text color
+                            color: var(--leaderboard-cell-over-FC);
                         }
 
                         &.cut {
                             color: var(--leaderboard-row-CUT-FC);
+                        }
+                    }
+
+                    // When there are 9 teams the row compacts vertically
+                    &.compact-9 {
+                        .col {
+                            padding: 7px 8px;
+
+                            // 14in macbook pro
+                            @media (max-width: 1515px) {
+                                @media (max-height: 912px) {
+                                    padding: 6px 7px;
+                                }
+                            }
+
+                            @include mobile {
+                                padding: 8px;
+                            }
                         }
                     }
 
@@ -351,7 +368,7 @@
                         overflow: hidden;
                         min-width: 215px;
 
-                        @media (max-width: 1500px) {
+                        @media (max-width: 1515px) {
                             min-width: unset;
                         }
 
