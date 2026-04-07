@@ -4,27 +4,61 @@ import { GOLFERS_2026 } from '../../../golfers/golfers_2026';
 export const teams_masters_2026: Team[] = [
   {
     owner: 'Fig',
-    golfers: [GOLFERS_2026.ScottieScheffler, GOLFERS_2026.ViktorHovland, GOLFERS_2026.JustinThomas],
+    golfers: [
+      GOLFERS_2026.ScottieScheffler,
+      GOLFERS_2026.ViktorHovland,
+      GOLFERS_2026.JustinThomas,
+      GOLFERS_2026.SamBurns,
+      GOLFERS_2026.HarrisEnglish,
+    ],
   },
   {
     owner: 'Leach',
-    golfers: [GOLFERS_2026.RoryMcIlroy, GOLFERS_2026.PatrickCantlay, GOLFERS_2026.MaxHoma],
+    golfers: [
+      GOLFERS_2026.RoryMcIlroy,
+      GOLFERS_2026.PatrickCantlay,
+      GOLFERS_2026.MaxHoma,
+      GOLFERS_2026.CameronSmith,
+      GOLFERS_2026.SungjaeIm,
+    ],
   },
   {
     owner: 'Nalls',
-    golfers: [GOLFERS_2026.XanderSchauffele, GOLFERS_2026.RobertMacIntyre, GOLFERS_2026.SiWooKim],
+    golfers: [
+      GOLFERS_2026.XanderSchauffele,
+      GOLFERS_2026.RobertMacIntyre,
+      GOLFERS_2026.SiWooKim,
+      GOLFERS_2026.AdamScott,
+      GOLFERS_2026.JacobBridgeman,
+    ],
   },
   {
     owner: 'Barrett',
-    golfers: [GOLFERS_2026.JonRahm, GOLFERS_2026.PatrickReed, GOLFERS_2026.ChrisGotterup],
+    golfers: [
+      GOLFERS_2026.JonRahm,
+      GOLFERS_2026.PatrickReed,
+      GOLFERS_2026.ChrisGotterup,
+      GOLFERS_2026.NicolaiHojgaard,
+      GOLFERS_2026.MarcoPenge,
+    ],
   },
   {
     owner: 'Billy',
-    golfers: [GOLFERS_2026.BrysonDeChambeau, GOLFERS_2026.CameronYoung, GOLFERS_2026.ShaneLowry],
+    golfers: [
+      GOLFERS_2026.BrysonDeChambeau,
+      GOLFERS_2026.CameronYoung,
+      GOLFERS_2026.ShaneLowry,
+      GOLFERS_2026.JJSpaun,
+    ],
   },
   {
     owner: 'Do',
-    golfers: [GOLFERS_2026.LudvigAberg, GOLFERS_2026.BrooksKoepka, GOLFERS_2026.JakeKnapp],
+    golfers: [
+      GOLFERS_2026.LudvigAberg,
+      GOLFERS_2026.BrooksKoepka,
+      GOLFERS_2026.JakeKnapp,
+      GOLFERS_2026.TyrrellHatton,
+    ],
   },
   {
     owner: 'Nordy',
