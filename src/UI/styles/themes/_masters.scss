@@ -11,7 +11,7 @@
     --accent: var(--mastersYellow);
     --white_Var: var(--white);
 
-    --primaryOpacity50: rgba(3, 44, 30, 0.75);
+    --primaryOpacity50: rgba(3, 44, 30, 0.85);
 
     /* --------------------------- */
     /* --- MASTERS LIGHT THEME --- */
@@ -255,7 +255,7 @@
         --dashboard-BG: var(--transparent);
         --dashboard-panel-BG: var(--primaryOpacity50);
         --dashboard-panel-border-color: var(--primary);
-        --dashboard-panel-upper-BG: var(--primaryOpacity50);
+        --dashboard-panel-upper-BG: var(--transparent);
         --dashboard-panel-lower-BG: var(--transparent);
         --dashboard-panel-event-name: var(--white_Var);
         --dashboard-panel-title: var(--white_Var);
@@ -264,7 +264,7 @@
         --dashboard-table-header-FC: var(--white_Var);
         --dashboard-table-header-BG: var(--midnightGreen);
         --dashboard-header-border-color: var(--primary);
-        --dashboard-row-border-color: var(--secondary);
+        --dashboard-row-border-color: rgb(0, 74, 54);
         --dashboard-row-highlight: var(--accent);
         --dashboard-row-selected: #ffffff82;
         --dashboard-row-projected-cut: rgb(0, 85, 58);
@@ -290,7 +290,7 @@
         /* Other */
         --color-scheme: light;
         --background-slider-tint: var(--secondary);
-        --background-slider-opacity: .3;
+        --background-slider-opacity: .5;
         --themeToggle: rgba(255, 255, 255, 0.4);
         --themeToggle-active: var(--accent);
         --LeaderboardDashboardNav-FC: var(--white_Var);
