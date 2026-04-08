@@ -76,21 +76,6 @@
                 }
             }
 
-            &.is-cut {
-                .team-header-data.name {
-                    font-style: italic;
-                    color: var(--teamPage-header-favorite-inactive);
-
-                    &::after {
-                        /* Syntax: [name] [duration] [timing-function] [delay] [fill-mode] */
-                        animation: strikeThrough 1.0s cubic-bezier(.22, .9, .24, 1) 0.5s forwards;
-
-                        transform-origin: left;
-                        transform: scaleX(0) skew(-30deg);
-                    }
-                }
-            }
-
             .favorite-icon-container {
                 display: flex;
                 align-items: center;
@@ -194,6 +179,25 @@
                         @include mobile {
                             letter-spacing: 1px;
                         }
+                    }
+                }
+            }
+
+            &.is-cut {
+                .team-header-data.name {
+                    font-style: italic;
+                    color: var(--teamPage-header-favorite-inactive);
+
+                    @include mobile {
+                        color: var(--teamPage-header-favorite-inactive-mobile);
+                    }
+
+                    &::after {
+                        /* Syntax: [name] [duration] [timing-function] [delay] [fill-mode] */
+                        animation: strikeThrough 1.0s cubic-bezier(.22, .9, .24, 1) 0.5s forwards;
+
+                        transform-origin: left;
+                        transform: scaleX(0) skew(-30deg);
                     }
                 }
             }
