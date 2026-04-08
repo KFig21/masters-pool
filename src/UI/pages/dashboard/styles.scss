@@ -196,7 +196,7 @@
                     cursor: pointer;
                     transition: background 0.2s;
                     background-color: var(--dashboard-table-BG);
-                    border-left: 3px solid var(--dashboard-table-BG); // needed to match the extra padding from the highlighted row
+                    border-left: 3px solid var(--transparent); // needed to match the extra padding from the highlighted row
 
                     &.cut-row {
                         // Faded background color. You can use rgba or create a new CSS variable
@@ -279,10 +279,6 @@
                     // Apply a border only if there is a .leaderboard-row before it
                     &+.leaderboard-row {
                         border-top: 1px solid var(--dashboard-row-border-color);
-                    }
-
-                    &:hover {
-                        background: var(--leaderboard-row--hover-BG);
                     }
 
                     @include mobile {
@@ -406,6 +402,10 @@
                     &.favorite {
                         border-left: 3px solid var(--dashboard-row-highlight);
                         background-color: rgba(255, 207, 0, 0.085);
+                    }
+
+                    &:hover {
+                        background: var(--leaderboard-row--hover-BG);
                     }
                 }
 
