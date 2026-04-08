@@ -75,7 +75,7 @@
             &.is-cut {
                 .scorecard-table-cell.name-cell {
                     // Dim the text slightly to emphasize the cut
-                    color: #809e90 !important;
+                    color: var(--scorecard-cell-CUT-golferName-FC) !important;
                     font-style: italic;
 
                     .golfer-name {

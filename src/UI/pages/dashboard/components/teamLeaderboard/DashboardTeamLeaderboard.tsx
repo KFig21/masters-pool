@@ -79,8 +79,7 @@ export const DashboardTeamLeaderboard: React.FC<Props> = ({
                     {isBadStatus ? '-' : isTied ? `T-${team.rank}` : team.rank}
                   </div>
                   <div className="col team">
-                    {team.owner}
-                    {/* TODO: Hover tooltip to show number of active golfers */}
+                    <span className={`team-name ${isBadStatus && 'is-cut'}`}>{team.owner}</span>
                     {golfersStatus.active > 0 && (
                       <div className="active-golfers-container">
                         <span className="active-golfers">{golfersStatus.active}</span>

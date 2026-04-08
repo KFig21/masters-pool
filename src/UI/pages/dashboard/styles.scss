@@ -235,6 +235,34 @@
                             align-items: center;
                             justify-content: space-between;
 
+                            .team-name {
+                                &.is-cut {
+                                    color: var(--scorecard-cell-CUT-golferName-FC) !important;
+                                    font-style: italic;
+                                    position: relative;
+                                    display: inline-block;
+
+                                    &::after {
+                                        content: '';
+                                        position: absolute;
+                                        left: -5px;
+                                        right: -5px; // Leaves a little gap at the end
+                                        top: 50%;
+                                        height: 3px; // Thinner line for the table
+                                        background-color: var(--scorecard-cell-CUT-golferName-FC) !important;
+                                        transform-origin: left;
+                                        animation: strikeThrough 0.8s cubic-bezier(.22, .9, .24, 1) 0.6s forwards;
+                                        transform: scaleX(0); // Hidden until animation
+                                        z-index: 10;
+
+                                        @include mobile {
+                                            left: -3px;
+                                            right: -3px;
+                                        }
+                                    }
+                                }
+                            }
+
                             .active-golfers-container {
                                 display: flex;
                                 align-items: center;

@@ -94,6 +94,7 @@
     --scorecard-cell-over-FC: var(--primary);
     --scorecard-cell-under-FC: var(--red);
     --scorecard-cell-CUT-FC: rgb(101, 107, 109);
+    --scorecard-cell-CUT-golferName-FC: #809e90;
     --scorecard-active-score-indicator: var(--primary);
 
     --scorecard-toggle: #ccc;
@@ -245,6 +246,7 @@
         --scorecard-cell-over-FC: var(--white_Var);
         --scorecard-cell-under-FC: var(--accent);
         --scorecard-cell-CUT-FC: rgb(135, 143, 146);
+        --scorecard-cell-CUT-golferName-FC: #809e90;
         --scorecard-active-score-indicator: var(--primary);
 
         --scorecard-toggle: rgba(0, 0, 0, 0.3);
