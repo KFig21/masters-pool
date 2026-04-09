@@ -146,6 +146,8 @@
 
                 .col {
                     display: flex;
+                    flex-direction: row;
+                    white-space: nowrap;
                     align-items: center;
                     justify-content: center;
                     text-align: center;
@@ -426,6 +428,7 @@
                         background: var(--leaderboard-row--hover-BG);
                     }
 
+                    // Mobile keep the background color the same on active events
                     @include mobile {
 
                         &:hover,
@@ -433,6 +436,16 @@
                         &:active,
                         &:focus-visible {
                             background: unset;
+                        }
+
+                        &.favorite {
+
+                            &:hover,
+                            &:focus,
+                            &:active,
+                            &:focus-visible {
+                                background-color: rgba(255, 207, 0, 0.085);
+                            }
                         }
                     }
                 }
