@@ -184,12 +184,13 @@ export const DashboardGolferLeaderboard: React.FC<Props> = ({
   };
 
   // Projected Cut Line
-  const isDay2 = tournamentMetadata?.currentRound === 2;
+  const isDay1or2 =
+    tournamentMetadata?.currentRound === 1 || tournamentMetadata?.currentRound === 2;
   const projectedCutValue = tournamentMetadata?.cutScore ?? 999;
 
   // Find the index of the last golfer who makes the projected cut
   let projectedCutIndex = -1;
-  if (isDay2 && sortKey === 'default') {
+  if (isDay1or2 && sortKey === 'default') {
     for (let j = 0; j < displayGolfers.length; j++) {
       const g = displayGolfers[j];
       if (!g.isBadStatus && (typeof g.score === 'number' ? g.score : 0) <= projectedCutValue) {
@@ -308,7 +309,7 @@ export const DashboardGolferLeaderboard: React.FC<Props> = ({
                     </div>
                   </motion.div>
 
-                  {sortKey === 'default' && isDay2 && projectedCutIndex === i && (
+                  {sortKey === 'default' && isDay1or2 && projectedCutIndex === i && (
                     <motion.div layout="position" className="projected-cut-line">
                       Projected Cut ({formatScore(projectedCutValue)})
                     </motion.div>
