@@ -164,6 +164,16 @@
 
                 .golfer {
                     justify-content: flex-start;
+                    cursor: pointer;
+                    user-select: none;
+
+                    .golfer-name {
+                        width: 55px;
+                        display: flex;
+                        justify-content: flex-start;
+                        gap: 4px;
+                    }
+
                 }
 
                 .total-score {
