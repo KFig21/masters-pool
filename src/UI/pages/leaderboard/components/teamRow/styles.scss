@@ -86,26 +86,26 @@
                     box-shadow: var(--leaderboard-cell-boxShadow-mobile);
                 }
 
-                &.active-golfers {
-                    &::after {
-                        content: '';
-                        position: absolute;
-                        top: 0;
-                        right: 0;
-                        width: 0;
-                        height: 0;
-                        // The border hack: transparent left, colored top
-                        border-left: 12px solid transparent;
-                        border-top: 12px solid var(--leaderboard-active-golfers-indicator);
-                        z-index: 5;
+                // &.active-golfers {
+                //     &::after {
+                //         content: '';
+                //         position: absolute;
+                //         top: 0;
+                //         right: 0;
+                //         width: 0;
+                //         height: 0;
+                //         // The border hack: transparent left, colored top
+                //         border-left: 12px solid transparent;
+                //         border-top: 12px solid var(--leaderboard-active-golfers-indicator);
+                //         z-index: 5;
 
-                        @include mobile {
-                            // Slightly smaller earmark on mobile
-                            border-left: 9px solid transparent;
-                            border-top: 9px solid var(--leaderboard-active-golfers-indicator);
-                        }
-                    }
-                }
+                //         @include mobile {
+                //             // Slightly smaller earmark on mobile
+                //             border-left: 9px solid transparent;
+                //             border-top: 9px solid var(--leaderboard-active-golfers-indicator);
+                //         }
+                //     }
+                // }
             }
 
             &.rank {
