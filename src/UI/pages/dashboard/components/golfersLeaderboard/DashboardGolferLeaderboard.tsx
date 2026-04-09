@@ -61,11 +61,50 @@ export const DashboardGolferLeaderboard: React.FC<Props> = ({
       return typeof g.score === 'number' ? g.score : 0;
     };
 
-    const sorted = all.sort((a, b) => getScore(a) - getScore(b));
+    // --- TIE-BREAKER LOGIC ---
+    const getProgressValue = (g: Golfer) => {
+      const t = (g.thru || '').trim().toUpperCase();
+
+      // 1. Finished golfers at the very top of their score tier
+      if (t === 'F' || t === 'F*') return 100;
+
+      // 2. Golfers on the course (Thru 1 - 18)
+      if (t.includes('THRU')) {
+        return parseInt(t.replace(/\D/g, ''), 10) || 0;
+      }
+
+      // 3. Golfers who haven't started (Tee Times)
+      // We return negative minutes so earlier times (-480 for 8am)
+      // are "greater" than later times (-800 for 1:20pm)
+      const timeMatch = t.match(/(\d+):(\d+)\s*(AM|PM)?/);
+      if (timeMatch) {
+        let h = parseInt(timeMatch[1], 10);
+        const m = parseInt(timeMatch[2], 10);
+        const isPM = timeMatch[3] === 'PM';
+        if (isPM && h < 12) h += 12;
+        if (!isPM && h === 12) h = 0;
+        return -(h * 60 + m);
+      }
+
+      return -2000; // DNP or unknown
+    };
+
+    const sorted = all.sort((a, b) => {
+      const scoreA = getScore(a);
+      const scoreB = getScore(b);
+
+      // Primary Sort: Total Score
+      if (scoreA !== scoreB) return scoreA - scoreB;
+
+      // Secondary Sort (Tie-breaker): Progress
+      // We use (b - a) because higher progress values should come first
+      return getProgressValue(b) - getProgressValue(a);
+    });
 
     return sorted.map((golfer, _, arr) => {
       const currentScore = getScore(golfer);
       const isBadStatus = currentScore === 999;
+      // Use getScore for the rank lookup so ties still show the same POS (e.g. T12)
       const rank = arr.findIndex((g) => getScore(g) === currentScore) + 1;
       return { ...golfer, rank, isBadStatus };
     });
